@@ -6,6 +6,11 @@ project:
 
 website:
   title: "Python Training Intensive"
+  navbar:
+    background: primary
+    foreground: light
+    search: true
+
   sidebar:
     contents:
       - href: setup.md
@@ -14,8 +19,10 @@ website:
 
 format:
   html:
-    theme: cosmo
-    css: styles.css
+    theme: 
+      - default
+      - custom.scss
+
     toc: true
 
 execute:
