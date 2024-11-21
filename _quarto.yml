@@ -3,19 +3,28 @@ project:
   render: 
     - setup.md
     - "Workshops/*"
+    - "Project/*"
 
 website:
   title: "Python Training Intensive"
   navbar:
-    background: primary
-    foreground: light
     search: true
+    left:
+      - text: "Workshops"
+        href: Workshops/Workshops.md
+      - text: "Project"
+        href: Project/project.md
 
   sidebar:
-    contents:
-      - href: setup.md
-        text: Home
-      - auto: "Workshops"
+    - title: "Workshops"
+      contents:
+        - href: setup.md
+          text: Setup
+        - auto: "Workshops"
+
+    - title: "Project"
+      contents:
+        - auto: "Project"
 
 format:
   html:

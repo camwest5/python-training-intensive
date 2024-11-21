@@ -1,4 +1,6 @@
-# Python Training Intensive
+---
+title: Python Training Intensive
+---
 
 ## Setting Up
 
