@@ -1,14 +1,14 @@
 project:
   type: website
   render: 
-    - test.md
+    - setup.md
     - "Workshops/*"
 
 website:
   title: "Python Training Intensive"
   sidebar:
     contents:
-      - href: test.md
+      - href: setup.md
         text: Home
       - auto: "Workshops"
 
