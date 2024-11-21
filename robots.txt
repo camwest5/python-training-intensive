@@ -1,0 +1,1 @@
+Sitemap: https://camwest5.github.io/python-training-intensive/sitemap.xml
