@@ -1,0 +1,22 @@
+project:
+  type: website
+  render: 
+    - test.md
+    - "Workshops/*"
+
+website:
+  title: "Python Training Intensive"
+  sidebar:
+    contents:
+      - href: test.md
+        text: Home
+      - auto: "Workshops"
+
+format:
+  html:
+    theme: cosmo
+    css: styles.css
+    toc: true
+
+execute:
+  freeze: auto
