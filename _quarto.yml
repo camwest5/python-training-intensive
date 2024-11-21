@@ -9,22 +9,32 @@ website:
   title: "Python Training Intensive"
   navbar:
     search: true
-    left:
-      - text: "Workshops"
-        href: Workshops/Workshops.md
-      - text: "Project"
-        href: Project/project.md
+  sidebar: 
+    contents:
+      - setup.md
+      - auto: "Workshops"
+      - auto: "Project"
 
-  sidebar:
-    - title: "Workshops"
-      contents:
-        - href: setup.md
-          text: Setup
-        - auto: "Workshops"
 
-    - title: "Project"
-      contents:
-        - auto: "Project"
+## Hybrid nav - probably not worth it
+#  navbar:
+#    search: true
+#    left:
+#      - text: "Workshops"
+#        href: Workshops/Workshops.md
+#      - text: "Project"
+#        href: Project/project.md
+
+#  sidebar:
+#    - title: "Workshops"
+#      contents:
+#        - href: setup.md
+#          text: Setup
+#        - auto: "Workshops"
+
+#    - title: "Project"
+#      contents:
+#        - auto: "Project"
 
 format:
   html:
