@@ -1,5 +1,16 @@
 [
   {
+    "objectID": "Project/project.html",
+    "href": "Project/project.html",
+    "title": "Project landing page",
+    "section": "",
+    "text": "Project landing page",
+    "crumbs": [
+      "Project",
+      "Project landing page"
+    ]
+  },
+  {
     "objectID": "Workshops/Fundamentals.html",
     "href": "Workshops/Fundamentals.html",
     "title": "Fundamentals",
@@ -116,7 +127,8 @@
     "section": "",
     "text": "We should have some instructions for setting up here, shouldn’t we?",
     "crumbs": [
-      "Home"
+      "Workshops",
+      "Setup"
     ]
   },
   {
@@ -126,7 +138,19 @@
     "section": "",
     "text": "We should have some instructions for setting up here, shouldn’t we?",
     "crumbs": [
-      "Home"
+      "Workshops",
+      "Setup"
+    ]
+  },
+  {
+    "objectID": "Workshops/Workshops.html",
+    "href": "Workshops/Workshops.html",
+    "title": "Workshops landing page",
+    "section": "",
+    "text": "Workshops landing page",
+    "crumbs": [
+      "Workshops",
+      "Workshops landing page"
     ]
   }
 ]
