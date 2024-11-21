@@ -108,5 +108,25 @@
       "Workshops",
       "Fundamentals"
     ]
+  },
+  {
+    "objectID": "setup.html",
+    "href": "setup.html",
+    "title": "Python Training Intensive",
+    "section": "",
+    "text": "We should have some instructions for setting up here, shouldn’t we?",
+    "crumbs": [
+      "Home"
+    ]
+  },
+  {
+    "objectID": "setup.html#setting-up",
+    "href": "setup.html#setting-up",
+    "title": "Python Training Intensive",
+    "section": "",
+    "text": "We should have some instructions for setting up here, shouldn’t we?",
+    "crumbs": [
+      "Home"
+    ]
   }
 ]
