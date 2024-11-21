@@ -108,15 +108,5 @@
       "Workshops",
       "Fundamentals"
     ]
-  },
-  {
-    "objectID": "test.html",
-    "href": "test.html",
-    "title": "Hello!",
-    "section": "",
-    "text": "Hello!\nI’ve updated this file. Did it push?",
-    "crumbs": [
-      "Home"
-    ]
   }
 ]
