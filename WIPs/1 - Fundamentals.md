@@ -437,6 +437,7 @@ To find out about the styling shorthand and all other arguments, look at the doc
 plt.plot?
 ```
 
+<!-- 
 ## Example project
 
 A project is useful to keep everything related to one job all contained in one directory.
@@ -569,10 +570,27 @@ We can reuse the same summary as before, but adding the attribute of the right c
 
 ```python
 plt.plot(gap.groupby('year').mean().lifeExp, 'm:')
-```
+``` -->
 
 ## Saving your work
+
+Press "Save" or <kbd>Ctrl</kbd> + <kbd>S</kbd> to save your script.
 
 Your project can be reopened from the "Projects" menu in Spyder.
 
 By default, your variables are *not* saved, which is another reason why working with a script is important: you can execute the whole script in one go to get everything back. You can however save your variables as a `.spydata` file if you want to (for example, if it takes a lot of time to process your data).
+
+## Summary
+
+This morning we looked at a lot of Python features, so don’t worry if they
+haven’t all sunk in. Programming is best learned through practice, so
+keep at it! Here’s a rundown of the concepts we covered
+
+| Concept | Desctiption |
+|----|----|
+| **The console vs scripts** | The **console** is our window into the computer, this is where we send code directly to the computer. **Scripts** are files which we can write, edit, store and run code, that’s where you’ll write most of your Python. |
+| **Variables** | **Variables** are the nouns of programming, this is where we store information, the objects and things of our coding. They come in different types like integers, strings and lists. |
+| **Indexing** | In order to access elements of a sequence variable, like a list, we need to **index**, e.g. `myList[2]`. Python counts from 0. |
+| **Functions** | **Functions** are the verbs of programming, they perform actions on our variables. Call the function by name and put inputs inside parentheses, e.g. `round(2.5)` |
+| **Help** | Running `help( ... )` will reveal the **help** documentation about a function or type. |
+| **Packages** | We can bring external code into our environment with `import ...`. This is how we use **packages**, an essential for Python. Don’t forget to install the package first! |
