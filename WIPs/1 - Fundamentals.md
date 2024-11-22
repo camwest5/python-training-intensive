@@ -1,6 +1,7 @@
 # Fundamentals
 
 In this first workshop we will cover
+
 - Variables
 - Functions
 - Modules
@@ -47,7 +48,6 @@ them:
 ```python
 5 ** 2
 ```
-
 
 After running each command, you should see the result as an output.
 
@@ -162,7 +162,6 @@ variable type. For example,
 int(True)
 ```
 
-    1
 
 yields `1`, converting a **boolean** into an **integer**. These commands
 are **functions**, as opposed to variables - we’ll look at functions a
@@ -207,12 +206,11 @@ perhaps “python_training”.
 - Create a new script with
 <kbd>ctrl</kbd>+<kbd>N</kbd>, `File > New file...` or the new file
 button.
-![image](https://github.com/uqlibrary/technology-training/assets/118239146/584d4955-2085-4b95-b03c-f4af9f2c3070.png)
+
 
 You should now see a script on the left panel in Spyder, looking
 something like this:
 
-![image](https://github.com/uqlibrary/technology-training/assets/118239146/679517d6-3cf7-4b2b-a4a7-9172596dec61.png)
 
 Try typing a line of code in your new script, such as
 
@@ -226,12 +224,11 @@ Press <kbd>F9</kbd> to run each line, or
 something like the following appear in the **console** (depending on how
 you ran it):
 
-![image](https://github.com/uqlibrary/technology-training/assets/118239146/c2f0bc66-e84c-4e7d-ae66-5d7fd34b4684.png)
 
 We’ll work out of a script for the rest of the session. Don’t forget to
 save your script by pressing <kbd>ctrl</kbd>+<kbd>S</kbd> or the save
 button.
-![image](https://github.com/uqlibrary/technology-training/assets/118239146/10fbbc68-8f27-4c2d-aa6e-b064bf29b357.png)
+)
 
 ## Functions
 
