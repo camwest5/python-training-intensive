@@ -101,6 +101,35 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   }
 }</script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
@@ -125,7 +154,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../Workshops/Fundamentals.html">Workshops</a></li><li class="breadcrumb-item"><a href="../Workshops/Fundamentals.html">Fundamentals</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../WIPs/1 - Fundamentals.html">WIPs</a></li><li class="breadcrumb-item"><a href="../WIPs/1 - Fundamentals.html">Fundamentals</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -154,12 +183,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../Workshops/Fundamentals.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">Fundamentals</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
   <a href="../Workshops/Workshops.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Workshops landing page</span></a>
   </div>
@@ -169,12 +192,65 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
- <span class="menu-text">Project</span></a>
+ <span class="menu-text">WIPs</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../WIPs/1 - Fundamentals.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Fundamentals</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../WIPs/2 - Data processing.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Data processing</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../WIPs/3 - Visualisation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Visualisation</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../WIPs/4 - Version Control.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">4 - Version Control</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../WIPs/5 - Dashboards.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">5 - Dashboards</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../WIPs/6 - Programming.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">6 - Programming</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../WIPs/7 - Statistics.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">7 - Statistics</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
+ <span class="menu-text">Project</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../Project/project.html" class="sidebar-item-text sidebar-link">
@@ -196,13 +272,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#fundamentals" id="toc-fundamentals" class="nav-link active" data-scroll-target="#fundamentals">Fundamentals</a>
   <ul class="collapse">
   <li><a href="#introducing-python-and-spyder" id="toc-introducing-python-and-spyder" class="nav-link" data-scroll-target="#introducing-python-and-spyder">Introducing Python and Spyder</a></li>
-  <li><a href="#operators" id="toc-operators" class="nav-link" data-scroll-target="#operators">Operators</a></li>
-  <li><a href="#variables" id="toc-variables" class="nav-link" data-scroll-target="#variables">Variables</a></li>
-  <li><a href="#data-types" id="toc-data-types" class="nav-link" data-scroll-target="#data-types">Data types</a>
+  <li><a href="#operators" id="toc-operators" class="nav-link" data-scroll-target="#operators">Operators</a>
   <ul class="collapse">
+  <li><a href="#maths" id="toc-maths" class="nav-link" data-scroll-target="#maths">Maths</a></li>
+  </ul></li>
+  <li><a href="#variables" id="toc-variables" class="nav-link" data-scroll-target="#variables">Variables</a>
+  <ul class="collapse">
+  <li><a href="#types" id="toc-types" class="nav-link" data-scroll-target="#types">Types</a></li>
   <li><a href="#indexing" id="toc-indexing" class="nav-link" data-scroll-target="#indexing">Indexing</a></li>
   </ul></li>
-  <li><a href="#functions" id="toc-functions" class="nav-link" data-scroll-target="#functions">Functions</a></li>
+  <li><a href="#scripts" id="toc-scripts" class="nav-link" data-scroll-target="#scripts">Scripts</a></li>
+  <li><a href="#functions" id="toc-functions" class="nav-link" data-scroll-target="#functions">Functions</a>
+  <ul class="collapse">
+  <li><a href="#operators-1" id="toc-operators-1" class="nav-link" data-scroll-target="#operators-1">Operators</a></li>
+  </ul></li>
   <li><a href="#finding-help" id="toc-finding-help" class="nav-link" data-scroll-target="#finding-help">Finding help</a></li>
   <li><a href="#modules" id="toc-modules" class="nav-link" data-scroll-target="#modules">Modules</a>
   <ul class="collapse">
@@ -232,107 +315,400 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <section id="fundamentals" class="level1">
 <h1>Fundamentals</h1>
+<p>In this first workshop we will cover - Variables - Functions - Modules - Importing data</p>
 <section id="introducing-python-and-spyder" class="level2">
 <h2 class="anchored" data-anchor-id="introducing-python-and-spyder">Introducing Python and Spyder</h2>
 <p>Python is a <strong>programming language</strong> that can be used to build programs (i.e.&nbsp;a “general programming language”), but it can also be used to analyse data by importing a number of useful modules.</p>
 <p>We are using <strong>Spyder</strong> to interact with Python more comfortably. If you have used RStudio to interact with R before, you should feel right at home: Spyder is a program designed for doing data science with Python.</p>
 <p>Python can be used <strong>interactively</strong> in a console, or we can build <strong>scripts and programs</strong> with it, making the most out of Spyder’s code editor.</p>
-<p>We will start by using the “Console” to work interactively.</p>
+<p>We will start by using the <strong>console</strong> to work interactively. This is our direct line to the computer, and is the simplest way to run code. Don’t worry about any unfamiliar language, fonts or colours - we can ignore most of it for now - all you need to know is that</p>
+<ul>
+<li><code>In [1]: ...</code> is code that we’ve sent to the computer, and</li>
+<li><code>Out[1]: ...</code> is its response.</li>
+</ul>
 </section>
 <section id="operators" class="level2">
 <h2 class="anchored" data-anchor-id="operators">Operators</h2>
 <p>To start with, we can use Python like a calculator. Type the following <strong>commands</strong> in the console, and press <kbd>Enter</kbd> to <strong>execute</strong> them:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> <span class="op">+</span> <span class="dv">1</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span> <span class="op">*</span> <span class="dv">3</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="dv">4</span> <span class="op">/</span> <span class="dv">10</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<section id="maths" class="level3">
+<h3 class="anchored" data-anchor-id="maths">Maths</h3>
+<p>To start with, we can use Python like a calculator. Type the following <strong>commands</strong> in the console, and press <kbd>Enter</kbd> to <strong>execute</strong> them:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> <span class="op">+</span> <span class="dv">1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span> <span class="op">*</span> <span class="dv">3</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="dv">4</span> <span class="op">/</span> <span class="dv">10</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="dv">5</span> <span class="op">**</span> <span class="dv">2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>After running each command, you should see the result as an output.</p>
+</section>
 </section>
 <section id="variables" class="level2">
 <h2 class="anchored" data-anchor-id="variables">Variables</h2>
-<p><strong>Variables</strong> will store data. We need to give them a name, and assign a value to them with the <code>=</code> operator. For example:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>favNumber <span class="op">=</span> <span class="dv">42</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>One way to think of this is like making a box called “favNumber” and putting the number 42 inside:</p>
-<p>You can then retrieve the value by running the variable name on its own:</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>favNumber</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Let’s create more variable, and reuse them:</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>otherNumber <span class="op">=</span> <span class="fl">5.678</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>prod1 <span class="op">=</span> favNumber <span class="op">*</span> otherNumber</span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>sentence <span class="op">=</span> <span class="st">'Hello world!'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Like language, Python has nouns and verbs. We call the nouns <strong>variables</strong>: they are the ‘things’ we manipulate with our code.</p>
+<p>Essentially, a variable is a named container. We access it by its <strong>name</strong>, and we get its <strong>value</strong>.</p>
+<p>To create a variable, you need to choose a name and a value with <code>name = value</code>. For example</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>example_int <span class="op">=</span> <span class="dv">42</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Whenever you use the variable’s name, Python will now access its value:</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>example_int</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>We can use the variables in place of the values</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>example_float <span class="op">=</span> <span class="fl">5.678</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>product <span class="op">=</span> example_int <span class="op">*</span> example_float</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>product</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <blockquote class="blockquote">
 <p>Spyder helps us with extra panels and features apart from the Console. To see what variables you have created, look at the “Variable explorer” tab in the top right.</p>
 </blockquote>
-</section>
-<section id="data-types" class="level2">
-<h2 class="anchored" data-anchor-id="data-types">Data types</h2>
-<p>Variables have different types. The most common are <code>int</code> for integers, <code>float</code> for decimals and <code>string</code> for strings of characters.</p>
+<section id="types" class="level3">
+<h3 class="anchored" data-anchor-id="types">Types</h3>
+<p>Variables have different types. So far, we’ve just looked at storing numbers, of which there are three types:</p>
+<ul>
+<li><code>int</code> - integers store whole numbers, e.g.&nbsp;<code>1, 5, 1000, -3</code>.</li>
+<li><code>float</code> - floating point numbers store decimals and scientific notation, e.g.&nbsp;<code>1.5, -8.97, 4e-6</code>.</li>
+<li><code>complex</code> - complex numbers express the imaginary unit with <code>j</code>, e.g.&nbsp;<code>z = 1+2j</code> is <span class="math inline">\(z = 1+2i\)</span>.</li>
+</ul>
+<p>Let’s look at some other types</p>
+<section id="booleans" class="level4">
+<h4 class="anchored" data-anchor-id="booleans">Booleans</h4>
+<p>Even simpler than integers is the <strong>boolean</strong> type. These are either 1 or 0 (True or False), representing a single binary unit (bit). Don’t be fooled by the words, these work like numbers: <code>True + True</code> gives <code>2</code>.</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>example_bool <span class="op">=</span> <span class="va">True</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <blockquote class="blockquote">
-<p>You can see the type of your existing variables in the Variable explorer.</p>
+<p>In Python, the boolean values <code>True</code> and <code>False</code> <strong>must</strong> begin with a capital letter.</p>
 </blockquote>
+</section>
+<section id="strings" class="level4">
+<h4 class="anchored" data-anchor-id="strings">Strings</h4>
+<p>Let’s look at variable types which aren’t (necessarily) numbers. <strong>Sequences</strong> are variables which store multiple pieces of data. For example, <strong>strings</strong> store a sequence of characters and are created with quotation marks <code>'blah blah blah'</code> or <code>"blah blah blah"</code>:</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>example_string <span class="op">=</span> <span class="st">'This is an example of a string!'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="lists" class="level4">
+<h4 class="anchored" data-anchor-id="lists">Lists</h4>
 <p>We can also create <strong>lists</strong>, which will store several variables (not necessarily of the same type). We need to use square brackets for that:</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>myList <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">6</span>, <span class="dv">4</span>, <span class="dv">3</span>, <span class="dv">9</span>]</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>diverse <span class="op">=</span> [<span class="dv">3</span>, <span class="st">'Hi!'</span>, <span class="fl">9.0</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>example_numbers <span class="op">=</span> [<span class="dv">38</span>, <span class="dv">3</span>, <span class="dv">54</span>, <span class="dv">17</span>, <span class="dv">7</span>]</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>example_diverse <span class="op">=</span> [<span class="dv">3</span>, <span class="st">'Hi!'</span>, <span class="fl">9.0</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Lists are very flexible as they can contain any number of items, and any type of data. You can even nest lists inside a list, which makes for a very flexible data type.</p>
-<p>Operators give different results depending on types. For example, we can use the <code>*</code> and <code>+</code> operators to repeat and append strings and lists:</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>sentence <span class="op">+</span> <span class="st">' How are you?'</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>myList <span class="op">+</span> diverse</span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="dv">3</span> <span class="op">*</span> myList</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Operations on sequences are a bit different to numbers. We can still use <code>+</code> and <code>*</code>, but they will concatenate (append) and duplicate, rather than perform arithmetic.</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>example_string <span class="op">+</span> <span class="st">' How are you?'</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>example_numbers <span class="op">+</span> example_diverse</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="dv">3</span> <span class="op">*</span> example_numbers</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>However, depending on the variable, some operations won’t work:</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>sentence <span class="op">+</span> favNumber</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>There are other data types like booleans, tuples, dictionaries and sets, but we won’t get into details today.</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>sentence <span class="op">+</span> favNumber</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>There are other data types like tuples, dictionaries and sets, but we won’t look at those in this session. Here’s a summary of the ones we’ve covered:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Category</th>
+<th>Type</th>
+<th>Short name</th>
+<th>Example</th>
+<th>Generator</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Numeric</td>
+<td>Integer</td>
+<td><code>int</code></td>
+<td><code>3</code></td>
+<td><code>int()</code></td>
+</tr>
+<tr class="even">
+<td>Numeric</td>
+<td>Floating Point Number</td>
+<td><code>float</code></td>
+<td><code>4.2</code></td>
+<td><code>float()</code></td>
+</tr>
+<tr class="odd">
+<td>Numeric</td>
+<td>Boolean</td>
+<td><code>bool</code></td>
+<td><code>True</code></td>
+<td><code>bool()</code></td>
+</tr>
+<tr class="even">
+<td>Sequence</td>
+<td>String</td>
+<td><code>str</code></td>
+<td><code>'A sentence '</code></td>
+<td><code>" "</code> or <code>' '</code> or <code>str()</code></td>
+</tr>
+<tr class="odd">
+<td>Sequence</td>
+<td>List</td>
+<td><code>list</code></td>
+<td><code>['apple', 'banana', 'cherry']</code></td>
+<td><code>[ ]</code> or <code>list()</code></td>
+</tr>
+</tbody>
+</table>
+<p>The <strong>generator</strong> commands are new. We use these to manually change the variable type. For example,</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="bu">int</span>(<span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<pre><code>1</code></pre>
+<p>yields <code>1</code>, converting a <strong>boolean</strong> into an <strong>integer</strong>. These commands are <strong>functions</strong>, as opposed to variables - we’ll look at functions a bit later.</p>
+</section>
+</section>
 <section id="indexing" class="level3">
 <h3 class="anchored" data-anchor-id="indexing">Indexing</h3>
-<p><strong>Indexing</strong> is useful to get only a part of a variable. In Python, indexing <strong>starts at 0</strong>. For example, see what these commands return:</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>sentence[<span class="dv">0</span>]</span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>sentence[<span class="dv">6</span>]</span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>myList[<span class="dv">4</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>You can use a range to index, but note that it will not include the upper bound in the returned values. For example:</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>myList[<span class="dv">0</span>:<span class="dv">4</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>That command returns “elements from position 0 up to - but not including! - position 4.”</p>
+<p>We can access part of a sequence by <strong>indexing</strong>. Sequences are ordered, <strong>starting at 0</strong>, so the first element has index 0, the second index 1, the third 2 and so on. For example, see what these commands return:</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>example_string[<span class="dv">0</span>]</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>example_string[<span class="dv">6</span>]</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>example_numbers[<span class="dv">4</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>If you want more than one element in a sequence, you can <strong>slice</strong>. Simple slices specify a range to slice, from the first index to the last, <strong>but not including the last</strong>. For example:</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>myList[<span class="dv">0</span>:<span class="dv">4</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>That command returns elements from position 0 up to - but not including! - position 4.</p>
 </section>
+</section>
+<section id="scripts" class="level2">
+<h2 class="anchored" data-anchor-id="scripts">Scripts</h2>
+<p>So far, we’ve been working in the console, our direct line to the computer. However, it is often more convenient to use a <strong>script</strong>. These are simple text files which store code and run when we choose. They are useful to - write code more comfortably, - store clearly defined steps in chronological order, - share a process with peers easily, and - make your work reproducible</p>
+<p>Let’s create a folder system to store our script in by creating a <strong>project</strong>. - Press <code>Projects &gt; New project...</code> and name your project, perhaps “python_training”. - Create a new script with <kbd>ctrl</kbd>+<kbd>N</kbd>, <code>File &gt; New file...</code> or the new file button. <img src="https://github.com/uqlibrary/technology-training/assets/118239146/584d4955-2085-4b95-b03c-f4af9f2c3070.png" class="img-fluid" alt="image"></p>
+<p>You should now see a script on the left panel in Spyder, looking something like this:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://github.com/uqlibrary/technology-training/assets/118239146/679517d6-3cf7-4b2b-a4a7-9172596dec61.png" class="img-fluid figure-img"></p>
+<figcaption>image</figcaption>
+</figure>
+</div>
+<p>Try typing a line of code in your new script, such as</p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>example_message <span class="op">=</span> <span class="st">"This is an example message"</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>example_message</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Press <kbd>F9</kbd> to run each line, or <kbd>ctrl</kbd>+<kbd>enter</kbd> for the whole script. You should see something like the following appear in the <strong>console</strong> (depending on how you ran it):</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://github.com/uqlibrary/technology-training/assets/118239146/c2f0bc66-e84c-4e7d-ae66-5d7fd34b4684.png" class="img-fluid figure-img"></p>
+<figcaption>image</figcaption>
+</figure>
+</div>
+<p>We’ll work out of a script for the rest of the session. Don’t forget to save your script by pressing <kbd>ctrl</kbd>+<kbd>S</kbd> or the save button. <img src="https://github.com/uqlibrary/technology-training/assets/118239146/10fbbc68-8f27-4c2d-aa6e-b064bf29b357.png" class="img-fluid" alt="image"></p>
 </section>
 <section id="functions" class="level2">
 <h2 class="anchored" data-anchor-id="functions">Functions</h2>
-<p><strong>Functions</strong> are little programs that do specific jobs. Here are a few examples of built-in functions:</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="bu">len</span>(myList)</span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="bu">min</span>(myList)</span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="bu">max</span>(myList)</span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="bu">sum</span>(myList)</span>
-<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="bu">round</span>(otherNumber)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Functions always have parentheses behind their name, and they can take one or several <strong>arguments</strong>, or none at all, depending on what they can do, and how the user wants to use them.</p>
+<p><strong>Functions</strong> are little programs that do specific jobs. These are the verbs of Python, because they do things to and with our variables. Here are a few examples of built-in functions:</p>
+<div class="sourceCode" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="bu">len</span>(myList)</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="bu">min</span>(myList)</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="bu">max</span>(myList)</span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a><span class="bu">sum</span>(myList)</span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a><span class="bu">round</span>(otherNumber)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<pre><code>6</code></pre>
+<p>Functions always have parentheses after their name, and they can take one or several <strong>arguments</strong>, or none at all, depending on what they can do, and how the user wants to use them.</p>
 <p>Here, we use two arguments to modify the default behaviour of the <code>round()</code> function:</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="bu">round</span>(otherNumber, <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="bu">round</span>(otherNumber, <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<pre><code>5.68</code></pre>
 <blockquote class="blockquote">
 <p>Notice how Spyder gives you hints about the available arguments after typing the function name?</p>
 </blockquote>
+<section id="operators-1" class="level3">
+<h3 class="anchored" data-anchor-id="operators-1">Operators</h3>
+<p>Operators are a special type of function in Python with which you’re already familiar. The most important is <code>=</code>, which assigns values to variables. Here is a summary of some important operators, although there are many others:</p>
+<section id="general" class="level4">
+<h4 class="anchored" data-anchor-id="general">General</h4>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Operator</th>
+<th>Function</th>
+<th>Description</th>
+<th>Example command</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>=</td>
+<td>Assignment</td>
+<td>Assigns values to variables</td>
+<td><code>a = 7</code></td>
+</tr>
+<tr class="even">
+<td>#</td>
+<td>Comment</td>
+<td>Excludes any following text from being run</td>
+<td><code># This text will be ignored by Python</code></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="mathematical" class="level4">
+<h4 class="anchored" data-anchor-id="mathematical">Mathematical</h4>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Operator</th>
+<th>Function</th>
+<th>Description</th>
+<th>Example command</th>
+<th>Example output</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>+</td>
+<td>Addition</td>
+<td>Adds or concatenates values, depending on variable types</td>
+<td><code>7 + 3</code> or <code>"a" + "b"</code></td>
+<td><code>10</code> or <code>'ab'</code></td>
+</tr>
+<tr class="even">
+<td>-</td>
+<td>Subtraction</td>
+<td>Subtracts numerical values</td>
+<td><code>8 - 3</code></td>
+<td><code>5</code></td>
+</tr>
+<tr class="odd">
+<td>*</td>
+<td>Multiplication</td>
+<td>Multiplies values, depending on variable types</td>
+<td><code>7 * 2</code> or <code>"a" * 3</code></td>
+<td><code>14</code> or <code>'aaa'</code></td>
+</tr>
+<tr class="even">
+<td>/</td>
+<td>Division</td>
+<td>Divides numerical vlues</td>
+<td><code>3 / 4</code></td>
+<td><code>0.75</code></td>
+</tr>
+<tr class="odd">
+<td>**</td>
+<td>Exponentiation</td>
+<td>Raises a numerical value to a power</td>
+<td><code>7 ** 2</code></td>
+<td><code>49</code></td>
+</tr>
+<tr class="even">
+<td>%</td>
+<td>Remainder</td>
+<td>Takes the remainder of numerical values</td>
+<td><code>13 % 7</code></td>
+<td><code>6</code></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="comparison" class="level4">
+<h4 class="anchored" data-anchor-id="comparison">Comparison</h4>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Operator</th>
+<th>Function</th>
+<th>Description</th>
+<th>Example command</th>
+<th>Example output</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>==</td>
+<td>Equal to</td>
+<td>Checks whether two variables are the same and outputs a boolean</td>
+<td><code>1 == 1</code></td>
+<td><code>True</code></td>
+</tr>
+<tr class="even">
+<td>!=</td>
+<td>Not equal to</td>
+<td>Checks whether two variables are different</td>
+<td><code>'1' != 1</code></td>
+<td><code>True</code></td>
+</tr>
+<tr class="odd">
+<td>&gt;</td>
+<td>Greater than</td>
+<td>Checks whether one variable is greater than the other</td>
+<td><code>1 &gt; 1</code></td>
+<td><code>False</code></td>
+</tr>
+<tr class="even">
+<td>&gt;=</td>
+<td>Greater than or equal to</td>
+<td>Checks whether greater than (&gt;) or equal to (==) are true</td>
+<td><code>1 &gt;= 1</code></td>
+<td><code>True</code></td>
+</tr>
+<tr class="odd">
+<td>&lt;</td>
+<td>Less than</td>
+<td>Checks whether one variable is less than the other</td>
+<td><code>0 &lt; 1</code></td>
+<td><code>True</code></td>
+</tr>
+<tr class="even">
+<td>&lt;=</td>
+<td>Less than or equal to</td>
+<td>Checks whether less than (&lt;) or equal to (==) are true</td>
+<td><code>0 &lt;= 1</code></td>
+<td><code>True</code></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
 </section>
 <section id="finding-help" class="level2">
 <h2 class="anchored" data-anchor-id="finding-help">Finding help</h2>
 <p>To find help about a function, you can use the <code>help()</code> function, or a <code>?</code> after a function name:</p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="bu">help</span>(<span class="bu">max</span>)</span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>?</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="bu">help</span>(<span class="bu">max</span>)</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>?</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<pre><code>Help on built-in function max in module builtins:
+
+max(...)
+    max(iterable, *[, default=obj, key=func]) -&gt; value
+    max(arg1, arg2, *args, *[, key=func]) -&gt; value
+
+    With a single iterable argument, return its biggest item. The
+    default keyword-only argument specifies an object to return if
+    the provided iterable is empty.
+    With two or more arguments, return the largest argument.</code></pre>
 <p>In Spyder, you can use the <kbd>Ctrl</kbd> + <kbd>I</kbd> keyboard shortcut to open the help in a separate pane.</p>
-<p>For a comprehensive manual, go to the <a href="https://docs.python.org/">official online documentation</a>.</p>
-<p>For questions and answers, typing the right question in a search engine will usually lead you to something helpful. If you can’t find an answer, <a href="https://stackoverflow.com/questions/tagged/python">StackOverflow is a great Q&amp;A community</a>.</p>
+<blockquote class="blockquote">
+<p>The help information can often be dense and difficult to read at first, taking some practice. In the <a href="https://github.com/uqlibrary/technology-training/blob/4ea3e86ab8f6f43a73c3b3a44d63a00ac8d366f8/Python/revamp/data_transformation.md">next session</a> we look closer at interpreting this <strong>documentation</strong>, one of the most important Python skills.</p>
+</blockquote>
+<p>For a comprehensive manual, go to the <a href="https://docs.python.org/">official online documentation</a>. For questions and answers, typing the right question in a search engine will usually lead you to something helpful. If you can’t find an answer, <a href="https://stackoverflow.com/questions/tagged/python">StackOverflow is a great Q&amp;A community</a>.</p>
 </section>
 <section id="modules" class="level2">
 <h2 class="anchored" data-anchor-id="modules">Modules</h2>
 <p>To do more with Python, you could write new functions from scratch, but it is easier to import extra <strong>modules</strong> to extend its capabilities. For example, to access the <code>pi</code> constant:</p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>pi <span class="co"># throws an error: it does not exist!</span></span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> math <span class="co"># this module contains the pi constant</span></span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>math.pi <span class="co"># we have to specify where it comes from</span></span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> math <span class="im">as</span> m <span class="co"># give a shorter name</span></span>
-<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>m.pi</span>
-<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> math <span class="im">import</span> pi <span class="co"># only import what is necessary</span></span>
-<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>pi</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>pi <span class="co"># throws an error: it does not exist!</span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> math <span class="co"># this module contains the pi constant</span></span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>math.pi <span class="co"># we have to specify where it comes from</span></span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> math <span class="im">as</span> m <span class="co"># give a shorter name</span></span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>m.pi</span>
+<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> math <span class="im">import</span> pi <span class="co"># only import what is necessary</span></span>
+<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a>pi</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><code>math</code> is part of the “Python standard library”. You can see all the functions and constants available in the <code>math</code> module here: https://docs.python.org/3/library/math.html</p>
 <p>Python distributions like Anaconda already come with a number of useful extra modules for science.</p>
 <section id="installing-extra-modules" class="level3">
 <h3 class="anchored" data-anchor-id="installing-extra-modules">Installing extra modules</h3>
 <p>To install more modules, you might need to use <code>pip</code> (on most systems) or <code>conda</code> (if you use Anaconda or Miniconda) from the command line.</p>
 <p>With <code>pip</code>, which will fetch the module from the <a href="https://pypi.org/">Python Package Index</a> (PyPI):</p>
-<div class="sourceCode" id="cb14"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install some-module</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb25"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install some-module</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>With <code>conda</code>, which will fetch the module from the Anaconda repository:</p>
-<div class="sourceCode" id="cb15"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> install some-module</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb26"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> install some-module</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Refer to the module’s website to find what is recommended.</p>
 <p>Here, we present a few modules that are very important for data science with Python, and which are already available in the Anaconda distribution.</p>
 </section>
@@ -340,21 +716,21 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h3 class="anchored" data-anchor-id="numpy-for-arrays">NumPy for arrays</h3>
 <p>Arrays are a data type introduced by <code>numpy</code>, a module with many functions useful for numerical computing.</p>
 <p>For example, you can convert the list we created before to then do mathematical operations on each one of its elements:</p>
-<div class="sourceCode" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>myArray <span class="op">=</span> np.array(myList)</span>
-<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>myArray <span class="op">*</span> <span class="dv">2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>myArray <span class="op">=</span> np.array(myList)</span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>myArray <span class="op">*</span> <span class="dv">2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="pandas-for-dataframes" class="level3">
 <h3 class="anchored" data-anchor-id="pandas-for-dataframes">Pandas for dataframes</h3>
 <p><code>pandas</code> introduces dataframes, which are often used to store two-dimensional datasets with different kinds of variables in each column. If your data is stored as a spreadsheet, you probably want to import it with a pandas function.</p>
 <p>Here is an example of creating a pandas dataframe from scratch, populating it by hand:</p>
-<div class="sourceCode" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.DataFrame(columns<span class="op">=</span>[<span class="st">'Name'</span>, <span class="st">'Age'</span>])</span>
-<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="co"># populate the dataframe:</span></span>
-<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>df.loc[<span class="dv">1</span>] <span class="op">=</span> <span class="st">'Josephine'</span>, <span class="dv">70</span></span>
-<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>df.loc[<span class="dv">2</span>] <span class="op">=</span> <span class="st">'Dilsah'</span>, <span class="dv">38</span></span>
-<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>df</span>
-<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>df.Age <span class="co"># access a specific variable</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.DataFrame(columns<span class="op">=</span>[<span class="st">'Name'</span>, <span class="st">'Age'</span>])</span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a><span class="co"># populate the dataframe:</span></span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a>df.loc[<span class="dv">1</span>] <span class="op">=</span> <span class="st">'Josephine'</span>, <span class="dv">70</span></span>
+<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a>df.loc[<span class="dv">2</span>] <span class="op">=</span> <span class="st">'Dilsah'</span>, <span class="dv">38</span></span>
+<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a>df</span>
+<span id="cb28-7"><a href="#cb28-7" aria-hidden="true" tabindex="-1"></a>df.Age <span class="co"># access a specific variable</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <blockquote class="blockquote">
 <p>You can double-click on a dataframe in the Variable explorer to explore it in a separate window.</p>
 </blockquote>
@@ -362,22 +738,22 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="matplotlib-for-visualisation" class="level3">
 <h3 class="anchored" data-anchor-id="matplotlib-for-visualisation">Matplotlib for visualisation</h3>
 <p><code>matplotlib</code> is a large collection of data visualisation functions, and <code>pyplot</code> is a submodule of <code>matplotlib</code> that contains essentials.</p>
-<div class="sourceCode" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>plt.plot(myList)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>plt.plot(myList)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>This shows a plot in the Plots tab of Spyder.</p>
 <blockquote class="blockquote">
 <p>In a Python shell, you might have to use the <code>plt.show()</code> command to show the plot.</p>
 </blockquote>
 <p>The default look is a line plot that joins all the points, but we can style a plot with only a few characters:</p>
-<div class="sourceCode" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># blue circles</span></span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>plt.plot(myList, <span class="st">'bo'</span>)</span>
-<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a><span class="co"># green squares, dashed line:</span></span>
-<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>plt.plot(myList, <span class="st">'gs--'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="co"># blue circles</span></span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>plt.plot(myList, <span class="st">'bo'</span>)</span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a><span class="co"># green squares, dashed line:</span></span>
+<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a>plt.plot(myList, <span class="st">'gs--'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Extra arguments can be used to style further:</p>
-<div class="sourceCode" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># red, diamonds, solid line; change width of line and size of diamonds:</span></span>
-<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>plt.plot(myList, <span class="st">'rd-'</span>, linewidth<span class="op">=</span><span class="dv">3</span>, markersize<span class="op">=</span><span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="co"># red, diamonds, solid line; change width of line and size of diamonds:</span></span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>plt.plot(myList, <span class="st">'rd-'</span>, linewidth<span class="op">=</span><span class="dv">3</span>, markersize<span class="op">=</span><span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>To find out about the styling shorthand and all other arguments, look at the documentation:</p>
-<div class="sourceCode" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>plt.plot?</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>plt.plot?</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 </section>
 <section id="example-project" class="level2">
@@ -406,57 +782,57 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="challenge-1-import-data" class="level4">
 <h4 class="anchored" data-anchor-id="challenge-1-import-data">Challenge 1: Import data</h4>
 <p>Have a look at the documentation for the <code>read_csv()</code> function:</p>
-<div class="sourceCode" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>pd.read_csv?</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>pd.read_csv?</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>How could you use it to store the following dataset into a variable?</p>
 <p>https://raw.githubusercontent.com/resbaz/r-novice-gapminder-files/master/data/gapminder-FiveYearData.csv</p>
 </section>
 <section id="solution" class="level4">
 <h4 class="anchored" data-anchor-id="solution">Solution</h4>
 <p>We have to create a variable, and store the output of the function inside it. No need to download the file first: <code>read_csv()</code> can read from a URL!</p>
-<div class="sourceCode" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>gap <span class="op">=</span> pd.read_csv(<span class="st">'https://raw.githubusercontent.com/resbaz/r-novice-gapminder-files/master/data/gapminder-FiveYearData.csv'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>gap <span class="op">=</span> pd.read_csv(<span class="st">'https://raw.githubusercontent.com/resbaz/r-novice-gapminder-files/master/data/gapminder-FiveYearData.csv'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <blockquote class="blockquote">
 <p><code>pandas</code> contains many functions for interpreting a variety of file formats. Start typing <code>pd.read_</code> to see what is available.</p>
 </blockquote>
 <p>Now that we have stored our dataset as a variable, we can print the dataset to the console:</p>
-<div class="sourceCode" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>gap</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>gap</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>The console conveniently shows us only the beginning and end of the dataframe.</p>
 <p>We can also use the “dot notation” to create commands that are useful to explore the data:</p>
-<div class="sourceCode" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>gap.shape <span class="co"># size of the dataframe (an attribute)</span></span>
-<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>gap.head() <span class="co"># first few rows (a method)</span></span>
-<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>gap.head(<span class="dv">10</span>) <span class="co"># change the behaviour of the method</span></span>
-<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>gap.tail() <span class="co"># last few rows</span></span>
-<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>gap.country <span class="co"># single variable</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>gap.shape <span class="co"># size of the dataframe (an attribute)</span></span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>gap.head() <span class="co"># first few rows (a method)</span></span>
+<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a>gap.head(<span class="dv">10</span>) <span class="co"># change the behaviour of the method</span></span>
+<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a>gap.tail() <span class="co"># last few rows</span></span>
+<span id="cb36-5"><a href="#cb36-5" aria-hidden="true" tabindex="-1"></a>gap.country <span class="co"># single variable</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Variables have <strong>attributes</strong> and <strong>methods</strong> attached to them, depending on the data type. Here, <code>shape</code> is an attribute, i.e.&nbsp;a static characteristic of the variable, whereas <code>head()</code> is a method, i.e.&nbsp;a function that can often take arguments.</p>
 </section>
 </section>
 <section id="analyse-data" class="level3">
 <h3 class="anchored" data-anchor-id="analyse-data">Analyse data</h3>
 <p>Let’s now learn a bit more about our data. The <code>describe()</code> method gives us summary statistics for our numerical data:</p>
-<div class="sourceCode" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>gap.describe()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>gap.describe()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>To create a customised summary, we can string different methods one after the other. Here, we first group by year to then get the yearly mean of the numerical columns, using <code>True</code> to indicate that we only want to consider the numeric columns:</p>
-<div class="sourceCode" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>gap.groupby(<span class="st">'year'</span>).mean(<span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>gap.groupby(<span class="st">'year'</span>).mean(<span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="visualise-data" class="level3">
 <h3 class="anchored" data-anchor-id="visualise-data">Visualise data</h3>
 <p>We can visualise our data with <code>matplotlib</code>. First, let’s visualise the relationship between gross domestic product per capita (<code>gdpPercap</code>) and life expectancy (<code>lifeExp</code>) with a scatterplot:</p>
-<div class="sourceCode" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>plt.plot(gap.gdpPercap, gap.lifeExp, <span class="st">'g.'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb39"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>plt.plot(gap.gdpPercap, gap.lifeExp, <span class="st">'g.'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>We add the data as two arguments, which are understood as what we put on the x and y axes respectively.</p>
 <p>We can now add labels with extra functions:</p>
-<div class="sourceCode" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>plt.plot(gap.gdpPercap, gap.lifeExp, <span class="st">'g.'</span>)</span>
-<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'GDP per capita (USD)'</span>)</span>
-<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Life expectancy (years)'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb40"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>plt.plot(gap.gdpPercap, gap.lifeExp, <span class="st">'g.'</span>)</span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'GDP per capita (USD)'</span>)</span>
+<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Life expectancy (years)'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <blockquote class="blockquote">
 <p>Make sure that you execute all the lines of code that relate to one plot <em>together</em>. When you need to execute many lines together, you might want to start using <strong>cells</strong> in your script: you can start a new cell with a <code>#%%</code> line, and execute the current cell with the keyboard shortcut <kbd>Ctrl</kbd> + <kbd>Enter</kbd>.</p>
 </blockquote>
 <section id="saving-plots" class="level4">
 <h4 class="anchored" data-anchor-id="saving-plots">Saving plots</h4>
 <p>You can save you plots as PNG by right-clicking on them. To save automatically with some code, you can add the following line to the visualisation block:</p>
-<div class="sourceCode" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>plt.savefig(<span class="st">'gdp_vs_life_exp.pdf'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb41"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>plt.savefig(<span class="st">'gdp_vs_life_exp.pdf'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>A PDF is a great option for a visualisation in vector format.</p>
 <p>You can change the extension in the filename to save in a different format. For example, for a PNG file with a higher definition than the default:</p>
-<div class="sourceCode" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>plt.savefig(<span class="st">'gdp_vs_life_exp.png'</span>, dpi<span class="op">=</span><span class="dv">600</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb42"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>plt.savefig(<span class="st">'gdp_vs_life_exp.png'</span>, dpi<span class="op">=</span><span class="dv">600</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="challenge-2-visualise-mean-life-expectancy-over-the-years" class="level4">
 <h4 class="anchored" data-anchor-id="challenge-2-visualise-mean-life-expectancy-over-the-years">Challenge 2: Visualise mean life expectancy over the years</h4>
@@ -468,7 +844,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="solution-1" class="level4">
 <h4 class="anchored" data-anchor-id="solution-1">Solution</h4>
 <p>We can reuse the same summary as before, but adding the attribute of the right column we are interested in:</p>
-<div class="sourceCode" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>plt.plot(gap.groupby(<span class="st">'year'</span>).mean().lifeExp, <span class="st">'m:'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb43"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>plt.plot(gap.groupby(<span class="st">'year'</span>).mean().lifeExp, <span class="st">'m:'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 </section>
 </section>
