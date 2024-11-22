@@ -712,8 +712,8 @@ max(...)
 <p>Arrays are a data type introduced by <code>numpy</code>, a module with many functions useful for numerical computing.</p>
 <p>For example, you can convert the list we created before to then do mathematical operations on each one of its elements:</p>
 <div class="sourceCode" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>myArray <span class="op">=</span> np.array(myList)</span>
-<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>myArray <span class="op">*</span> <span class="dv">2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>example_array <span class="op">=</span> np.array(example_numbers)</span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>example_array <span class="op">*</span> <span class="dv">2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="pandas-for-dataframes" class="level3">
 <h3 class="anchored" data-anchor-id="pandas-for-dataframes">Pandas for dataframes</h3>
@@ -734,19 +734,19 @@ max(...)
 <h3 class="anchored" data-anchor-id="matplotlib-for-visualisation">Matplotlib for visualisation</h3>
 <p><code>matplotlib</code> is a large collection of data visualisation functions, and <code>pyplot</code> is a submodule of <code>matplotlib</code> that contains essentials.</p>
 <div class="sourceCode" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>plt.plot(myList)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>plt.plot(example_array)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>This shows a plot in the Plots tab of Spyder.</p>
 <blockquote class="blockquote">
 <p>In a Python shell, you might have to use the <code>plt.show()</code> command to show the plot.</p>
 </blockquote>
 <p>The default look is a line plot that joins all the points, but we can style a plot with only a few characters:</p>
 <div class="sourceCode" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="co"># blue circles</span></span>
-<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>plt.plot(myList, <span class="st">'bo'</span>)</span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>plt.plot(example_array, <span class="st">'bo'</span>)</span>
 <span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a><span class="co"># green squares, dashed line:</span></span>
-<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a>plt.plot(myList, <span class="st">'gs--'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a>plt.plot(example_array, <span class="st">'gs--'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Extra arguments can be used to style further:</p>
 <div class="sourceCode" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="co"># red, diamonds, solid line; change width of line and size of diamonds:</span></span>
-<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>plt.plot(myList, <span class="st">'rd-'</span>, linewidth<span class="op">=</span><span class="dv">3</span>, markersize<span class="op">=</span><span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>plt.plot(example_array, <span class="st">'rd-'</span>, linewidth<span class="op">=</span><span class="dv">3</span>, markersize<span class="op">=</span><span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>To find out about the styling shorthand and all other arguments, look at the documentation:</p>
 <div class="sourceCode" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>plt.plot?</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <!-- 
@@ -916,7 +916,7 @@ plt.plot(gap.groupby('year').mean().lifeExp, 'm:')
 </tr>
 <tr class="odd">
 <td><strong>Indexing</strong></td>
-<td>In order to access elements of a sequence variable, like a list, we need to <strong>index</strong>, e.g.&nbsp;<code>myList[2]</code>. Python counts from 0.</td>
+<td>In order to access elements of a sequence variable, like a list, we need to <strong>index</strong>, e.g.&nbsp;<code>example_numbers[2]</code>. Python counts from 0.</td>
 </tr>
 <tr class="even">
 <td><strong>Functions</strong></td>
