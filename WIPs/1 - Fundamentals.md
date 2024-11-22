@@ -1,4 +1,6 @@
-# Fundamentals
+---
+title: The Fundamentals
+--- 
 
 In this first workshop we will cover
 
