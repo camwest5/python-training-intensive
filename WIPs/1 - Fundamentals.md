@@ -195,22 +195,24 @@ including! - position 4.
 So far, we’ve been working in the console, our direct line to the
 computer. However, it is often more convenient to use a **script**.
 These are simple text files which store code and run when we choose.
-They are useful to - write code more comfortably, - store clearly
-defined steps in chronological order, - share a process with peers
-easily, and - make your work reproducible
+They are useful to
+
+- write code more comfortably,
+- store clearly defined steps in chronological order,
+- share a process with peers easily, and
+- make your work reproducible
 
 Let’s create a folder system to store our script in by creating a
-**project**. 
+**project**.
+
 - Press `Projects > New project...` and name your project,
 perhaps “python_training”. 
 - Create a new script with
 <kbd>ctrl</kbd>+<kbd>N</kbd>, `File > New file...` or the new file
 button.
 
-
 You should now see a script on the left panel in Spyder, looking
 something like this:
-
 
 Try typing a line of code in your new script, such as
 
@@ -244,9 +246,7 @@ sum(myList)
 round(otherNumber)
 ```
 
-    6
-
-Functions always have parentheses after their name, and they can take
+Functions always have parentheses () after their name, and they can take
 one or several **arguments**, or none at all, depending on what they can
 do, and how the user wants to use them.
 
