@@ -434,7 +434,7 @@ pip install package_name
 
 > You likely have a pip environment if you installed Python manually and/or are not using Spyder
 
-### Plotly Expres for interactive visualisations
+### Plotly Express for interactive visualisations
 
 One module that isn't built-in is **plotly**, which we can use for interactive visualisations.
 
