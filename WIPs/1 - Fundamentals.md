@@ -25,11 +25,7 @@ ignore most of it for now - all you need to know is that
 - `In [1]: ...` is code that we’ve sent to the computer, and
 - `Out[1]: ...` is its response.
 
-## Operators
-
-To start with, we can use Python like a calculator. Type the following **commands** in the console, and press <kbd>Enter</kbd> to **execute** them:
-
-### Maths
+## First glance: arithmetic
 
 To start with, we can use Python like a calculator. Type the following
 **commands** in the console, and press <kbd>Enter</kbd> to **execute**
@@ -164,7 +160,6 @@ variable type. For example,
 int(True)
 ```
 
-
 yields `1`, converting a **boolean** into an **integer**. These commands
 are **functions**, as opposed to variables - we’ll look at functions a
 bit later.
@@ -208,7 +203,7 @@ Let’s create a folder system to store our script in by creating a
 **project**.
 
 - Press `Projects > New project...` and name your project,
-perhaps “python_training”. 
+perhaps “python_training”.
 - Create a new script with
 <kbd>ctrl</kbd>+<kbd>N</kbd>, `File > New file...` or the new file
 button.
@@ -227,7 +222,6 @@ Press <kbd>F9</kbd> to run each line, or
 <kbd>ctrl</kbd>+<kbd>enter</kbd> for the whole script. You should see
 something like the following appear in the **console** (depending on how
 you ran it):
-
 
 We’ll work out of a script for the rest of the session. Don’t forget to
 save your script by pressing <kbd>ctrl</kbd>+<kbd>S</kbd> or the save
@@ -258,8 +252,6 @@ Here, we use two arguments to modify the default behaviour of the
 ``` python
 round(otherNumber, 2)
 ```
-
-    5.68
 
 > Notice how Spyder gives you hints about the available arguments after
 > typing the function name?
@@ -310,25 +302,8 @@ help(max)
 print?
 ```
 
-    Help on built-in function max in module builtins:
-
-    max(...)
-        max(iterable, *[, default=obj, key=func]) -> value
-        max(arg1, arg2, *args, *[, key=func]) -> value
-
-        With a single iterable argument, return its biggest item. The
-        default keyword-only argument specifies an object to return if
-        the provided iterable is empty.
-        With two or more arguments, return the largest argument.
-
 In Spyder, you can use the <kbd>Ctrl</kbd> + <kbd>I</kbd> keyboard
 shortcut to open the help in a separate pane.
-
-> The help information can often be dense and difficult to read at
-> first, taking some practice. In the [next
-> session](https://github.com/uqlibrary/technology-training/blob/4ea3e86ab8f6f43a73c3b3a44d63a00ac8d366f8/Python/revamp/data_transformation.md)
-> we look closer at interpreting this **documentation**, one of the most
-> important Python skills.
 
 For a comprehensive manual, go to the [official online
 documentation](https://docs.python.org/). For questions and answers,
@@ -338,41 +313,22 @@ great Q&A community](https://stackoverflow.com/questions/tagged/python).
 
 ## Modules
 
-To do more with Python, you could write new functions from scratch, but it is easier to import extra **modules** to extend its capabilities. For example, to access the `pi` constant:
+Python, on its own, requires a lot of manual programming for advanced tasks. What makes it versatile is the capacity to use **other people's code** with modules.
+
+To bring in advanced variables and functions that other's have made, we need to import the module. For example
 
 ```python
-pi # throws an error: it does not exist!
-import math # this module contains the pi constant
-math.pi # we have to specify where it comes from
-import math as m # give a shorter name
-m.pi
-from math import pi # only import what is necessary
 pi
 ```
 
-`math` is part of the "Python standard library". You can see all the functions and constants available in the `math` module here: https://docs.python.org/3/library/math.html
+returns an error, because it's undefined. But the `math` module contains a variable called `pi`:
 
-Python distributions like Anaconda already come with a number of useful extra modules for science.
-
-### Installing extra modules
-
-To install more modules, you might need to use `pip` (on most systems) or `conda` (if you use Anaconda or Miniconda) from the command line.
-
-With `pip`, which will fetch the module from the [Python Package Index](https://pypi.org/) (PyPI):
-
-```bash
-pip install some-module
+```python
+import math
+math.pi
 ```
 
-With `conda`, which will fetch the module from the Anaconda repository:
-
-```bash
-conda install some-module
-```
-
-Refer to the module's website to find what is recommended.
-
-Here, we present a few modules that are very important for data science with Python, and which are already available in the Anaconda distribution.
+> To access objects from within a module, we use a full stop: `module.object_inside`.
 
 ### NumPy for arrays
 
@@ -394,12 +350,15 @@ Here is an example of creating a pandas dataframe from scratch, populating it by
 
 ```python
 import pandas as pd
+
+# Create initial dataframe
 df = pd.DataFrame(columns=['Name', 'Age'])
-# populate the dataframe:
+
+# Populate with data
 df.loc[1] = 'Josephine', 70
 df.loc[2] = 'Dilsah', 38
+
 df
-df.Age # access a specific variable
 ```
 
 > You can double-click on a dataframe in the Variable explorer to explore it in a separate window.
@@ -422,6 +381,7 @@ The default look is a line plot that joins all the points, but we can style a pl
 ```python
 # blue circles
 plt.plot(example_array, 'bo')
+
 # green squares, dashed line:
 plt.plot(example_array, 'gs--')
 ```
@@ -439,140 +399,55 @@ To find out about the styling shorthand and all other arguments, look at the doc
 plt.plot?
 ```
 
-<!-- 
-## Example project
+### Installing modules that aren't built in
 
-A project is useful to keep everything related to one job all contained in one directory.
+The math module is **built-in** - the module came when I installed Python, and the numpy, pandas and matplotlib come with conda installations. Most other modules live online, so we need to download and install them first.
 
-### Create a new project
-
-Create a project with `Projects > New project...`. You can name this one "python_intro" for example.
-
-### Create a script
-
-A script is a simple text file that contains code. It is useful to:
-
-* write code more comfortably
-* store clearly defined steps in a chronological order
-* share a process with peers easily
-* make your work reproducible
-
-Click on  the "New file" icon, and save it as "process.py" in your project directory.
-
-Remember to add comments (they start with the `#` symbol) to document your work: this will be useful if you share your work with others, or even for your future self!
-
-To execute something from the script (the current line, or a selected block), use the <kbd>F9</kbd> keyboard shortcut (or the white "Run" button).
-
-### Import data
-
-It is possible to **read a CSV file with a `pandas` function**.
-
-#### Challenge 1: Import data
-
-Have a look at the documentation for the `read_csv()` function:
+Installing modules depends on whether you have a conda environment or not. To check, run
 
 ```python
-import pandas as pd
-pd.read_csv?
+conda
 ```
 
-How could you use it to store the following dataset into a variable?
+|Message | conda Environment?|
+|--- | ---|
+|`conda is a tool for managing and deployi...` or something similar  | **Yes**|
+|`NameError: name 'conda' is not defined` | **No**|
 
-https://raw.githubusercontent.com/resbaz/r-novice-gapminder-files/master/data/gapminder-FiveYearData.csv
+#### If you have a conda environment
 
-#### Solution
-
-We have to create a variable, and store the output of the function inside it. No need to download the file first: `read_csv()` can read from a URL!
+You can install packages with
 
 ```python
-gap = pd.read_csv('https://raw.githubusercontent.com/resbaz/r-novice-gapminder-files/master/data/gapminder-FiveYearData.csv')
+conda install package_name
 ```
 
-> `pandas` contains many functions for interpreting a variety of file formats. Start typing `pd.read_` to see what is available.
+> You likely have a conda environment if you installed Anaconda or you installed Spyder 6 (Since Oct 2024)
 
-Now that we have stored our dataset as a variable, we can print the dataset to the console:
+#### If you do not have a conda environment
+
+You can install packages with
 
 ```python
-gap
+pip install package_name
 ```
 
-The console conveniently shows us only the beginning and end of the dataframe.
+> You likely have a pip environment if you installed Python manually and/or are not using Spyder
 
-We can also use the "dot notation" to create commands that are useful to explore the data:
+### Plotly Expres for interactive visualisations
+
+One module that isn't built-in is **plotly**, which we can use for interactive visualisations.
 
 ```python
-gap.shape # size of the dataframe (an attribute)
-gap.head() # first few rows (a method)
-gap.head(10) # change the behaviour of the method
-gap.tail() # last few rows
-gap.country # single variable
+import plotly.io as pio
+import plotly.express as px
+
+# Set renderer
+pio.renderers.default='browser'
+
+# Create bar plot
+px.bar(df, x = "Name", y = "Age")
 ```
-
-Variables have **attributes** and **methods** attached to them, depending on the data type. Here, `shape` is an attribute, i.e. a static characteristic of the variable, whereas `head()` is a method, i.e. a function that can often take arguments.
-
-### Analyse data
-
-Let's now learn a bit more about our data. The `describe()` method gives us summary statistics for our numerical data:
-
-```python
-gap.describe()
-```
-
-To create a customised summary, we can string different methods one after the other. Here, we first group by year to then get the yearly mean of the numerical columns, using `True` to indicate that we only want to consider the numeric columns:
-
-```python
-gap.groupby('year').mean(True)
-```
-
-### Visualise data
-
-We can visualise our data with `matplotlib`. First, let's visualise the relationship between gross domestic product per capita (`gdpPercap`) and life expectancy (`lifeExp`) with a scatterplot:
-
-```python
-import matplotlib.pyplot as plt
-plt.plot(gap.gdpPercap, gap.lifeExp, 'g.')
-```
-
-We add the data as two arguments, which are understood as what we put on the x and y axes respectively.
-
-We can now add labels with extra functions:
-
-```python
-plt.plot(gap.gdpPercap, gap.lifeExp, 'g.')
-plt.xlabel('GDP per capita (USD)')
-plt.ylabel('Life expectancy (years)')
-```
-
-> Make sure that you execute all the lines of code that relate to one plot *together*. When you need to execute many lines together, you might want to start using **cells** in your script: you can start a new cell with a `#%%` line, and execute the current cell with the keyboard shortcut <kbd>Ctrl</kbd> + <kbd>Enter</kbd>.
-
-#### Saving plots
-
-You can save you plots as PNG by right-clicking on them. To save automatically with some code, you can add the following line to the visualisation block:
-
-```python
-plt.savefig('gdp_vs_life_exp.pdf')
-```
-
-A PDF is a great option for a visualisation in vector format.
-
-You can change the extension in the filename to save in a different format. For example, for a PNG file with a higher definition than the default:
-
-```python
-plt.savefig('gdp_vs_life_exp.png', dpi=600)
-```
-
-#### Challenge 2: Visualise mean life expectancy over the years
-
-1. How can we reuse previous code to visualise how mean life expectancy evolved over the years?
-1. Try changing the look of the plot to a magenta dotted line.
-
-#### Solution
-
-We can reuse the same summary as before, but adding the attribute of the right column we are interested in:
-
-```python
-plt.plot(gap.groupby('year').mean().lifeExp, 'm:')
-``` -->
 
 ## Saving your work
 
