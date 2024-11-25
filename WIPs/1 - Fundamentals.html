@@ -270,10 +270,7 @@ window.Quarto = {
    
   <ul>
   <li><a href="#introducing-python-and-spyder" id="toc-introducing-python-and-spyder" class="nav-link active" data-scroll-target="#introducing-python-and-spyder">Introducing Python and Spyder</a></li>
-  <li><a href="#operators" id="toc-operators" class="nav-link" data-scroll-target="#operators">Operators</a>
-  <ul class="collapse">
-  <li><a href="#maths" id="toc-maths" class="nav-link" data-scroll-target="#maths">Maths</a></li>
-  </ul></li>
+  <li><a href="#first-glance-arithmetic" id="toc-first-glance-arithmetic" class="nav-link" data-scroll-target="#first-glance-arithmetic">First glance: arithmetic</a></li>
   <li><a href="#variables" id="toc-variables" class="nav-link" data-scroll-target="#variables">Variables</a>
   <ul class="collapse">
   <li><a href="#types" id="toc-types" class="nav-link" data-scroll-target="#types">Types</a></li>
@@ -282,15 +279,16 @@ window.Quarto = {
   <li><a href="#scripts" id="toc-scripts" class="nav-link" data-scroll-target="#scripts">Scripts</a></li>
   <li><a href="#functions" id="toc-functions" class="nav-link" data-scroll-target="#functions">Functions</a>
   <ul class="collapse">
-  <li><a href="#operators-1" id="toc-operators-1" class="nav-link" data-scroll-target="#operators-1">Operators</a></li>
+  <li><a href="#operators" id="toc-operators" class="nav-link" data-scroll-target="#operators">Operators</a></li>
   </ul></li>
   <li><a href="#finding-help" id="toc-finding-help" class="nav-link" data-scroll-target="#finding-help">Finding help</a></li>
   <li><a href="#modules" id="toc-modules" class="nav-link" data-scroll-target="#modules">Modules</a>
   <ul class="collapse">
-  <li><a href="#installing-extra-modules" id="toc-installing-extra-modules" class="nav-link" data-scroll-target="#installing-extra-modules">Installing extra modules</a></li>
   <li><a href="#numpy-for-arrays" id="toc-numpy-for-arrays" class="nav-link" data-scroll-target="#numpy-for-arrays">NumPy for arrays</a></li>
   <li><a href="#pandas-for-dataframes" id="toc-pandas-for-dataframes" class="nav-link" data-scroll-target="#pandas-for-dataframes">Pandas for dataframes</a></li>
   <li><a href="#matplotlib-for-visualisation" id="toc-matplotlib-for-visualisation" class="nav-link" data-scroll-target="#matplotlib-for-visualisation">Matplotlib for visualisation</a></li>
+  <li><a href="#installing-modules-that-arent-built-in" id="toc-installing-modules-that-arent-built-in" class="nav-link" data-scroll-target="#installing-modules-that-arent-built-in">Installing modules that aren’t built in</a></li>
+  <li><a href="#plotly-expres-for-interactive-visualisations" id="toc-plotly-expres-for-interactive-visualisations" class="nav-link" data-scroll-target="#plotly-expres-for-interactive-visualisations">Plotly Expres for interactive visualisations</a></li>
   </ul></li>
   <li><a href="#saving-your-work" id="toc-saving-your-work" class="nav-link" data-scroll-target="#saving-your-work">Saving your work</a></li>
   <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary">Summary</a></li>
@@ -337,18 +335,14 @@ window.Quarto = {
 <li><code>Out[1]: ...</code> is its response.</li>
 </ul>
 </section>
-<section id="operators" class="level2">
-<h2 class="anchored" data-anchor-id="operators">Operators</h2>
-<p>To start with, we can use Python like a calculator. Type the following <strong>commands</strong> in the console, and press <kbd>Enter</kbd> to <strong>execute</strong> them:</p>
-<section id="maths" class="level3">
-<h3 class="anchored" data-anchor-id="maths">Maths</h3>
+<section id="first-glance-arithmetic" class="level2">
+<h2 class="anchored" data-anchor-id="first-glance-arithmetic">First glance: arithmetic</h2>
 <p>To start with, we can use Python like a calculator. Type the following <strong>commands</strong> in the console, and press <kbd>Enter</kbd> to <strong>execute</strong> them:</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> <span class="op">+</span> <span class="dv">1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span> <span class="op">*</span> <span class="dv">3</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="dv">4</span> <span class="op">/</span> <span class="dv">10</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="sourceCode" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="dv">5</span> <span class="op">**</span> <span class="dv">2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>After running each command, you should see the result as an output.</p>
-</section>
 </section>
 <section id="variables" class="level2">
 <h2 class="anchored" data-anchor-id="variables">Variables</h2>
@@ -503,12 +497,11 @@ window.Quarto = {
 <p>Functions always have parentheses () after their name, and they can take one or several <strong>arguments</strong>, or none at all, depending on what they can do, and how the user wants to use them.</p>
 <p>Here, we use two arguments to modify the default behaviour of the <code>round()</code> function:</p>
 <div class="sourceCode" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="bu">round</span>(otherNumber, <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<pre><code>5.68</code></pre>
 <blockquote class="blockquote">
 <p>Notice how Spyder gives you hints about the available arguments after typing the function name?</p>
 </blockquote>
-<section id="operators-1" class="level3">
-<h3 class="anchored" data-anchor-id="operators-1">Operators</h3>
+<section id="operators" class="level3">
+<h3 class="anchored" data-anchor-id="operators">Operators</h3>
 <p>Operators are a special type of function in Python with which you’re already familiar. The most important is <code>=</code>, which assigns values to variables. Here is a summary of some important operators, although there are many others:</p>
 <section id="general" class="level4">
 <h4 class="anchored" data-anchor-id="general">General</h4>
@@ -678,65 +671,44 @@ window.Quarto = {
 <section id="finding-help" class="level2">
 <h2 class="anchored" data-anchor-id="finding-help">Finding help</h2>
 <p>To find help about a function, you can use the <code>help()</code> function, or a <code>?</code> after a function name:</p>
-<div class="sourceCode" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="bu">help</span>(<span class="bu">max</span>)</span>
-<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>?</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<pre><code>Help on built-in function max in module builtins:
-
-max(...)
-    max(iterable, *[, default=obj, key=func]) -&gt; value
-    max(arg1, arg2, *args, *[, key=func]) -&gt; value
-
-    With a single iterable argument, return its biggest item. The
-    default keyword-only argument specifies an object to return if
-    the provided iterable is empty.
-    With two or more arguments, return the largest argument.</code></pre>
+<div class="sourceCode" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="bu">help</span>(<span class="bu">max</span>)</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>?</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>In Spyder, you can use the <kbd>Ctrl</kbd> + <kbd>I</kbd> keyboard shortcut to open the help in a separate pane.</p>
-<blockquote class="blockquote">
-<p>The help information can often be dense and difficult to read at first, taking some practice. In the <a href="https://github.com/uqlibrary/technology-training/blob/4ea3e86ab8f6f43a73c3b3a44d63a00ac8d366f8/Python/revamp/data_transformation.md">next session</a> we look closer at interpreting this <strong>documentation</strong>, one of the most important Python skills.</p>
-</blockquote>
 <p>For a comprehensive manual, go to the <a href="https://docs.python.org/">official online documentation</a>. For questions and answers, typing the right question in a search engine will usually lead you to something helpful. If you can’t find an answer, <a href="https://stackoverflow.com/questions/tagged/python">StackOverflow is a great Q&amp;A community</a>.</p>
 </section>
 <section id="modules" class="level2">
 <h2 class="anchored" data-anchor-id="modules">Modules</h2>
-<p>To do more with Python, you could write new functions from scratch, but it is easier to import extra <strong>modules</strong> to extend its capabilities. For example, to access the <code>pi</code> constant:</p>
-<div class="sourceCode" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>pi <span class="co"># throws an error: it does not exist!</span></span>
-<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> math <span class="co"># this module contains the pi constant</span></span>
-<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>math.pi <span class="co"># we have to specify where it comes from</span></span>
-<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> math <span class="im">as</span> m <span class="co"># give a shorter name</span></span>
-<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>m.pi</span>
-<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> math <span class="im">import</span> pi <span class="co"># only import what is necessary</span></span>
-<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a>pi</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p><code>math</code> is part of the “Python standard library”. You can see all the functions and constants available in the <code>math</code> module here: https://docs.python.org/3/library/math.html</p>
-<p>Python distributions like Anaconda already come with a number of useful extra modules for science.</p>
-<section id="installing-extra-modules" class="level3">
-<h3 class="anchored" data-anchor-id="installing-extra-modules">Installing extra modules</h3>
-<p>To install more modules, you might need to use <code>pip</code> (on most systems) or <code>conda</code> (if you use Anaconda or Miniconda) from the command line.</p>
-<p>With <code>pip</code>, which will fetch the module from the <a href="https://pypi.org/">Python Package Index</a> (PyPI):</p>
-<div class="sourceCode" id="cb23"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install some-module</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>With <code>conda</code>, which will fetch the module from the Anaconda repository:</p>
-<div class="sourceCode" id="cb24"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> install some-module</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Refer to the module’s website to find what is recommended.</p>
-<p>Here, we present a few modules that are very important for data science with Python, and which are already available in the Anaconda distribution.</p>
-</section>
+<p>Python, on its own, requires a lot of manual programming for advanced tasks. What makes it versatile is the capacity to use <strong>other people’s code</strong> with modules.</p>
+<p>To bring in advanced variables and functions that other’s have made, we need to import the module. For example</p>
+<div class="sourceCode" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>pi</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>returns an error, because it’s undefined. But the <code>math</code> module contains a variable called <code>pi</code>:</p>
+<div class="sourceCode" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> math</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>math.pi</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<blockquote class="blockquote">
+<p>To access objects from within a module, we use a full stop: <code>module.object_inside</code>.</p>
+</blockquote>
 <section id="numpy-for-arrays" class="level3">
 <h3 class="anchored" data-anchor-id="numpy-for-arrays">NumPy for arrays</h3>
 <p>Arrays are a data type introduced by <code>numpy</code>, a module with many functions useful for numerical computing.</p>
 <p>For example, you can convert the list we created before to then do mathematical operations on each one of its elements:</p>
-<div class="sourceCode" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>example_array <span class="op">=</span> np.array(example_numbers)</span>
-<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>example_array <span class="op">*</span> <span class="dv">2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>example_array <span class="op">=</span> np.array(example_numbers)</span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>example_array <span class="op">*</span> <span class="dv">2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="pandas-for-dataframes" class="level3">
 <h3 class="anchored" data-anchor-id="pandas-for-dataframes">Pandas for dataframes</h3>
 <p><code>pandas</code> introduces dataframes, which are often used to store two-dimensional datasets with different kinds of variables in each column. If your data is stored as a spreadsheet, you probably want to import it with a pandas function.</p>
 <p>Here is an example of creating a pandas dataframe from scratch, populating it by hand:</p>
-<div class="sourceCode" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.DataFrame(columns<span class="op">=</span>[<span class="st">'Name'</span>, <span class="st">'Age'</span>])</span>
-<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a><span class="co"># populate the dataframe:</span></span>
-<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>df.loc[<span class="dv">1</span>] <span class="op">=</span> <span class="st">'Josephine'</span>, <span class="dv">70</span></span>
-<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a>df.loc[<span class="dv">2</span>] <span class="op">=</span> <span class="st">'Dilsah'</span>, <span class="dv">38</span></span>
-<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a>df</span>
-<span id="cb26-7"><a href="#cb26-7" aria-hidden="true" tabindex="-1"></a>df.Age <span class="co"># access a specific variable</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Create initial dataframe</span></span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.DataFrame(columns<span class="op">=</span>[<span class="st">'Name'</span>, <span class="st">'Age'</span>])</span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Populate with data</span></span>
+<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a>df.loc[<span class="dv">1</span>] <span class="op">=</span> <span class="st">'Josephine'</span>, <span class="dv">70</span></span>
+<span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a>df.loc[<span class="dv">2</span>] <span class="op">=</span> <span class="st">'Dilsah'</span>, <span class="dv">38</span></span>
+<span id="cb23-9"><a href="#cb23-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-10"><a href="#cb23-10" aria-hidden="true" tabindex="-1"></a>df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <blockquote class="blockquote">
 <p>You can double-click on a dataframe in the Variable explorer to explore it in a separate window.</p>
 </blockquote>
@@ -744,156 +716,79 @@ max(...)
 <section id="matplotlib-for-visualisation" class="level3">
 <h3 class="anchored" data-anchor-id="matplotlib-for-visualisation">Matplotlib for visualisation</h3>
 <p><code>matplotlib</code> is a large collection of data visualisation functions, and <code>pyplot</code> is a submodule of <code>matplotlib</code> that contains essentials.</p>
-<div class="sourceCode" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>plt.plot(example_array)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>plt.plot(example_array)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>This shows a plot in the Plots tab of Spyder.</p>
 <blockquote class="blockquote">
 <p>In a Python shell, you might have to use the <code>plt.show()</code> command to show the plot.</p>
 </blockquote>
 <p>The default look is a line plot that joins all the points, but we can style a plot with only a few characters:</p>
-<div class="sourceCode" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="co"># blue circles</span></span>
-<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>plt.plot(example_array, <span class="st">'bo'</span>)</span>
-<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a><span class="co"># green squares, dashed line:</span></span>
-<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a>plt.plot(example_array, <span class="st">'gs--'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co"># blue circles</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>plt.plot(example_array, <span class="st">'bo'</span>)</span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a><span class="co"># green squares, dashed line:</span></span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>plt.plot(example_array, <span class="st">'gs--'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Extra arguments can be used to style further:</p>
-<div class="sourceCode" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="co"># red, diamonds, solid line; change width of line and size of diamonds:</span></span>
-<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>plt.plot(example_array, <span class="st">'rd-'</span>, linewidth<span class="op">=</span><span class="dv">3</span>, markersize<span class="op">=</span><span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co"># red, diamonds, solid line; change width of line and size of diamonds:</span></span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>plt.plot(example_array, <span class="st">'rd-'</span>, linewidth<span class="op">=</span><span class="dv">3</span>, markersize<span class="op">=</span><span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>To find out about the styling shorthand and all other arguments, look at the documentation:</p>
-<div class="sourceCode" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>plt.plot?</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<!-- 
-## Example project
-
-A project is useful to keep everything related to one job all contained in one directory.
-
-### Create a new project
-
-Create a project with `Projects > New project...`. You can name this one "python_intro" for example.
-
-### Create a script
-
-A script is a simple text file that contains code. It is useful to:
-
-* write code more comfortably
-* store clearly defined steps in a chronological order
-* share a process with peers easily
-* make your work reproducible
-
-Click on  the "New file" icon, and save it as "process.py" in your project directory.
-
-Remember to add comments (they start with the `#` symbol) to document your work: this will be useful if you share your work with others, or even for your future self!
-
-To execute something from the script (the current line, or a selected block), use the <kbd>F9</kbd> keyboard shortcut (or the white "Run" button).
-
-### Import data
-
-It is possible to **read a CSV file with a `pandas` function**.
-
-#### Challenge 1: Import data
-
-Have a look at the documentation for the `read_csv()` function:
-
-```python
-import pandas as pd
-pd.read_csv?
-```
-
-How could you use it to store the following dataset into a variable?
-
-https://raw.githubusercontent.com/resbaz/r-novice-gapminder-files/master/data/gapminder-FiveYearData.csv
-
-#### Solution
-
-We have to create a variable, and store the output of the function inside it. No need to download the file first: `read_csv()` can read from a URL!
-
-```python
-gap = pd.read_csv('https://raw.githubusercontent.com/resbaz/r-novice-gapminder-files/master/data/gapminder-FiveYearData.csv')
-```
-
-> `pandas` contains many functions for interpreting a variety of file formats. Start typing `pd.read_` to see what is available.
-
-Now that we have stored our dataset as a variable, we can print the dataset to the console:
-
-```python
-gap
-```
-
-The console conveniently shows us only the beginning and end of the dataframe.
-
-We can also use the "dot notation" to create commands that are useful to explore the data:
-
-```python
-gap.shape # size of the dataframe (an attribute)
-gap.head() # first few rows (a method)
-gap.head(10) # change the behaviour of the method
-gap.tail() # last few rows
-gap.country # single variable
-```
-
-Variables have **attributes** and **methods** attached to them, depending on the data type. Here, `shape` is an attribute, i.e. a static characteristic of the variable, whereas `head()` is a method, i.e. a function that can often take arguments.
-
-### Analyse data
-
-Let's now learn a bit more about our data. The `describe()` method gives us summary statistics for our numerical data:
-
-```python
-gap.describe()
-```
-
-To create a customised summary, we can string different methods one after the other. Here, we first group by year to then get the yearly mean of the numerical columns, using `True` to indicate that we only want to consider the numeric columns:
-
-```python
-gap.groupby('year').mean(True)
-```
-
-### Visualise data
-
-We can visualise our data with `matplotlib`. First, let's visualise the relationship between gross domestic product per capita (`gdpPercap`) and life expectancy (`lifeExp`) with a scatterplot:
-
-```python
-import matplotlib.pyplot as plt
-plt.plot(gap.gdpPercap, gap.lifeExp, 'g.')
-```
-
-We add the data as two arguments, which are understood as what we put on the x and y axes respectively.
-
-We can now add labels with extra functions:
-
-```python
-plt.plot(gap.gdpPercap, gap.lifeExp, 'g.')
-plt.xlabel('GDP per capita (USD)')
-plt.ylabel('Life expectancy (years)')
-```
-
-> Make sure that you execute all the lines of code that relate to one plot *together*. When you need to execute many lines together, you might want to start using **cells** in your script: you can start a new cell with a `#%%` line, and execute the current cell with the keyboard shortcut <kbd>Ctrl</kbd> + <kbd>Enter</kbd>.
-
-#### Saving plots
-
-You can save you plots as PNG by right-clicking on them. To save automatically with some code, you can add the following line to the visualisation block:
-
-```python
-plt.savefig('gdp_vs_life_exp.pdf')
-```
-
-A PDF is a great option for a visualisation in vector format.
-
-You can change the extension in the filename to save in a different format. For example, for a PNG file with a higher definition than the default:
-
-```python
-plt.savefig('gdp_vs_life_exp.png', dpi=600)
-```
-
-#### Challenge 2: Visualise mean life expectancy over the years
-
-1. How can we reuse previous code to visualise how mean life expectancy evolved over the years?
-1. Try changing the look of the plot to a magenta dotted line.
-
-#### Solution
-
-We can reuse the same summary as before, but adding the attribute of the right column we are interested in:
-
-```python
-plt.plot(gap.groupby('year').mean().lifeExp, 'm:')
-``` -->
+<div class="sourceCode" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>plt.plot?</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="installing-modules-that-arent-built-in" class="level3">
+<h3 class="anchored" data-anchor-id="installing-modules-that-arent-built-in">Installing modules that aren’t built in</h3>
+<p>The math module is <strong>built-in</strong> - the module came when I installed Python, and the numpy, pandas and matplotlib come with conda installations. Most other modules live online, so we need to download and install them first.</p>
+<p>Installing modules depends on whether you have a conda environment or not. To check, run</p>
+<div class="sourceCode" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>conda</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Message</th>
+<th>conda Environment?</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>conda is a tool for managing and deployi...</code> or something similar</td>
+<td><strong>Yes</strong></td>
+</tr>
+<tr class="even">
+<td><code>NameError: name 'conda' is not defined</code></td>
+<td><strong>No</strong></td>
+</tr>
+</tbody>
+</table>
+<section id="if-you-have-a-conda-environment" class="level4">
+<h4 class="anchored" data-anchor-id="if-you-have-a-conda-environment">If you have a conda environment</h4>
+<p>You can install packages with</p>
+<div class="sourceCode" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>conda install package_name</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<blockquote class="blockquote">
+<p>You likely have a conda environment if you installed Anaconda or you installed Spyder 6 (Since Oct 2024)</p>
+</blockquote>
+</section>
+<section id="if-you-do-not-have-a-conda-environment" class="level4">
+<h4 class="anchored" data-anchor-id="if-you-do-not-have-a-conda-environment">If you do not have a conda environment</h4>
+<p>You can install packages with</p>
+<div class="sourceCode" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>pip install package_name</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<blockquote class="blockquote">
+<p>You likely have a pip environment if you installed Python manually and/or are not using Spyder</p>
+</blockquote>
+</section>
+</section>
+<section id="plotly-expres-for-interactive-visualisations" class="level3">
+<h3 class="anchored" data-anchor-id="plotly-expres-for-interactive-visualisations">Plotly Expres for interactive visualisations</h3>
+<p>One module that isn’t built-in is <strong>plotly</strong>, which we can use for interactive visualisations.</p>
+<div class="sourceCode" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> plotly.io <span class="im">as</span> pio</span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> plotly.express <span class="im">as</span> px</span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Set renderer</span></span>
+<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a>pio.renderers.default<span class="op">=</span><span class="st">'browser'</span></span>
+<span id="cb31-6"><a href="#cb31-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-7"><a href="#cb31-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Create bar plot</span></span>
+<span id="cb31-8"><a href="#cb31-8" aria-hidden="true" tabindex="-1"></a>px.bar(df, x <span class="op">=</span> <span class="st">"Name"</span>, y <span class="op">=</span> <span class="st">"Age"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 </section>
 <section id="saving-your-work" class="level2">
