@@ -31,13 +31,7 @@ Pandas is built upon one key feature: the DataFrame class. In Python we have dif
 
 ## Importing data
 
-Our data is a CO<sub>2</sub> emission dataset from Our World in Data: <https://raw.githubusercontent.com/owid/co2-data/master/owid-co2-data.csv>
-
-It is available under a [CC-BY](https://creativecommons.org/licenses/by/4.0/) licence, an open licence that requires that any sharing or derivative of it needs to attribute the original source and authors.
-
-[More information about the dataset](https://github.com/owid/co2-data) is included online, and the [codebook](https://github.com/owid/co2-data/blob/master/owid-co2-codebook.csv), which is important to understand what exactly are the variables in the dataset, is also available online.
-
-We can import it directly with pandas, with:
+Using one of your datase
 
 ``` python
 df_raw = pd.read_csv('https://raw.githubusercontent.com/owid/co2-data/master/owid-co2-data.csv')
