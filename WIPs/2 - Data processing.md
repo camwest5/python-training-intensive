@@ -11,7 +11,8 @@ In this second workshop we will cover
 
 This hands-on course -- directed at intermediate users -- looks at using the **pandas** module to transform and visualise tabular data.
 
-## Introducing pandas
+## Setting up
+### Introducing pandas
 
 Pandas is a Python module that introduces dataframes to Python. It gives us the tools we need to clean and transform data with Python.
 
@@ -25,18 +26,88 @@ import pandas as pd
 
 > If you get an error, like `No module named 'pandas'`, you'll need to install it first, using either `conda install pandas` or `pip install pandas`, depending on your Python installation.
 
-### The DataFrame object
+#### The DataFrame object
 
 Pandas is built upon one key feature: the DataFrame class. In Python we have different built-in types, like `int` for integers and `string` for characters. Pandas introduces a new type, `DataFrame`, which stores data like a spreadsheet.
 
-## Importing data
+### Setting up the workspace
 
-Using one of your datase
+To make life easy, we should set up our workspace well. 
+
+1. Open your project folder using your file explorer, and create a new folder called "data". 
+2. Move your data into this folder.
+3. Next, open your project in Spyder, and create a new script called "analysis.py".
+4. Open the "Files" tab in Spyder and check that you see two objects:
+   * The file "analysis.py"
+   * The folder "data"
+ 
+### Importing data
+
+Pandas offers a simple way to access data with its `read.csv()` function. We'll save it into the variable `df_raw`:
 
 ``` python
-df_raw = pd.read_csv('https://raw.githubusercontent.com/owid/co2-data/master/owid-co2-data.csv')
+df_raw = pd.read_csv("data/name_of_file_here.csv")
 ```
 
+> You can also provide a URL instead of a file path!
+
+### Aside - File Paths and backslashes
+Just a quick detour to discuss file paths of which there are two types: **absolute** and **relative**
+
+#### Absolute
+
+Absolute file paths always start at the "top" of your file system, e.g. one of the drives (like C:) for Windows users, so they are never ambiguous. It's like providing your full address from country to street number.
+
+```
+C://Users/my_username/research/data/really_important_secret_data.csv
+```
+
+#### Relative
+
+Relative file paths start from **your current file location**. For files in my current folder, I just provide their name - like referring to another house on your street as "number 7". **Let's assume we're in the research folder**.
+
+```
+file_in_my_current_folder.csv
+```
+
+We can go to *down* folders from our current location:
+
+```
+data/really_important_secret_data.csv
+```
+
+And we can go *up* folders from our current location
+```
+../../this_file_is_two_levels_up.csv
+```
+
+Or a combination of the two (e.g. up one, then down into a *different* folder)
+```
+../not_research/this_file_is_not_research.csv
+```
+
+**What matters is that the relative reference depends on where your code is and will break if you move the script!**
+
+
+#### Backslashes
+
+One last note: Windows uses backslashes for their file paths
+```
+C:\\Users\...
+```
+But Python uses backslashes as an escape character. For example, `"\n"` is a newline, `"\u1234"` is the unicode character U+1234 and confusingly `"\\"` is a **single** backslash. So we have to modify all Windows file paths to either
+```
+C:\\\\Users\\...
+
+OR
+
+C://Users/...
+```
+You can choose whichever you prefer.
+
+## Exploring the Data
+
+Let's get back to data.
 Using the `type()` function confirms what type of variable the data is stored as:
 
 ``` python
