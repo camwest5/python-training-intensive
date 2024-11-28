@@ -58,7 +58,7 @@ Just a quick detour to discuss file paths of which there are two types: **absolu
 
 Absolute file paths always start at the "top" of your file system, e.g. one of the drives (like C:) for Windows users, so they are never ambiguous. It's like providing your full address from country to street number.
 
-```
+```bash
 C://Users/my_username/research/data/really_important_secret_data.csv
 ```
 
@@ -66,23 +66,23 @@ C://Users/my_username/research/data/really_important_secret_data.csv
 
 Relative file paths start from **your current file location**. For files in my current folder, I just provide their name - like referring to another house on your street as "number 7". **Let's assume we're in the research folder**.
 
-```
+```bash
 file_in_my_current_folder.csv
 ```
 
 We can go to *down* folders from our current location:
 
-```
+```bash
 data/really_important_secret_data.csv
 ```
 
 And we can go *up* folders from our current location
-```
+```bash
 ../../this_file_is_two_levels_up.csv
 ```
 
 Or a combination of the two (e.g. up one, then down into a *different* folder)
-```
+```bash
 ../not_research/this_file_is_not_research.csv
 ```
 
@@ -92,11 +92,11 @@ Or a combination of the two (e.g. up one, then down into a *different* folder)
 #### Backslashes
 
 One last note: Windows uses backslashes for their file paths
-```
+```bash
 C:\\Users\...
 ```
 But Python uses backslashes as an escape character. For example, `"\n"` is a newline, `"\u1234"` is the unicode character U+1234 and confusingly `"\\"` is a **single** backslash. So we have to modify all Windows file paths to either
-```
+```bash
 C:\\\\Users\\...
 
 OR
