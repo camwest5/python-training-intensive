@@ -15,7 +15,7 @@
     "href": "WIPs/2 - Data processing.html",
     "title": "Data Processing",
     "section": "",
-    "text": "In this second workshop we will cover - Examining / exploring data - Filtering rows and columns - Basic descriptive statistics - Adding new columns - Group bys and summary tables\nThis hands-on course – directed at intermediate users – looks at using the pandas module to transform and visualise tabular data.",
+    "text": "In this second workshop we will cover\nThis hands-on course – directed at intermediate users – looks at using the pandas module to transform and visualise tabular data.",
     "crumbs": [
       "WIPs",
       "Data Processing"
@@ -70,18 +70,7 @@
     "href": "WIPs/2 - Data processing.html#adding-and-removing-columns",
     "title": "Data Processing",
     "section": "Adding and removing columns",
-    "text": "Adding and removing columns\nSometimes we need to add new columns. It’s the same process as overwriting existing columns - let’s make a new column called “zeroes” where every row is 0\ndf[\"zeroes\"] = 0\nWe can also send in a column, for example\ndf[\"copy_of_x\"] = df[\"column_x\"]\nPerhaps most usefully, we can manipulate the column we send in. For example, the deviation from the mean \\[|\\bar{x} - x_i|\\] can be computed for each row:\ncol_x = df[\"column_x\"]\navg_x = df[\"column_x\"].mean()\n\ndf[\"deviation_from_mean\"] = abs(col_x - avg_x)\n\n# Or all together on one line,\ndf[\"deviation_from_mean\"] = abs(df[\"column_x\"] -  df[\"column_x\"].mean())\nwhere abs(...) takes the absolute value\nNow that we have a clean dataset, we can expand it by calculating new interesting variables.\nFor example, we can first sum the three greenhouse gases (as they use the same unit), and then calculate how much CO2-equivalent is emitted per person. We can also add GDP per capita to the dataset.\nFor the total greenhouse gas emissions in CO2e:\ndf['co2e'] = df[['co2', 'methane', 'nitrous_oxide']].sum(axis=1)\nThe operation is done row-wise: we use axis=1 to specify that we apply the function in the column axis.\nYou can confirm by looking at the data that the NA values are skipped when calculating the sum. The help page for this method mentions the skipna argument, which is set to True by default:\ndf.sum?\nskipna : bool, default True\n    Exclude NA/null values when computing the result.\nAnd then, for the CO2e per capita and the GDP per capita:\ndf['co2e_pc'] = df.co2e / df.population\ndf['gdp_pc'] = df.gdp / df.population\nWe now have three extra columns in our dataset.",
-    "crumbs": [
-      "WIPs",
-      "Data Processing"
-    ]
-  },
-  {
-    "objectID": "WIPs/2 - Data processing.html#merging-tables",
-    "href": "WIPs/2 - Data processing.html#merging-tables",
-    "title": "Data Processing",
-    "section": "Merging tables",
-    "text": "Merging tables\nIt is common to want to merge two datasets from two different sources. To do that, you will need common data to match rows on.\nWe want to add the countries’ Social Progress Index to our dataset.\n\nYou can find out more about the SPI on their website: https://www.socialprogress.org/\n\nThe SPI dataset also has a three-letter code for the countries, which we can match to our existing iso_code column. We have an SPI for several different years, so we should match that column as well:\n# read the data\nspi = pd.read_csv('https://gist.githubusercontent.com/stragu/57b0a0750678bada09625d429a0f806b/raw/a18a454d7d225bd24074399a7ab79a4189e53501/spi.csv')\n# merge on two columns\ndf_all = pd.merge(df, spi,\n                  left_on=['iso_code', 'year'],\n                  right_on=['country_code', 'year'])\nWe specified the two data frames, and which columns we wanted to merge on. However, we end up losing a lot of data. Looking at the documentation for the merge() function, we can see that there are many ways to merge tables, depending on what we want to keep:\npd.merge?\nThe how argument defines which kind of merge we want to do. Because we want to keep all of the data from df, we want to do a “left merge”:\ndf_all = pd.merge(df, spi,\n                  how='left',\n                  left_on=['iso_code', 'year'],\n                  right_on=['country_code', 'year'])\nWe can now “drop” the useless country_code column:\ndf_all.pop('country_code')\n\nNotice that the pop method is an “in-place” method: you don’t need to reassign the variable.",
+    "text": "Adding and removing columns\nSometimes we need to add new columns. It’s the same process as overwriting existing columns - let’s make a new column called “zeroes” where every row is 0\ndf[\"zeroes\"] = 0\nWe can also send in a column, for example\ndf[\"copy_of_x\"] = df[\"column_x\"]\nPerhaps most usefully, we can manipulate the column we send in. For example, the deviation from the mean \\[|\\bar{x} - x_i|\\] can be computed for each row:\ncol_x = df[\"column_x\"]\navg_x = df[\"column_x\"].mean()\n\ndf[\"deviation_from_mean\"] = abs(col_x - avg_x)\n\n# Or all together on one line,\ndf[\"deviation_from_mean\"] = abs(df[\"column_x\"] - df[\"column_x\"].mean())\nwhere abs(...) takes the absolute value\nNotice that we subtracted a value from a column. We can also perform mathematics with multiple columns:\ndf[\"product\"] = df[\"column_x\"]*df[\"column_y\"]\nLet’s remove these new columns that we don’t need with the method df.drop(columns = [...]):\ndf.drop(columns = [\"zeroes\", \"copy_of_x\", \"deviation_from_mean\", \"product\"])",
     "crumbs": [
       "WIPs",
       "Data Processing"
@@ -92,29 +81,18 @@
     "href": "WIPs/2 - Data processing.html#summaries",
     "title": "Data Processing",
     "section": "Summaries",
-    "text": "Summaries\nThe aggregate() method, which has a shorter alias agg(), allows creating summaries by applying a function to a column. In combination with the groupby() method, we can create summary tables. For example, to find the average SPI for each country, and then sort the values in descending order:\ndf_all.groupby('country').spi.agg('mean').sort_values(ascending=False)\nIf you want to export that summary table and use it outside Spyder, you can first save it as a variable, and then write it to a CSV file:\nspi_sum = df_all.groupby('country').spi.agg('mean').sort_values(ascending=False)\n# write to file\nspi_sum.to_csv('spi_summary.csv')\n\nThe CSV file should be found in your project directory, as it became the default working directory when we created the project.",
+    "text": "Summaries\nAfter cleaning up our data, we need to analyse it. This usually involves some kind of aggregation. For example, what is the average \\(x\\) per year? requires aggregating over variable \\(x\\) for each year.\nFirst, we need to group by a specific variable\ngb = df.groupby(\"year\")\nThis thing in itself is a pretty abstract Python object, best thought of as a dataframe where we’ve identified a grouping variable.\nNext, we need to apply some aggregation to it (the groupby tells it to do it for each year)\navg_x_per_year = gb[\"variable_x\"].agg(\"mean\")\nOf course, we could have done this in one line:\navg_x_per_year = df.groupby(\"year\").agg(\"mean\")\nThis is a really useful tool, because now we have something we can visualise. As the next session will show us, the visualisation tools generally just take in numbers and turn them into dots. We need to do the stats beforehand.\nAs a taster, try running\navg_x_per_year.plot()",
     "crumbs": [
       "WIPs",
       "Data Processing"
     ]
   },
   {
-    "objectID": "WIPs/2 - Data processing.html#visualising-data",
-    "href": "WIPs/2 - Data processing.html#visualising-data",
+    "objectID": "WIPs/2 - Data processing.html#exporting-results",
+    "href": "WIPs/2 - Data processing.html#exporting-results",
     "title": "Data Processing",
-    "section": "Visualising data",
-    "text": "Visualising data\npandas integrates visualisation tools, thanks to the plot() method and its many arguments.\nFor example, to visualise the relationship between CO2e per capita and SPI:\ndf_all.plot(x='co2e_pc', y='spi')\nThe default kind of plot is a line plot, so let’s change that to a scatterplot:\ndf_all.plot(x='co2e_pc', y='spi', kind='scatter')\nFocusing on the latest year will guarantee that there only is one point per country:\ndf_all[df_all.year == 2016].plot(x='co2e_pc',\n                                 y='spi',\n                                 kind='scatter')\nTo visualise a third variable, GDP per capita, let’s map it to the colour of the points, thanks to the c argument:\ndf_all[df_all.year == 2016].plot(x='co2e_pc',\n                                 y='spi',\n                                 c='gdp_pc',\n                                 colormap='viridis',\n                                 kind='scatter')\nWe can change the labels too:\ndf_all[df_all.year == 2016].plot(x='co2e_pc',\n                                 y='spi',\n                                 c='gdp_pc',\n                                 colormap='viridis',\n                                 kind='scatter',\n                                 xlabel='GHG per capita (MT CO2e/yr)',\n                                 ylabel='Social Progress Index')\nIf the x labels don’t show, try this workaround: https://github.com/pandas-dev/pandas/issues/36064#issuecomment-1011175535\n\nChallenge 2: GHG timeline\nHow would you visualise global GHG emissions over the years, with one line per type of GHG?\nWe can subset the columns that matter to us, create a summary, and plot it:\nsub = df_all[['year', 'co2', 'methane', 'nitrous_oxide']]\nsub.groupby('year').agg('sum').plot(ylabel='MT CO2e')\nRemember that the default kind of plot in this function is 'line', which works for this visualisation. And as we fed it a series variable with several columns, it automatically assigned a different colour to each one.",
-    "crumbs": [
-      "WIPs",
-      "Data Processing"
-    ]
-  },
-  {
-    "objectID": "WIPs/2 - Data processing.html#saving-your-work",
-    "href": "WIPs/2 - Data processing.html#saving-your-work",
-    "title": "Data Processing",
-    "section": "Saving your work",
-    "text": "Saving your work\nYour project can be reopened from the “Projects” menu in Spyder.\nBy default, your variables are not saved, which is another reason why working with a script is important: you can execute the whole script in one go to get everything back. You can however save your variables as a .spydata file if you want to (for example, if it takes a lot of time to process your data).",
+    "section": "Exporting results",
+    "text": "Exporting results\nThe last step in the process is saving the data. Let’s say we want to take that final dataframe and export it to a csv. That’s what the df.to_csv() method is for\navg_x_per_year.to_csv(\"data/avg_x_per_year.csv\")\nThis will save the dataframe to a .csv file and place it in the data folder.",
     "crumbs": [
       "WIPs",
       "Data Processing"
@@ -125,7 +103,7 @@
     "href": "WIPs/2 - Data processing.html#resources",
     "title": "Data Processing",
     "section": "Resources",
-    "text": "Resources\n\nOfficial pandas documentation\n\nGetting started\n10 Minutes to pandas\nUser guide\n\nMore visualisation modules:\n\nAltair\nBokeh\nVega\nMatplotlib\n\nAbout our datasets:\n\nOur World in Data\nSocial Progress Index\n\nOur compilation of useful Python links",
+    "text": "Resources\n\nOfficial pandas documentation\n\nGetting started\n10 Minutes to pandas\nUser guide\n\nMore visualisation modules:\n\nAltair\nBokeh\nVega\nMatplotlib\n\nOur compilation of useful Python links",
     "crumbs": [
       "WIPs",
       "Data Processing"

@@ -286,13 +286,8 @@ window.Quarto = {
   <li><a href="#basic-statistics" id="toc-basic-statistics" class="nav-link" data-scroll-target="#basic-statistics">Basic statistics</a></li>
   <li><a href="#challenge" id="toc-challenge" class="nav-link" data-scroll-target="#challenge">Challenge</a></li>
   <li><a href="#adding-and-removing-columns" id="toc-adding-and-removing-columns" class="nav-link" data-scroll-target="#adding-and-removing-columns">Adding and removing columns</a></li>
-  <li><a href="#merging-tables" id="toc-merging-tables" class="nav-link" data-scroll-target="#merging-tables">Merging tables</a></li>
   <li><a href="#summaries" id="toc-summaries" class="nav-link" data-scroll-target="#summaries">Summaries</a></li>
-  <li><a href="#visualising-data" id="toc-visualising-data" class="nav-link" data-scroll-target="#visualising-data">Visualising data</a>
-  <ul class="collapse">
-  <li><a href="#challenge-2-ghg-timeline" id="toc-challenge-2-ghg-timeline" class="nav-link" data-scroll-target="#challenge-2-ghg-timeline">Challenge 2: GHG timeline</a></li>
-  </ul></li>
-  <li><a href="#saving-your-work" id="toc-saving-your-work" class="nav-link" data-scroll-target="#saving-your-work">Saving your work</a></li>
+  <li><a href="#exporting-results" id="toc-exporting-results" class="nav-link" data-scroll-target="#exporting-results">Exporting results</a></li>
   <li><a href="#resources" id="toc-resources" class="nav-link" data-scroll-target="#resources">Resources</a></li>
   </ul>
 </nav>
@@ -319,7 +314,14 @@ window.Quarto = {
 </header>
 
 
-<p>In this second workshop we will cover - Examining / exploring data - Filtering rows and columns - Basic descriptive statistics - Adding new columns - Group bys and summary tables</p>
+<p>In this second workshop we will cover</p>
+<ul>
+<li>Examining / exploring data</li>
+<li>Filtering rows and columns</li>
+<li>Basic descriptive statistics</li>
+<li>Adding new columns</li>
+<li>Group bys and summary tables</li>
+</ul>
 <p>This hands-on course – directed at intermediate users – looks at using the <strong>pandas</strong> module to transform and visualise tabular data.</p>
 <section id="setting-up" class="level2">
 <h2 class="anchored" data-anchor-id="setting-up">Setting up</h2>
@@ -502,100 +504,32 @@ window.Quarto = {
 <span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a>df[<span class="st">"deviation_from_mean"</span>] <span class="op">=</span> <span class="bu">abs</span>(col_x <span class="op">-</span> avg_x)</span>
 <span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Or all together on one line,</span></span>
-<span id="cb28-7"><a href="#cb28-7" aria-hidden="true" tabindex="-1"></a>df[<span class="st">"deviation_from_mean"</span>] <span class="op">=</span> <span class="bu">abs</span>(df[<span class="st">"column_x"</span>] <span class="op">-</span>  df[<span class="st">"column_x"</span>].mean())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb28-7"><a href="#cb28-7" aria-hidden="true" tabindex="-1"></a>df[<span class="st">"deviation_from_mean"</span>] <span class="op">=</span> <span class="bu">abs</span>(df[<span class="st">"column_x"</span>] <span class="op">-</span> df[<span class="st">"column_x"</span>].mean())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>where <code>abs(...)</code> takes the absolute value</p>
-<p>Now that we have a clean dataset, we can expand it by calculating new interesting variables.</p>
-<p>For example, we can first sum the three greenhouse gases (as they use the same unit), and then calculate how much CO<sub>2</sub>-equivalent is emitted per person. We can also add GDP per capita to the dataset.</p>
-<p>For the total greenhouse gas emissions in CO<sub>2</sub>e:</p>
-<div class="sourceCode" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'co2e'</span>] <span class="op">=</span> df[[<span class="st">'co2'</span>, <span class="st">'methane'</span>, <span class="st">'nitrous_oxide'</span>]].<span class="bu">sum</span>(axis<span class="op">=</span><span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>The operation is done row-wise: we use <code>axis=1</code> to specify that we apply the function in the column axis.</p>
-<p>You can confirm by looking at the data that the NA values are skipped when calculating the sum. The help page for this method mentions the <code>skipna</code> argument, which is set to <code>True</code> by default:</p>
-<div class="sourceCode" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>df.<span class="bu">sum</span>?</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<pre><code>skipna : bool, default True
-    Exclude NA/null values when computing the result.</code></pre>
-<p>And then, for the CO<sub>2</sub>e per capita and the GDP per capita:</p>
-<div class="sourceCode" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'co2e_pc'</span>] <span class="op">=</span> df.co2e <span class="op">/</span> df.population</span>
-<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'gdp_pc'</span>] <span class="op">=</span> df.gdp <span class="op">/</span> df.population</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>We now have three extra columns in our dataset.</p>
-</section>
-<section id="merging-tables" class="level2">
-<h2 class="anchored" data-anchor-id="merging-tables">Merging tables</h2>
-<p>It is common to want to merge two datasets from two different sources. To do that, you will need common data to match rows on.</p>
-<p>We want to add the countries’ Social Progress Index to our dataset.</p>
-<blockquote class="blockquote">
-<p>You can find out more about the SPI on their website: <a href="https://www.socialprogress.org/" class="uri">https://www.socialprogress.org/</a></p>
-</blockquote>
-<p>The SPI dataset also has a three-letter code for the countries, which we can match to our existing <code>iso_code</code> column. We have an SPI for several different years, so we should match that column as well:</p>
-<div class="sourceCode" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="co"># read the data</span></span>
-<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>spi <span class="op">=</span> pd.read_csv(<span class="st">'https://gist.githubusercontent.com/stragu/57b0a0750678bada09625d429a0f806b/raw/a18a454d7d225bd24074399a7ab79a4189e53501/spi.csv'</span>)</span>
-<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a><span class="co"># merge on two columns</span></span>
-<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a>df_all <span class="op">=</span> pd.merge(df, spi,</span>
-<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a>                  left_on<span class="op">=</span>[<span class="st">'iso_code'</span>, <span class="st">'year'</span>],</span>
-<span id="cb33-6"><a href="#cb33-6" aria-hidden="true" tabindex="-1"></a>                  right_on<span class="op">=</span>[<span class="st">'country_code'</span>, <span class="st">'year'</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>We specified the two data frames, and which columns we wanted to merge on. However, we end up losing a lot of data. Looking at the documentation for the <code>merge()</code> function, we can see that there are many ways to merge tables, depending on what we want to keep:</p>
-<div class="sourceCode" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>pd.merge?</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>The <code>how</code> argument defines which kind of merge we want to do. Because we want to keep all of the data from <code>df</code>, we want to do a “left merge”:</p>
-<div class="sourceCode" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>df_all <span class="op">=</span> pd.merge(df, spi,</span>
-<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>                  how<span class="op">=</span><span class="st">'left'</span>,</span>
-<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a>                  left_on<span class="op">=</span>[<span class="st">'iso_code'</span>, <span class="st">'year'</span>],</span>
-<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a>                  right_on<span class="op">=</span>[<span class="st">'country_code'</span>, <span class="st">'year'</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>We can now “drop” the useless country_code column:</p>
-<div class="sourceCode" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>df_all.pop(<span class="st">'country_code'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<blockquote class="blockquote">
-<p>Notice that the <code>pop</code> method is an “in-place” method: you don’t need to reassign the variable.</p>
-</blockquote>
+<p>Notice that we subtracted a value from a column. We can also perform mathematics with multiple columns:</p>
+<div class="sourceCode" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>df[<span class="st">"product"</span>] <span class="op">=</span> df[<span class="st">"column_x"</span>]<span class="op">*</span>df[<span class="st">"column_y"</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Let’s remove these new columns that we don’t need with the method <code>df.drop(columns = [...])</code>:</p>
+<div class="sourceCode" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>df.drop(columns <span class="op">=</span> [<span class="st">"zeroes"</span>, <span class="st">"copy_of_x"</span>, <span class="st">"deviation_from_mean"</span>, <span class="st">"product"</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="summaries" class="level2">
 <h2 class="anchored" data-anchor-id="summaries">Summaries</h2>
-<p>The <code>aggregate()</code> method, which has a shorter alias <code>agg()</code>, allows creating summaries by applying a function to a column. In combination with the <code>groupby()</code> method, we can create summary tables. For example, to find the average SPI for each country, and then sort the values in descending order:</p>
-<div class="sourceCode" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>df_all.groupby(<span class="st">'country'</span>).spi.agg(<span class="st">'mean'</span>).sort_values(ascending<span class="op">=</span><span class="va">False</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>If you want to export that summary table and use it outside Spyder, you can first save it as a variable, and then write it to a CSV file:</p>
-<div class="sourceCode" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>spi_sum <span class="op">=</span> df_all.groupby(<span class="st">'country'</span>).spi.agg(<span class="st">'mean'</span>).sort_values(ascending<span class="op">=</span><span class="va">False</span>)</span>
-<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a><span class="co"># write to file</span></span>
-<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a>spi_sum.to_csv(<span class="st">'spi_summary.csv'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<blockquote class="blockquote">
-<p>The CSV file should be found in your project directory, as it became the default working directory when we created the project.</p>
-</blockquote>
+<p>After cleaning up our data, we need to analyse it. This usually involves some kind of aggregation. For example, <em>what is the average <span class="math inline">\(x\)</span> per year?</em> requires aggregating over variable <span class="math inline">\(x\)</span> for each year.</p>
+<p>First, we need to group by a specific variable</p>
+<div class="sourceCode" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>gb <span class="op">=</span> df.groupby(<span class="st">"year"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>This thing in itself is a pretty abstract Python object, best thought of as a dataframe where we’ve identified a grouping variable.</p>
+<p>Next, we need to apply some aggregation to it (the groupby tells it to do it for each year)</p>
+<div class="sourceCode" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>avg_x_per_year <span class="op">=</span> gb[<span class="st">"variable_x"</span>].agg(<span class="st">"mean"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Of course, we could have done this in one line:</p>
+<div class="sourceCode" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>avg_x_per_year <span class="op">=</span> df.groupby(<span class="st">"year"</span>).agg(<span class="st">"mean"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>This is a really useful tool, because now we have something we can <em>visualise</em>. As the next session will show us, the visualisation tools generally just take in numbers and turn them into dots. We need to do the stats <em>beforehand</em>.</p>
+<p>As a taster, try running</p>
+<div class="sourceCode" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>avg_x_per_year.plot()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-<section id="visualising-data" class="level2">
-<h2 class="anchored" data-anchor-id="visualising-data">Visualising data</h2>
-<p>pandas integrates visualisation tools, thanks to the <code>plot()</code> method and its many arguments.</p>
-<p>For example, to visualise the relationship between CO<sub>2</sub>e per capita and SPI:</p>
-<div class="sourceCode" id="cb39"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>df_all.plot(x<span class="op">=</span><span class="st">'co2e_pc'</span>, y<span class="op">=</span><span class="st">'spi'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>The default kind of plot is a line plot, so let’s change that to a scatterplot:</p>
-<div class="sourceCode" id="cb40"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>df_all.plot(x<span class="op">=</span><span class="st">'co2e_pc'</span>, y<span class="op">=</span><span class="st">'spi'</span>, kind<span class="op">=</span><span class="st">'scatter'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Focusing on the latest year will guarantee that there only is one point per country:</p>
-<div class="sourceCode" id="cb41"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>df_all[df_all.year <span class="op">==</span> <span class="dv">2016</span>].plot(x<span class="op">=</span><span class="st">'co2e_pc'</span>,</span>
-<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>                                 y<span class="op">=</span><span class="st">'spi'</span>,</span>
-<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a>                                 kind<span class="op">=</span><span class="st">'scatter'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>To visualise a third variable, GDP per capita, let’s map it to the colour of the points, thanks to the <code>c</code> argument:</p>
-<div class="sourceCode" id="cb42"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>df_all[df_all.year <span class="op">==</span> <span class="dv">2016</span>].plot(x<span class="op">=</span><span class="st">'co2e_pc'</span>,</span>
-<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a>                                 y<span class="op">=</span><span class="st">'spi'</span>,</span>
-<span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a>                                 c<span class="op">=</span><span class="st">'gdp_pc'</span>,</span>
-<span id="cb42-4"><a href="#cb42-4" aria-hidden="true" tabindex="-1"></a>                                 colormap<span class="op">=</span><span class="st">'viridis'</span>,</span>
-<span id="cb42-5"><a href="#cb42-5" aria-hidden="true" tabindex="-1"></a>                                 kind<span class="op">=</span><span class="st">'scatter'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>We can change the labels too:</p>
-<div class="sourceCode" id="cb43"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>df_all[df_all.year <span class="op">==</span> <span class="dv">2016</span>].plot(x<span class="op">=</span><span class="st">'co2e_pc'</span>,</span>
-<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a>                                 y<span class="op">=</span><span class="st">'spi'</span>,</span>
-<span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a>                                 c<span class="op">=</span><span class="st">'gdp_pc'</span>,</span>
-<span id="cb43-4"><a href="#cb43-4" aria-hidden="true" tabindex="-1"></a>                                 colormap<span class="op">=</span><span class="st">'viridis'</span>,</span>
-<span id="cb43-5"><a href="#cb43-5" aria-hidden="true" tabindex="-1"></a>                                 kind<span class="op">=</span><span class="st">'scatter'</span>,</span>
-<span id="cb43-6"><a href="#cb43-6" aria-hidden="true" tabindex="-1"></a>                                 xlabel<span class="op">=</span><span class="st">'GHG per capita (MT CO2e/yr)'</span>,</span>
-<span id="cb43-7"><a href="#cb43-7" aria-hidden="true" tabindex="-1"></a>                                 ylabel<span class="op">=</span><span class="st">'Social Progress Index'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>If the x labels don’t show, try this workaround: <a href="https://github.com/pandas-dev/pandas/issues/36064#issuecomment-1011175535" class="uri">https://github.com/pandas-dev/pandas/issues/36064#issuecomment-1011175535</a></p>
-<section id="challenge-2-ghg-timeline" class="level3">
-<h3 class="anchored" data-anchor-id="challenge-2-ghg-timeline">Challenge 2: GHG timeline</h3>
-<p>How would you visualise global GHG emissions over the years, with one line per type of GHG?</p>
-<p>We can subset the columns that matter to us, create a summary, and plot it:</p>
-<div class="sourceCode" id="cb44"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>sub <span class="op">=</span> df_all[[<span class="st">'year'</span>, <span class="st">'co2'</span>, <span class="st">'methane'</span>, <span class="st">'nitrous_oxide'</span>]]</span>
-<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a>sub.groupby(<span class="st">'year'</span>).agg(<span class="st">'sum'</span>).plot(ylabel<span class="op">=</span><span class="st">'MT CO2e'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Remember that the default <code>kind</code> of plot in this function is <code>'line'</code>, which works for this visualisation. And as we fed it a series variable with several columns, it automatically assigned a different colour to each one.</p>
-</section>
-</section>
-<section id="saving-your-work" class="level2">
-<h2 class="anchored" data-anchor-id="saving-your-work">Saving your work</h2>
-<p>Your project can be reopened from the “Projects” menu in Spyder.</p>
-<p>By default, your variables are <em>not</em> saved, which is another reason why working with a script is important: you can execute the whole script in one go to get everything back. You can however save your variables as a <code>.spydata</code> file if you want to (for example, if it takes a lot of time to process your data).</p>
+<section id="exporting-results" class="level2">
+<h2 class="anchored" data-anchor-id="exporting-results">Exporting results</h2>
+<p>The last step in the process is saving the data. Let’s say we want to take that final dataframe and export it to a csv. That’s what the <code>df.to_csv()</code> method is for</p>
+<div class="sourceCode" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>avg_x_per_year.to_csv(<span class="st">"data/avg_x_per_year.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>This will save the dataframe to a .csv file and place it in the data folder.</p>
 </section>
 <section id="resources" class="level2">
 <h2 class="anchored" data-anchor-id="resources">Resources</h2>
@@ -612,11 +546,6 @@ window.Quarto = {
 <li><a href="https://docs.bokeh.org/en/latest/">Bokeh</a></li>
 <li><a href="https://vega.github.io/vega/">Vega</a></li>
 <li><a href="https://matplotlib.org/">Matplotlib</a></li>
-</ul></li>
-<li>About our datasets:
-<ul>
-<li><a href="https://ourworldindata.org">Our World in Data</a></li>
-<li><a href="https://www.socialprogress.org">Social Progress Index</a></li>
 </ul></li>
 <li>Our <a href="https://github.com/uqlibrary/technology-training/blob/master/Python/useful_links.md">compilation of useful Python links</a></li>
 </ul>
