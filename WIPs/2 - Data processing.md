@@ -105,16 +105,11 @@ C://Users/...
 ```
 You can choose whichever you prefer.
 
-## Exploring the Data
+### Initial look at the data
 
 Let's get back to data.
-Using the `type()` function confirms what type of variable the data is stored as:
 
-``` python
-type(df_raw)
-```
-
-This dataset is a fairly big one. We can investigate its size thanks to the `shape` attribute attached to all pandas dataframes:
+We can investigate the size of the data thanks to the `shape` attribute attached to all pandas dataframes:
 
 ``` python
 df_raw.shape
@@ -128,68 +123,88 @@ df_raw.columns
 
 Let's subset our data to focus on a handful of variables.
 
-## Subsetting data
+### Creating a backup
 
-We want to focus on only a few columns, especially since a lot of the data can be inferred from those.
+Data analysis in Python is safe because our variables are *copies* of the data - we aren't actually changing the files until we explicitly overwrite them. However, Python also has no *undo*, so if I delete something in my analysis, I can't get it back - I have to start all over again.
 
-We want to keep 8 columns:
+One way to mitigate this issue is by making a copy of the data
 
--   The `iso_code`, which is very useful for matching several datasets without having to worry about variations in country names
--   `country`
--   `year`
--   `population`
--   `gdp`
--   The three main greenhouse gases, which according to the codebook are all in million tonnes of CO<sub>2</sub>-equivalent:
-    -   `co2`
-    -   `methane`
-    -   `nitrous_oxide`
-
-To only keep these columns, we can index the dataframe with a list of names:
-
-``` python
-keep = ['iso_code', 'country', 'year', 'population', 'gdp', 'co2', 'methane', 'nitrous_oxide']
-df = df_raw[keep]
+```python
+df = df_raw.copy()
 ```
 
-The other issue with the data is that it starts in the 18th century, but we might want to ignore early patchy data:
+Now we have two variables: `df` is what we'll use, and `df_raw` stores the raw data. If we ever need to restart, we can simply run `df = df_raw.copy()`.
 
-``` python
-df = df[df.year >= 1900]
+## Accessing and Filtering Data
+
+So how do we access our data in Python? We use a type of indexing introduced by pandas, which revolves around using square brackets after the dataframe: `df[...]`.
+
+### Accessing columns
+To access a column, index with its name:
+
+```python
+df["column_name"]
 ```
 
-We can check that it has worked:
+We can access multiple by providing a **list** of names
+```python
+# Save the names in a list and then index
+column_names = ["name_1", "name_2"]
+df[column_names]
 
-``` python
-min(df.year)
+# This is equivalent to
+df[["name_1", "name_2"]]
 ```
 
-It looks like the dataset is also consistently missing values for nitrous oxide and methane for the last few years.
+If we want to *do* anything with it (like statistics or visualisation), it's worth saving the column(s) as a new variable
 
-### Challenge 1: remove recent patchy years
-
-How can you remove the patchy years after 2018? Design an operation that is similar to removing the pre-1900 data.
-
-Can you add a second command to check it has done the right thing?
-
-Solution:
-
-``` python
-df = df[df.year < 2019]
-max(df.year)
+```python
+df_subset = df[["name_1", "name_2"]]
 ```
 
-You could also run both subsets at the same time by separating them with brackets and using &
+### Accessing rows
+There's a few ways to access rows. The easiest is by slicing - if you want rows 5 to 10, use `df[5 : 10]`
+
+> Note that the end row is **not included**
+
 ``` python
-df2 = df[(df.year >= 1900) & (df.year <= 2018)]
+df[start_row : end_row]
 ```
 
-## Exploring data
+If you want to access a single row, we need to use `df.loc[]` or `df.iloc[]`. These are the go-to methods for accessing data if the above indexing isn't sufficient.
+
+* `df.loc[]` accesses rows by label (defaults to row number but could be anything)
+* `df.iloc[]` accesses rows by row number exclusively
+
+For a single row
+```python
+df.loc[row_label]
+df.iloc[row_num]
+```
+
+Finally, we can filter specific rows **by a condition** on one of the variables, e.g. *only rows where variable $x > 15$*.
+
+```python
+df[df["column_x"] > 15]
+# Or any other condition
+```
+
+As with the column case, it's useful to save this as a variable
+```python
+df_filtered = df[df["column_x"] > 15]
+```
+
+## Basic statistics
+
+How might we perform some basic statistics on our data?
 
 To check what kind of data each column is stored as, we can use the `dtypes` attribute:
 
 ``` python
 df.dtypes
 ```
+
+> In general, pandas will bring in numbers with `float64` and non-numeric data with `object`.
 
 The `describe()` method is useful for descriptive statistics about our numerical columns:
 
@@ -200,70 +215,73 @@ df.describe()
 However, it will only show the two first ones and two last ones. We can focus on a specific column instead, for example one that was hidden previously:
 
 ``` python
-df.co2.describe()
+df["column"].describe()
 ```
 
 Or a categorical column:
 
 ``` python
-df.country.describe()
+df["categorical_column"].describe()
 ```
 
 > For a categorical column, the information shown is different: for example, how many unique values there are, and what the most common value is.
 
-## More cleaning up
+What if you want specific statistics about a particular column? Usually there are methods available:
 
-Notice that the maximum co2 value (given above in `df.co2.describe()`) is 36826.508. Which country does this maximum value belong to? Let's investigate this by subsetting the data:
+```python
+# Applicable to all columns
+df["column"].count()
+df["column"].unique()
 
-``` python
-df[df.co2 == df.co2.max()]
+# For numeric columns only
+df["numeric_column"].min()
+df["numeric_column"].max()
+df["numeric_column"].mean()
+df["numeric_column"].median()
+df["numeric_column"].std()
+# ...
 ```
 
-We use a condition that will be checked against each row, and only the row that contains the maximum value will be returned.
+We can use these methods to filter our data. For example, the row which has the maximum value of variable $x$ is
+```python
+x_max = df["variable_x"].max()
+df[df["variable_x"] == x_max]
 
-The maximum co2 value is associated with the whole world. Many datasets have aggregate regions on top of single countries, which is something to keep in mind!
+# Or in one line
+df[df["variable_x"] == df["variable_x"].max()]
+```
+because we are looking for the row in `df["variable_x"]` (the whole column) that has the value `df["variable_x"].max()`.
 
-Here, we see that this entry has no ISO code (given as `nan`, *not a number*). We can find out how many rows do not have an ISO code at all by using Spyder's data explorer or by using two methods stringed together:
 
-``` python
-df.iso_code.isna().sum()
+## Challenge
+**Reduce your dataset to $\le 5$ variables (columns) and $\le 100$ rows using conditions** by filtering down to a particular subset of your data.
+
+## Adding and removing columns
+Sometimes we need to add new columns. It's the same process as overwriting existing columns - let's make a new column called "zeroes" where every row is 0
+
+```python
+df["zeroes"] = 0
 ```
 
-`isna()` returns the boolean values `True` or `False` depending on if the data is missing, and the `sum()` method can give a total of `True`s (because it converts `True` to 1, and `False` to 0).
-
-Similarly, we can average boolean values to find the fraction of missing data:
-
-``` python
-df.iso_code.isna().mean()
+We can also send in a column, for example
+```python
+df["copy_of_x"] = df["column_x"]
 ```
 
-Alternatively, pandas dataframes have a `count()` method to give a count of non-NA values for each column:
+Perhaps most usefully, we can manipulate the column we send in. For example, the deviation from the mean
+$$|\bar{x} - x_i|$$
+can be computed for each row:
+```python
+col_x = df["column_x"]
+avg_x = df["column_x"].mean()
 
-``` python
-df.count()
+df["deviation_from_mean"] = abs(col_x - avg_x)
+
+# Or all together on one line,
+df["deviation_from_mean"] = abs(df["column_x"] -  df["column_x"].mean())
 ```
+where `abs(...)` takes the absolute value
 
-We can see that quite a few rows have missing ISO codes, which for the most part indicates an aggregate region. So how do we remove all that superfluous data?
-
-Again, by using a logical test. But first, check what will be removed:
-
-``` python
-df[df.iso_code.isna()].country.unique()
-```
-
-Now to remove aggregate regions:
-
-``` python
-df = df[df.iso_code.notna()]
-```
-
-We can now check what actual countries are left in the dataset, with the `unique()` method:
-
-``` python
-df.country.unique()
-```
-
-## Adding columns
 
 Now that we have a clean dataset, we can expand it by calculating new interesting variables.
 
