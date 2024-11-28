@@ -3,6 +3,7 @@ title: Data Processing
 --- 
 
 In this second workshop we will cover
+
 - Examining / exploring data
 - Filtering rows and columns
 - Basic descriptive statistics
@@ -278,167 +279,60 @@ avg_x = df["column_x"].mean()
 df["deviation_from_mean"] = abs(col_x - avg_x)
 
 # Or all together on one line,
-df["deviation_from_mean"] = abs(df["column_x"] -  df["column_x"].mean())
+df["deviation_from_mean"] = abs(df["column_x"] - df["column_x"].mean())
 ```
 where `abs(...)` takes the absolute value
 
-
-Now that we have a clean dataset, we can expand it by calculating new interesting variables.
-
-For example, we can first sum the three greenhouse gases (as they use the same unit), and then calculate how much CO<sub>2</sub>-equivalent is emitted per person. We can also add GDP per capita to the dataset.
-
-For the total greenhouse gas emissions in CO<sub>2</sub>e:
-
-``` python
-df['co2e'] = df[['co2', 'methane', 'nitrous_oxide']].sum(axis=1)
+Notice that we subtracted a value from a column. We can also perform mathematics with multiple columns:
+```python
+df["product"] = df["column_x"]*df["column_y"]
 ```
 
-The operation is done row-wise: we use `axis=1` to specify that we apply the function in the column axis.
+Let's remove these new columns that we don't need with the method `df.drop(columns = [...])`:
 
-You can confirm by looking at the data that the NA values are skipped when calculating the sum. The help page for this method mentions the `skipna` argument, which is set to `True` by default:
-
-``` python
-df.sum?
+```python
+df.drop(columns = ["zeroes", "copy_of_x", "deviation_from_mean", "product"])
 ```
-
-    skipna : bool, default True
-        Exclude NA/null values when computing the result.
-
-And then, for the CO<sub>2</sub>e per capita and the GDP per capita:
-
-``` python
-df['co2e_pc'] = df.co2e / df.population
-df['gdp_pc'] = df.gdp / df.population
-```
-
-We now have three extra columns in our dataset.
-
-## Merging tables
-
-It is common to want to merge two datasets from two different sources. To do that, you will need common data to match rows on.
-
-We want to add the countries' Social Progress Index to our dataset.
-
-> You can find out more about the SPI on their website: <https://www.socialprogress.org/>
-
-The SPI dataset also has a three-letter code for the countries, which we can match to our existing `iso_code` column. We have an SPI for several different years, so we should match that column as well:
-
-``` python
-# read the data
-spi = pd.read_csv('https://gist.githubusercontent.com/stragu/57b0a0750678bada09625d429a0f806b/raw/a18a454d7d225bd24074399a7ab79a4189e53501/spi.csv')
-# merge on two columns
-df_all = pd.merge(df, spi,
-                  left_on=['iso_code', 'year'],
-                  right_on=['country_code', 'year'])
-```
-
-We specified the two data frames, and which columns we wanted to merge on. However, we end up losing a lot of data. Looking at the documentation for the `merge()` function, we can see that there are many ways to merge tables, depending on what we want to keep:
-
-``` python
-pd.merge?
-```
-
-The `how` argument defines which kind of merge we want to do. Because we want to keep all of the data from `df`, we want to do a "left merge":
-
-``` python
-df_all = pd.merge(df, spi,
-                  how='left',
-                  left_on=['iso_code', 'year'],
-                  right_on=['country_code', 'year'])
-```
-
-We can now "drop" the useless country_code column:
-
-``` python
-df_all.pop('country_code')
-```
-
-> Notice that the `pop` method is an "in-place" method: you don't need to reassign the variable.
 
 ## Summaries
 
-The `aggregate()` method, which has a shorter alias `agg()`, allows creating summaries by applying a function to a column. In combination with the `groupby()` method, we can create summary tables. For example, to find the average SPI for each country, and then sort the values in descending order:
+After cleaning up our data, we need to analyse it. This usually involves some kind of aggregation. For example, *what is the average $x$ per year?* requires aggregating over variable $x$ for each year. 
 
-``` python
-df_all.groupby('country').spi.agg('mean').sort_values(ascending=False)
+First, we need to group by a specific variable
+
+```python
+gb = df.groupby("year")
 ```
 
-If you want to export that summary table and use it outside Spyder, you can first save it as a variable, and then write it to a CSV file:
+This thing in itself is a pretty abstract Python object, best thought of as a dataframe where we've identified a grouping variable.
 
-``` python
-spi_sum = df_all.groupby('country').spi.agg('mean').sort_values(ascending=False)
-# write to file
-spi_sum.to_csv('spi_summary.csv')
+Next, we need to apply some aggregation to it (the groupby tells it to do it for each year)
+
+```python
+avg_x_per_year = gb["variable_x"].agg("mean")
 ```
 
-> The CSV file should be found in your project directory, as it became the default working directory when we created the project.
-
-## Visualising data
-
-pandas integrates visualisation tools, thanks to the `plot()` method and its many arguments.
-
-For example, to visualise the relationship between CO<sub>2</sub>e per capita and SPI:
-
-``` python
-df_all.plot(x='co2e_pc', y='spi')
+Of course, we could have done this in one line:
+```python
+avg_x_per_year = df.groupby("year").agg("mean")
 ```
 
-The default kind of plot is a line plot, so let's change that to a scatterplot:
+This is a really useful tool, because now we have something we can *visualise*. As the next session will show us, the visualisation tools generally just take in numbers and turn them into dots. We need to do the stats *beforehand*.
 
-``` python
-df_all.plot(x='co2e_pc', y='spi', kind='scatter')
+As a taster, try running
+```python
+avg_x_per_year.plot()
 ```
 
-Focusing on the latest year will guarantee that there only is one point per country:
+## Exporting results
 
-``` python
-df_all[df_all.year == 2016].plot(x='co2e_pc',
-                                 y='spi',
-                                 kind='scatter')
+The last step in the process is saving the data. Let's say we want to take that final dataframe and export it to a csv. That's what the `df.to_csv()` method is for
+
+```python
+avg_x_per_year.to_csv("data/avg_x_per_year.csv")
 ```
 
-To visualise a third variable, GDP per capita, let's map it to the colour of the points, thanks to the `c` argument:
-
-``` python
-df_all[df_all.year == 2016].plot(x='co2e_pc',
-                                 y='spi',
-                                 c='gdp_pc',
-                                 colormap='viridis',
-                                 kind='scatter')
-```
-
-We can change the labels too:
-
-``` python
-df_all[df_all.year == 2016].plot(x='co2e_pc',
-                                 y='spi',
-                                 c='gdp_pc',
-                                 colormap='viridis',
-                                 kind='scatter',
-                                 xlabel='GHG per capita (MT CO2e/yr)',
-                                 ylabel='Social Progress Index')
-```
-
-If the x labels don't show, try this workaround: <https://github.com/pandas-dev/pandas/issues/36064#issuecomment-1011175535>
-
-### Challenge 2: GHG timeline
-
-How would you visualise global GHG emissions over the years, with one line per type of GHG?
-
-We can subset the columns that matter to us, create a summary, and plot it:
-
-``` python
-sub = df_all[['year', 'co2', 'methane', 'nitrous_oxide']]
-sub.groupby('year').agg('sum').plot(ylabel='MT CO2e')
-```
-
-Remember that the default `kind` of plot in this function is `'line'`, which works for this visualisation. And as we fed it a series variable with several columns, it automatically assigned a different colour to each one.
-
-## Saving your work
-
-Your project can be reopened from the "Projects" menu in Spyder.
-
-By default, your variables are *not* saved, which is another reason why working with a script is important: you can execute the whole script in one go to get everything back. You can however save your variables as a `.spydata` file if you want to (for example, if it takes a lot of time to process your data).
+This will save the dataframe to a .csv file and place it in the data folder.
 
 ## Resources
 
@@ -451,7 +345,4 @@ By default, your variables are *not* saved, which is another reason why working 
     -   [Bokeh](https://docs.bokeh.org/en/latest/)
     -   [Vega](https://vega.github.io/vega/)
     -   [Matplotlib](https://matplotlib.org/)
--   About our datasets:
-    -   [Our World in Data](https://ourworldindata.org)
-    -   [Social Progress Index](https://www.socialprogress.org)
 -   Our [compilation of useful Python links](https://github.com/uqlibrary/technology-training/blob/master/Python/useful_links.md)
