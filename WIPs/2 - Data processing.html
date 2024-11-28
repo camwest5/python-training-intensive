@@ -334,30 +334,30 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="absolute" class="level4">
 <h4 class="anchored" data-anchor-id="absolute">Absolute</h4>
 <p>Absolute file paths always start at the “top” of your file system, e.g.&nbsp;one of the drives (like C:) for Windows users, so they are never ambiguous. It’s like providing your full address from country to street number.</p>
-<pre><code>C://Users/my_username/research/data/really_important_secret_data.csv</code></pre>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">C://Users/my_username/research/data/really_important_secret_data.csv</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="relative" class="level4">
 <h4 class="anchored" data-anchor-id="relative">Relative</h4>
 <p>Relative file paths start from <strong>your current file location</strong>. For files in my current folder, I just provide their name - like referring to another house on your street as “number 7”. <strong>Let’s assume we’re in the research folder</strong>.</p>
-<pre><code>file_in_my_current_folder.csv</code></pre>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">file_in_my_current_folder.csv</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>We can go to <em>down</em> folders from our current location:</p>
-<pre><code>data/really_important_secret_data.csv</code></pre>
+<div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">data/really_important_secret_data.csv</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>And we can go <em>up</em> folders from our current location</p>
-<pre><code>../../this_file_is_two_levels_up.csv</code></pre>
+<div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">../../this_file_is_two_levels_up.csv</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Or a combination of the two (e.g.&nbsp;up one, then down into a <em>different</em> folder)</p>
-<pre><code>../not_research/this_file_is_not_research.csv</code></pre>
+<div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">../not_research/this_file_is_not_research.csv</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><strong>What matters is that the relative reference depends on where your code is and will break if you move the script!</strong></p>
 </section>
 <section id="backslashes" class="level4">
 <h4 class="anchored" data-anchor-id="backslashes">Backslashes</h4>
 <p>One last note: Windows uses backslashes for their file paths</p>
-<pre><code>C:\\Users\...</code></pre>
+<div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="ex">C:\\Users\...</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>But Python uses backslashes as an escape character. For example, <code>"\n"</code> is a newline, <code>"\u1234"</code> is the unicode character U+1234 and confusingly <code>"\\"</code> is a <strong>single</strong> backslash. So we have to modify all Windows file paths to either</p>
-<pre><code>C:\\\\Users\\...
-
-OR
-
-C://Users/...</code></pre>
+<div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="ex">C:\\\\Users\\...</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="ex">OR</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="ex">C://Users/...</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>You can choose whichever you prefer.</p>
 </section>
 </section>
