@@ -101,6 +101,35 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   }
 }</script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
@@ -246,15 +275,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#setting-up-the-workspace" id="toc-setting-up-the-workspace" class="nav-link" data-scroll-target="#setting-up-the-workspace">Setting up the workspace</a></li>
   <li><a href="#importing-data" id="toc-importing-data" class="nav-link" data-scroll-target="#importing-data">Importing data</a></li>
   <li><a href="#aside---file-paths-and-backslashes" id="toc-aside---file-paths-and-backslashes" class="nav-link" data-scroll-target="#aside---file-paths-and-backslashes">Aside - File Paths and backslashes</a></li>
+  <li><a href="#initial-look-at-the-data" id="toc-initial-look-at-the-data" class="nav-link" data-scroll-target="#initial-look-at-the-data">Initial look at the data</a></li>
+  <li><a href="#creating-a-backup" id="toc-creating-a-backup" class="nav-link" data-scroll-target="#creating-a-backup">Creating a backup</a></li>
   </ul></li>
-  <li><a href="#exploring-the-data" id="toc-exploring-the-data" class="nav-link" data-scroll-target="#exploring-the-data">Exploring the Data</a></li>
-  <li><a href="#subsetting-data" id="toc-subsetting-data" class="nav-link" data-scroll-target="#subsetting-data">Subsetting data</a>
+  <li><a href="#accessing-and-filtering-data" id="toc-accessing-and-filtering-data" class="nav-link" data-scroll-target="#accessing-and-filtering-data">Accessing and Filtering Data</a>
   <ul class="collapse">
-  <li><a href="#challenge-1-remove-recent-patchy-years" id="toc-challenge-1-remove-recent-patchy-years" class="nav-link" data-scroll-target="#challenge-1-remove-recent-patchy-years">Challenge 1: remove recent patchy years</a></li>
+  <li><a href="#accessing-columns" id="toc-accessing-columns" class="nav-link" data-scroll-target="#accessing-columns">Accessing columns</a></li>
+  <li><a href="#accessing-rows" id="toc-accessing-rows" class="nav-link" data-scroll-target="#accessing-rows">Accessing rows</a></li>
   </ul></li>
-  <li><a href="#exploring-data" id="toc-exploring-data" class="nav-link" data-scroll-target="#exploring-data">Exploring data</a></li>
-  <li><a href="#more-cleaning-up" id="toc-more-cleaning-up" class="nav-link" data-scroll-target="#more-cleaning-up">More cleaning up</a></li>
-  <li><a href="#adding-columns" id="toc-adding-columns" class="nav-link" data-scroll-target="#adding-columns">Adding columns</a></li>
+  <li><a href="#basic-statistics" id="toc-basic-statistics" class="nav-link" data-scroll-target="#basic-statistics">Basic statistics</a></li>
+  <li><a href="#challenge" id="toc-challenge" class="nav-link" data-scroll-target="#challenge">Challenge</a></li>
+  <li><a href="#adding-and-removing-columns" id="toc-adding-and-removing-columns" class="nav-link" data-scroll-target="#adding-and-removing-columns">Adding and removing columns</a></li>
   <li><a href="#merging-tables" id="toc-merging-tables" class="nav-link" data-scroll-target="#merging-tables">Merging tables</a></li>
   <li><a href="#summaries" id="toc-summaries" class="nav-link" data-scroll-target="#summaries">Summaries</a></li>
   <li><a href="#visualising-data" id="toc-visualising-data" class="nav-link" data-scroll-target="#visualising-data">Visualising data</a>
@@ -361,90 +392,118 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>You can choose whichever you prefer.</p>
 </section>
 </section>
-</section>
-<section id="exploring-the-data" class="level2">
-<h2 class="anchored" data-anchor-id="exploring-the-data">Exploring the Data</h2>
-<p>Let’s get back to data. Using the <code>type()</code> function confirms what type of variable the data is stored as:</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="bu">type</span>(df_raw)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>This dataset is a fairly big one. We can investigate its size thanks to the <code>shape</code> attribute attached to all pandas dataframes:</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>df_raw.shape</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<section id="initial-look-at-the-data" class="level3">
+<h3 class="anchored" data-anchor-id="initial-look-at-the-data">Initial look at the data</h3>
+<p>Let’s get back to data.</p>
+<p>We can investigate the size of the data thanks to the <code>shape</code> attribute attached to all pandas dataframes:</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>df_raw.shape</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>The dataset contains dozens of columns. What are their names?</p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>df_raw.columns</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>df_raw.columns</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Let’s subset our data to focus on a handful of variables.</p>
 </section>
-<section id="subsetting-data" class="level2">
-<h2 class="anchored" data-anchor-id="subsetting-data">Subsetting data</h2>
-<p>We want to focus on only a few columns, especially since a lot of the data can be inferred from those.</p>
-<p>We want to keep 8 columns:</p>
+<section id="creating-a-backup" class="level3">
+<h3 class="anchored" data-anchor-id="creating-a-backup">Creating a backup</h3>
+<p>Data analysis in Python is safe because our variables are <em>copies</em> of the data - we aren’t actually changing the files until we explicitly overwrite them. However, Python also has no <em>undo</em>, so if I delete something in my analysis, I can’t get it back - I have to start all over again.</p>
+<p>One way to mitigate this issue is by making a copy of the data</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> df_raw.copy()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Now we have two variables: <code>df</code> is what we’ll use, and <code>df_raw</code> stores the raw data. If we ever need to restart, we can simply run <code>df = df_raw.copy()</code>.</p>
+</section>
+</section>
+<section id="accessing-and-filtering-data" class="level2">
+<h2 class="anchored" data-anchor-id="accessing-and-filtering-data">Accessing and Filtering Data</h2>
+<p>So how do we access our data in Python? We use a type of indexing introduced by pandas, which revolves around using square brackets after the dataframe: <code>df[...]</code>.</p>
+<section id="accessing-columns" class="level3">
+<h3 class="anchored" data-anchor-id="accessing-columns">Accessing columns</h3>
+<p>To access a column, index with its name:</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>df[<span class="st">"column_name"</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>We can access multiple by providing a <strong>list</strong> of names</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Save the names in a list and then index</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>column_names <span class="op">=</span> [<span class="st">"name_1"</span>, <span class="st">"name_2"</span>]</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>df[column_names]</span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a><span class="co"># This is equivalent to</span></span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>df[[<span class="st">"name_1"</span>, <span class="st">"name_2"</span>]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>If we want to <em>do</em> anything with it (like statistics or visualisation), it’s worth saving the column(s) as a new variable</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>df_subset <span class="op">=</span> df[[<span class="st">"name_1"</span>, <span class="st">"name_2"</span>]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="accessing-rows" class="level3">
+<h3 class="anchored" data-anchor-id="accessing-rows">Accessing rows</h3>
+<p>There’s a few ways to access rows. The easiest is by slicing - if you want rows 5 to 10, use <code>df[5 : 10]</code></p>
+<blockquote class="blockquote">
+<p>Note that the end row is <strong>not included</strong></p>
+</blockquote>
+<div class="sourceCode" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>df[start_row : end_row]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>If you want to access a single row, we need to use <code>df.loc[]</code> or <code>df.iloc[]</code>. These are the go-to methods for accessing data if the above indexing isn’t sufficient.</p>
 <ul>
-<li>The <code>iso_code</code>, which is very useful for matching several datasets without having to worry about variations in country names</li>
-<li><code>country</code></li>
-<li><code>year</code></li>
-<li><code>population</code></li>
-<li><code>gdp</code></li>
-<li>The three main greenhouse gases, which according to the codebook are all in million tonnes of CO<sub>2</sub>-equivalent:
-<ul>
-<li><code>co2</code></li>
-<li><code>methane</code></li>
-<li><code>nitrous_oxide</code></li>
-</ul></li>
+<li><code>df.loc[]</code> accesses rows by label (defaults to row number but could be anything)</li>
+<li><code>df.iloc[]</code> accesses rows by row number exclusively</li>
 </ul>
-<p>To only keep these columns, we can index the dataframe with a list of names:</p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>keep <span class="op">=</span> [<span class="st">'iso_code'</span>, <span class="st">'country'</span>, <span class="st">'year'</span>, <span class="st">'population'</span>, <span class="st">'gdp'</span>, <span class="st">'co2'</span>, <span class="st">'methane'</span>, <span class="st">'nitrous_oxide'</span>]</span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> df_raw[keep]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>The other issue with the data is that it starts in the 18th century, but we might want to ignore early patchy data:</p>
-<div class="sourceCode" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> df[df.year <span class="op">&gt;=</span> <span class="dv">1900</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>We can check that it has worked:</p>
-<div class="sourceCode" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="bu">min</span>(df.year)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>It looks like the dataset is also consistently missing values for nitrous oxide and methane for the last few years.</p>
-<section id="challenge-1-remove-recent-patchy-years" class="level3">
-<h3 class="anchored" data-anchor-id="challenge-1-remove-recent-patchy-years">Challenge 1: remove recent patchy years</h3>
-<p>How can you remove the patchy years after 2018? Design an operation that is similar to removing the pre-1900 data.</p>
-<p>Can you add a second command to check it has done the right thing?</p>
-<p>Solution:</p>
-<div class="sourceCode" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> df[df.year <span class="op">&lt;</span> <span class="dv">2019</span>]</span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="bu">max</span>(df.year)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>You could also run both subsets at the same time by separating them with brackets and using &amp;</p>
-<div class="sourceCode" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>df2 <span class="op">=</span> df[(df.year <span class="op">&gt;=</span> <span class="dv">1900</span>) <span class="op">&amp;</span> (df.year <span class="op">&lt;=</span> <span class="dv">2018</span>)]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>For a single row</p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>df.loc[row_label]</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>df.iloc[row_num]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Finally, we can filter specific rows <strong>by a condition</strong> on one of the variables, e.g.&nbsp;<em>only rows where variable <span class="math inline">\(x &gt; 15\)</span></em>.</p>
+<div class="sourceCode" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>df[df[<span class="st">"column_x"</span>] <span class="op">&gt;</span> <span class="dv">15</span>]</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Or any other condition</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>As with the column case, it’s useful to save this as a variable</p>
+<div class="sourceCode" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>df_filtered <span class="op">=</span> df[df[<span class="st">"column_x"</span>] <span class="op">&gt;</span> <span class="dv">15</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 </section>
-<section id="exploring-data" class="level2">
-<h2 class="anchored" data-anchor-id="exploring-data">Exploring data</h2>
+<section id="basic-statistics" class="level2">
+<h2 class="anchored" data-anchor-id="basic-statistics">Basic statistics</h2>
+<p>How might we perform some basic statistics on our data?</p>
 <p>To check what kind of data each column is stored as, we can use the <code>dtypes</code> attribute:</p>
-<div class="sourceCode" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>df.dtypes</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>df.dtypes</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<blockquote class="blockquote">
+<p>In general, pandas will bring in numbers with <code>float64</code> and non-numeric data with <code>object</code>.</p>
+</blockquote>
 <p>The <code>describe()</code> method is useful for descriptive statistics about our numerical columns:</p>
-<div class="sourceCode" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>df.describe()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>df.describe()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>However, it will only show the two first ones and two last ones. We can focus on a specific column instead, for example one that was hidden previously:</p>
-<div class="sourceCode" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>df.co2.describe()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>df[<span class="st">"column"</span>].describe()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Or a categorical column:</p>
-<div class="sourceCode" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>df.country.describe()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>df[<span class="st">"categorical_column"</span>].describe()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <blockquote class="blockquote">
 <p>For a categorical column, the information shown is different: for example, how many unique values there are, and what the most common value is.</p>
 </blockquote>
+<p>What if you want specific statistics about a particular column? Usually there are methods available:</p>
+<div class="sourceCode" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Applicable to all columns</span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>df[<span class="st">"column"</span>].count()</span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>df[<span class="st">"column"</span>].unique()</span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a><span class="co"># For numeric columns only</span></span>
+<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a>df[<span class="st">"numeric_column"</span>].<span class="bu">min</span>()</span>
+<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a>df[<span class="st">"numeric_column"</span>].<span class="bu">max</span>()</span>
+<span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a>df[<span class="st">"numeric_column"</span>].mean()</span>
+<span id="cb24-9"><a href="#cb24-9" aria-hidden="true" tabindex="-1"></a>df[<span class="st">"numeric_column"</span>].median()</span>
+<span id="cb24-10"><a href="#cb24-10" aria-hidden="true" tabindex="-1"></a>df[<span class="st">"numeric_column"</span>].std()</span>
+<span id="cb24-11"><a href="#cb24-11" aria-hidden="true" tabindex="-1"></a><span class="co"># ...</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>We can use these methods to filter our data. For example, the row which has the maximum value of variable <span class="math inline">\(x\)</span> is</p>
+<div class="sourceCode" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>x_max <span class="op">=</span> df[<span class="st">"variable_x"</span>].<span class="bu">max</span>()</span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>df[df[<span class="st">"variable_x"</span>] <span class="op">==</span> x_max]</span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Or in one line</span></span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>df[df[<span class="st">"variable_x"</span>] <span class="op">==</span> df[<span class="st">"variable_x"</span>].<span class="bu">max</span>()]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>because we are looking for the row in <code>df["variable_x"]</code> (the whole column) that has the value <code>df["variable_x"].max()</code>.</p>
 </section>
-<section id="more-cleaning-up" class="level2">
-<h2 class="anchored" data-anchor-id="more-cleaning-up">More cleaning up</h2>
-<p>Notice that the maximum co2 value (given above in <code>df.co2.describe()</code>) is 36826.508. Which country does this maximum value belong to? Let’s investigate this by subsetting the data:</p>
-<div class="sourceCode" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>df[df.co2 <span class="op">==</span> df.co2.<span class="bu">max</span>()]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>We use a condition that will be checked against each row, and only the row that contains the maximum value will be returned.</p>
-<p>The maximum co2 value is associated with the whole world. Many datasets have aggregate regions on top of single countries, which is something to keep in mind!</p>
-<p>Here, we see that this entry has no ISO code (given as <code>nan</code>, <em>not a number</em>). We can find out how many rows do not have an ISO code at all by using Spyder’s data explorer or by using two methods stringed together:</p>
-<div class="sourceCode" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>df.iso_code.isna().<span class="bu">sum</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p><code>isna()</code> returns the boolean values <code>True</code> or <code>False</code> depending on if the data is missing, and the <code>sum()</code> method can give a total of <code>True</code>s (because it converts <code>True</code> to 1, and <code>False</code> to 0).</p>
-<p>Similarly, we can average boolean values to find the fraction of missing data:</p>
-<div class="sourceCode" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>df.iso_code.isna().mean()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Alternatively, pandas dataframes have a <code>count()</code> method to give a count of non-NA values for each column:</p>
-<div class="sourceCode" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>df.count()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>We can see that quite a few rows have missing ISO codes, which for the most part indicates an aggregate region. So how do we remove all that superfluous data?</p>
-<p>Again, by using a logical test. But first, check what will be removed:</p>
-<div class="sourceCode" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>df[df.iso_code.isna()].country.unique()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Now to remove aggregate regions:</p>
-<div class="sourceCode" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> df[df.iso_code.notna()]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>We can now check what actual countries are left in the dataset, with the <code>unique()</code> method:</p>
-<div class="sourceCode" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>df.country.unique()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<section id="challenge" class="level2">
+<h2 class="anchored" data-anchor-id="challenge">Challenge</h2>
+<p><strong>Reduce your dataset to <span class="math inline">\(\le 5\)</span> variables (columns) and <span class="math inline">\(\le 100\)</span> rows using conditions</strong> by filtering down to a particular subset of your data.</p>
 </section>
-<section id="adding-columns" class="level2">
-<h2 class="anchored" data-anchor-id="adding-columns">Adding columns</h2>
+<section id="adding-and-removing-columns" class="level2">
+<h2 class="anchored" data-anchor-id="adding-and-removing-columns">Adding and removing columns</h2>
+<p>Sometimes we need to add new columns. It’s the same process as overwriting existing columns - let’s make a new column called “zeroes” where every row is 0</p>
+<div class="sourceCode" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>df[<span class="st">"zeroes"</span>] <span class="op">=</span> <span class="dv">0</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>We can also send in a column, for example</p>
+<div class="sourceCode" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>df[<span class="st">"copy_of_x"</span>] <span class="op">=</span> df[<span class="st">"column_x"</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Perhaps most usefully, we can manipulate the column we send in. For example, the deviation from the mean <span class="math display">\[|\bar{x} - x_i|\]</span> can be computed for each row:</p>
+<div class="sourceCode" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>col_x <span class="op">=</span> df[<span class="st">"column_x"</span>]</span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>avg_x <span class="op">=</span> df[<span class="st">"column_x"</span>].mean()</span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a>df[<span class="st">"deviation_from_mean"</span>] <span class="op">=</span> <span class="bu">abs</span>(col_x <span class="op">-</span> avg_x)</span>
+<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Or all together on one line,</span></span>
+<span id="cb28-7"><a href="#cb28-7" aria-hidden="true" tabindex="-1"></a>df[<span class="st">"deviation_from_mean"</span>] <span class="op">=</span> <span class="bu">abs</span>(df[<span class="st">"column_x"</span>] <span class="op">-</span>  df[<span class="st">"column_x"</span>].mean())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>where <code>abs(...)</code> takes the absolute value</p>
 <p>Now that we have a clean dataset, we can expand it by calculating new interesting variables.</p>
 <p>For example, we can first sum the three greenhouse gases (as they use the same unit), and then calculate how much CO<sub>2</sub>-equivalent is emitted per person. We can also add GDP per capita to the dataset.</p>
 <p>For the total greenhouse gas emissions in CO<sub>2</sub>e:</p>
