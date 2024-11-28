@@ -37,7 +37,7 @@
     "href": "WIPs/2 - Data processing.html#importing-data",
     "title": "Data Processing",
     "section": "Importing data",
-    "text": "Importing data\nOur data is a CO2 emission dataset from Our World in Data: https://raw.githubusercontent.com/owid/co2-data/master/owid-co2-data.csv\nIt is available under a CC-BY licence, an open licence that requires that any sharing or derivative of it needs to attribute the original source and authors.\nMore information about the dataset is included online, and the codebook, which is important to understand what exactly are the variables in the dataset, is also available online.\nWe can import it directly with pandas, with:\ndf_raw = pd.read_csv('https://raw.githubusercontent.com/owid/co2-data/master/owid-co2-data.csv')\nUsing the type() function confirms what type of variable the data is stored as:\ntype(df_raw)\nThis dataset is a fairly big one. We can investigate its size thanks to the shape attribute attached to all pandas dataframes:\ndf_raw.shape\nThe dataset contains dozens of columns. What are their names?\ndf_raw.columns\nLet’s subset our data to focus on a handful of variables.",
+    "text": "Importing data\nUsing one of your datase\ndf_raw = pd.read_csv('https://raw.githubusercontent.com/owid/co2-data/master/owid-co2-data.csv')\nUsing the type() function confirms what type of variable the data is stored as:\ntype(df_raw)\nThis dataset is a fairly big one. We can investigate its size thanks to the shape attribute attached to all pandas dataframes:\ndf_raw.shape\nThe dataset contains dozens of columns. What are their names?\ndf_raw.columns\nLet’s subset our data to focus on a handful of variables.",
     "crumbs": [
       "WIPs",
       "Data Processing"
