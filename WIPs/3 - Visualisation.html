@@ -20,6 +20,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -67,6 +101,35 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
@@ -206,7 +269,18 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#visualisation" id="toc-visualisation" class="nav-link active" data-scroll-target="#visualisation">Visualisation</a></li>
+  <li><a href="#visualisation" id="toc-visualisation" class="nav-link active" data-scroll-target="#visualisation">Visualisation</a>
+  <ul class="collapse">
+  <li><a href="#setting-up" id="toc-setting-up" class="nav-link" data-scroll-target="#setting-up">Setting up</a></li>
+  <li><a href="#seaborn-for-simple-visualisations" id="toc-seaborn-for-simple-visualisations" class="nav-link" data-scroll-target="#seaborn-for-simple-visualisations">Seaborn for simple visualisations</a>
+  <ul class="collapse">
+  <li><a href="#categorical-plots" id="toc-categorical-plots" class="nav-link" data-scroll-target="#categorical-plots">Categorical plots</a></li>
+  <li><a href="#distributions" id="toc-distributions" class="nav-link" data-scroll-target="#distributions">Distributions</a></li>
+  <li><a href="#relational-plots" id="toc-relational-plots" class="nav-link" data-scroll-target="#relational-plots">Relational plots</a></li>
+  </ul></li>
+  <li><a href="#going-deeper-with-matplotlib" id="toc-going-deeper-with-matplotlib" class="nav-link" data-scroll-target="#going-deeper-with-matplotlib">Going deeper with matplotlib</a></li>
+  <li><a href="#interactivity-with-plotly" id="toc-interactivity-with-plotly" class="nav-link" data-scroll-target="#interactivity-with-plotly">Interactivity with plotly</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -218,9 +292,165 @@ ul.task-list li input[type="checkbox"] {
 
 <section id="visualisation" class="level1">
 <h1>Visualisation</h1>
-<p>In this second workshop we will cover - Simple visualisations with matplotlib - Interactive visualisations with plotly</p>
+<p>In this second workshop we will cover</p>
+<ul>
+<li>Simple visualisations with seaborn</li>
+<li>Making modifications with matplotlib</li>
+<li>Matplotlib from scratch</li>
+<li>Interactive visualisations with plotly</li>
+</ul>
+<p>See analysis.py for seaborn stuff.</p>
+<section id="setting-up" class="level2">
+<h2 class="anchored" data-anchor-id="setting-up">Setting up</h2>
+<p>With the data manipulation tools from pandas, we can now visualise our data. For this workshop we’ll be working from the “Players2024.csv” dataset, which we should bring in with pandas:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_csv(<span class="st">"data/Players2024.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Take a quick peak at the dataset to remind yourself</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="seaborn-for-simple-visualisations" class="level2">
+<h2 class="anchored" data-anchor-id="seaborn-for-simple-visualisations">Seaborn for simple visualisations</h2>
+<p>To begin our visualisations, we’ll use the package <a href="(https://seaborn.pydata.org/index.html)">seaborn</a>, which allows you to quickly whip up decent graphs.</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<blockquote class="blockquote">
+<p>It’s called “seaborn” as a reference to fictional character <a href="https://en.wikipedia.org/wiki/Sam_Seaborn">Sam Seaborn</a>, whose initials are “sns”.</p>
+</blockquote>
+<p>Seaborn has three plotting functions</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>sns.catplot(...) <span class="co"># for categorical plotting, e.g. bar plots, box plots etc.</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>sns.relplot(...) <span class="co"># for relational plotting, e.g. line plots, scatter plots</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>sns.displot(...) <span class="co"># for distributions, e.g. histograms</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>We’ll begin with the first.</p>
+<section id="categorical-plots" class="level3">
+<h3 class="anchored" data-anchor-id="categorical-plots">Categorical plots</h3>
+<p>Categorical plots are produced with seaborn’s <code>sns.catplot()</code> function. There are two key pieces of information to pass:</p>
+<ul>
+<li>The data</li>
+<li>The variables</li>
+</ul>
+<p>Let’s see if there’s a relationship between the players’ <strong>heights</strong> and <strong>positions</strong>, by placing their positions on the <span class="math inline">\(x\)</span> axis and heights on the <span class="math inline">\(y\)</span>.</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>sns.catplot(data <span class="op">=</span> df, x <span class="op">=</span> <span class="st">"positions"</span>, y <span class="op">=</span> <span class="st">"height_cm"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Our first graph! This is called a <em>swarm</em> plot; it’s like a scatter plot for categorical variables.</p>
+<p>It’s already revealed two things to us about the data:</p>
+<ul>
+<li>There are some incorrect heights - nobody is shorter than 25cm!</li>
+<li>Someone’s position is “missing”</li>
+</ul>
+<p>Let’s get rid of these with the data analysis techniques from last session</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Remove missing position</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> df[df[<span class="st">"positions"</span>] <span class="op">!=</span> <span class="st">"Missing"</span>]</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Ensure reasonable heights</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> df[df[<span class="st">"height_cm"</span>] <span class="op">&gt;</span> <span class="dv">100</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Run the plot again, it’s more reasonable now</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>sns.catplot(data <span class="op">=</span> df, x <span class="op">=</span> <span class="st">"positions"</span>, y <span class="op">=</span> <span class="st">"height_cm"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<section id="bar-plots" class="level4">
+<h4 class="anchored" data-anchor-id="bar-plots">Bar plots</h4>
+<p>Swarm plots are interesting but not standard. You can change the plot type with the <code>kind</code> parameter</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>sns.catplot(data <span class="op">=</span> df, x <span class="op">=</span> <span class="st">"positions"</span>, y <span class="op">=</span> <span class="st">"height_cm"</span>, kind <span class="op">=</span> <span class="st">"bar"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<blockquote class="blockquote">
+<p>Many aspects of your plot can be adjusted by sending in additional parameters and is where seaborn excels.</p>
+</blockquote>
+<p>It seems like goalkeepers are taller, but not by much. Let’s look at the standard deviation for each position by changing the <code>estimator =</code> parameter (default is mean)</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>sns.catplot(data <span class="op">=</span> df, x <span class="op">=</span> <span class="st">"positions"</span>, y <span class="op">=</span> <span class="st">"height_cm"</span>, kind <span class="op">=</span> <span class="st">"bar"</span>, estimator <span class="op">=</span> <span class="st">"std"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Clearly there’s a lot less variation in goalkeepers - they’re all tall.</p>
+</section>
+<section id="box-plots" class="level4">
+<h4 class="anchored" data-anchor-id="box-plots">Box plots</h4>
+<p>Let’s make box plots instead. It’s the same procedure, just change to <code>kind = "box"</code> and remove <code>estimator =</code></p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>sns.catplot(data <span class="op">=</span> df, x <span class="op">=</span> <span class="st">"positions"</span>, y <span class="op">=</span> <span class="st">"height_cm"</span>, kind <span class="op">=</span> <span class="st">"box"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Just as we predicted.</p>
+</section>
+</section>
+<section id="distributions" class="level3">
+<h3 class="anchored" data-anchor-id="distributions">Distributions</h3>
+<section id="histograms" class="level4">
+<h4 class="anchored" data-anchor-id="histograms">Histograms</h4>
+<p>Let’s move to the “Age” parameter now. We can look at the distribution of ages with</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>sns.displot(data <span class="op">=</span> df, x <span class="op">=</span> <span class="st">"Age"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Looks a bit funny with those gaps - let’s change the number of bins with <code>bins = 28</code></p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>sns.displot(data <span class="op">=</span> df, x <span class="op">=</span> <span class="st">"Age"</span>, bins <span class="op">=</span> <span class="dv">28</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Now, what if you wanted to look at the distribution for different variables? We can make a separate distribution for each position with the <code>col = "position"</code> argument, specifying a new column for each position</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>sns.displot(data <span class="op">=</span> df, x <span class="op">=</span> <span class="st">"Age"</span>, bins <span class="op">=</span> <span class="dv">28</span>, col <span class="op">=</span> <span class="st">"positions"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="kernel-density-estimates" class="level4">
+<h4 class="anchored" data-anchor-id="kernel-density-estimates">Kernel density estimates</h4>
+<p>Finally, you don’t <em>have</em> to do histograms. You could also do a Kernel Density Estimate, with <code>kind = "kde"</code> (let’s remove <code>bins =</code> and <code>col =</code>)</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>sns.displot(data <span class="op">=</span> df, x <span class="op">=</span> <span class="st">"Age"</span>, kind <span class="op">=</span> <span class="st">"kde"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>If you want a separate line for each position, we should indicate that each position needs a different colour/hue with <code>hue = "position"</code></p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>sns.displot(data <span class="op">=</span> df, x <span class="op">=</span> <span class="st">"Age"</span>, hue <span class="op">=</span> <span class="st">"position"</span>, kind <span class="op">=</span> <span class="st">"kde"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+</section>
+<section id="relational-plots" class="level3">
+<h3 class="anchored" data-anchor-id="relational-plots">Relational plots</h3>
+<p>It seems like players peak in their mid-twenties, but goalkeepers stay for longer. Let’s see if there’s a relationship between players’ <strong>age</strong> and <strong>height</strong></p>
+<section id="scatter-plots" class="level4">
+<h4 class="anchored" data-anchor-id="scatter-plots">Scatter plots</h4>
+<p>We’ll start with a scatter plot</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>sns.relplot(data <span class="op">=</span> df, x <span class="op">=</span> <span class="st">"Age"</span>, y <span class="op">=</span> <span class="st">"height_cm"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Not much of a trend there, although the bottom-right looks a bit emptier than the rest (could it be that short old players are the first to retire?).</p>
+<p>We can use <code>hue =</code> to have a look at positions again</p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>sns.relplot(data <span class="op">=</span> df, x <span class="op">=</span> <span class="st">"Age"</span>, y <span class="op">=</span> <span class="st">"height_cm"</span>, hue <span class="op">=</span> <span class="st">"positions"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Yup, goalkeepers are tall, and everyone else is a jumble.</p>
+</section>
+<section id="line-plots" class="level4">
+<h4 class="anchored" data-anchor-id="line-plots">Line plots</h4>
+<p>Let’s do a line plot of the average height per age.</p>
+<div class="sourceCode" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>sns.relplot(data <span class="op">=</span> df, x <span class="op">=</span> <span class="st">"Age"</span>, y <span class="op">=</span> <span class="st">"height_cm"</span>, kind <span class="op">=</span> <span class="st">"line"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Seems pretty flat, except the ends are a bit weird because there’s not much data. Let’s eliminate everything before 17 and after 35 and plot it</p>
+<div class="sourceCode" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create smaller dataframe</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>condition <span class="op">=</span> (df[<span class="st">"Age"</span>] <span class="op">&gt;</span> <span class="dv">17</span>) <span class="op">&amp;</span> (df[<span class="st">"Age"</span>] <span class="op">&lt;</span> <span class="dv">35</span>)</span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>inner_ages <span class="op">=</span> df[condition]</span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Line plot</span></span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>sns.relplot(data <span class="op">=</span> inner_ages, x <span class="op">=</span> <span class="st">"Age"</span>, y <span class="op">=</span> <span class="st">"height_cm"</span>, kind <span class="op">=</span> <span class="st">"line"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Looks a bit shaky but that’s just because it’s zoomed in - notice that we go from 182cm to 184cm. We’ll fix this when we look at matplotlib in the next section.</p>
+</section>
+<section id="combining-the-two" class="level4">
+<h4 class="anchored" data-anchor-id="combining-the-two">Combining the two</h4>
+<p>We can combine our scatter and line plots together.</p>
+<ol type="1">
+<li>Make the first plot as normal</li>
+<li>For all additional (overlaying) plots, use an <strong>axes-level plot</strong> instead of <code>sns.relplot()</code> etc. These just draw the points/bars/lines, and are normally behind-the-scenes. There’s one for every plot type, and look like
+<ul>
+<li><code>sns.lineplot()</code></li>
+<li><code>sns.scatterplot()</code></li>
+<li><code>sns.boxplot()</code></li>
+<li><code>sns.histplot()</code></li>
+<li>etc.</li>
+</ul></li>
+</ol>
+<p>For example,</p>
+<div class="sourceCode" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Figure level plot</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>sns.relplot(data <span class="op">=</span> df, x <span class="op">=</span> <span class="st">"Age"</span>, y <span class="op">=</span> <span class="st">"height_cm"</span>, hue <span class="op">=</span> <span class="st">"positions"</span>)</span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Axes level plot (drop the kind = )</span></span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>sns.lineplot(data <span class="op">=</span> inner_ages, x <span class="op">=</span> <span class="st">"Age"</span>, y <span class="op">=</span> <span class="st">"height_cm"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<blockquote class="blockquote">
+<p><strong>You can’t include <code>kind =</code> inside an axes level plot</strong></p>
+</blockquote>
+<p>Let’s swap the colour variable from the scatter plot to the line plot</p>
+<div class="sourceCode" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Figure level plot</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>sns.relplot(data <span class="op">=</span> df, x <span class="op">=</span> <span class="st">"Age"</span>, y <span class="op">=</span> <span class="st">"height_cm"</span>)</span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Axes level plot (drop the kind = )</span></span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>sns.lineplot(data <span class="op">=</span> inner_ages, x <span class="op">=</span> <span class="st">"Age"</span>, y <span class="op">=</span> <span class="st">"height_cm"</span>, hue <span class="op">=</span> <span class="st">"positions"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Finally, let’s make the scatter dots smaller with <code>s = 10</code> and grey with <code>color = "grey"</code>.</p>
+<div class="sourceCode" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Figure level plot</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>sns.relplot(data <span class="op">=</span> df, x <span class="op">=</span> <span class="st">"Age"</span>, y <span class="op">=</span> <span class="st">"height_cm"</span>, s <span class="op">=</span> <span class="dv">10</span>, c <span class="op">=</span> <span class="st">"grey"</span>)</span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Axes level plot (drop the kind = )</span></span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>sns.lineplot(data <span class="op">=</span> inner_ages, x <span class="op">=</span> <span class="st">"Age"</span>, y <span class="op">=</span> <span class="st">"height_cm"</span>, hue <span class="op">=</span> <span class="st">"positions"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+</section>
+</section>
+<section id="going-deeper-with-matplotlib" class="level2">
+<h2 class="anchored" data-anchor-id="going-deeper-with-matplotlib">Going deeper with matplotlib</h2>
+</section>
+<section id="interactivity-with-plotly" class="level2">
+<h2 class="anchored" data-anchor-id="interactivity-with-plotly">Interactivity with plotly</h2>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->
