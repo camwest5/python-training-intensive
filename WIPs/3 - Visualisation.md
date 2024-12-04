@@ -165,11 +165,11 @@ Let's do a line plot of the average height per age.
 sns.relplot(data = df, x = "Age", y = "height_cm", kind = "line")
 ```
 
-Seems pretty flat, except the ends are a bit weird because there's not much data. Let's eliminate everything before 17 and after 35 and plot it
+Seems pretty flat, except the ends are a bit weird because there's not much data. Let's eliminate everything before 17 and after 38 and plot it
 
 ```python
 # Create smaller dataframe
-condition = (df["Age"] > 17) & (df["Age"] < 35)
+condition = (df["Age"] > 17) & (df["Age"] < 38)
 inner_ages = df[condition]
 
 # Line plot
@@ -212,7 +212,7 @@ sns.lineplot(data = inner_ages, x = "Age", y = "height_cm", hue = "positions")
 Finally, let's make the scatter dots smaller with `s = 10` and grey with `color = "grey"`.
 ```python
 # Figure level plot
-sns.relplot(data = df, x = "Age", y = "height_cm", s = 10, c = "grey")
+sns.relplot(data = df, x = "Age", y = "height_cm", s = 10, color = "grey")
 
 # Axes level plot (drop the kind = )
 sns.lineplot(data = inner_ages, x = "Age", y = "height_cm", hue = "positions")
@@ -220,5 +220,141 @@ sns.lineplot(data = inner_ages, x = "Age", y = "height_cm", hue = "positions")
 
 ## Going deeper with matplotlib
 
+Seaborn is great for simple and initial visualisations, but when you need to make adjustments it gets tricky. At its core, seaborn is just a simple way of using [matplotlib](https://matplotlib.org/), an extensive and popular plotting package. It was created as a way of doing MATLAB visualisations with Python, so if you're coming from there, things will feel familiar.
+
+**Pros**
+
+* Customisable. You can tweak almost every parameter of the visualisations
+* Fast. It can handle large data
+* Popular. Lots of people use it, and knowing it will help you collaborate
+
+**Cons** - a bit programmy
+
+* Steep-ish learning curve. Creating basic plots can be easy, but its set up with enough complexity that it takes a bit of work to figure out what's going on.
+* Cumbersome. You can tweak almost everything, but this means that it can take some effort to tweak *anything*.
+
+
+We're barely going to touch the matplotlib surface, but we'll look at some essentials.
+
+To begin with, we want to bring in matplotlib as follows
+
+```python
+import matplotlib.pyplot as plt
+```
+
+### Making modifications
+
+
+#### Titles
+Notice that the $y$ axis has an ugly label? That's because seaborn is just drawing from your dataframe.
+
+We can change axis labels with
+
+```python
+plt.ylabel("Height (cm)")
+```
+and similarly you could change `plt.xlabel(...)`.
+
+> Make sure you run the above line **at the same time** as your plotting function. You can either
+> * Highlight **all** the code and press <kbd>F9</kbd>
+> * Make a cell with `#%%` and press <kbd>ctrl</kbd> + <kbd>enter</kbd>
+
+We can also change the legend title to "Position"
+```python
+plt.legend(title = "Position")
+```
+
+And its location with `loc = "lower left"`
+```python
+plt.legend(title = "Position", loc = "lower left")
+```
+
+And give the whole plot a title with
+```python
+plt.title("Players' heights vs ages")
+```
+
+All of these together, with the plot, look like
+
+```python
+# Figure level plot
+sns.relplot(data = df, x = "Age", y = "height_cm", s = 10, color = "grey")
+
+# Axes level plot (drop the kind = )
+sns.lineplot(data = inner_ages, x = "Age", y = "height_cm", hue = "positions")
+
+# Titles
+plt.ylabel("Height (cm)")
+plt.legend(title = "Position")
+plt.title("Players' heights vs ages")
+```
+
+### Annotations
+
+You might want to annotate your plot with text and arrows. Text is simple with the `plt.text()` function; we just need to specify its coordinates and the contents.
+
+```python
+plt.text(38.5, 181, "Not enough\ndata for mean")
+```
+> The characters `\n` mean 'new line'
+
+We could annotate with arrows too. This is more complex, 
+
+```python
+plt.annotate(text = "No short\nolder players", xy = [37,165], xytext = [40,172],
+             arrowprops = dict(width = 1, headwidth = 10, headlength = 10, 
+                          facecolor = "black"))
+```
+> I've split this over multiple lines, but its still **one function** - check the brackets
+
+All together, our plot has become
+
+```python
+# Figure level plot
+sns.relplot(data = df, x = "Age", y = "height_cm", s = 10, color = "grey")
+
+# Axes level plot (drop the kind = )
+sns.lineplot(data = inner_ages, x = "Age", y = "height_cm", hue = "positions")
+
+# Titles
+plt.ylabel("Height (cm)")
+plt.legend(title = "Position", loc = "lower left")
+plt.title("Players' heights vs ages")
+
+# Annotations
+plt.text(38.5, 181, "Not enough\ndata for mean")
+plt.annotate("No short\nolder players", [37,165], [40,172], 
+             arrowprops = dict(width = 1,headwidth = 10,headlength = 10, 
+                               facecolor = "black"))
+```
+
+### Axis limits
+
+The last feature we'll look at is editing axis limits. Let's try to make more room in the bottom left for the legend with the functions `plt.xlim()` and `plt.ylim()`
+
+```python
+# Figure level plot
+sns.relplot(data = df, x = "Age", y = "height_cm", s = 10, color = "grey")
+
+# Axes level plot (drop the kind = )
+sns.lineplot(data = inner_ages, x = "Age", y = "height_cm", hue = "positions")
+
+# Titles
+plt.ylabel("Height (cm)")
+plt.legend(title = "Position", loc = "lower left")
+plt.title("Players' heights vs ages")
+
+# Annotations
+plt.text(38.5, 181, "Not enough\ndata for mean")
+plt.annotate("No short\nolder players", [37,165], [40,172], 
+             arrowprops = dict(width = 1,headwidth = 10,headlength = 10, 
+                               facecolor = "black"))
+
+# Axis limits
+plt.xlim([10,45])
+plt.ylim([150,210])
+```
+
+I'm not sure that looks any better, but you get the idea!
 
 ## Interactivity with plotly
