@@ -284,7 +284,10 @@ window.Quarto = {
   <li><a href="#annotations" id="toc-annotations" class="nav-link" data-scroll-target="#annotations">Annotations</a></li>
   <li><a href="#axis-limits" id="toc-axis-limits" class="nav-link" data-scroll-target="#axis-limits">Axis limits</a></li>
   </ul></li>
-  <li><a href="#interactivity-with-plotly" id="toc-interactivity-with-plotly" class="nav-link" data-scroll-target="#interactivity-with-plotly">Interactivity with plotly</a></li>
+  <li><a href="#interactivity-with-plotly" id="toc-interactivity-with-plotly" class="nav-link" data-scroll-target="#interactivity-with-plotly">Interactivity with plotly</a>
+  <ul class="collapse">
+  <li><a href="#the-basics" id="toc-the-basics" class="nav-link" data-scroll-target="#the-basics">The basics</a></li>
+  </ul></li>
   </ul></li>
   </ul>
 </nav>
@@ -555,8 +558,35 @@ window.Quarto = {
 </section>
 <section id="interactivity-with-plotly" class="level2">
 <h2 class="anchored" data-anchor-id="interactivity-with-plotly">Interactivity with plotly</h2>
+<p>For the last part of this section, we’re going to briefly look at making interactive plots with plotly.</p>
+<p>We bring in the tools with</p>
+<div class="sourceCode" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> plotly.express <span class="im">as</span> px</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<blockquote class="blockquote">
+<p>You’ll probably need to install it first - use either</p>
+<div class="sourceCode" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>conda install plotly</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>OR</p>
+<div class="sourceCode" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>pip install plotly</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>depending on your installation.</p>
+</blockquote>
+<p>Plotly works by creating a visualisation like we’ve been doing, and then loading it into something dynamic, like a web browser. <strong>Spyder does not support interactive plots</strong>. This means we need to change the default settings with</p>
+<div class="sourceCode" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> plotly.io <span class="im">as</span> pio</span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>pio.renderers.default <span class="op">=</span> <span class="st">"browser"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Now, plots should all load in your default browser.</p>
+<section id="the-basics" class="level3">
+<h3 class="anchored" data-anchor-id="the-basics">The basics</h3>
+<p>We make plotly graphs very similarly to seaborn. Let’s take our first plot from above,</p>
+<div class="sourceCode" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>sns.relplot(data <span class="op">=</span> df, x <span class="op">=</span> <span class="st">"Age"</span>, y <span class="op">=</span> <span class="st">"height_cm"</span>, s <span class="op">=</span> <span class="dv">10</span>, color <span class="op">=</span> <span class="st">"grey"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>and turn it into a plotly one.</p>
+<ol type="1">
+<li>We need to use <code>px.scatter</code> instead of <code>sns.relplot</code></li>
+<li>We need to use <code>data_frame =</code> instead of <code>data =</code></li>
+<li>Let’s remove the <code>s =</code> and <code>color =</code> for now</li>
+</ol>
+<div class="sourceCode" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>px.scatter(data_frame <span class="op">=</span> df, x <span class="op">=</span> <span class="st">"Age"</span>, y <span class="op">=</span> <span class="st">"height_cm"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<!-- Not working for me...? -->
 
 
+</section>
 </section>
 </section>
 
