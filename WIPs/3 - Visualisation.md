@@ -358,3 +358,49 @@ plt.ylim([150,210])
 I'm not sure that looks any better, but you get the idea!
 
 ## Interactivity with plotly
+
+For the last part of this section, we're going to briefly look at making interactive plots with plotly.
+
+We bring in the tools with
+
+```python
+import plotly.express as px
+```
+
+> You'll probably need to install it first - use either
+> ```python
+> conda install plotly
+> ```
+> OR
+> ```python
+> pip install plotly
+> ```
+> depending on your installation.
+
+Plotly works by creating a visualisation like we've been doing, and then loading it into something dynamic, like a web browser. **Spyder does not support interactive plots**. This means we need to change the default settings with
+
+```python
+import plotly.io as pio
+pio.renderers.default = "browser"
+```
+
+Now, plots should all load in your default browser.
+
+### The basics
+
+We make plotly graphs very similarly to seaborn. Let's take our first plot from above,
+
+```python
+sns.relplot(data = df, x = "Age", y = "height_cm", s = 10, color = "grey")
+```
+
+and turn it into a plotly one.
+
+1. We need to use `px.scatter` instead of `sns.relplot`
+2. We need to use `data_frame = ` instead of `data = `
+3. Let's remove the `s = ` and `color = ` for now
+
+```python
+px.scatter(data_frame = df, x = "Age", y = "height_cm")
+```
+<!-- Not working for me...? -->
