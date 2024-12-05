@@ -242,6 +242,24 @@ To begin with, we want to bring in matplotlib as follows
 import matplotlib.pyplot as plt
 ```
 
+
+### Saving plots
+Before we move to adjusting the plot, let's just look at how you save it. While you *can* do this with seaborn, the matplotlib way is also very simple.
+
+As a first step, you should make a new folder. Navigate using your file explorer to the project and create a new folder called "plots".
+
+Next, save the current plot with `plt.savefig("place_location_here")`, and **we have to do this at the same time that we make the plot**. So run all this code at once:
+```python
+# Figure level plot
+sns.relplot(data = df, x = "Age", y = "height_cm", s = 10, color = "grey")
+
+# Axes level plot (drop the kind = )
+sns.lineplot(data = inner_ages, x = "Age", y = "height_cm", hue = "positions")
+
+plt.savefig("plots/first_saved_plot.png")
+```
+
+
 ### Making modifications
 
 
@@ -399,8 +417,66 @@ and turn it into a plotly one.
 1. We need to use `px.scatter` instead of `sns.relplot`
 2. We need to use `data_frame = ` instead of `data = `
 3. Let's remove the `s = ` and `color = ` for now
+4. Save the plot as a variable
 
 ```python
 px.scatter(data_frame = df, x = "Age", y = "height_cm")
 ```
-<!-- Not working for me...? -->
+
+Notice how you can hover over the points now? It's interactive!
+
+### Introducing more info and neatening up
+
+Like seaborn's "hue", we can use `color = ` to introduce a third variable
+
+```python
+px.scatter(data_frame = df, x = "Age", y = "height_cm", color = "position")
+```
+
+And like seaborn's "col", we can facet with `facet_col = `
+
+```python
+px.scatter(data_frame = df, x = "Age", y = "height_cm", color = "position",
+           facet_col = "positions")
+```
+
+Personally, I think these are too squished. We can specify the maximum number of columns with `facet_col_wrap = `
+
+```python
+px.scatter(data_frame = df, x = "Age", y = "height_cm", color = "positions",
+           facet_col = "positions", facet_col_wrap = 2)
+```
+
+Finally, let's adjust the information in the hover. We can give each point a name with `hover_name = ` - how about their actual names?
+
+```python
+px.scatter(data_frame = df, x = "Age", y = "height_cm", color = "positions",
+           facet_col = "positions", facet_col_wrap = 2, hover_name = "name")
+```
+
+And let's also include their nationalities
+
+```python
+px.scatter(data_frame = df, x = "Age", y = "height_cm", color = "positions",
+           facet_col = "positions", facet_col_wrap = 2, hover_name = "name",
+           hover_data = "nationality")
+```
+
+### Saving interactive plots
+
+Since these are interactive, we can't save them as normal. The easiest option is to save them as HTML files - like websites - which we can open from our browsers.
+
+First, save the plot into a variable
+```python
+fig = px.scatter(data_frame = df, x = "Age", y = "height_cm", color = "positions",
+                 facet_col = "positions", facet_col_wrap = 2, hover_name = "name",
+                 hover_data = "nationality")
+```
+
+Then, write it to HTML
+
+```python
+fig.write_html("plot.html")
+```
+
+## Conclusion
