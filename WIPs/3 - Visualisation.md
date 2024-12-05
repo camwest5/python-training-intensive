@@ -1,6 +1,8 @@
-# Visualisation
+---
+title: Data Processing
+--- 
 
-In this second workshop we will cover
+In this third workshop we will cover
 
 - Simple visualisations with seaborn
 - Making modifications with matplotlib
