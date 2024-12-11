@@ -115,6 +115,102 @@ else:
 
 ## Repeat after me
 
+Sometimes you need to repeat a task multiple times. Sometimes hundreds. Maybe you need to loop through 1 million pieces of data. Not fun.
+
+Python's loops offer us a way to run a section of code multiple times. There are two types: `for` loops, which run the code once for each element in a sequence (like a list or string), and `while` loops, which run until some condition is false.
+
+### `while` loops
+These are almost the same as `if` statements, except for the fact that they run the code multiple times. Let's begin with a basic conditional
+
+```python
+number = 5
+
+if number < 10:
+    print(number + "is less than 10.")
+```
+
+The `print` statement runs once if the condition is true. 
+
+What if we wanted to check all the numbers between 5 and 10? We can use a while loop.
+
+```python
+number = 5
+
+while number < 10:
+    print(number + "is less than 10.")
+    number = number + 1
+```
+
+We've done two things
+
+1. Replace `if` with `while`
+2. Introduce `number = number + 1` to increase the number each time.
+
+> Without step 2, we'd have an **infinite loop** -- one that never stops, because the condition would always be true!
+
+While loops are useful for repeating code an indeterminate number of times.
+
+### `for` loops
+Realistically, you're most likely to use a **for** loop. They're inherently safer (you can't have an infinite loop) and often handier.
+
+In Python, `for` loops iterate through a sequence, like the objects in a list. This is more like other languages' `foreach`, than most's `for`.
+
+Let's say you have a list of different fruit
+
+```python
+list_of_fruits = ["apple", "banana", "cherry"]
+```
+
+and you want to run a section of code on `"apple"`, then `"banana"`, then `"cherry"`. Maybe you want to know which ones have the letter "a". We can start with a `for` loop
+
+```python
+list_of_fruits = ["apple", "banana", "cherry"]
+
+for fruit in list_of_fruits:
+    print(fruit)
+```
+
+This loop's job is to print out the variable `fruit`. But where is `fruit` defined? Well, the `for` loop runs `print(fruit)` for every element of `list_of_fruits`, **storing the current element in the variable `fruit`**. If we were to write it out explicitly, it would look like
+
+```python
+fruit = list_of_fruits[0]
+print(fruit)
+
+fruit = list_of_fruits[1]
+print(fruit)
+
+fruit = list_of_fruits[2]
+print(fruit)
+```
+
+Let's return to our goal: working out which ones have an "a". We need to put a **conditional** inside the loop:
+
+```python
+list_of_fruits = ["apple", "banana", "cherry"]
+
+for fruit in list_of_fruits:
+    if "a" in fruit:
+        print("a is in " + fruit)
+    else:
+        print("a is not in " + fruit)
+```
+
+### Using `range`
+
+There's a special Python object which is useful for loops, the `range`. This object 'contains' all the numbers between a certain range. For example,
+
+```python
+range(0,5)
+```
+
+cover the numbers $0-4$, and is somewhat equivalent to `[0,1,2,3,4]` (for looping purposes). Of course, we can choose a *much* bigger number:
+
+```python
+for i in range(0,1000)
+    print(i)
+```
+ will print *every number* between $0$ and $1000$. This can be useful if you need to loop through multiple objects by indexing.
+
 ## Looking under the hood: what makes `ints` *ints*?
 
 Why *do* we have all these different variable types? Wouldn't it be simpler to just have two or three, like float string and list?
