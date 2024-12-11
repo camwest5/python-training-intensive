@@ -20,6 +20,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -201,8 +235,21 @@ ul.task-list li input[type="checkbox"] {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#directing-traffic-with-conditionals" id="toc-directing-traffic-with-conditionals" class="nav-link active" data-scroll-target="#directing-traffic-with-conditionals">Directing traffic with conditionals</a>
+  <ul class="collapse">
+  <li><a href="#logical-operators" id="toc-logical-operators" class="nav-link" data-scroll-target="#logical-operators">Logical operators</a></li>
+  <li><a href="#elif-and-else" id="toc-elif-and-else" class="nav-link" data-scroll-target="#elif-and-else"><code>elif</code> and <code>else</code></a></li>
+  </ul></li>
+  <li><a href="#repeat-after-me" id="toc-repeat-after-me" class="nav-link" data-scroll-target="#repeat-after-me">Repeat after me</a></li>
+  <li><a href="#looking-under-the-hood-what-makes-ints-ints" id="toc-looking-under-the-hood-what-makes-ints-ints" class="nav-link" data-scroll-target="#looking-under-the-hood-what-makes-ints-ints">Looking under the hood: what makes <code>ints</code> <em>ints</em>?</a></li>
+  <li><a href="#building-your-own-machines" id="toc-building-your-own-machines" class="nav-link" data-scroll-target="#building-your-own-machines">Building your own machines</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -233,8 +280,147 @@ ul.task-list li input[type="checkbox"] {
 <li>Loops</li>
 <li>Custom functions</li>
 </ul>
+<section id="directing-traffic-with-conditionals" class="level2">
+<h2 class="anchored" data-anchor-id="directing-traffic-with-conditionals">Directing traffic with conditionals</h2>
+<p>In the first half of this session we’ll look at two types of control flows: <strong>conditionals</strong> and <strong>loops</strong>.</p>
+<p>Conditionals allow you to put “gates” in your code, only running sections if a certain <strong>condition</strong> is true. They are common to most programming languages.</p>
+<p>In Python, they are called <code>if</code> statements, because you use the <code>if</code> command. For example,</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="dv">5</span> <span class="op">&gt;</span> <span class="dv">0</span>:</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"We're inside the if statement"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>The line <code>print("We're inside the if statement")</code> <strong>will only run if <code>5 &gt; 0</code> is true</strong>. If not, it’ll get skipped.</p>
+<p>Indents are essential. Only indented code will be governed by conditional</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="dv">5</span> <span class="op">&gt;</span> <span class="dv">0</span>:</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"We're inside the if statement"</span>)</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"This code always runs"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Watch what happens if we change the condition</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="dv">5</span> <span class="op">&gt;</span> <span class="dv">10</span>:</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"We're inside the if statement"</span>)</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"This code always runs"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Now, the first line <strong>doesn’t run</strong>. That’s the essence of a conditional.</p>
+<p>There’s not much point to using a condition that will always be true. Typically, you’d use a variable in the condition, for example.</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>pet_age <span class="op">=</span> <span class="dv">10</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> pet_age <span class="op">&gt;</span> <span class="dv">10</span>:</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"My pet is older than 10"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<section id="logical-operators" class="level3">
+<h3 class="anchored" data-anchor-id="logical-operators">Logical operators</h3>
+<p>Here is a table of the different operators you can make conditions with. When you run them, they always return either <code>True</code> or <code>False</code>.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Operator</th>
+<th>True example</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>==</code></td>
+<td><code>10 == 10</code></td>
+<td>Same value and type</td>
+</tr>
+<tr class="even">
+<td><code>!=</code></td>
+<td><code>"10" != 10</code></td>
+<td>Different value <strong>or</strong> type</td>
+</tr>
+<tr class="odd">
+<td><code>&gt;</code></td>
+<td><code>10 &gt; 5</code></td>
+<td>Greater than</td>
+</tr>
+<tr class="even">
+<td><code>&gt;=</code></td>
+<td><code>10 &gt;= 10</code></td>
+<td>Greater than or equal to</td>
+</tr>
+<tr class="odd">
+<td><code>&lt;</code></td>
+<td><code>5 &lt; 10</code></td>
+<td>Less than</td>
+</tr>
+<tr class="even">
+<td><code>&lt;=</code></td>
+<td><code>5 &lt;= 10</code></td>
+<td>Less than or equal to</td>
+</tr>
+<tr class="odd">
+<td><code>in</code></td>
+<td><code>"a" in "apple"</code></td>
+<td>First object exists in the second</td>
+</tr>
+<tr class="even">
+<td><code>not in</code></td>
+<td><code>"b" not in "apple"</code></td>
+<td>First object <strong>does not</strong> exist in the second</td>
+</tr>
+<tr class="odd">
+<td><code>and</code></td>
+<td><code>10 == 10 and "a" in "apple"</code></td>
+<td>Only true if <strong>both</strong> conditions are true. Same as <code>&amp;</code></td>
+</tr>
+<tr class="even">
+<td><code>or</code></td>
+<td><code>10 == 10 or "b" in "apple"</code></td>
+<td>Always true if <strong>one</strong> condition is true. Same as <code>\|</code></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="elif-and-else" class="level3">
+<h3 class="anchored" data-anchor-id="elif-and-else"><code>elif</code> and <code>else</code></h3>
+<p><code>if</code> statements only run if the condition is <strong>True</strong>. What happens if its <strong>False</strong>? That’s what the <code>else</code> command is for, it’s like a net that catches anything that slipped past <code>if</code>:</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>pet_age <span class="op">=</span> <span class="dv">5</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> pet_age <span class="op">&gt;</span> <span class="dv">10</span>:</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"My pet is older than 10"</span>)</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>:</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"My pet is 10 or younger"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<blockquote class="blockquote">
+<p>Don’t forget the colon <code>:</code>!</p>
+</blockquote>
+<p>Check what happens when you change the age from 5 to 15.</p>
+<p>Finally, what if you wanted to check another condition <strong>only if the first one fails</strong>? That’s what <code>elif</code> (else-if) is for. It’s another if statement but it only runs if the first fails.</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>pet_age <span class="op">=</span> <span class="dv">5</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> pet_age <span class="op">&gt;</span> <span class="dv">10</span>:</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"My pet is older than 10"</span>)</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="cf">elif</span> pet_age <span class="op">&lt;</span> <span class="dv">5</span>:</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"My pet is younger than 5"</span>)</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>:</span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"My pet is between 5 and 10"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>You can include as many as you’d like</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>pet_age <span class="op">=</span> <span class="dv">5</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> pet_age <span class="op">&gt;</span> <span class="dv">10</span>:</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"My pet is older than 10"</span>)</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="cf">elif</span> pet_age <span class="op">&lt;</span> <span class="dv">5</span>:</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"My pet is younger than 5"</span>)</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="cf">elif</span> pet_age <span class="op">&lt;</span> <span class="dv">1</span>:</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"My pet is freshly born"</span>)</span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>:</span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"My pet is between 5 and 10"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+</section>
+<section id="repeat-after-me" class="level2">
+<h2 class="anchored" data-anchor-id="repeat-after-me">Repeat after me</h2>
+</section>
+<section id="looking-under-the-hood-what-makes-ints-ints" class="level2">
+<h2 class="anchored" data-anchor-id="looking-under-the-hood-what-makes-ints-ints">Looking under the hood: what makes <code>ints</code> <em>ints</em>?</h2>
+<p>Why <em>do</em> we have all these different variable types? Wouldn’t it be simpler to just have two or three, like float string and list?</p>
+</section>
+<section id="building-your-own-machines" class="level2">
+<h2 class="anchored" data-anchor-id="building-your-own-machines">Building your own machines</h2>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

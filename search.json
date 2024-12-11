@@ -15,7 +15,51 @@
     "href": "WIPs/6 - Programming.html",
     "title": "Programming Building Blocks",
     "section": "",
-    "text": "In this workshop we cover the building blocks for developing more complex code, looking at\n\nUnderstanding variable types and methods\nConditionals\nLoops\nCustom functions",
+    "text": "In this workshop we cover the building blocks for developing more complex code, looking at",
+    "crumbs": [
+      "WIPs",
+      "Programming Building Blocks"
+    ]
+  },
+  {
+    "objectID": "WIPs/6 - Programming.html#directing-traffic-with-conditionals",
+    "href": "WIPs/6 - Programming.html#directing-traffic-with-conditionals",
+    "title": "Programming Building Blocks",
+    "section": "Directing traffic with conditionals",
+    "text": "Directing traffic with conditionals\nIn the first half of this session we’ll look at two types of control flows: conditionals and loops.\nConditionals allow you to put “gates” in your code, only running sections if a certain condition is true. They are common to most programming languages.\nIn Python, they are called if statements, because you use the if command. For example,\nif 5 &gt; 0:\n    print(\"We're inside the if statement\")\nThe line print(\"We're inside the if statement\") will only run if 5 &gt; 0 is true. If not, it’ll get skipped.\nIndents are essential. Only indented code will be governed by conditional\nif 5 &gt; 0:\n    print(\"We're inside the if statement\")\n\nprint(\"This code always runs\")\nWatch what happens if we change the condition\nif 5 &gt; 10:\n    print(\"We're inside the if statement\")\n\nprint(\"This code always runs\")\nNow, the first line doesn’t run. That’s the essence of a conditional.\nThere’s not much point to using a condition that will always be true. Typically, you’d use a variable in the condition, for example.\npet_age = 10\n\nif pet_age &gt; 10:\n    print(\"My pet is older than 10\")\n\nLogical operators\nHere is a table of the different operators you can make conditions with. When you run them, they always return either True or False.\n\n\n\n\n\n\n\n\nOperator\nTrue example\nDescription\n\n\n\n\n==\n10 == 10\nSame value and type\n\n\n!=\n\"10\" != 10\nDifferent value or type\n\n\n&gt;\n10 &gt; 5\nGreater than\n\n\n&gt;=\n10 &gt;= 10\nGreater than or equal to\n\n\n&lt;\n5 &lt; 10\nLess than\n\n\n&lt;=\n5 &lt;= 10\nLess than or equal to\n\n\nin\n\"a\" in \"apple\"\nFirst object exists in the second\n\n\nnot in\n\"b\" not in \"apple\"\nFirst object does not exist in the second\n\n\nand\n10 == 10 and \"a\" in \"apple\"\nOnly true if both conditions are true. Same as &\n\n\nor\n10 == 10 or \"b\" in \"apple\"\nAlways true if one condition is true. Same as \\|\n\n\n\n\n\nelif and else\nif statements only run if the condition is True. What happens if its False? That’s what the else command is for, it’s like a net that catches anything that slipped past if:\npet_age = 5\n\nif pet_age &gt; 10:\n    print(\"My pet is older than 10\")\nelse:\n    print(\"My pet is 10 or younger\")\n\nDon’t forget the colon :!\n\nCheck what happens when you change the age from 5 to 15.\nFinally, what if you wanted to check another condition only if the first one fails? That’s what elif (else-if) is for. It’s another if statement but it only runs if the first fails.\npet_age = 5\n\nif pet_age &gt; 10:\n    print(\"My pet is older than 10\")\nelif pet_age &lt; 5:\n    print(\"My pet is younger than 5\")\nelse:\n    print(\"My pet is between 5 and 10\")\nYou can include as many as you’d like\npet_age = 5\n\nif pet_age &gt; 10:\n    print(\"My pet is older than 10\")\nelif pet_age &lt; 5:\n    print(\"My pet is younger than 5\")\nelif pet_age &lt; 1:\n    print(\"My pet is freshly born\")\nelse:\n    print(\"My pet is between 5 and 10\")",
+    "crumbs": [
+      "WIPs",
+      "Programming Building Blocks"
+    ]
+  },
+  {
+    "objectID": "WIPs/6 - Programming.html#repeat-after-me",
+    "href": "WIPs/6 - Programming.html#repeat-after-me",
+    "title": "Programming Building Blocks",
+    "section": "Repeat after me",
+    "text": "Repeat after me",
+    "crumbs": [
+      "WIPs",
+      "Programming Building Blocks"
+    ]
+  },
+  {
+    "objectID": "WIPs/6 - Programming.html#looking-under-the-hood-what-makes-ints-ints",
+    "href": "WIPs/6 - Programming.html#looking-under-the-hood-what-makes-ints-ints",
+    "title": "Programming Building Blocks",
+    "section": "Looking under the hood: what makes ints ints?",
+    "text": "Looking under the hood: what makes ints ints?\nWhy do we have all these different variable types? Wouldn’t it be simpler to just have two or three, like float string and list?",
+    "crumbs": [
+      "WIPs",
+      "Programming Building Blocks"
+    ]
+  },
+  {
+    "objectID": "WIPs/6 - Programming.html#building-your-own-machines",
+    "href": "WIPs/6 - Programming.html#building-your-own-machines",
+    "title": "Programming Building Blocks",
+    "section": "Building your own machines",
+    "text": "Building your own machines",
     "crumbs": [
       "WIPs",
       "Programming Building Blocks"
