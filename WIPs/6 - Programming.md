@@ -213,8 +213,119 @@ for i in range(0,1000)
 
 ## Looking under the hood: what makes `ints` *ints*?
 
-Why *do* we have all these different variable types? Wouldn't it be simpler to just have two or three, like float string and list?
+Python is a high level programming language. Its features are often inspired by C and C++, and is itself built in C/C++.
 
+One of the major innovations of C++, and object-oriented programming in general, are **classes**. We won't go over how to write your own - it's beyond the scope of this workshop - but they're worth a conceptual understanding.
 
+Essentially, all Python variables follow a specific template, known as its *class* or *type*. It's safe to use these interchangebly here. The class is a general template for the variable and it defines what *methods* (functions) and *attributes* (variables) live *inside the variable*.
+
+Inside the variable? Where? Well, a variables contain more than just their value. We use the `.` operator to access anything besides the value that lives in the variable. For example, all strings have a function called `.upper()` that makes them uppercase:
+
+```python
+random_string = "Hello, this is a sentence."
+print(random_string.upper())
+```
+
+Let me emphasise that **all strings have `.upper()`**. That makes `upper()` a **method** of strings. 
+
+In other words, a class is like an empty form that needs filling. The form **string** has a field called `upper()` that is filled with the function as defined above.
 
 ## Building your own machines
+
+We'll wrap this session up by looking at custom functions and modules. So far, we've only used built-in functions or those from other people's modules. But we can make our own!
+
+We've only ever **called** functions - this is what we do when we use them. All functions need a **definition**, this is the code that gets run when they're called.
+
+### The function definition
+
+Functions are machines. They take some inputs, run some code with those inputs, and spit out **one** output. We need to define how they work before we use them. We should specify
+
+* A name
+* Some inputs
+* The code to run (the machine itself)
+* An output
+
+We include these in three steps
+
+1. The first line of the function definition (the *function signature*) specifies the name and inputs
+2. We then **indent** all the code we want to run with our inputs
+3. We end with a `return` statement, specifying the output
+
+
+
+```python
+def insert_function_name_here(input_1_name, input_2_name, ...):
+    # Code code code
+    return output
+```
+
+For example, let's create a function that converts centimetres to metres.
+
+```python
+def cm_to_m(value_in_cm):
+    value_in_m = value_in_cm / 100
+    return value_in_m
+```
+
+Taking it apart, we have
+
+* **Name**: `cm_to_m`
+* **Inputs** (just one): `value_in_cm`
+* **Code** (just one line): `value_in_m = value_in_cm / 100`
+* **Output**: `value_in_m`
+
+Importantly, **nothing happens when you run this code**. Why? Because you've only defined the function, *you haven't used it yet*.
+
+To use this function, we need to call it. Let's convert $10\text{ cm}$ to $\text{m}$.
+
+```python
+def cm_to_m(value_in_cm):
+    value_in_m = value_in_cm / 100
+    return value_in_m
+
+cm_to_m(10)
+```
+
+When we call the function, it runs with `value_in_cm = 10`.
+
+That's it! Every function that you use, built-in or imported, looks like this.
+
+Because functions must be defined before called, and defining them produces no output, **best practice is to place functions at the top of your script**, below the import statements.
+
+### Docstrings
+Something you'll spot on all professional functions are docstrings. This is what Python spits out with the `help()` function. You can make your own by writing it within triple quotes **immediately after the signature** `''' '''`:
+
+```python
+def cm_to_m(value_in_cm):
+    """Converts centimetres to metres"""
+    value_in_m = value_in_cm / 100
+    return value_in_m
+
+cm_to_m(10)
+```
+
+That said, the best way to ensure clarity is to use a clear name.
+
+### Creating modules
+
+What if you need to write lots of functions? We could write unit converters like above for hundreds of possibilities.
+
+It's useful to tuck these away in their own file, so they don't clog up your main.py.
+
+Let's make a new file called **conversions.py**, and move your function into it. Delete it from your current file.
+
+Then, to make sure it works, let's make a new converter too, from centimetres to inches. Your **conversions.py** file should look like:
+
+```python
+def cm_to_m(value_in_cm):
+    """Converts centimetres to metres"""
+    value_in_m = value_in_cm / 100
+    return value_in_m
+
+def cm_to_in(value_in_cm):
+    """Converts centimetres to inches"""
+    value_in_inches = value_in_cm / 2.54
+    return value_in_inches
+```
+
+
