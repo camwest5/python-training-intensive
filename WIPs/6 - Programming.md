@@ -7,7 +7,7 @@ In this workshop we cover the building blocks for developing more complex code, 
 * Understanding variable types and methods
 * Conditionals
 * Loops
-* Custom functions
+* Custom functions and modules
 
 ## Directing traffic with conditionals
 In the first half of this session we'll look at two types of control flows: **conditionals** and **loops**.
@@ -328,4 +328,19 @@ def cm_to_in(value_in_cm):
     return value_in_inches
 ```
 
+Let's make another script now called **main.py**. We'll run our conversions here by pulling in the functions from **conversions.py**.
 
+Inside **main.py**, you'll need to import conversions.py. To access the functions, you'll need to use `.` to look inside the module as usual:
+
+```python
+import conversions
+metres = conversions.cm_to_m(10)
+inches = conversions.cm_to_in(10)
+
+print("10cm is " + metres + "m")
+print("10cm is " + inches + "\"")
+```
+
+> To include a double quote " inside a string made of double quotes, escape it with a backslash: `\"`.
+
+Congratulations, you've made your first module!
