@@ -218,26 +218,20 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../WIPs/4 - Version Control.html" class="sidebar-item-text sidebar-link">
+  <a href="../WIPs/4 - Sharing and Publishing.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Version Control</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../WIPs/5 - Dashboards.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Dashboards</span></a>
+  <a href="../WIPs/5 - Statistics.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Statistics</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../WIPs/6 - Programming.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Programming Building Blocks</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../WIPs/7 - Statistics.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Statistics</span></a>
   </div>
 </li>
       </ul>
@@ -317,7 +311,7 @@ window.Quarto = {
 <li>Understanding variable types and methods</li>
 <li>Conditionals</li>
 <li>Loops</li>
-<li>Custom functions</li>
+<li>Custom functions and modules</li>
 </ul>
 <section id="directing-traffic-with-conditionals" class="level2">
 <h2 class="anchored" data-anchor-id="directing-traffic-with-conditionals">Directing traffic with conditionals</h2>
@@ -596,6 +590,18 @@ window.Quarto = {
 <span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Converts centimetres to inches"""</span></span>
 <span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a>    value_in_inches <span class="op">=</span> value_in_cm <span class="op">/</span> <span class="fl">2.54</span></span>
 <span id="cb21-9"><a href="#cb21-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> value_in_inches</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Let’s make another script now called <strong>main.py</strong>. We’ll run our conversions here by pulling in the functions from <strong>conversions.py</strong>.</p>
+<p>Inside <strong>main.py</strong>, you’ll need to import conversions.py. To access the functions, you’ll need to use <code>.</code> to look inside the module as usual:</p>
+<div class="sourceCode" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> conversions</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>metres <span class="op">=</span> conversions.cm_to_m(<span class="dv">10</span>)</span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>inches <span class="op">=</span> conversions.cm_to_in(<span class="dv">10</span>)</span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"10cm is "</span> <span class="op">+</span> metres <span class="op">+</span> <span class="st">"m"</span>)</span>
+<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"10cm is "</span> <span class="op">+</span> inches <span class="op">+</span> <span class="st">"</span><span class="ch">\"</span><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<blockquote class="blockquote">
+<p>To include a double quote ” inside a string made of double quotes, escape it with a backslash: <code>\"</code>.</p>
+</blockquote>
+<p>Congratulations, you’ve made your first module!</p>
 
 
 </section>

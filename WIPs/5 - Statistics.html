@@ -154,7 +154,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../WIPs/1 - Fundamentals.html">WIPs</a></li><li class="breadcrumb-item"><a href="../WIPs/7 - Statistics.html">Statistics</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../WIPs/1 - Fundamentals.html">WIPs</a></li><li class="breadcrumb-item"><a href="../WIPs/5 - Statistics.html">Statistics</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -218,26 +218,20 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../WIPs/4 - Version Control.html" class="sidebar-item-text sidebar-link">
+  <a href="../WIPs/4 - Sharing and Publishing.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Version Control</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../WIPs/5 - Dashboards.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Dashboards</span></a>
+  <a href="../WIPs/5 - Statistics.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Statistics</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../WIPs/6 - Programming.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Programming Building Blocks</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../WIPs/7 - Statistics.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">Statistics</span></a>
   </div>
 </li>
       </ul>
@@ -279,11 +273,11 @@ window.Quarto = {
   <li><a href="#inferential-statistics" id="toc-inferential-statistics" class="nav-link" data-scroll-target="#inferential-statistics">Inferential Statistics</a>
   <ul class="collapse">
   <li><a href="#simple-linear-regressions" id="toc-simple-linear-regressions" class="nav-link" data-scroll-target="#simple-linear-regressions">Simple linear regressions</a></li>
-  <li><a href="#multiple-linear-regressions" id="toc-multiple-linear-regressions" class="nav-link" data-scroll-target="#multiple-linear-regressions">Multiple linear regressions</a></li>
-  <li><a href="#confidence-intervals" id="toc-confidence-intervals" class="nav-link" data-scroll-target="#confidence-intervals">Confidence intervals</a></li>
-  <li><a href="#t-tests" id="toc-t-tests" class="nav-link" data-scroll-target="#t-tests">T-tests</a></li>
-  <li><a href="#chi2-tests" id="toc-chi2-tests" class="nav-link" data-scroll-target="#chi2-tests"><span class="math inline">\(\chi^2\)</span> tests</a></li>
+  <li><a href="#t-tests" id="toc-t-tests" class="nav-link" data-scroll-target="#t-tests"><span class="math inline">\(t\)</span>-tests</a></li>
   <li><a href="#anovas" id="toc-anovas" class="nav-link" data-scroll-target="#anovas">ANOVAs</a></li>
+  <li><a href="#chi2-tests" id="toc-chi2-tests" class="nav-link" data-scroll-target="#chi2-tests"><span class="math inline">\(\chi^2\)</span> tests</a></li>
+  <li><a href="#logistic-regressions" id="toc-logistic-regressions" class="nav-link" data-scroll-target="#logistic-regressions">Logistic regressions</a></li>
+  <li><a href="#multiple-linear-regressions" id="toc-multiple-linear-regressions" class="nav-link" data-scroll-target="#multiple-linear-regressions">Multiple linear regressions</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -291,7 +285,7 @@ window.Quarto = {
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../WIPs/1 - Fundamentals.html">WIPs</a></li><li class="breadcrumb-item"><a href="../WIPs/7 - Statistics.html">Statistics</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../WIPs/1 - Fundamentals.html">WIPs</a></li><li class="breadcrumb-item"><a href="../WIPs/5 - Statistics.html">Statistics</a></li></ol></nav>
 <div class="quarto-title">
 <h1 class="title">Statistics</h1>
 </div>
@@ -391,29 +385,78 @@ window.Quarto = {
 </section>
 <section id="reminder-about-groupbys" class="level3">
 <h3 class="anchored" data-anchor-id="reminder-about-groupbys">Reminder about groupbys</h3>
+<p>Before we move to inferential statistics, it’s worth reiterating the power of groupbys discussed in the second workshop.</p>
+<p>To group by a specific variable, like “positions”, we use</p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>gb <span class="op">=</span> df.groupby(<span class="st">"positions"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>By applying our statistics to the <code>gb</code> object, we’ll apply them to <em>every</em> variable for <em>each</em> position. Note that we should specify <code>numeric_only = True</code>, because these statistics won’t work for non-numeric variables</p>
+<div class="sourceCode" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>gb.mean(numeric_only <span class="op">=</span> <span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 </section>
 <section id="inferential-statistics" class="level2">
 <h2 class="anchored" data-anchor-id="inferential-statistics">Inferential Statistics</h2>
 <p>Inferential statistics requires using the module <code>scipy.stats</code>, which we’ll bring in with</p>
-<div class="sourceCode" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> scipy.stats <span class="im">as</span> stats</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> scipy.stats <span class="im">as</span> stats</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <section id="simple-linear-regressions" class="level3">
 <h3 class="anchored" data-anchor-id="simple-linear-regressions">Simple linear regressions</h3>
+<p>Least-squares regression for two sets of measurements can be performed with the function <code>stats.linregress()</code>:</p>
+<div class="sourceCode" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>stats.linregress(x <span class="op">=</span> min_heights[<span class="st">"Age"</span>], y <span class="op">=</span> df[<span class="st">"height_cm"</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>If we store this as a variable, we can access the different values with the <code>.</code> operator. For example, the p-value is</p>
+<div class="sourceCode" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>lm <span class="op">=</span> stats.linregress(x <span class="op">=</span> df[<span class="st">"Age"</span>], y <span class="op">=</span> df[<span class="st">"height_cm"</span>])</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>lm.pvalue</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<section id="plotting-it" class="level4">
+<h4 class="anchored" data-anchor-id="plotting-it">Plotting it</h4>
+<p>Naturally, you’d want to plot this. We’ll need to use the overlaying techniques from the visualisation session. Let’s import <strong>seaborn</strong> and <strong>matplotlib</strong></p>
+<div class="sourceCode" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Start by making a scatterplot of the data,</p>
+<div class="sourceCode" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>sns.relplot(data <span class="op">=</span> df, x <span class="op">=</span> <span class="st">"Age"</span>, y <span class="op">=</span> <span class="st">"height_cm"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Then, you’ll need to plot the regression as a line. For reference,</p>
+<p><span class="math display">\[ y = \text{slope}\times x + \text{intercept}\]</span></p>
+<p>So</p>
+<div class="sourceCode" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>sns.relplot(data <span class="op">=</span> df, x <span class="op">=</span> <span class="st">"Age"</span>, y <span class="op">=</span> <span class="st">"height_cm"</span>)</span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>x_lm <span class="op">=</span> df[<span class="st">"Age"</span>]</span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>y_lm <span class="op">=</span> lm.slope<span class="op">*</span>x_lm <span class="op">+</span> lm.intercept</span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>sns.lineplot(x <span class="op">=</span> x_lm, y <span class="op">=</span> y_lm, color <span class="op">=</span> <span class="st">"r"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-<section id="multiple-linear-regressions" class="level3">
-<h3 class="anchored" data-anchor-id="multiple-linear-regressions">Multiple linear regressions</h3>
-</section>
-<section id="confidence-intervals" class="level3">
-<h3 class="anchored" data-anchor-id="confidence-intervals">Confidence intervals</h3>
 </section>
 <section id="t-tests" class="level3">
-<h3 class="anchored" data-anchor-id="t-tests">T-tests</h3>
-</section>
-<section id="chi2-tests" class="level3">
-<h3 class="anchored" data-anchor-id="chi2-tests"><span class="math inline">\(\chi^2\)</span> tests</h3>
+<h3 class="anchored" data-anchor-id="t-tests"><span class="math inline">\(t\)</span>-tests</h3>
+<p>We can also perform <span class="math inline">\(t\)</span>-tests with the <code>scipy.stats</code> module. Typically, this is performed to examine the statistical signficance of a difference between two samples’ means. Let’s examine whether that earlier groupby result for is accurate for heights, specifically, <strong>are goalkeepers taller than non-goalkeepers?</strong></p>
+<p>Let’s start by separating the goalkeepers from the non-goalkeepers in two variables</p>
+<div class="sourceCode" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>goalkeepers <span class="op">=</span> df[df[<span class="st">"positions"</span>] <span class="op">==</span> <span class="st">"Goalkeeper"</span>]</span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>non_goalkeepers <span class="op">=</span> df[df[<span class="st">"positions"</span>] <span class="op">!=</span> <span class="st">"Goalkeeper"</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>The <span class="math inline">\(t\)</span>-test for the means of two independent samples is given by</p>
+<div class="sourceCode" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>stats.ttest_ind(goalkeepers[<span class="st">"height_cm"</span>], non_goalkeepers[<span class="st">"height_cm"</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Yielding a p-value of <span class="math inline">\(8\times 10^{-247}\approx 0\)</span>, indicating that the null-hypothesis (<em>heights are the same</em>) is extremely unlikely.</p>
 </section>
 <section id="anovas" class="level3">
 <h3 class="anchored" data-anchor-id="anovas">ANOVAs</h3>
+<p>What about the means of the other three? We could use an ANOVA to examine them. We use the <code>stats.f_oneway()</code> function for this. However, this requires us to send a list of samples in for each group, so we should separate the three positions.</p>
+<div class="sourceCode" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>defender <span class="op">=</span> df[df[<span class="st">"positions"</span>] <span class="op">==</span> <span class="st">"Defender"</span>].height_cm</span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>midfield <span class="op">=</span> df[df[<span class="st">"positions"</span>] <span class="op">==</span> <span class="st">"Midfield"</span>].height_cm</span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>attack <span class="op">=</span> df[df[<span class="st">"positions"</span>] <span class="op">==</span> <span class="st">"Attack"</span>].height_cm</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>We can then perform the ANOVA on this list of samples</p>
+<div class="sourceCode" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>stats.f_oneway(defender, midfield, attack)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>With <span class="math inline">\(p = 3\times10^{-84}\)</span>, it looks like their positions are not all independent of height.</p>
+</section>
+<section id="chi2-tests" class="level3">
+<h3 class="anchored" data-anchor-id="chi2-tests"><span class="math inline">\(\chi^2\)</span> tests</h3>
+<p><span class="math inline">\(χ^2\)</span> tests are useful for examining the relationship of categorical variables by comparing the frequencies of each. Often, you’d use this if you can make a contingency table.</p>
+<p>We only have one useful categorical variable here, “positions” (the others have too many unique values), so we’ll need to create another. Let’s see if there’s a relationship between players’ positions and names with the letter “a”.</p>
+<p>Make a binary column for players with the letter “a” in their names. To do this, we need to apply a string method to <em>all</em> the columns in the dataframe as follows</p>
+<div class="sourceCode" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>df[<span class="st">"a_in_name"</span>] <span class="op">=</span> df[<span class="st">"name"</span>].<span class="bu">str</span>.contains(<span class="st">"a"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Let’s cross tabulate positions with this new column</p>
+<div class="sourceCode" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>a_vs_pos <span class="op">=</span> pd.crosstab(df[<span class="st">"positions"</span>],df[<span class="st">"a_in_name"</span>])</span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(a_vs_pos)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>The <span class="math inline">\(χ^2\)</span> test’s job is to examine whether players’ positions depend on the presence of “a” in their name. To evaluate it we need to send the contingency table in:</p>
+<div class="sourceCode" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>stats.chi2_contingency(a_vs_pos)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="logistic-regressions" class="level3">
+<h3 class="anchored" data-anchor-id="logistic-regressions">Logistic regressions</h3>
+</section>
+<section id="multiple-linear-regressions" class="level3">
+<h3 class="anchored" data-anchor-id="multiple-linear-regressions">Multiple linear regressions</h3>
 
 
 </section>
