@@ -276,8 +276,7 @@ window.Quarto = {
   <li><a href="#t-tests" id="toc-t-tests" class="nav-link" data-scroll-target="#t-tests"><span class="math inline">\(t\)</span>-tests</a></li>
   <li><a href="#anovas" id="toc-anovas" class="nav-link" data-scroll-target="#anovas">ANOVAs</a></li>
   <li><a href="#chi2-tests" id="toc-chi2-tests" class="nav-link" data-scroll-target="#chi2-tests"><span class="math inline">\(\chi^2\)</span> tests</a></li>
-  <li><a href="#logistic-regressions" id="toc-logistic-regressions" class="nav-link" data-scroll-target="#logistic-regressions">Logistic regressions</a></li>
-  <li><a href="#multiple-linear-regressions" id="toc-multiple-linear-regressions" class="nav-link" data-scroll-target="#multiple-linear-regressions">Multiple linear regressions</a></li>
+  <li><a href="#more-complex-modelling" id="toc-more-complex-modelling" class="nav-link" data-scroll-target="#more-complex-modelling">More complex modelling</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -452,13 +451,67 @@ window.Quarto = {
 <p>The <span class="math inline">\(χ^2\)</span> test’s job is to examine whether players’ positions depend on the presence of “a” in their name. To evaluate it we need to send the contingency table in:</p>
 <div class="sourceCode" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>stats.chi2_contingency(a_vs_pos)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-<section id="logistic-regressions" class="level3">
-<h3 class="anchored" data-anchor-id="logistic-regressions">Logistic regressions</h3>
+<section id="more-complex-modelling" class="level3">
+<h3 class="anchored" data-anchor-id="more-complex-modelling">More complex modelling</h3>
+<p>If you need to do more advanced statistics, particularly if you need more regressions, you’ll likely need to turn to a different package: <code>statsmodels</code>. It is particularly useful for <strong>statistical modelling</strong>.</p>
+<p>We’ll go through three examples</p>
+<ol type="1">
+<li>Simple linear regressions (like before)</li>
+<li>Multiple linear regressions</li>
+<li>Logistic regressions</li>
+</ol>
+<p>What’s nice about <code>statsmodels</code> is that it gives an R-like interface and summaries.</p>
+<p>To start with, let’s import the tools. We’ll use the <em>formula</em> interface, which offers us an R-like way of creating models.</p>
+<div class="sourceCode" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> statsmodels.formula.api <span class="im">as</span> smf</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<section id="simple-linear-regressions-revisited" class="level4">
+<h4 class="anchored" data-anchor-id="simple-linear-regressions-revisited">Simple linear regressions revisited</h4>
+<p>Let’s perform the same linear regression as before, looking at the “Age” and “height variables”. Our thinking is that players’ heights dictate how long they can play, so we’ll make <span class="math inline">\(x = \text{height\_cm}\)</span> and <span class="math inline">\(y = \text{Age}\)</span>.</p>
+<p>The first step is to make the set up the variables. We’ll use the function <code>smf.ols()</code> for ordinary least squares. It takes in two imputs:</p>
+<ul>
+<li>The formula string, in the form <code>y ~ X1 + X2 ...</code></li>
+<li>The data</li>
+</ul>
+<p>We create the model and compute the fit</p>
+<div class="sourceCode" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>mod <span class="op">=</span> smf.ols(<span class="st">"Age ~ height_cm"</span>, df)</span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>res <span class="op">=</span> mod.fit()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Done! Let’s take a look at the results</p>
+<div class="sourceCode" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>res.summary()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>That’s a lot nicer than with scipy. We can also make a plot by getting the model’s <span class="math inline">\(y\)</span> values with <code>res.fittedvalues</code></p>
+<div class="sourceCode" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>sns.relplot(data <span class="op">=</span> df, x <span class="op">=</span> <span class="st">"height_cm"</span>, y <span class="op">=</span> <span class="st">"Age"</span>)</span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>sns.lineplot(x <span class="op">=</span> df[<span class="st">"Age"</span>], y <span class="op">=</span> res.fittedvalues, color <span class="op">=</span> <span class="st">"black"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-<section id="multiple-linear-regressions" class="level3">
-<h3 class="anchored" data-anchor-id="multiple-linear-regressions">Multiple linear regressions</h3>
+<section id="generalised-linear-models" class="level4">
+<h4 class="anchored" data-anchor-id="generalised-linear-models">Generalised linear models</h4>
+<p>The <code>statsmodels</code> module has lots of advanced statistical models available. We’ll take a look at one more: Generalised Linear Models. The distributions they include are</p>
+<ul>
+<li>Binomial</li>
+<li>Poisson</li>
+<li>Negative Binomial</li>
+<li>Gaussian (Normal)</li>
+<li>Gamma</li>
+<li>Inverse Gaussian</li>
+<li>Tweedie</li>
+</ul>
+<p>We’ll use the <em>binomial</em> option to create logistic regressions.</p>
+<p>Logistic regressions examine the distribution of binary data. For us, we can compare the heights of <strong>goalkeepers vs non-goalkeepers</strong> again. Let’s make a new column which is <code>1</code> for goalkeepers and <code>0</code> for non-goalkeepers:</p>
+<div class="sourceCode" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>df[<span class="st">"gk"</span>] <span class="op">=</span> (df[<span class="st">"positions"</span>] <span class="op">==</span> <span class="st">"Goalkeeper"</span>)<span class="op">*</span><span class="dv">1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<blockquote class="blockquote">
+<p>We have to multiply by 1 to turn <code>True</code> <span class="math inline">\(\rightarrow\)</span> <code>1</code> and <code>False</code> <span class="math inline">\(\rightarrow\)</span> <code>0</code></p>
+</blockquote>
+<p>Now, we can model this column with height. Specifically,</p>
+<p><span class="math display">\[ \text{gk} \sim \text{height\_cm}\]</span></p>
+<p>Start by making the model with the function <code>smf.glm()</code>. We need to specify the family of distributions; they all live in <code>sm.families</code>:</p>
+<div class="sourceCode" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>mod <span class="op">=</span> smf.glm(<span class="st">"gk ~ height_cm"</span>, data <span class="op">=</span> df, family <span class="op">=</span> sm.families.Binomial())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Next, evaluate the results</p>
+<div class="sourceCode" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>res <span class="op">=</span> mod.fit()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Let’s have a look at the summary:</p>
+<div class="sourceCode" id="cb39"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>res.summary()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Finally, we can plot the result like before</p>
+<div class="sourceCode" id="cb40"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>sns.relplot(data <span class="op">=</span> df, x <span class="op">=</span> <span class="st">"height_cm"</span>, y <span class="op">=</span> <span class="st">"gk"</span>)</span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>sns.lineplot(x <span class="op">=</span> df[<span class="st">"height_cm"</span>], y <span class="op">=</span> res.fittedvalues, color <span class="op">=</span> <span class="st">"black"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 
+</section>
 </section>
 </section>
 
