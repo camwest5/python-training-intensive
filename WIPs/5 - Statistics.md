@@ -274,7 +274,100 @@ The $χ^2$ test's job is to examine whether players' positions depend on the pre
 stats.chi2_contingency(a_vs_pos)
 ```
 
-### Logistic regressions
+### More complex modelling
 
+If you need to do more advanced statistics, particularly if you need more regressions, you'll likely need to turn to a different package: `statsmodels`. It is particularly useful for **statistical modelling**.
 
-### Multiple linear regressions
+We'll go through three examples
+
+1. Simple linear regressions (like before)
+2. Multiple linear regressions
+3. Logistic regressions
+
+What's nice about `statsmodels` is that it gives an R-like interface and summaries.
+
+To start with, let's import the tools. We'll use the *formula* interface, which offers us an R-like way of creating models.
+
+```python
+import statsmodels.formula.api as smf
+```
+
+#### Simple linear regressions revisited
+
+Let's perform the same linear regression as before, looking at the "Age" and "height variables". Our thinking is that players' heights dictate how long they can play, so we'll make $x = \text{height\_cm}$ and $y = \text{Age}$.
+
+The first step is to make the set up the variables. We'll use the function `smf.ols()` for ordinary least squares. It takes in two imputs:
+
+* The formula string, in the form `y ~ X1 + X2 ...`
+* The data
+
+We create the model and compute the fit
+
+```python
+mod = smf.ols("Age ~ height_cm", df)
+res = mod.fit()
+```
+
+Done! Let's take a look at the results
+
+```python
+res.summary()
+```
+
+That's a lot nicer than with scipy. We can also make a plot by getting the model's $y$ values with `res.fittedvalues`
+
+```python
+sns.relplot(data = df, x = "height_cm", y = "Age")
+sns.lineplot(x = df["Age"], y = res.fittedvalues, color = "black")
+```
+
+#### Generalised linear models
+
+The `statsmodels` module has lots of advanced statistical models available. We'll take a look at one more: Generalised Linear Models. The distributions they include are
+
+* Binomial
+* Poisson
+* Negative Binomial
+* Gaussian (Normal)
+* Gamma
+* Inverse Gaussian
+* Tweedie
+
+We'll use the *binomial* option to create logistic regressions.
+
+Logistic regressions examine the distribution of binary data. For us, we can compare the heights of **goalkeepers vs non-goalkeepers** again. Let's make a new column which is `1` for goalkeepers and `0` for non-goalkeepers:
+
+```python
+df["gk"] = (df["positions"] == "Goalkeeper")*1
+```
+
+> We have to multiply by 1 to turn `True` $\rightarrow$ `1` and `False` $\rightarrow$ `0`
+
+Now, we can model this column with height. Specifically,
+
+$$ \text{gk} \sim \text{height\_cm}$$
+
+Start by making the model with the function `smf.glm()`. We need to specify the family of distributions; they all live in `sm.families`:
+
+```python
+mod = smf.glm("gk ~ height_cm", data = df, family = sm.families.Binomial())
+```
+
+Next, evaluate the results
+
+```python
+res = mod.fit()
+```
+
+Let's have a look at the summary:
+
+```python
+res.summary()
+```
+
+Finally, we can plot the result like before
+
+```python
+sns.relplot(data = df, x = "height_cm", y = "gk")
+sns.lineplot(x = df["height_cm"], y = res.fittedvalues, color = "black")
+```
