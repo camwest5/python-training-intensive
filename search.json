@@ -2,12 +2,34 @@
   {
     "objectID": "Project/project.html",
     "href": "Project/project.html",
-    "title": "Project landing page",
+    "title": "The Project",
     "section": "",
-    "text": "Project landing page",
+    "text": "The best way to learn is by doing. That’s why, over the these three days, you are tasked with analysing, visualising and reporting on a set of data!\nRoughly 50% of our intensive is dedicated to working on the project. Working in groups of 2-4, you’ll need to use the techniques we learn to draw some observations about your chosen dataset.\nThe end goal will be a quick fire (low stakes) one-minute presentation with a dashboard to complement.",
     "crumbs": [
       "Project",
-      "Project landing page"
+      "The Project"
+    ]
+  },
+  {
+    "objectID": "Project/project.html#the-datasets",
+    "href": "Project/project.html#the-datasets",
+    "title": "The Project",
+    "section": "The datasets",
+    "text": "The datasets\nWe have eight datasets for you to choose from:\n\n\n\nDataset\nDescription\n\n\n\n\nWorld populations\nA summary of world populations and corresponding statistics\n\n\nSoccer players\nA summary of about 250 2024 soccer players\n\n\nCoffee survey\nA survey of coffee preferences\n\n\nMelbourne housing data\nA collection of houses for sale in Melbourne\n\n\nGoodreads books\nData for 50,000 goodreads books\n\n\nQueensland hospitals\nEmergency department statistics\n\n\nQueensland fuel prices\nFuel prices by the pump in Queensland\n\n\nAeroplane bird strikes\nAeroplane bird strike incidents fron the 90s",
+    "crumbs": [
+      "Project",
+      "The Project"
+    ]
+  },
+  {
+    "objectID": "Project/project.html#project-outline",
+    "href": "Project/project.html#project-outline",
+    "title": "The Project",
+    "section": "Project outline",
+    "text": "Project outline\nThere are a few key requirements for the project, but otherwise it’s up to you!\n\nAnalyse a dataset and create some visualisations\nPut together a final dashboard-style report. Anything from a powerpoint slide to an interactive dashboard will do!\nDeliver a quick fire one-minute presentation with your group\n\nWe’ll have 5 sessions during the intensive days to work on the project, just shy of six hours. The goal of these sessions is twofold\n\nTo work on the project, analysing data and creating visualisations\nTo dive deeper into the content, perfect for questions and conversations\n\nWhile you’ll be working in groups, everyone should practise analysing and visualising the data. We recommend distributing roles amongst the group, maybe looking at different variables or different presentation formats.\nYou’re welcome to use the project time however you’d like. Below is a rough guide if you’re unsure:\n\n\n\n\n\n\n\nSession\nRecommendation\n\n\n\n\nTuesday afternoon\nPick a dataset and play with the data\n\n\nWednesday morning\nMore exploratory analysis, consider dividing roles amongst group\n\n\nWednesday afternoon\nStart collecting initial visualisations and preparing format (e.g. dashboard)\n\n\nThursday morning\nContinue analysing and creating visualisations\n\n\nThursday afternoon\nPolish up results\n\n\n\nThe presentations will be during Thursday’s final session at 2:50pm.\nGood luck!",
+    "crumbs": [
+      "Project",
+      "The Project"
     ]
   },
   {
