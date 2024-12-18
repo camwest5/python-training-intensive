@@ -36,9 +36,10 @@ Pandas is built upon one key feature: the DataFrame class. In Python we have dif
 To make life easy, we should set up our workspace well. 
 
 1. Open your project folder using your file explorer, and create a new folder called "data". 
-2. Move your data into this folder.
-3. Next, open your project in Spyder, and create a new script called "analysis.py".
-4. Open the "Files" tab in Spyder and check that you see two objects:
+2. [Download the data for today's session](../data_sources/Players2024.csv)
+3. Move the file into your new "data" folder
+4. Next, open your project in Spyder, and create a new script called "analysis.py".
+5. Open the "Files" tab in Spyder and check that you see two objects:
    * The file "analysis.py"
    * The folder "data"
  
@@ -47,7 +48,7 @@ To make life easy, we should set up our workspace well.
 Pandas offers a simple way to access data with its `read.csv()` function. We'll save it into the variable `df_raw`:
 
 ``` python
-df_raw = pd.read_csv("data/name_of_file_here.csv")
+df_raw = pd.read_csv("data/Players2024.csv")
 ```
 
 > You can also provide a URL instead of a file path!
@@ -141,58 +142,61 @@ Now we have two variables: `df` is what we'll use, and `df_raw` stores the raw d
 So how do we access our data in Python? We use a type of indexing introduced by pandas, which revolves around using square brackets after the dataframe: `df[...]`.
 
 ### Accessing columns
-To access a column, index with its name:
+To access a column, index with its name: `df["column_name"]`. For example, 
 
 ```python
-df["column_name"]
+df["name"]
 ```
 
-We can access multiple by providing a **list** of names
+returns the "name" column. We can access multiple by providing a **list** of names
 ```python
 # Save the names in a list and then index
-column_names = ["name_1", "name_2"]
+column_names = ["name", "Club"]
 df[column_names]
 
 # This is equivalent to
-df[["name_1", "name_2"]]
+df[["name", "Club"]]
 ```
 
 If we want to *do* anything with it (like statistics or visualisation), it's worth saving the column(s) as a new variable
 
 ```python
-df_subset = df[["name_1", "name_2"]]
+df_subset = df[["name", "Club"]]
 ```
 
 ### Accessing rows
-There's a few ways to access rows. The easiest is by slicing - if you want rows 5 to 10, use `df[5 : 10]`
+There's a few ways to access rows. The easiest is by slicing, `df[start_row : end_row]`. For example, if you want rows 5 to 10,
+
+```python
+df[5 : 10]
+```
 
 > Note that the end row is **not included**
-
-``` python
-df[start_row : end_row]
-```
 
 If you want to access a single row, we need to use `df.loc[]` or `df.iloc[]`. These are the go-to methods for accessing data if the above indexing isn't sufficient.
 
 * `df.loc[]` accesses rows by label (defaults to row number but could be anything)
 * `df.iloc[]` accesses rows by row number exclusively
 
-For a single row
+By default they line up, so
+
 ```python
-df.loc[row_label]
-df.iloc[row_num]
+df.loc[5]
+df.iloc[5]
 ```
 
-Finally, we can filter specific rows **by a condition** on one of the variables, e.g. *only rows where variable $x > 15$*.
+are often (**but not always**) the same.
+
+Finally, we can filter specific rows **by a condition** on one of the variables, e.g. *only rows where variable $\text{Age} > 25$*.
 
 ```python
-df[df["column_x"] > 15]
+df[df["Age"] > 25]
 # Or any other condition
 ```
 
 As with the column case, it's useful to save this as a variable
 ```python
-df_filtered = df[df["column_x"] > 15]
+df_filtered = df[df["Age"] > 15]
 ```
 
 ## Basic statistics
@@ -216,13 +220,13 @@ df.describe()
 However, it will only show the two first ones and two last ones. We can focus on a specific column instead, for example one that was hidden previously:
 
 ``` python
-df["column"].describe()
+df["Age"].describe()
 ```
 
 Or a categorical column:
 
 ``` python
-df["categorical_column"].describe()
+df["nationality"].describe()
 ```
 
 > For a categorical column, the information shown is different: for example, how many unique values there are, and what the most common value is.
@@ -231,31 +235,32 @@ What if you want specific statistics about a particular column? Usually there ar
 
 ```python
 # Applicable to all columns
-df["column"].count()
-df["column"].unique()
+df["nationality"].count()
+df["nationality"].unique()
 
 # For numeric columns only
-df["numeric_column"].min()
-df["numeric_column"].max()
-df["numeric_column"].mean()
-df["numeric_column"].median()
-df["numeric_column"].std()
+df["height_cm"].min()
+df["height_cm"].max()
+df["height_cm"].mean()
+df["height_cm"].median()
+df["height_cm"].std()
 # ...
 ```
 
 We can use these methods to filter our data. For example, the row which has the maximum value of variable $x$ is
+
 ```python
-x_max = df["variable_x"].max()
-df[df["variable_x"] == x_max]
+x_max = df["height_cm"].max()
+df[df["height_cm"] == x_max]
 
 # Or in one line
-df[df["variable_x"] == df["variable_x"].max()]
+df[df["height_cm"] == df["height_cm"].max()]
 ```
-because we are looking for the row in `df["variable_x"]` (the whole column) that has the value `df["variable_x"].max()`.
+because we are looking for the row in `df["height_cm"]` (the whole column) that has the value `df["height_cm"].max()`.
 
 
 ## Challenge
-**Reduce your dataset to $\le 5$ variables (columns) and $\le 100$ rows using conditions** by filtering down to a particular subset of your data.
+**Reduce your dataset to $\le 3$ variables (columns) and $\le 100$ rows using conditions** by filtering down to a particular subset of your data.
 
 ## Adding and removing columns
 Sometimes we need to add new columns. It's the same process as overwriting existing columns - let's make a new column called "zeroes" where every row is 0
@@ -266,32 +271,32 @@ df["zeroes"] = 0
 
 We can also send in a column, for example
 ```python
-df["copy_of_x"] = df["column_x"]
+df["copy_of_names"] = df["name"]
 ```
 
 Perhaps most usefully, we can manipulate the column we send in. For example, the deviation from the mean
 $$|\bar{x} - x_i|$$
-can be computed for each row:
+can be computed for each row's height:
 ```python
-col_x = df["column_x"]
-avg_x = df["column_x"].mean()
+col_x = df["height_cm"]
+avg_x = df["height_cm"].mean()
 
-df["deviation_from_mean"] = abs(col_x - avg_x)
+df["deviation_from_mean_height"] = abs(col_x - avg_x)
 
 # Or all together on one line,
-df["deviation_from_mean"] = abs(df["column_x"] - df["column_x"].mean())
+df["deviation_from_mean_height"] = abs(df["height_cm"] - df["height_cm"].mean())
 ```
 where `abs(...)` takes the absolute value
 
 Notice that we subtracted a value from a column. We can also perform mathematics with multiple columns:
 ```python
-df["product"] = df["column_x"]*df["column_y"]
+df["product"] = df["Age"]*df["height_cm"]
 ```
 
 Let's remove these new columns that we don't need with the method `df.drop(columns = [...])`:
 
 ```python
-df.drop(columns = ["zeroes", "copy_of_x", "deviation_from_mean", "product"])
+df.drop(columns = ["zeroes", "copy_of_names", "deviation_from_mean_height", "product"])
 ```
 
 ## Summaries
@@ -301,7 +306,7 @@ After cleaning up our data, we need to analyse it. This usually involves some ki
 First, we need to group by a specific variable
 
 ```python
-gb = df.groupby("year")
+gb = df.groupby("Age")
 ```
 
 This thing in itself is a pretty abstract Python object, best thought of as a dataframe where we've identified a grouping variable.
@@ -309,19 +314,19 @@ This thing in itself is a pretty abstract Python object, best thought of as a da
 Next, we need to apply some aggregation to it (the groupby tells it to do it for each year)
 
 ```python
-avg_x_per_year = gb["variable_x"].agg("mean")
+avg_height_by_age = gb["height_cm"].agg("mean")
 ```
 
 Of course, we could have done this in one line:
 ```python
-avg_x_per_year = df.groupby("year").agg("mean")
+avg_height_by_age = df.groupby("year").agg("mean")
 ```
 
 This is a really useful tool, because now we have something we can *visualise*. As the next session will show us, the visualisation tools generally just take in numbers and turn them into dots. We need to do the stats *beforehand*.
 
 As a taster, try running
 ```python
-avg_x_per_year.plot()
+avg_height_by_age.plot()
 ```
 
 ## Exporting results
@@ -329,7 +334,7 @@ avg_x_per_year.plot()
 The last step in the process is saving the data. Let's say we want to take that final dataframe and export it to a csv. That's what the `df.to_csv()` method is for
 
 ```python
-avg_x_per_year.to_csv("data/avg_x_per_year.csv")
+avg_height_by_age.to_csv("data/avg_height_by_age.csv")
 ```
 
 This will save the dataframe to a .csv file and place it in the data folder.
