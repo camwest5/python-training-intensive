@@ -228,6 +228,8 @@ df.head(10)
 
 This results in a dashboard containing three cards organised in two rows. The top row uses 70% of the available height, and the bottom row shows a table of the top 10 rows of the dataset. Each card has a title.
 
+![Quarto dashboard with three cards: static visualisation, interactive visualisation, and table.](img/dashboard.png)
+
 ## Git and GitHub
 
 **Git** is a vesion control system that allows to record a clean history of your project, track precise authorship, and collaborate asynchronously with others. It can be used offline, from the command line or with integration into Itegrated Desktop Environments (like RStudio, VS Code... Unfortunately, Spyder does not have Git integration).
