@@ -221,21 +221,31 @@
   {
     "objectID": "setup.html",
     "href": "setup.html",
-    "title": "Python Training Intensive",
+    "title": "Intro and Setting Up",
     "section": "",
-    "text": "Welcome to the Python Training Intensive!",
+    "text": "Welcome to the Python Training Intensive! Over the next three days we’ll be covering the essentials that you’ll need to begin analysing your data with Python, alongside completing an independent project to practise your skills.",
     "crumbs": [
-      "Python Training Intensive"
+      "Intro and Setting Up"
     ]
   },
   {
-    "objectID": "setup.html#setting-up",
-    "href": "setup.html#setting-up",
-    "title": "Python Training Intensive",
-    "section": "Setting Up",
-    "text": "Setting Up\nWe are going to use Spyder for writing and running Python. This is a friendly interactive development environment (IDE) aimed at researchers. However, you are more than welcome to use your own!\nPlease set up Python and your IDE in advance.\nIf you don’t have Python or an IDE, we recommend installing Spyder, which comes with Python.",
+    "objectID": "setup.html#software",
+    "href": "setup.html#software",
+    "title": "Intro and Setting Up",
+    "section": "Software",
+    "text": "Software\nWe are going to use Spyder for writing and running Python. This is a friendly interactive development environment (IDE) aimed at researchers. However, you are more than welcome to use your own!\nPlease set up Python and your IDE in advance.\nIf you don’t have Python or an IDE, we recommend installing Spyder, which comes with Python.",
     "crumbs": [
-      "Python Training Intensive"
+      "Intro and Setting Up"
+    ]
+  },
+  {
+    "objectID": "setup.html#creating-a-project",
+    "href": "setup.html#creating-a-project",
+    "title": "Intro and Setting Up",
+    "section": "Creating a Project",
+    "text": "Creating a Project\nIf you’re using Spyder, we recommend you create a project. Projects are just fancy folders, and they make it easier to access files (i.e. data) and export images (i.e. visualisations) all in the one place.\n\nOpen Spyder\nIn the Projects menu, click New Project…\nChoose New Directory, give your project a name and find an appropriate place on your computer for it.\nPress Create\n\nDone! We’ll work in this project for the duration of the intensives.",
+    "crumbs": [
+      "Intro and Setting Up"
     ]
   },
   {
