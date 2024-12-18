@@ -1,5 +1,5 @@
 ---
-title: Programming Building Blocks
+title: Programming Essentials
 --- 
 
 In this workshop we cover the building blocks for developing more complex code, looking at

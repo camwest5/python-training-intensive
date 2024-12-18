@@ -1,6 +1,6 @@
 ---
-title: Version Control
---- 
+title: Sharing and Publishing
+---
 
 In this workshop we cover using GitHub for version control, looking specifically at
 
