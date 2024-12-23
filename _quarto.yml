@@ -5,17 +5,23 @@ project:
     - project.md
     - "Workshops/*"
     - "WIPs/*"
-    - "Project/*"
+    - "Projects/*"
 
 website:
   title: "Python Training Intensive"
   navbar:
     search: true
+    left:
+      - text: "Workshops"
+        href: Workshops/index.qmd
+      - text: "Project Gallery"
+        href: Projects/gallery.qmd
   sidebar: 
     contents:
       - setup.md
       - auto: "Workshops"
       - project.md
+      - Projects/gallery.qmd
 
 
 ## Hybrid nav - probably not worth it

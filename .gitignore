@@ -1,4 +1,5 @@
 /.quarto/
 /_site/
 /.vscode/
+/_freeze/
 .*

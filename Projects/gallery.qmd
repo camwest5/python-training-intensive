@@ -1,0 +1,6 @@
+---
+title: Project Gallery
+listing:
+    contents: example_project.py
+    type: grid
+---
