@@ -15,7 +15,7 @@ We have eight datasets for you to choose from:
 | Dataset | Description |
 | --- | --- |
 | [World populations](../data_sources/population.csv) | A summary of world populations and corresponding statistics | 
-| [Soccer players](../data_sources/Players2024.csv) | A summary of about 250 2024 soccer players |
+| [Soccer players](../data_sources/Players2024.csv) | A summary of about 2024 soccer players (about 6000) |
 | [Coffee survey](../data_sources/coffee_survey.csv) | A survey of coffee preferences | 
 | [Melbourne housing data](../data_sources/melb_data.csv) | A collection of houses for sale in Melbourne | 
 | [Goodreads books](../data_sources/books.csv) | Data for 50,000 goodreads books |
