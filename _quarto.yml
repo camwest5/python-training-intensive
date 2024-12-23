@@ -51,6 +51,3 @@ format:
       - custom.scss
 
     toc: true
-
-execute:
-  freeze: auto
