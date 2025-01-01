@@ -116,31 +116,31 @@ df["height_cm"].describe()
 
 ### Measures of correlation
 
-If you've got two numeric variables, you might want to examine covariance and correlation. These indicate how strongly the variables are linearly related. We'll need to use the `df["Age"]` variable as well.
+If you've got two numeric variables, you might want to examine covariance and correlation. These indicate how strongly the variables are linearly related. We'll need to use the `df["age"]` variable as well.
 
-The covariance between "height_cm" and "Age" is
+The covariance between "height_cm" and "age" is
 
 ```python
-df["height_cm"].cov(df["Age"])
+df["height_cm"].cov(df["age"])
 ```
 
-> The `.cov()` function compares the column it's attached to (here `df["height_cm"]`) with the column you input (here `df["Age"]`). This means we could swap the columns without issue:
+> The `.cov()` function compares the column it's attached to (here `df["height_cm"]`) with the column you input (here `df["age"]`). This means we could swap the columns without issue:
 >
 > ```python
-> df["Age"].cov(df["height_cm"])
+> df["age"].cov(df["height_cm"])
 > ```
 
 Similarly, we can find the Pearson correlation coefficient between two columns. 
 
 ```python
-df["height_cm"].corr(df["Age"])
+df["height_cm"].corr(df["age"])
 ```
 
 You can also specify "kendall" or "spearman" for their respective correlation coefficients
 
 ```python
-df["height_cm"].corr(df["Age"], method = "kendall")
-df["height_cm"].corr(df["Age"], method = "spearman")
+df["height_cm"].corr(df["age"], method = "kendall")
+df["height_cm"].corr(df["age"], method = "spearman")
 ```
 
 ### Reminder about groupbys
@@ -174,13 +174,13 @@ import scipy.stats as stats
 Least-squares regression for two sets of measurements can be performed with the function `stats.linregress()`:
 
 ```python
-stats.linregress(x = min_heights["Age"], y = df["height_cm"])
+stats.linregress(x = min_heights["age"], y = df["height_cm"])
 ```
 
 If we store this as a variable, we can access the different values with the `.` operator. For example, the p-value is
 
 ```python
-lm = stats.linregress(x = df["Age"], y = df["height_cm"])
+lm = stats.linregress(x = df["age"], y = df["height_cm"])
 lm.pvalue
 ```
 
@@ -196,7 +196,7 @@ import matplotlib.pyplot as plt
 Start by making a scatterplot of the data,
 
 ```python
-sns.relplot(data = df, x = "Age", y = "height_cm")
+sns.relplot(data = df, x = "age", y = "height_cm")
 ```
 
 Then, you'll need to plot the regression as a line. For reference,
@@ -205,9 +205,9 @@ $$ y = \text{slope}\times x + \text{intercept}$$
 
 So
 ```python
-sns.relplot(data = df, x = "Age", y = "height_cm")
+sns.relplot(data = df, x = "age", y = "height_cm")
 
-x_lm = df["Age"]
+x_lm = df["age"]
 y_lm = lm.slope*x_lm + lm.intercept
 sns.lineplot(x = x_lm, y = y_lm, color = "r")
 ```
@@ -294,7 +294,7 @@ import statsmodels.formula.api as smf
 
 #### Simple linear regressions revisited
 
-Let's perform the same linear regression as before, looking at the "Age" and "height variables". Our thinking is that players' heights dictate how long they can play, so we'll make $x = \text{height\_cm}$ and $y = \text{Age}$.
+Let's perform the same linear regression as before, looking at the "age" and "height variables". Our thinking is that players' heights dictate how long they can play, so we'll make $x = \text{height\_cm}$ and $y = \text{age}$.
 
 The first step is to make the set up the variables. We'll use the function `smf.ols()` for ordinary least squares. It takes in two imputs:
 
@@ -304,7 +304,7 @@ The first step is to make the set up the variables. We'll use the function `smf.
 We create the model and compute the fit
 
 ```python
-mod = smf.ols("Age ~ height_cm", df)
+mod = smf.ols("age ~ height_cm", df)
 res = mod.fit()
 ```
 
@@ -317,8 +317,8 @@ res.summary()
 That's a lot nicer than with scipy. We can also make a plot by getting the model's $y$ values with `res.fittedvalues`
 
 ```python
-sns.relplot(data = df, x = "height_cm", y = "Age")
-sns.lineplot(x = df["Age"], y = res.fittedvalues, color = "black")
+sns.relplot(data = df, x = "height_cm", y = "age")
+sns.lineplot(x = df["age"], y = res.fittedvalues, color = "black")
 ```
 
 #### Generalised linear models

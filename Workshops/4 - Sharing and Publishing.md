@@ -97,7 +97,7 @@ An interactive plot:
 # %%
 #| echo: false
 import plotly.express as px
-px.scatter(data_frame = df, x = "Age", y = "height_cm")
+px.scatter(data_frame = df, x = "age", y = "height_cm")
 ```
 
 And for adding a caption and alternative text to a figure:
@@ -155,7 +155,7 @@ Another issue with our example document is that an interactive HTML visualisatio
 # %%
 #| eval: false
 import plotly.express as px
-px.scatter(data_frame = df, x = "Age", y = "height_cm")
+px.scatter(data_frame = df, x = "age", y = "height_cm")
 ```
 
 #### Dashboard
@@ -214,7 +214,7 @@ sns.catplot(data = df, x = "positions", y = "height_cm")
 # %%
 #| title: Age vs Height
 import plotly.express as px
-px.scatter(data_frame = df, x = "Age", y = "height_cm")
+px.scatter(data_frame = df, x = "age", y = "height_cm")
 
 # %% [markdown]
 """

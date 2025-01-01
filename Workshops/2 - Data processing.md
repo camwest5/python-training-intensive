@@ -187,16 +187,16 @@ df.iloc[5]
 
 are often (**but not always**) the same.
 
-Finally, we can filter specific rows **by a condition** on one of the variables, e.g. *only rows where variable $\text{Age} > 25$*.
+Finally, we can filter specific rows **by a condition** on one of the variables, e.g. *only rows where variable $\text{age} > 25$*.
 
 ```python
-df[df["Age"] > 25]
+df[df["age"] > 25]
 # Or any other condition
 ```
 
 As with the column case, it's useful to save this as a variable
 ```python
-df_filtered = df[df["Age"] > 15]
+df_filtered = df[df["age"] > 15]
 ```
 
 ## Basic statistics
@@ -220,7 +220,7 @@ df.describe()
 However, it will only show the two first ones and two last ones. We can focus on a specific column instead, for example one that was hidden previously:
 
 ``` python
-df["Age"].describe()
+df["age"].describe()
 ```
 
 Or a categorical column:
@@ -290,7 +290,7 @@ where `abs(...)` takes the absolute value
 
 Notice that we subtracted a value from a column. We can also perform mathematics with multiple columns:
 ```python
-df["product"] = df["Age"]*df["height_cm"]
+df["product"] = df["age"]*df["height_cm"]
 ```
 
 Let's remove these new columns that we don't need with the method `df.drop(columns = [...])`:
@@ -306,7 +306,7 @@ After cleaning up our data, we need to analyse it. This usually involves some ki
 First, we need to group by a specific variable
 
 ```python
-gb = df.groupby("Age")
+gb = df.groupby("age")
 ```
 
 This thing in itself is a pretty abstract Python object, best thought of as a dataframe where we've identified a grouping variable.
