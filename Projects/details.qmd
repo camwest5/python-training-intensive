@@ -64,14 +64,19 @@ This is the advanced way of doing things - we recommend this way, because it'll 
 
 1. [Create a GitHub account and log in](https://github.com/)
 2. Create a fork of our [python-training-intensive](https://github.com/camwest5/python-training-intensive) repository. This is a copy of the repo in your account, changes *will not automatically affect the main repo*. **Leave all settings unchanged**.
-3. Go into the `Projects` folder, and click `Add file` $\rightarrow$ `Create new file`.
-4. Give it a name but **no content**. This will be your folder. Press `Commit changes...`.
-5. Go into your new folder and click `Add file` $\rightarrow$ `Upload files`.
-6. Upload your dashboard and associated files. Press `Commit changes`.
-7. Press `<> Code` (top left) to go back to the top level of the repo
-8. Press `Contribute` $\rightarrow$ `Open pull request` to request merging your files into the main repo
-9. Press `Create pull request` when you're ready.
-10. If you need to make further changes, no worries - the pull request will stay up to date with these **until approved or closed**.
+3. Create a folder for your dashboard **inside the `Projects` directory**
+   1. Go into the `Projects` folder, and click `Add file` $\rightarrow$ `Create new file`. This will be your folder. 
+   2. Give it a name but **no content**. 
+   3. Press `Commit changes...`.
+4. Upload your files
+   1. Go into your new folder and click `Add file` $\rightarrow$ `Upload files`.
+   2. Upload your dashboard and associated files. 
+   3. Press `Commit changes`.
+5. Merge your repo with ours
+   1. Press `<> Code` (top left) to go back to the top level of the repo
+   2. Press `Contribute` $\rightarrow$ `Open pull request` to request merging your files into the main repo
+   3. Press `Create pull request` when you're ready.
+   4. If you need to make further changes, no worries - the pull request will stay up to date with these **until approved or closed**.
 
 Give it a go if you can! 
 
