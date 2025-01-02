@@ -1,51 +1,55 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://camwest5.github.io/python-training-intensive/Projects/template/template.html</loc>
-    <lastmod>2025-01-02T00:11:34.505Z</lastmod>
+    <loc>https://camwest5.github.io/python-training-intensive/Projects/tips.html</loc>
+    <lastmod>2025-01-02T00:37:01.236Z</lastmod>
   </url>
   <url>
-    <loc>https://camwest5.github.io/python-training-intensive/Projects/example_project/example_project.html</loc>
-    <lastmod>2025-01-02T00:11:34.505Z</lastmod>
+    <loc>https://camwest5.github.io/python-training-intensive/Projects/project_gallery.html</loc>
+    <lastmod>2025-01-02T00:37:01.236Z</lastmod>
+  </url>
+  <url>
+    <loc>https://camwest5.github.io/python-training-intensive/Projects/details.html</loc>
+    <lastmod>2025-01-02T00:37:01.236Z</lastmod>
   </url>
   <url>
     <loc>https://camwest5.github.io/python-training-intensive/Workshops/6 - Programming.html</loc>
-    <lastmod>2025-01-02T00:11:34.505Z</lastmod>
+    <lastmod>2025-01-02T00:37:01.236Z</lastmod>
   </url>
   <url>
     <loc>https://camwest5.github.io/python-training-intensive/Workshops/4 - Sharing and Publishing.html</loc>
-    <lastmod>2025-01-02T00:11:34.505Z</lastmod>
+    <lastmod>2025-01-02T00:37:01.236Z</lastmod>
   </url>
   <url>
     <loc>https://camwest5.github.io/python-training-intensive/Workshops/2 - Data processing.html</loc>
-    <lastmod>2025-01-02T00:11:34.505Z</lastmod>
-  </url>
-  <url>
-    <loc>https://camwest5.github.io/python-training-intensive/project.html</loc>
-    <lastmod>2025-01-02T00:11:34.837Z</lastmod>
+    <lastmod>2025-01-02T00:37:01.236Z</lastmod>
   </url>
   <url>
     <loc>https://camwest5.github.io/python-training-intensive/setup.html</loc>
-    <lastmod>2025-01-02T00:11:34.837Z</lastmod>
+    <lastmod>2025-01-02T00:37:01.568Z</lastmod>
   </url>
   <url>
     <loc>https://camwest5.github.io/python-training-intensive/Workshops/1 - Fundamentals.html</loc>
-    <lastmod>2025-01-02T00:11:34.505Z</lastmod>
+    <lastmod>2025-01-02T00:37:01.236Z</lastmod>
   </url>
   <url>
     <loc>https://camwest5.github.io/python-training-intensive/Workshops/3 - Visualisation.html</loc>
-    <lastmod>2025-01-02T00:11:34.505Z</lastmod>
+    <lastmod>2025-01-02T00:37:01.236Z</lastmod>
   </url>
   <url>
     <loc>https://camwest5.github.io/python-training-intensive/Workshops/5 - Statistics.html</loc>
-    <lastmod>2025-01-02T00:11:34.505Z</lastmod>
+    <lastmod>2025-01-02T00:37:01.236Z</lastmod>
   </url>
   <url>
     <loc>https://camwest5.github.io/python-training-intensive/Workshops/index.html</loc>
-    <lastmod>2025-01-02T00:11:34.509Z</lastmod>
+    <lastmod>2025-01-02T00:37:01.236Z</lastmod>
   </url>
   <url>
-    <loc>https://camwest5.github.io/python-training-intensive/Projects/gallery.html</loc>
-    <lastmod>2025-01-02T00:11:34.505Z</lastmod>
+    <loc>https://camwest5.github.io/python-training-intensive/Projects/example_project/example_project.html</loc>
+    <lastmod>2025-01-02T00:37:01.236Z</lastmod>
+  </url>
+  <url>
+    <loc>https://camwest5.github.io/python-training-intensive/Projects/template/template.html</loc>
+    <lastmod>2025-01-02T00:37:01.236Z</lastmod>
   </url>
 </urlset>

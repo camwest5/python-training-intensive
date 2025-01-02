@@ -1,5 +1,53 @@
 [
   {
+    "objectID": "Projects/project_gallery.html",
+    "href": "Projects/project_gallery.html",
+    "title": "Project Gallery",
+    "section": "",
+    "text": "Goalkeepers and their heights\n\n\n\n\n\n\nCameron West and Stéphane Guillou\n\n\nJan 2, 2025\n\n\n\n\n\n\n\n\nNo matching items",
+    "crumbs": [
+      "Workshops",
+      "The Project",
+      "Project Gallery"
+    ]
+  },
+  {
+    "objectID": "Projects/details.html",
+    "href": "Projects/details.html",
+    "title": "Overview",
+    "section": "",
+    "text": "The best way to learn is by doing. That’s why, over the these three days, you are tasked with analysing, visualising and reporting on a set of data!\nRoughly 50% of our intensive is dedicated to working on the project. Working in groups of 2-4, you’ll need to use the techniques we learn to draw some observations about your chosen dataset.\nThe end goal will be a quick fire (low stakes) one-minute presentation with a dashboard to complement.",
+    "crumbs": [
+      "Workshops",
+      "The Project",
+      "Overview"
+    ]
+  },
+  {
+    "objectID": "Projects/details.html#the-datasets",
+    "href": "Projects/details.html#the-datasets",
+    "title": "Overview",
+    "section": "The datasets",
+    "text": "The datasets\nWe have eight datasets for you to choose from:\n\n\n\nDataset\nDescription\n\n\n\n\nWorld populations\nA summary of world populations and corresponding statistics\n\n\nSoccer players\nA summary of about 250 2024 soccer players\n\n\nCoffee survey\nA survey of coffee preferences\n\n\nMelbourne housing data\nA collection of houses for sale in Melbourne\n\n\nGoodreads books\nData for 50,000 goodreads books\n\n\nQueensland hospitals\nEmergency department statistics\n\n\nQueensland fuel prices\nFuel prices by the pump in Queensland\n\n\nAeroplane bird strikes\nAeroplane bird strike incidents fron the 90s",
+    "crumbs": [
+      "Workshops",
+      "The Project",
+      "Overview"
+    ]
+  },
+  {
+    "objectID": "Projects/details.html#project-outline",
+    "href": "Projects/details.html#project-outline",
+    "title": "Overview",
+    "section": "Project outline",
+    "text": "Project outline\nThere are a few key requirements for the project, but otherwise it’s up to you!\n\nAnalyse a dataset and create some visualisations\nPut together a final dashboard-style report. Anything from a powerpoint slide to an interactive dashboard will do!\nDeliver a quick fire one-minute presentation with your group\n\nWe’ll have 5 sessions during the intensive days to work on the project, just shy of six hours. The goal of these sessions is twofold\n\nTo work on the project, analysing data and creating visualisations\nTo dive deeper into the content, perfect for questions and conversations\n\nWhile you’ll be working in groups, everyone should practise analysing and visualising the data. We recommend distributing roles amongst the group, maybe looking at different variables or different presentation formats.\nYou’re welcome to use the project time however you’d like. Below is a rough guide if you’re unsure:\n\n\n\n\n\n\n\nSession\nRecommendation\n\n\n\n\nTuesday afternoon\nPick a dataset and play with the data\n\n\nWednesday morning\nMore exploratory analysis, consider dividing roles amongst group\n\n\nWednesday afternoon\nStart collecting initial visualisations and preparing format (e.g. dashboard)\n\n\nThursday morning\nContinue analysing and creating visualisations\n\n\nThursday afternoon\nPolish up results\n\n\n\nThe presentations will be during Thursday’s final session at 2:50pm.\nGood luck!",
+    "crumbs": [
+      "Workshops",
+      "The Project",
+      "Overview"
+    ]
+  },
+  {
     "objectID": "Workshops/6 - Programming.html",
     "href": "Workshops/6 - Programming.html",
     "title": "Programming Essentials",
@@ -195,39 +243,6 @@
     "crumbs": [
       "Workshops",
       "Data Processing"
-    ]
-  },
-  {
-    "objectID": "project.html",
-    "href": "project.html",
-    "title": "The Project",
-    "section": "",
-    "text": "The best way to learn is by doing. That’s why, over the these three days, you are tasked with analysing, visualising and reporting on a set of data!\nRoughly 50% of our intensive is dedicated to working on the project. Working in groups of 2-4, you’ll need to use the techniques we learn to draw some observations about your chosen dataset.\nThe end goal will be a quick fire (low stakes) one-minute presentation with a dashboard to complement.",
-    "crumbs": [
-      "Workshops",
-      "The Project"
-    ]
-  },
-  {
-    "objectID": "project.html#the-datasets",
-    "href": "project.html#the-datasets",
-    "title": "The Project",
-    "section": "The datasets",
-    "text": "The datasets\nWe have eight datasets for you to choose from:\n\n\n\nDataset\nDescription\n\n\n\n\nWorld populations\nA summary of world populations and corresponding statistics\n\n\nSoccer players\nA summary of about 250 2024 soccer players\n\n\nCoffee survey\nA survey of coffee preferences\n\n\nMelbourne housing data\nA collection of houses for sale in Melbourne\n\n\nGoodreads books\nData for 50,000 goodreads books\n\n\nQueensland hospitals\nEmergency department statistics\n\n\nQueensland fuel prices\nFuel prices by the pump in Queensland\n\n\nAeroplane bird strikes\nAeroplane bird strike incidents fron the 90s",
-    "crumbs": [
-      "Workshops",
-      "The Project"
-    ]
-  },
-  {
-    "objectID": "project.html#project-outline",
-    "href": "project.html#project-outline",
-    "title": "The Project",
-    "section": "Project outline",
-    "text": "Project outline\nThere are a few key requirements for the project, but otherwise it’s up to you!\n\nAnalyse a dataset and create some visualisations\nPut together a final dashboard-style report. Anything from a powerpoint slide to an interactive dashboard will do!\nDeliver a quick fire one-minute presentation with your group\n\nWe’ll have 5 sessions during the intensive days to work on the project, just shy of six hours. The goal of these sessions is twofold\n\nTo work on the project, analysing data and creating visualisations\nTo dive deeper into the content, perfect for questions and conversations\n\nWhile you’ll be working in groups, everyone should practise analysing and visualising the data. We recommend distributing roles amongst the group, maybe looking at different variables or different presentation formats.\nYou’re welcome to use the project time however you’d like. Below is a rough guide if you’re unsure:\n\n\n\n\n\n\n\nSession\nRecommendation\n\n\n\n\nTuesday afternoon\nPick a dataset and play with the data\n\n\nWednesday morning\nMore exploratory analysis, consider dividing roles amongst group\n\n\nWednesday afternoon\nStart collecting initial visualisations and preparing format (e.g. dashboard)\n\n\nThursday morning\nContinue analysing and creating visualisations\n\n\nThursday afternoon\nPolish up results\n\n\n\nThe presentations will be during Thursday’s final session at 2:50pm.\nGood luck!",
-    "crumbs": [
-      "Workshops",
-      "The Project"
     ]
   },
   {
@@ -480,17 +495,6 @@
     "text": "Over these three days we’ll cover six sessions of content:\n\n\n\nSession\nDescription\n\n\n\n\nThe Fundamentals\nThe basics of Python. Variables, functions and modules.\n\n\nData processing\nImporting, manipulating and analysing data with pandas\n\n\nVisualisation\nCreating visualisations of our data with seaborn, matplotlib and plotly\n\n\nSharing and Publishing\nUsing GitHub for sharing and version control, as well as quarto for publishing dashboards and websites.\n\n\nStatistics\nDescriptive and inferential statistics, with some regressions and hypothesis testing, using scipy.stats and statsmodels\n\n\nProgramming Essentials\nPython tools everyone should know. Conditionals, loops, functions and importing scripts.\n\n\n\nThese content sessions are pretty packed, and we won’t have too much time to deviate. That’s why we’ll also have five project sessions - see The Project for details. You’re welcome to ask lengthier questions and play around there!",
     "crumbs": [
       "Workshops"
-    ]
-  },
-  {
-    "objectID": "Projects/gallery.html",
-    "href": "Projects/gallery.html",
-    "title": "Project Gallery",
-    "section": "",
-    "text": "Goalkeepers and their heights\n\n\n\n\n\n\nCameron West and Stéphane Guillou\n\n\nJan 2, 2025\n\n\n\n\n\n\n\n\nNo matching items",
-    "crumbs": [
-      "Workshops",
-      "Project Gallery"
     ]
   }
 ]
