@@ -2,7 +2,6 @@ project:
   type: website
   render: 
     - setup.md
-    - project.md
     - "Workshops/*"
     - "WIPs/*"
     - "Projects/*"
@@ -15,13 +14,14 @@ website:
       - text: "Workshops"
         href: Workshops/index.qmd
       - text: "Project Gallery"
-        href: Projects/gallery.qmd
+        href: Projects/project_gallery.qmd
   sidebar: 
     contents:
       - setup.md
       - auto: "Workshops"
-      - project.md
-      - Projects/gallery.qmd
+      - section: The Project
+        contents:
+        - auto: "Projects/*"
 
 
 ## Hybrid nav - probably not worth it
