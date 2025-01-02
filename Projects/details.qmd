@@ -1,5 +1,6 @@
 ---
 title: "Overview"
+order: 1
 ---
 
 The best way to learn is by doing. That's why, over the these three days, **you are tasked with analysing, visualising and reporting on a set of data!**
