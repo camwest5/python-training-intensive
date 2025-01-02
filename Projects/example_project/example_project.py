@@ -40,7 +40,7 @@ plt.show()
 #| title: Age vs Height
 import plotly.express as px
 #px.scatter(data_frame = df, x = "Age", y = "height_cm")
-px.scatter(data_frame = df, x = "Age", y = "height_cm", color = "positions",
+px.scatter(data_frame = df, x = "age", y = "height_cm", color = "positions",
            facet_col = "positions", facet_col_wrap = 2, hover_name = "name",
            hover_data = "nationality", labels = {"height_cm": "Height (cm)",
                                                  "positions": "Position"})
