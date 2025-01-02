@@ -8,22 +8,7 @@ Roughly 50% of our intensive is dedicated to working on the project. Working in 
 
 The end goal will be a quick fire (low stakes) one-minute presentation with a dashboard to complement.
 
-[See below](#submission) for submission details.
-
-## The datasets
-
-We have eight datasets for you to choose from:
-
-| Dataset | Description |
-| --- | --- |
-| [World populations](../data_sources/population.csv) | A summary of world populations and corresponding statistics | 
-| [Soccer players](../data_sources/Players2024.csv) | A summary of about 250 2024 soccer players |
-| [Coffee survey](../data_sources/coffee_survey.csv) | A survey of coffee preferences | 
-| [Melbourne housing data](data_sources/melb_data.csv) | A collection of houses for sale in Melbourne | 
-| [Goodreads books](data_sources/books.csv) | Data for 50,000 goodreads books |
-| [Queensland hospitals](data_sources/hospital_data.csv) | Emergency department statistics |
-| [Queensland fuel prices](data_sources/qld_fuel.csv) | Fuel prices by the pump in Queensland | 
-| [Aeroplane bird strikes](data_sources/birds_strikes.csv) | Aeroplane bird strike incidents fron the 90s| 
+See the [datasets](datasets.qmd) page for the data and [below](#submission) for submission details.
 
 ## Project outline
 
@@ -54,7 +39,9 @@ The presentations will be during Thursday's final session at 2:50pm.
 
 Good luck!
 
-## Submission
+## Design and submissions
+
+We've put together an [example dashboard](example_project/example_project.qmd) which you're welcome to start from. [Download the code](example_project.zip) to have a look at our example. You can also see a gallery of examples on [Quarto's website](https://quarto.org/docs/gallery/#dashboards).
 
 There are two ways you can upload your visualisations.
 

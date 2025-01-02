@@ -1,0 +1,20 @@
+---
+title: "Datasets and tips"
+---
+
+## Datasets
+
+We have eight datasets for you to choose from. **We recommend saving your data inside your project**.
+
+| Dataset | Description |
+| --- | --- |
+| [World populations](../data_sources/population.csv) | A summary of world populations and corresponding statistics | 
+| [Soccer players](../data_sources/Players2024.csv) | A summary of about 250 2024 soccer players |
+| [Coffee survey](../data_sources/coffee_survey.csv) | A survey of coffee preferences | 
+| [Melbourne housing data](../data_sources/melb_data.csv) | A collection of houses for sale in Melbourne | 
+| [Goodreads books](../data_sources/books.csv) | Data for 50,000 goodreads books |
+| [Queensland hospitals](../data_sources/hospital_data.csv) | Emergency department statistics |
+| [Queensland fuel prices](../data_sources/qld_fuel.csv) | Fuel prices by the pump in Queensland | 
+| [Aeroplane bird strikes](../data_sources/birds_strikes.csv) | Aeroplane bird strike incidents fron the 90s| 
+
+## Tips
