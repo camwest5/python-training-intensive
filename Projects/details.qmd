@@ -63,7 +63,7 @@ There are two ways you can upload your visualisations.
 This is the advanced way of doing things - we recommend this way, because it'll show you a good insight into using GitHub.
 
 1. [Create a GitHub account and log in](https://github.com/)
-2. Create a fork of our [python-training-intensive] repository. This is a copy of the repo in your account, changes *will not automatically affect the main repo*. **Leave all settings unchanged**.
+2. Create a fork of our [python-training-intensive](https://github.com/camwest5/python-training-intensive) repository. This is a copy of the repo in your account, changes *will not automatically affect the main repo*. **Leave all settings unchanged**.
 3. Go into the `Projects` folder, and click `Add file` $\rightarrow$ `Create new file`.
 4. Give it a name but **no content**. This will be your folder. Press `Commit changes...`.
 5. Go into your new folder and click `Add file` $\rightarrow$ `Upload files`.
