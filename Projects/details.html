@@ -242,8 +242,7 @@ window.Quarto = {
   <li><a href="#project-outline" id="toc-project-outline" class="nav-link active" data-scroll-target="#project-outline">Project outline</a></li>
   <li><a href="#design-and-submissions" id="toc-design-and-submissions" class="nav-link" data-scroll-target="#design-and-submissions">Design and submissions</a>
   <ul class="collapse">
-  <li><a href="#upload-dashboard-to-github" id="toc-upload-dashboard-to-github" class="nav-link" data-scroll-target="#upload-dashboard-to-github">Upload dashboard to GitHub</a></li>
-  <li><a href="#upload-dashboard-to-teams" id="toc-upload-dashboard-to-teams" class="nav-link" data-scroll-target="#upload-dashboard-to-teams">Upload dashboard to Teams</a></li>
+  <li><a href="#uploading-the-submission" id="toc-uploading-the-submission" class="nav-link" data-scroll-target="#uploading-the-submission">Uploading the submission</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -329,9 +328,18 @@ window.Quarto = {
 <section id="design-and-submissions" class="level2">
 <h2 class="anchored" data-anchor-id="design-and-submissions">Design and submissions</h2>
 <p>We’ve put together an <a href="example_project/example_project.qmd">example dashboard</a> which you’re welcome to start from. <a href="example_project.zip">Download the code</a> to have a look at our example. You can also see a gallery of examples on <a href="https://quarto.org/docs/gallery/#dashboards">Quarto’s website</a>.</p>
-<p>There are two ways you can upload your visualisations.</p>
-<section id="upload-dashboard-to-github" class="level3">
-<h3 class="anchored" data-anchor-id="upload-dashboard-to-github">Upload dashboard to GitHub</h3>
+<section id="uploading-the-submission" class="level3">
+<h3 class="anchored" data-anchor-id="uploading-the-submission">Uploading the submission</h3>
+<p>Below are two ways you can upload your visualisations.</p>
+<p><strong>You should consider where your dashboard gets its data from.</strong> Our repo has all datasets in the <code>data_sources</code> folder, so you have two options:</p>
+<ol type="1">
+<li>Include the data in your dashboard’s folder that you upload.</li>
+<li>Use the relative reference <code>../../data_sources/data_set_of_your_choice.csv</code> to access the data on our repo</li>
+</ol>
+<p>We’ve used the second option in the example project.</p>
+<p>When you are ready to upload, you have two options:</p>
+<section id="upload-dashboard-to-github" class="level4">
+<h4 class="anchored" data-anchor-id="upload-dashboard-to-github">Upload dashboard to GitHub</h4>
 <p>This is the advanced way of doing things - we recommend this way, because it’ll show you a good insight into using GitHub.</p>
 <ol type="1">
 <li><a href="https://github.com/">Create a GitHub account and log in</a></li>
@@ -359,11 +367,12 @@ window.Quarto = {
 <p>Give it a go if you can!</p>
 <p>If there’s any issues, we’ll leave a comment for you to fix up the merge and we’ll approve it when ready.</p>
 </section>
-<section id="upload-dashboard-to-teams" class="level3">
-<h3 class="anchored" data-anchor-id="upload-dashboard-to-teams">Upload dashboard to Teams</h3>
+<section id="upload-dashboard-to-teams" class="level4">
+<h4 class="anchored" data-anchor-id="upload-dashboard-to-teams">Upload dashboard to Teams</h4>
 <p>If you’re having issues with the GitHub approach, we can upload it for you. Just put your folder with the dashboard into our <a href="https://uq.sharepoint.com/:f:/r/teams/1qktlisq/Shared%20Documents/R%20User%20Group/R%20Training%20Intensive%20Projects?csf=1&amp;web=1&amp;e=wwVB7w">Teams folder</a>.</p>
 
 
+</section>
 </section>
 </section>
 
