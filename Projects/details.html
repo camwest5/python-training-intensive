@@ -135,7 +135,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../Projects/details.html">The Project</a></li><li class="breadcrumb-item"><a href="../Projects/details.html">Overview</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../Projects/datasets.html">The Project</a></li><li class="breadcrumb-item"><a href="../Projects/details.html">Overview</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -211,6 +211,12 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="../Projects/datasets.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Datasets and tips</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="../Projects/details.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Overview</span></a>
   </div>
@@ -219,12 +225,6 @@ window.Quarto = {
   <div class="sidebar-item-container"> 
   <a href="../Projects/project_gallery.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Project Gallery</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../Projects/tips.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Tips</span></a>
   </div>
 </li>
       </ul>
@@ -239,9 +239,8 @@ window.Quarto = {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#the-datasets" id="toc-the-datasets" class="nav-link active" data-scroll-target="#the-datasets">The datasets</a></li>
-  <li><a href="#project-outline" id="toc-project-outline" class="nav-link" data-scroll-target="#project-outline">Project outline</a></li>
-  <li><a href="#submission" id="toc-submission" class="nav-link" data-scroll-target="#submission">Submission</a>
+  <li><a href="#project-outline" id="toc-project-outline" class="nav-link active" data-scroll-target="#project-outline">Project outline</a></li>
+  <li><a href="#design-and-submissions" id="toc-design-and-submissions" class="nav-link" data-scroll-target="#design-and-submissions">Design and submissions</a>
   <ul class="collapse">
   <li><a href="#upload-dashboard-to-github" id="toc-upload-dashboard-to-github" class="nav-link" data-scroll-target="#upload-dashboard-to-github">Upload dashboard to GitHub</a></li>
   <li><a href="#upload-dashboard-to-teams" id="toc-upload-dashboard-to-teams" class="nav-link" data-scroll-target="#upload-dashboard-to-teams">Upload dashboard to Teams</a></li>
@@ -252,7 +251,7 @@ window.Quarto = {
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../Projects/details.html">The Project</a></li><li class="breadcrumb-item"><a href="../Projects/details.html">Overview</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../Projects/datasets.html">The Project</a></li><li class="breadcrumb-item"><a href="../Projects/details.html">Overview</a></li></ol></nav>
 <div class="quarto-title">
 <h1 class="title">Overview</h1>
 </div>
@@ -274,53 +273,7 @@ window.Quarto = {
 <p>The best way to learn is by doing. That’s why, over the these three days, <strong>you are tasked with analysing, visualising and reporting on a set of data!</strong></p>
 <p>Roughly 50% of our intensive is dedicated to working on the project. Working in groups of 2-4, you’ll need to use the techniques we learn to draw some observations about your chosen dataset.</p>
 <p>The end goal will be a quick fire (low stakes) one-minute presentation with a dashboard to complement.</p>
-<p><a href="#submission">See below</a> for submission details.</p>
-<section id="the-datasets" class="level2">
-<h2 class="anchored" data-anchor-id="the-datasets">The datasets</h2>
-<p>We have eight datasets for you to choose from:</p>
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th>Dataset</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><a href="../data_sources/population.csv">World populations</a></td>
-<td>A summary of world populations and corresponding statistics</td>
-</tr>
-<tr class="even">
-<td><a href="../data_sources/Players2024.csv">Soccer players</a></td>
-<td>A summary of about 250 2024 soccer players</td>
-</tr>
-<tr class="odd">
-<td><a href="../data_sources/coffee_survey.csv">Coffee survey</a></td>
-<td>A survey of coffee preferences</td>
-</tr>
-<tr class="even">
-<td><a href="data_sources/melb_data.csv">Melbourne housing data</a></td>
-<td>A collection of houses for sale in Melbourne</td>
-</tr>
-<tr class="odd">
-<td><a href="data_sources/books.csv">Goodreads books</a></td>
-<td>Data for 50,000 goodreads books</td>
-</tr>
-<tr class="even">
-<td><a href="data_sources/hospital_data.csv">Queensland hospitals</a></td>
-<td>Emergency department statistics</td>
-</tr>
-<tr class="odd">
-<td><a href="data_sources/qld_fuel.csv">Queensland fuel prices</a></td>
-<td>Fuel prices by the pump in Queensland</td>
-</tr>
-<tr class="even">
-<td><a href="data_sources/birds_strikes.csv">Aeroplane bird strikes</a></td>
-<td>Aeroplane bird strike incidents fron the 90s</td>
-</tr>
-</tbody>
-</table>
-</section>
+<p>See the <a href="../Projects/datasets.html">datasets</a> page for the data and <a href="#submission">below</a> for submission details.</p>
 <section id="project-outline" class="level2">
 <h2 class="anchored" data-anchor-id="project-outline">Project outline</h2>
 <p>There are a few key requirements for the project, but otherwise it’s up to you!</p>
@@ -373,8 +326,9 @@ window.Quarto = {
 <p>The presentations will be during Thursday’s final session at 2:50pm.</p>
 <p>Good luck!</p>
 </section>
-<section id="submission" class="level2">
-<h2 class="anchored" data-anchor-id="submission">Submission</h2>
+<section id="design-and-submissions" class="level2">
+<h2 class="anchored" data-anchor-id="design-and-submissions">Design and submissions</h2>
+<p>We’ve put together an <a href="example_project/example_project.qmd">example dashboard</a> which you’re welcome to start from. <a href="example_project.zip">Download the code</a> to have a look at our example. You can also see a gallery of examples on <a href="https://quarto.org/docs/gallery/#dashboards">Quarto’s website</a>.</p>
 <p>There are two ways you can upload your visualisations.</p>
 <section id="upload-dashboard-to-github" class="level3">
 <h3 class="anchored" data-anchor-id="upload-dashboard-to-github">Upload dashboard to GitHub</h3>
