@@ -43,9 +43,20 @@ Good luck!
 
 We've put together an [example dashboard](example_project/example_project.qmd) which you're welcome to start from. [Download the code](example_project.zip) to have a look at our example. You can also see a gallery of examples on [Quarto's website](https://quarto.org/docs/gallery/#dashboards).
 
-There are two ways you can upload your visualisations.
+### Uploading the submission
 
-### Upload dashboard to GitHub
+Below are two ways you can upload your visualisations.
+
+**You should consider where your dashboard gets its data from.** Our repo has all datasets in the `data_sources` folder, so you have two options:
+
+1. Include the data in your dashboard's folder that you upload.
+2. Use the relative reference `../../data_sources/data_set_of_your_choice.csv` to access the data on our repo
+
+We've used the second option in the example project.
+
+When you are ready to upload, you have two options:
+
+#### Upload dashboard to GitHub
 
 This is the advanced way of doing things - we recommend this way, because it'll show you a good insight into using GitHub.
 
@@ -69,6 +80,6 @@ Give it a go if you can!
 
 If there's any issues, we'll leave a comment for you to fix up the merge and we'll approve it when ready.
 
-### Upload dashboard to Teams
+#### Upload dashboard to Teams
 
 If you're having issues with the GitHub approach, we can upload it for you. Just put your folder with the dashboard into our [Teams folder](https://uq.sharepoint.com/:f:/r/teams/1qktlisq/Shared%20Documents/R%20User%20Group/R%20Training%20Intensive%20Projects?csf=1&web=1&e=wwVB7w).
