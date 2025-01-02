@@ -1,111 +1,293 @@
 [
   {
-    "objectID": "Workshops/index.html",
-    "href": "Workshops/index.html",
-    "title": "Workshops",
+    "objectID": "Projects/project_gallery.html",
+    "href": "Projects/project_gallery.html",
+    "title": "Project Gallery",
     "section": "",
-    "text": "Over these three days we’ll cover six sessions of content:\n\n\n\nSession\nDescription\n\n\n\n\nThe Fundamentals\nThe basics of Python. Variables, functions and modules.\n\n\nData processing\nImporting, manipulating and analysing data with pandas\n\n\nVisualisation\nCreating visualisations of our data with seaborn, matplotlib and plotly\n\n\nSharing and Publishing\nUsing GitHub for sharing and version control, as well as quarto for publishing dashboards and websites.\n\n\nStatistics\nDescriptive and inferential statistics, with some regressions and hypothesis testing, using scipy.stats and statsmodels\n\n\nProgramming Essentials\nPython tools everyone should know. Conditionals, loops, functions and importing scripts.\n\n\n\nThese content sessions are pretty packed, and we won’t have too much time to deviate. That’s why we’ll also have five project sessions - see The Project for details. You’re welcome to ask lengthier questions and play around there!",
+    "text": "Goalkeepers and their heights\n\n\n\n\n\n\nCameron West and Stéphane Guillou\n\n\nJan 2, 2025\n\n\n\n\n\n\n\n\n\n\n\n\nReproducible Output\n\n\n\n\n\n\nTest\n\n\nJan 1, 2025\n\n\n\n\n\n\n\n\nNo matching items",
     "crumbs": [
-      "Workshops"
+      "Workshops",
+      "The Project",
+      "Project Gallery"
     ]
   },
   {
-    "objectID": "Workshops/5 - Statistics.html",
-    "href": "Workshops/5 - Statistics.html",
-    "title": "Statistics",
+    "objectID": "Projects/details.html",
+    "href": "Projects/details.html",
+    "title": "Overview",
     "section": "",
-    "text": "This session is aimed as an overview of how to perform some statistical modelling with Python. It is a Python workshop, not a statistics workshop - if you’d like to better understand the statistical models, or need help deciding what’s best for you, please consult a statistics resource or contact a statistician.\nIn this session, we’ll cover\nWe’ll use three new modules: - numpy - scipy.stats - statsmodels\nWe’ll be working from our “Players2024” dataset again. To bring it in and clean it up,",
+    "text": "The best way to learn is by doing. That’s why, over the these three days, you are tasked with analysing, visualising and reporting on a set of data!\nRoughly 50% of our intensive is dedicated to working on the project. Working in groups of 2-4, you’ll need to use the techniques we learn to draw some observations about your chosen dataset.\nThe end goal will be a quick fire (low stakes) one-minute presentation with a dashboard to complement.\nSee below for submission details.",
     "crumbs": [
       "Workshops",
-      "Statistics"
+      "The Project",
+      "Overview"
     ]
   },
   {
-    "objectID": "Workshops/5 - Statistics.html#descriptive-statistics",
-    "href": "Workshops/5 - Statistics.html#descriptive-statistics",
-    "title": "Statistics",
-    "section": "Descriptive Statistics",
-    "text": "Descriptive Statistics\nWe’ll start with sample size. All dataframes have most descriptive statistics functions available right off the bat which we access via the . operator.\nTo calculate the number of non-empty observations in a column, say the numeric variable df[\"height_cm\"], we use the .count() method\ndf[\"height_cm\"].count()\n\nMeasures of central tendancy\nWe can compute measures of central tendancy similarly. The average value is given by\ndf[\"height_cm\"].mean()\nthe median by\ndf[\"height_cm\"].median()\nand the mode by\ndf[\"height_cm\"].mode()\n\n.mode() returns a dataframe with the most frequent values as there can be multiple.\n\n\n\nMeasures of variance\nWe can also compute measures of variance. The minimum and maximum are as expected\ndf[\"height_cm\"].min()\ndf[\"height_cm\"].max()\nThe range is the difference\ndf[\"height_cm\"].min() - df[\"height_cm\"].max()\nQuantiles are given by .quantile(...) with the fraction inside. The inter-quartile range (IQR) is the difference between 25% and 75%.\nq1 = df[\"height_cm\"].quantile(0.25)\nq3 = df[\"height_cm\"].quantile(0.75)\nIQR = q3 - q1\nA column’s standard deviation and variance are given by\ndf[\"height_cm\"].std()\ndf[\"height_cm\"].var()\nAnd the standard error of the mean (SEM) with\ndf[\"height_cm\"].sem()\nYou can calculate the skewness and kurtosis (variation of tails) of a sample with\ndf[\"height_cm\"].skew()\ndf[\"height_cm\"].kurt()\nAll together, you can see a nice statistical summary with\ndf[\"height_cm\"].describe()\n\n\nMeasures of correlation\nIf you’ve got two numeric variables, you might want to examine covariance and correlation. These indicate how strongly the variables are linearly related. We’ll need to use the df[\"age\"] variable as well.\nThe covariance between “height_cm” and “age” is\ndf[\"height_cm\"].cov(df[\"age\"])\n\nThe .cov() function compares the column it’s attached to (here df[\"height_cm\"]) with the column you input (here df[\"age\"]). This means we could swap the columns without issue:\ndf[\"age\"].cov(df[\"height_cm\"])\n\nSimilarly, we can find the Pearson correlation coefficient between two columns.\ndf[\"height_cm\"].corr(df[\"age\"])\nYou can also specify “kendall” or “spearman” for their respective correlation coefficients\ndf[\"height_cm\"].corr(df[\"age\"], method = \"kendall\")\ndf[\"height_cm\"].corr(df[\"age\"], method = \"spearman\")\n\n\nReminder about groupbys\nBefore we move to inferential statistics, it’s worth reiterating the power of groupbys discussed in the second workshop.\nTo group by a specific variable, like “positions”, we use\ngb = df.groupby(\"positions\")\nBy applying our statistics to the gb object, we’ll apply them to every variable for each position. Note that we should specify numeric_only = True, because these statistics won’t work for non-numeric variables\ngb.mean(numeric_only = True)",
+    "objectID": "Projects/details.html#the-datasets",
+    "href": "Projects/details.html#the-datasets",
+    "title": "Overview",
+    "section": "The datasets",
+    "text": "The datasets\nWe have eight datasets for you to choose from:\n\n\n\nDataset\nDescription\n\n\n\n\nWorld populations\nA summary of world populations and corresponding statistics\n\n\nSoccer players\nA summary of about 250 2024 soccer players\n\n\nCoffee survey\nA survey of coffee preferences\n\n\nMelbourne housing data\nA collection of houses for sale in Melbourne\n\n\nGoodreads books\nData for 50,000 goodreads books\n\n\nQueensland hospitals\nEmergency department statistics\n\n\nQueensland fuel prices\nFuel prices by the pump in Queensland\n\n\nAeroplane bird strikes\nAeroplane bird strike incidents fron the 90s",
     "crumbs": [
       "Workshops",
-      "Statistics"
+      "The Project",
+      "Overview"
     ]
   },
   {
-    "objectID": "Workshops/5 - Statistics.html#inferential-statistics",
-    "href": "Workshops/5 - Statistics.html#inferential-statistics",
-    "title": "Statistics",
-    "section": "Inferential Statistics",
-    "text": "Inferential Statistics\nInferential statistics requires using the module scipy.stats, which we’ll bring in with\nimport scipy.stats as stats\n\nSimple linear regressions\nLeast-squares regression for two sets of measurements can be performed with the function stats.linregress():\nstats.linregress(x = min_heights[\"age\"], y = df[\"height_cm\"])\nIf we store this as a variable, we can access the different values with the . operator. For example, the p-value is\nlm = stats.linregress(x = df[\"age\"], y = df[\"height_cm\"])\nlm.pvalue\n\nPlotting it\nNaturally, you’d want to plot this. We’ll need to use the overlaying techniques from the visualisation session. Let’s import seaborn and matplotlib\nimport seaborn as sns\nimport matplotlib.pyplot as plt\nStart by making a scatterplot of the data,\nsns.relplot(data = df, x = \"age\", y = \"height_cm\")\nThen, you’ll need to plot the regression as a line. For reference,\n\\[ y = \\text{slope}\\times x + \\text{intercept}\\]\nSo\nsns.relplot(data = df, x = \"age\", y = \"height_cm\")\n\nx_lm = df[\"age\"]\ny_lm = lm.slope*x_lm + lm.intercept\nsns.lineplot(x = x_lm, y = y_lm, color = \"r\")\n\n\n\n\\(t\\)-tests\nWe can also perform \\(t\\)-tests with the scipy.stats module. Typically, this is performed to examine the statistical signficance of a difference between two samples’ means. Let’s examine whether that earlier groupby result for is accurate for heights, specifically, are goalkeepers taller than non-goalkeepers?\nLet’s start by separating the goalkeepers from the non-goalkeepers in two variables\ngoalkeepers = df[df[\"positions\"] == \"Goalkeeper\"]\nnon_goalkeepers = df[df[\"positions\"] != \"Goalkeeper\"]\nThe \\(t\\)-test for the means of two independent samples is given by\nstats.ttest_ind(goalkeepers[\"height_cm\"], non_goalkeepers[\"height_cm\"])\nYielding a p-value of \\(8\\times 10^{-247}\\approx 0\\), indicating that the null-hypothesis (heights are the same) is extremely unlikely.\n\n\nANOVAs\nWhat about the means of the other three? We could use an ANOVA to examine them. We use the stats.f_oneway() function for this. However, this requires us to send a list of samples in for each group, so we should separate the three positions.\ndefender = df[df[\"positions\"] == \"Defender\"].height_cm\nmidfield = df[df[\"positions\"] == \"Midfield\"].height_cm\nattack = df[df[\"positions\"] == \"Attack\"].height_cm\nWe can then perform the ANOVA on this list of samples\nstats.f_oneway(defender, midfield, attack)\nWith \\(p = 3\\times10^{-84}\\), it looks like their positions are not all independent of height.\n\n\n\\(\\chi^2\\) tests\n\\(χ^2\\) tests are useful for examining the relationship of categorical variables by comparing the frequencies of each. Often, you’d use this if you can make a contingency table.\nWe only have one useful categorical variable here, “positions” (the others have too many unique values), so we’ll need to create another. Let’s see if there’s a relationship between players’ positions and names with the letter “a”.\nMake a binary column for players with the letter “a” in their names. To do this, we need to apply a string method to all the columns in the dataframe as follows\ndf[\"a_in_name\"] = df[\"name\"].str.contains(\"a\")\nLet’s cross tabulate positions with this new column\na_vs_pos = pd.crosstab(df[\"positions\"],df[\"a_in_name\"])\nprint(a_vs_pos)\nThe \\(χ^2\\) test’s job is to examine whether players’ positions depend on the presence of “a” in their name. To evaluate it we need to send the contingency table in:\nstats.chi2_contingency(a_vs_pos)\n\n\nMore complex modelling\nIf you need to do more advanced statistics, particularly if you need more regressions, you’ll likely need to turn to a different package: statsmodels. It is particularly useful for statistical modelling.\nWe’ll go through three examples\n\nSimple linear regressions (like before)\nMultiple linear regressions\nLogistic regressions\n\nWhat’s nice about statsmodels is that it gives an R-like interface and summaries.\nTo start with, let’s import the tools. We’ll use the formula interface, which offers us an R-like way of creating models.\nimport statsmodels.formula.api as smf\n\nSimple linear regressions revisited\nLet’s perform the same linear regression as before, looking at the “age” and “height variables”. Our thinking is that players’ heights dictate how long they can play, so we’ll make \\(x = \\text{height\\_cm}\\) and \\(y = \\text{age}\\).\nThe first step is to make the set up the variables. We’ll use the function smf.ols() for ordinary least squares. It takes in two imputs:\n\nThe formula string, in the form y ~ X1 + X2 ...\nThe data\n\nWe create the model and compute the fit\nmod = smf.ols(\"age ~ height_cm\", df)\nres = mod.fit()\nDone! Let’s take a look at the results\nres.summary()\nThat’s a lot nicer than with scipy. We can also make a plot by getting the model’s \\(y\\) values with res.fittedvalues\nsns.relplot(data = df, x = \"height_cm\", y = \"age\")\nsns.lineplot(x = df[\"age\"], y = res.fittedvalues, color = \"black\")\n\n\nGeneralised linear models\nThe statsmodels module has lots of advanced statistical models available. We’ll take a look at one more: Generalised Linear Models. The distributions they include are\n\nBinomial\nPoisson\nNegative Binomial\nGaussian (Normal)\nGamma\nInverse Gaussian\nTweedie\n\nWe’ll use the binomial option to create logistic regressions.\nLogistic regressions examine the distribution of binary data. For us, we can compare the heights of goalkeepers vs non-goalkeepers again. Let’s make a new column which is 1 for goalkeepers and 0 for non-goalkeepers:\ndf[\"gk\"] = (df[\"positions\"] == \"Goalkeeper\")*1\n\nWe have to multiply by 1 to turn True \\(\\rightarrow\\) 1 and False \\(\\rightarrow\\) 0\n\nNow, we can model this column with height. Specifically,\n\\[ \\text{gk} \\sim \\text{height\\_cm}\\]\nStart by making the model with the function smf.glm(). We need to specify the family of distributions; they all live in sm.families:\nmod = smf.glm(\"gk ~ height_cm\", data = df, family = sm.families.Binomial())\nNext, evaluate the results\nres = mod.fit()\nLet’s have a look at the summary:\nres.summary()\nFinally, we can plot the result like before\nsns.relplot(data = df, x = \"height_cm\", y = \"gk\")\nsns.lineplot(x = df[\"height_cm\"], y = res.fittedvalues, color = \"black\")",
+    "objectID": "Projects/details.html#project-outline",
+    "href": "Projects/details.html#project-outline",
+    "title": "Overview",
+    "section": "Project outline",
+    "text": "Project outline\nThere are a few key requirements for the project, but otherwise it’s up to you!\n\nAnalyse a dataset and create some visualisations\nPut together a final dashboard-style report. Anything from a powerpoint slide to an interactive dashboard will do!\nDeliver a quick fire one-minute presentation with your group\n\nWe’ll have 5 sessions during the intensive days to work on the project, just shy of six hours. The goal of these sessions is twofold\n\nTo work on the project, analysing data and creating visualisations\nTo dive deeper into the content, perfect for questions and conversations\n\nWhile you’ll be working in groups, everyone should practise analysing and visualising the data. We recommend distributing roles amongst the group, maybe looking at different variables or different presentation formats.\nYou’re welcome to use the project time however you’d like. Below is a rough guide if you’re unsure:\n\n\n\n\n\n\n\nSession\nRecommendation\n\n\n\n\nTuesday afternoon\nPick a dataset and play with the data\n\n\nWednesday morning\nMore exploratory analysis, consider dividing roles amongst group\n\n\nWednesday afternoon\nStart collecting initial visualisations and preparing format (e.g. dashboard)\n\n\nThursday morning\nContinue analysing and creating visualisations\n\n\nThursday afternoon\nPolish up results\n\n\n\nThe presentations will be during Thursday’s final session at 2:50pm.\nGood luck!",
     "crumbs": [
       "Workshops",
-      "Statistics"
+      "The Project",
+      "Overview"
     ]
   },
   {
-    "objectID": "Workshops/3 - Visualisation.html",
-    "href": "Workshops/3 - Visualisation.html",
-    "title": "Visualisation",
+    "objectID": "Projects/details.html#submission",
+    "href": "Projects/details.html#submission",
+    "title": "Overview",
+    "section": "Submission",
+    "text": "Submission\nThere are two ways you can upload your visualisations.\n\nUpload dashboard to GitHub\nThis is the advanced way of doing things - we recommend this way, because it’ll show you a good insight into using GitHub.\n\nCreate a GitHub account and log in\nCreate a fork of our [python-training-intensive] repository. This is a copy of the repo in your account, changes will not automatically affect the main repo. Leave all settings unchanged.\nGo into the Projects folder, and click Add file \\(\\rightarrow\\) Create new file.\nGive it a name but no content. This will be your folder. Press Commit changes....\nGo into your new folder and click Add file \\(\\rightarrow\\) Upload files.\nUpload your dashboard and associated files. Press Commit changes.\nPress &lt;&gt; Code (top left) to go back to the top level of the repo\nPress Contribute \\(\\rightarrow\\) Open pull request to request merging your files into the main repo\nPress Create pull request when you’re ready.\nIf you need to make further changes, no worries - the pull request will stay up to date with these until approved or closed.\n\nGive it a go if you can!\nIf there’s any issues, we’ll leave a comment for you to fix up the merge and we’ll approve it when ready.\n\n\nUpload dashboard to Teams\nIf you’re having issues with the GitHub approach, we can upload it for you. Just put your folder with the dashboard into our Teams folder.",
+    "crumbs": [
+      "Workshops",
+      "The Project",
+      "Overview"
+    ]
+  },
+  {
+    "objectID": "Workshops/6 - Programming.html",
+    "href": "Workshops/6 - Programming.html",
+    "title": "Programming Essentials",
     "section": "",
-    "text": "In this third workshop we will cover\nSee analysis.py for seaborn stuff.",
+    "text": "In this workshop we cover the building blocks for developing more complex code, looking at",
     "crumbs": [
       "Workshops",
-      "Visualisation"
+      "Programming Essentials"
     ]
   },
   {
-    "objectID": "Workshops/3 - Visualisation.html#setting-up",
-    "href": "Workshops/3 - Visualisation.html#setting-up",
-    "title": "Visualisation",
+    "objectID": "Workshops/6 - Programming.html#directing-traffic-with-conditionals",
+    "href": "Workshops/6 - Programming.html#directing-traffic-with-conditionals",
+    "title": "Programming Essentials",
+    "section": "Directing traffic with conditionals",
+    "text": "Directing traffic with conditionals\nIn the first half of this session we’ll look at two types of control flows: conditionals and loops.\nConditionals allow you to put “gates” in your code, only running sections if a certain condition is true. They are common to most programming languages.\nIn Python, they are called if statements, because you use the if command. For example,\nif 5 &gt; 0:\n    print(\"We're inside the if statement\")\nThe line print(\"We're inside the if statement\") will only run if 5 &gt; 0 is true. If not, it’ll get skipped.\nIndents are essential. Only indented code will be governed by conditional\nif 5 &gt; 0:\n    print(\"We're inside the if statement\")\n\nprint(\"This code always runs\")\nWatch what happens if we change the condition\nif 5 &gt; 10:\n    print(\"We're inside the if statement\")\n\nprint(\"This code always runs\")\nNow, the first line doesn’t run. That’s the essence of a conditional.\nThere’s not much point to using a condition that will always be true. Typically, you’d use a variable in the condition, for example.\npet_age = 10\n\nif pet_age &gt; 10:\n    print(\"My pet is older than 10\")\n\nLogical operators\nHere is a table of the different operators you can make conditions with. When you run them, they always return either True or False.\n\n\n\n\n\n\n\n\nOperator\nTrue example\nDescription\n\n\n\n\n==\n10 == 10\nSame value and type\n\n\n!=\n\"10\" != 10\nDifferent value or type\n\n\n&gt;\n10 &gt; 5\nGreater than\n\n\n&gt;=\n10 &gt;= 10\nGreater than or equal to\n\n\n&lt;\n5 &lt; 10\nLess than\n\n\n&lt;=\n5 &lt;= 10\nLess than or equal to\n\n\nin\n\"a\" in \"apple\"\nFirst object exists in the second\n\n\nnot in\n\"b\" not in \"apple\"\nFirst object does not exist in the second\n\n\nand\n10 == 10 and \"a\" in \"apple\"\nOnly true if both conditions are true. Same as &\n\n\nor\n10 == 10 or \"b\" in \"apple\"\nAlways true if one condition is true. Same as \\|\n\n\n\n\n\nelif and else\nif statements only run if the condition is True. What happens if its False? That’s what the else command is for, it’s like a net that catches anything that slipped past if:\npet_age = 5\n\nif pet_age &gt; 10:\n    print(\"My pet is older than 10\")\nelse:\n    print(\"My pet is 10 or younger\")\n\nDon’t forget the colon :!\n\nCheck what happens when you change the age from 5 to 15.\nFinally, what if you wanted to check another condition only if the first one fails? That’s what elif (else-if) is for. It’s another if statement but it only runs if the first fails.\npet_age = 5\n\nif pet_age &gt; 10:\n    print(\"My pet is older than 10\")\nelif pet_age &lt; 5:\n    print(\"My pet is younger than 5\")\nelse:\n    print(\"My pet is between 5 and 10\")\nYou can include as many as you’d like\npet_age = 5\n\nif pet_age &gt; 10:\n    print(\"My pet is older than 10\")\nelif pet_age &lt; 5:\n    print(\"My pet is younger than 5\")\nelif pet_age &lt; 1:\n    print(\"My pet is freshly born\")\nelse:\n    print(\"My pet is between 5 and 10\")",
+    "crumbs": [
+      "Workshops",
+      "Programming Essentials"
+    ]
+  },
+  {
+    "objectID": "Workshops/6 - Programming.html#repeat-after-me",
+    "href": "Workshops/6 - Programming.html#repeat-after-me",
+    "title": "Programming Essentials",
+    "section": "Repeat after me",
+    "text": "Repeat after me\nSometimes you need to repeat a task multiple times. Sometimes hundreds. Maybe you need to loop through 1 million pieces of data. Not fun.\nPython’s loops offer us a way to run a section of code multiple times. There are two types: for loops, which run the code once for each element in a sequence (like a list or string), and while loops, which run until some condition is false.\n\nwhile loops\nThese are almost the same as if statements, except for the fact that they run the code multiple times. Let’s begin with a basic conditional\nnumber = 5\n\nif number &lt; 10:\n    print(number + \"is less than 10.\")\nThe print statement runs once if the condition is true.\nWhat if we wanted to check all the numbers between 5 and 10? We can use a while loop.\nnumber = 5\n\nwhile number &lt; 10:\n    print(number + \"is less than 10.\")\n    number = number + 1\nWe’ve done two things\n\nReplace if with while\nIntroduce number = number + 1 to increase the number each time.\n\n\nWithout step 2, we’d have an infinite loop – one that never stops, because the condition would always be true!\n\nWhile loops are useful for repeating code an indeterminate number of times.\n\n\nfor loops\nRealistically, you’re most likely to use a for loop. They’re inherently safer (you can’t have an infinite loop) and often handier.\nIn Python, for loops iterate through a sequence, like the objects in a list. This is more like other languages’ foreach, than most’s for.\nLet’s say you have a list of different fruit\nlist_of_fruits = [\"apple\", \"banana\", \"cherry\"]\nand you want to run a section of code on \"apple\", then \"banana\", then \"cherry\". Maybe you want to know which ones have the letter “a”. We can start with a for loop\nlist_of_fruits = [\"apple\", \"banana\", \"cherry\"]\n\nfor fruit in list_of_fruits:\n    print(fruit)\nThis loop’s job is to print out the variable fruit. But where is fruit defined? Well, the for loop runs print(fruit) for every element of list_of_fruits, storing the current element in the variable fruit. If we were to write it out explicitly, it would look like\nfruit = list_of_fruits[0]\nprint(fruit)\n\nfruit = list_of_fruits[1]\nprint(fruit)\n\nfruit = list_of_fruits[2]\nprint(fruit)\nLet’s return to our goal: working out which ones have an “a”. We need to put a conditional inside the loop:\nlist_of_fruits = [\"apple\", \"banana\", \"cherry\"]\n\nfor fruit in list_of_fruits:\n    if \"a\" in fruit:\n        print(\"a is in \" + fruit)\n    else:\n        print(\"a is not in \" + fruit)\n\n\nUsing range\nThere’s a special Python object which is useful for loops, the range. This object ‘contains’ all the numbers between a certain range. For example,\nrange(0,5)\ncover the numbers \\(0-4\\), and is somewhat equivalent to [0,1,2,3,4] (for looping purposes). Of course, we can choose a much bigger number:\nfor i in range(0,1000)\n    print(i)\nwill print every number between \\(0\\) and \\(1000\\). This can be useful if you need to loop through multiple objects by indexing.",
+    "crumbs": [
+      "Workshops",
+      "Programming Essentials"
+    ]
+  },
+  {
+    "objectID": "Workshops/6 - Programming.html#looking-under-the-hood-what-makes-ints-ints",
+    "href": "Workshops/6 - Programming.html#looking-under-the-hood-what-makes-ints-ints",
+    "title": "Programming Essentials",
+    "section": "Looking under the hood: what makes ints ints?",
+    "text": "Looking under the hood: what makes ints ints?\nPython is a high level programming language. Its features are often inspired by C and C++, and is itself built in C/C++.\nOne of the major innovations of C++, and object-oriented programming in general, are classes. We won’t go over how to write your own - it’s beyond the scope of this workshop - but they’re worth a conceptual understanding.\nEssentially, all Python variables follow a specific template, known as its class or type. It’s safe to use these interchangebly here. The class is a general template for the variable and it defines what methods (functions) and attributes (variables) live inside the variable.\nInside the variable? Where? Well, a variables contain more than just their value. We use the . operator to access anything besides the value that lives in the variable. For example, all strings have a function called .upper() that makes them uppercase:\nrandom_string = \"Hello, this is a sentence.\"\nprint(random_string.upper())\nLet me emphasise that all strings have .upper(). That makes upper() a method of strings.\nIn other words, a class is like an empty form that needs filling. The form string has a field called upper() that is filled with the function as defined above.",
+    "crumbs": [
+      "Workshops",
+      "Programming Essentials"
+    ]
+  },
+  {
+    "objectID": "Workshops/6 - Programming.html#building-your-own-machines",
+    "href": "Workshops/6 - Programming.html#building-your-own-machines",
+    "title": "Programming Essentials",
+    "section": "Building your own machines",
+    "text": "Building your own machines\nWe’ll wrap this session up by looking at custom functions and modules. So far, we’ve only used built-in functions or those from other people’s modules. But we can make our own!\nWe’ve only ever called functions - this is what we do when we use them. All functions need a definition, this is the code that gets run when they’re called.\n\nThe function definition\nFunctions are machines. They take some inputs, run some code with those inputs, and spit out one output. We need to define how they work before we use them. We should specify\n\nA name\nSome inputs\nThe code to run (the machine itself)\nAn output\n\nWe include these in three steps\n\nThe first line of the function definition (the function signature) specifies the name and inputs\nWe then indent all the code we want to run with our inputs\nWe end with a return statement, specifying the output\n\ndef insert_function_name_here(input_1_name, input_2_name, ...):\n    # Code code code\n    return output\nFor example, let’s create a function that converts centimetres to metres.\ndef cm_to_m(value_in_cm):\n    value_in_m = value_in_cm / 100\n    return value_in_m\nTaking it apart, we have\n\nName: cm_to_m\nInputs (just one): value_in_cm\nCode (just one line): value_in_m = value_in_cm / 100\nOutput: value_in_m\n\nImportantly, nothing happens when you run this code. Why? Because you’ve only defined the function, you haven’t used it yet.\nTo use this function, we need to call it. Let’s convert \\(10\\text{ cm}\\) to \\(\\text{m}\\).\ndef cm_to_m(value_in_cm):\n    value_in_m = value_in_cm / 100\n    return value_in_m\n\ncm_to_m(10)\nWhen we call the function, it runs with value_in_cm = 10.\nThat’s it! Every function that you use, built-in or imported, looks like this.\nBecause functions must be defined before called, and defining them produces no output, best practice is to place functions at the top of your script, below the import statements.\n\n\nDocstrings\nSomething you’ll spot on all professional functions are docstrings. This is what Python spits out with the help() function. You can make your own by writing it within triple quotes immediately after the signature ''' ''':\ndef cm_to_m(value_in_cm):\n    \"\"\"Converts centimetres to metres\"\"\"\n    value_in_m = value_in_cm / 100\n    return value_in_m\n\ncm_to_m(10)\nThat said, the best way to ensure clarity is to use a clear name.\n\n\nCreating modules\nWhat if you need to write lots of functions? We could write unit converters like above for hundreds of possibilities.\nIt’s useful to tuck these away in their own file, so they don’t clog up your main.py.\nLet’s make a new file called conversions.py, and move your function into it. Delete it from your current file.\nThen, to make sure it works, let’s make a new converter too, from centimetres to inches. Your conversions.py file should look like:\ndef cm_to_m(value_in_cm):\n    \"\"\"Converts centimetres to metres\"\"\"\n    value_in_m = value_in_cm / 100\n    return value_in_m\n\ndef cm_to_in(value_in_cm):\n    \"\"\"Converts centimetres to inches\"\"\"\n    value_in_inches = value_in_cm / 2.54\n    return value_in_inches\nLet’s make another script now called main.py. We’ll run our conversions here by pulling in the functions from conversions.py.\nInside main.py, you’ll need to import conversions.py. To access the functions, you’ll need to use . to look inside the module as usual:\nimport conversions\nmetres = conversions.cm_to_m(10)\ninches = conversions.cm_to_in(10)\n\nprint(\"10cm is \" + metres + \"m\")\nprint(\"10cm is \" + inches + \"\\\"\")\n\nTo include a double quote ” inside a string made of double quotes, escape it with a backslash: \\\".\n\nCongratulations, you’ve made your first module!",
+    "crumbs": [
+      "Workshops",
+      "Programming Essentials"
+    ]
+  },
+  {
+    "objectID": "Workshops/4 - Sharing and Publishing.html",
+    "href": "Workshops/4 - Sharing and Publishing.html",
+    "title": "Sharing and Publishing",
+    "section": "",
+    "text": "In this workshop we cover using GitHub for sharing your source code, Git for version control, and Quarto for publishing outputs. Specifically, we look at:",
+    "crumbs": [
+      "Workshops",
+      "Sharing and Publishing"
+    ]
+  },
+  {
+    "objectID": "Workshops/4 - Sharing and Publishing.html#quarto",
+    "href": "Workshops/4 - Sharing and Publishing.html#quarto",
+    "title": "Sharing and Publishing",
+    "section": "Quarto",
+    "text": "Quarto\nQuarto is a publishing system that allows creating documents, presentations, websites and dashboards that contain prose, code and code outputs. This means that such outputs can detail exactly what happened to the data, and outputs can be re-generated very quickly if, for example, the underlying dataset was updated, or if the analysis needs to change.\nLet’s try to create a document based on the visualisations we created earlier.\nThis new .py script will be made of cells, which can be inserted with the toolbar or the keyboard shortcut Ctrl+2.\nAt the top of our script, we need to include a Markdown cell that contains the document’s settings:\n# %% [markdown]\n# ---\n# title: Reproducible Output\n# author: Your Name\n# date: 2025-01-01\n# ---\nAll subsequent cells are going to be either [Markdown] cells (if they contain text, titles and other static contents) or python cells (if they contain executable code). For example:\n# %% [markdown]\n\"\"\"\n## Import the data\n\nLet's import the data:\n\"\"\"\n\n# %%\nimport pandas as pd\ndf = pd.read_csv(\"Players2024.csv\")\n\n# %% [markdown]\n\"\"\"\n## Plot the data\n\nLet's generate that **swarm plot** again:\n\"\"\"\n\n# %%\nimport seaborn as sns\nsns.catplot(data = df, x = \"positions\", y = \"height_cm\")\n\n# %% [markdown]\n\"\"\"\nWe now have a plot!\n\"\"\"\nIn the Markdown cells, we use the Markdown markup language to format the text. For example, using ## before some text defines a heading of level 2 (level 1 being the document’s title), and using ** around some text makes it bold. See more Markdown hints in the Quarto documentation.\n\nRendering\nFrom the iPython console, run the following command to render the document:\n!quarto render document.py\nThis should create a HTML document in your project directory, which you can open in a web browser by right-clicking on it in the Files tab and using “Open externally”.\nAs the default Quarto output is a HTML file, we can include interactive visualisations too.\n\n\nCell options\nIf you want to show the code but don’t want to run it, you can add the cell option #| eval: false. And if you want to show the output but not show the underlying code, use #| echo: false.\n# %% [markdown]\n\"\"\"\n## Interactive plots\n\nYou will need the plotly module:\n\"\"\"\n\n# %%\n#| eval: false\nconda install plotly\n\n# %% [markdown]\n\"\"\"\nAn interactive plot:\n\"\"\"\n\n# %%\n#| echo: false\nimport plotly.express as px\npx.scatter(data_frame = df, x = \"age\", y = \"height_cm\")\nAnd for adding a caption and alternative text to a figure:\n# %%\n#| fig-cap: \"Goalkeepers tend to be taller.\"\n#| fig-alt: \"A scatterplot of the relationsip between height and position.\"\nimport seaborn as sns\nsns.catplot(data = df, x = \"positions\", y = \"height_cm\")\nMany more cell options exist, including captioning and formatting visualisations. Note that these options can be used at the cell level as well as globally (by modifying the front matter at the top of the document).\nFor example, to make sure error and warning messages are never shown:\n# %% [markdown]\n# ---\n# title: Reproducible Output\n# author: Your Name\n# date: 2025-01-01\n# warning: false\n# error: false\n# ---\n\n\nOutput formats\nThe default output format in Quarto is HTML, which is by far the most flexible. However, Quarto is a very versatile publishing system and can generate many different output formats, including PDF, DOCX and ODT, slide formats, Markdown suited for GitHub… and even whole blogs, books and dashboards.\nLet’s try rendering a PDF:\n# %% [markdown]\n# ---\n# title: Reproducible Output\n# author: Your Name\n# date: 2025-01-01\n# format: pdf\n# ---\nWhen rendering PDFs, the first issue we might run into is the lack of a LaTeX distribution. If Quarto didn’t detect one, it will suggest to install tinytex (a minimal LaTeX distribution) with:\n!quarto install tinytex\nOnce that is installed, Quarto should render a PDF.\nAnother issue with our example document is that an interactive HTML visualisation won’t be renderd in the PDF. You can supress it by using the #| eval: false option:\n# %%\n#| eval: false\nimport plotly.express as px\npx.scatter(data_frame = df, x = \"age\", y = \"height_cm\")\n\nDashboard\nA great way to present a variety of outputs in a grid is by creating a HTML dashboard.\nLet’s modify our script to render a dashboard. First, change the output format:\n# %% [markdown]\n# ---\n# title: Reproducible Output\n# author: Your Name\n# date: 2025-01-01\n# format: dashboard\n# ---\nWe can already render the dashboard and see the result. Each panel can be expanded with the bottom-right button. Note that by default:\n\neach cell is rendered in a separate card\nheadings define the rows\nthe heading text is discarded\ncode is not shown (but can be by using echo: true)\n\nGiven this default behaviour, you might have to rethink a good part of your script to make it suited for a striking dashboard. For example, removing most of the text, customising the layout (tabsets, rows, card heights…) and adding custom cards like “value boxes”. Learn more about all these in the Quarto Dashboards documentation.\nAs a starting point, copy the current script across to a new script called dashboard.py and modify it so it matches the following:\n# %% [markdown]\n# ---\n# title: Reproducible Outputs\n# author: John Guillables\n# date: today\n# warning: false\n# error: false\n# format: dashboard\n# ---\n\n# %%\nimport pandas as pd\ndf = pd.read_csv(\"Players2024.csv\")\n\n# %% [markdown]\n\"\"\"\n## Figures {height=70%}\n\"\"\"\n\n# %%\n#| title: Goalkeepers tend to be taller\n#| fig-alt: \"A scatterplot of the relationsip between height and position.\"\nimport seaborn as sns\nsns.catplot(data = df, x = \"positions\", y = \"height_cm\")\n\n# %%\n#| title: Age vs Height\nimport plotly.express as px\npx.scatter(data_frame = df, x = \"age\", y = \"height_cm\")\n\n# %% [markdown]\n\"\"\"\n## Table\n\"\"\"\n\n# %%\n#| title: A glimpse at the dataset\ndf.head(10)\nThis results in a dashboard containing three cards organised in two rows. The top row uses 70% of the available height, and the bottom row shows a table of the top 10 rows of the dataset. Each card has a title.\n\n\n\nQuarto dashboard with three cards: static visualisation, interactive visualisation, and table.",
+    "crumbs": [
+      "Workshops",
+      "Sharing and Publishing"
+    ]
+  },
+  {
+    "objectID": "Workshops/4 - Sharing and Publishing.html#git-and-github",
+    "href": "Workshops/4 - Sharing and Publishing.html#git-and-github",
+    "title": "Sharing and Publishing",
+    "section": "Git and GitHub",
+    "text": "Git and GitHub\nGit is a vesion control system that allows to record a clean history of your project, track precise authorship, and collaborate asynchronously with others. It can be used offline, from the command line or with integration into Itegrated Desktop Environments (like RStudio, VS Code… Unfortunately, Spyder does not have Git integration).\nGitHub is one of many websites that allow you to host project that are tracked with Git. But even without using Git at all, it is possible to use GitHub to share and make your project public. Many researchers use it to make their code public alongside a published paper, to increase reproducibility and transparency. It can also be useful to build and share a portfolio of your work.\nLearning about the ins and out of Git takes time, so in this section we will mainly use GitHub as a place to upload and share your code and outputs, and as a starting point for learning more about Git in the future.\n\nGitHub\nGitHub is currently the most popular place for hosting, sharing and collaborating on code. You can create an account for free, and then create a repository for your project.\n\nCreate an account and log in\nClick on the “+” button (top right of the page)\nSelect “New repository”\nChoose a name and description for your repository\nTick “Add a README file” - this will be where you introduce your project\nClick “Create repository”\n\nFrom there, you can upload your files, and edit text-based files straight from your web browser if you need to.\nThe README file is a markdown file that can contain the most important information about your project. It’s important to populate it as it is the first document most people see. It could contain:\n\nName and description of the project\nHow to use it (installation process if any, examples…)\nWho is the author, who maintains it\nHow to contribute\n\nFor inspiration, see the pandas README file.",
+    "crumbs": [
+      "Workshops",
+      "Sharing and Publishing"
+    ]
+  },
+  {
+    "objectID": "Workshops/4 - Sharing and Publishing.html#further-resources",
+    "href": "Workshops/4 - Sharing and Publishing.html#further-resources",
+    "title": "Sharing and Publishing",
+    "section": "Further resources",
+    "text": "Further resources\n\n…\n…",
+    "crumbs": [
+      "Workshops",
+      "Sharing and Publishing"
+    ]
+  },
+  {
+    "objectID": "Workshops/2 - Data processing.html",
+    "href": "Workshops/2 - Data processing.html",
+    "title": "Data Processing",
+    "section": "",
+    "text": "In this second workshop we will cover\nThis hands-on course – directed at intermediate users – looks at using the pandas module to transform and visualise tabular data.",
+    "crumbs": [
+      "Workshops",
+      "Data Processing"
+    ]
+  },
+  {
+    "objectID": "Workshops/2 - Data processing.html#setting-up",
+    "href": "Workshops/2 - Data processing.html#setting-up",
+    "title": "Data Processing",
     "section": "Setting up",
-    "text": "Setting up\nWith the data manipulation tools from pandas, we can now visualise our data. For this workshop we’ll be working from the “Players2024.csv” dataset, which we should bring in with pandas:\nimport pandas as pd\ndf = pd.read_csv(\"data/Players2024.csv\")\nTake a quick peak at the dataset to remind yourself\nprint(df)",
+    "text": "Setting up\n\nIntroducing pandas\nPandas is a Python module that introduces dataframes to Python. It gives us the tools we need to clean and transform data with Python.\nTo be able to use the functions included in pandas, we have to first import it:\nimport pandas as pd\npd is the usual nickname for the pandas module.\n\nIf you get an error, like No module named 'pandas', you’ll need to install it first, using either conda install pandas or pip install pandas, depending on your Python installation.\n\n\nThe DataFrame object\nPandas is built upon one key feature: the DataFrame class. In Python we have different built-in types, like int for integers and string for characters. Pandas introduces a new type, DataFrame, which stores data like a spreadsheet.\n\n\n\nSetting up the workspace\nTo make life easy, we should set up our workspace well.\n\nOpen your project folder using your file explorer, and create a new folder called “data”.\nDownload the data for today’s session\nMove the file into your new “data” folder\nNext, open your project in Spyder, and create a new script called “analysis.py”.\nOpen the “Files” tab in Spyder and check that you see two objects:\n\nThe file “analysis.py”\nThe folder “data”\n\n\n\n\nImporting data\nPandas offers a simple way to access data with its read.csv() function. We’ll save it into the variable df_raw:\ndf_raw = pd.read_csv(\"data/Players2024.csv\")\n\nYou can also provide a URL instead of a file path!\n\n\n\nAside - File Paths and backslashes\nJust a quick detour to discuss file paths of which there are two types: absolute and relative\n\nAbsolute\nAbsolute file paths always start at the “top” of your file system, e.g. one of the drives (like C:) for Windows users, so they are never ambiguous. It’s like providing your full address from country to street number.\nC://Users/my_username/research/data/really_important_secret_data.csv\n\n\nRelative\nRelative file paths start from your current file location. For files in my current folder, I just provide their name - like referring to another house on your street as “number 7”. Let’s assume we’re in the research folder.\nfile_in_my_current_folder.csv\nWe can go to down folders from our current location:\ndata/really_important_secret_data.csv\nAnd we can go up folders from our current location\n../../this_file_is_two_levels_up.csv\nOr a combination of the two (e.g. up one, then down into a different folder)\n../not_research/this_file_is_not_research.csv\nWhat matters is that the relative reference depends on where your code is and will break if you move the script!\n\n\nBackslashes\nOne last note: Windows uses backslashes for their file paths\nC:\\\\Users\\...\nBut Python uses backslashes as an escape character. For example, \"\\n\" is a newline, \"\\u1234\" is the unicode character U+1234 and confusingly \"\\\\\" is a single backslash. So we have to modify all Windows file paths to either\nC:\\\\\\\\Users\\\\...\n\nOR\n\nC://Users/...\nYou can choose whichever you prefer.\n\n\n\nInitial look at the data\nLet’s get back to data.\nWe can investigate the size of the data thanks to the shape attribute attached to all pandas dataframes:\ndf_raw.shape\nThe dataset contains dozens of columns. What are their names?\ndf_raw.columns\nLet’s subset our data to focus on a handful of variables.\n\n\nCreating a backup\nData analysis in Python is safe because our variables are copies of the data - we aren’t actually changing the files until we explicitly overwrite them. However, Python also has no undo, so if I delete something in my analysis, I can’t get it back - I have to start all over again.\nOne way to mitigate this issue is by making a copy of the data\ndf = df_raw.copy()\nNow we have two variables: df is what we’ll use, and df_raw stores the raw data. If we ever need to restart, we can simply run df = df_raw.copy().",
     "crumbs": [
       "Workshops",
-      "Visualisation"
+      "Data Processing"
     ]
   },
   {
-    "objectID": "Workshops/3 - Visualisation.html#seaborn-for-simple-visualisations",
-    "href": "Workshops/3 - Visualisation.html#seaborn-for-simple-visualisations",
-    "title": "Visualisation",
-    "section": "Seaborn for simple visualisations",
-    "text": "Seaborn for simple visualisations\nTo begin our visualisations, we’ll use the package seaborn, which allows you to quickly whip up decent graphs.\nimport seaborn as sns\n\nIt’s called “seaborn” as a reference to fictional character Sam Seaborn, whose initials are “sns”.\n\nSeaborn has three plotting functions\nsns.catplot(...) # for categorical plotting, e.g. bar plots, box plots etc.\nsns.relplot(...) # for relational plotting, e.g. line plots, scatter plots\nsns.displot(...) # for distributions, e.g. histograms\nWe’ll begin with the first.\n\nCategorical plots\nCategorical plots are produced with seaborn’s sns.catplot() function. There are two key pieces of information to pass:\n\nThe data\nThe variables\n\nLet’s see if there’s a relationship between the players’ heights and positions, by placing their positions on the \\(x\\) axis and heights on the \\(y\\).\nsns.catplot(data = df, x = \"positions\", y = \"height_cm\")\nOur first graph! This is called a swarm plot; it’s like a scatter plot for categorical variables.\nIt’s already revealed two things to us about the data:\n\nThere are some incorrect heights - nobody is shorter than 25cm!\nSomeone’s position is “missing”\n\nLet’s get rid of these with the data analysis techniques from last session\n# Remove missing position\ndf = df[df[\"positions\"] != \"Missing\"]\n\n# Ensure reasonable heights\ndf = df[df[\"height_cm\"] &gt; 100]\nRun the plot again, it’s more reasonable now\nsns.catplot(data = df, x = \"positions\", y = \"height_cm\")\n\nBar plots\nSwarm plots are interesting but not standard. You can change the plot type with the kind parameter\nsns.catplot(data = df, x = \"positions\", y = \"height_cm\", kind = \"bar\")\n\nMany aspects of your plot can be adjusted by sending in additional parameters and is where seaborn excels.\n\nIt seems like goalkeepers are taller, but not by much. Let’s look at the standard deviation for each position by changing the estimator = parameter (default is mean)\nsns.catplot(data = df, x = \"positions\", y = \"height_cm\", kind = \"bar\", estimator = \"std\")\nClearly there’s a lot less variation in goalkeepers - they’re all tall.\n\n\nBox plots\nLet’s make box plots instead. It’s the same procedure, just change to kind = \"box\" and remove estimator =\nsns.catplot(data = df, x = \"positions\", y = \"height_cm\", kind = \"box\")\nJust as we predicted.\n\n\n\nDistributions\n\nHistograms\nLet’s move to the “Age” parameter now. We can look at the distribution of ages with\nsns.displot(data = df, x = \"age\")\nLooks a bit funny with those gaps - let’s change the number of bins with bins = 28\nsns.displot(data = df, x = \"age\", bins = 28)\nNow, what if you wanted to look at the distribution for different variables? We can make a separate distribution for each position with the col = \"position\" argument, specifying a new column for each position\nsns.displot(data = df, x = \"age\", bins = 28, col = \"positions\")\n\n\nKernel density estimates\nFinally, you don’t have to do histograms. You could also do a Kernel Density Estimate, with kind = \"kde\" (let’s remove bins = and col =)\nsns.displot(data = df, x = \"age\", kind = \"kde\")\nIf you want a separate line for each position, we should indicate that each position needs a different colour/hue with hue = \"position\"\nsns.displot(data = df, x = \"age\", hue = \"position\", kind = \"kde\")\n\n\n\nRelational plots\nIt seems like players peak in their mid-twenties, but goalkeepers stay for longer. Let’s see if there’s a relationship between players’ age and height\n\nScatter plots\nWe’ll start with a scatter plot\nsns.relplot(data = df, x = \"age\", y = \"height_cm\")\nNot much of a trend there, although the bottom-right looks a bit emptier than the rest (could it be that short old players are the first to retire?).\nWe can use hue = to have a look at positions again\nsns.relplot(data = df, x = \"age\", y = \"height_cm\", hue = \"positions\")\nYup, goalkeepers are tall, and everyone else is a jumble.\n\n\nLine plots\nLet’s do a line plot of the average height per age.\nsns.relplot(data = df, x = \"age\", y = \"height_cm\", kind = \"line\")\nSeems pretty flat, except the ends are a bit weird because there’s not much data. Let’s eliminate everything before 17 and after 38 and plot it\n# Create smaller dataframe\ncondition = (df[\"age\"] &gt; 17) & (df[\"age\"] &lt; 38)\ninner_ages = df[condition]\n\n# Line plot\nsns.relplot(data = inner_ages, x = \"age\", y = \"height_cm\", kind = \"line\")\nLooks a bit shaky but that’s just because it’s zoomed in - notice that we go from 182cm to 184cm. We’ll fix this when we look at matplotlib in the next section.\n\n\nCombining the two\nWe can combine our scatter and line plots together.\n\nMake the first plot as normal\nFor all additional (overlaying) plots, use an axes-level plot instead of sns.relplot() etc. These just draw the points/bars/lines, and are normally behind-the-scenes. There’s one for every plot type, and look like\n\nsns.lineplot()\nsns.scatterplot()\nsns.boxplot()\nsns.histplot()\netc.\n\n\nFor example,\n# Figure level plot\nsns.relplot(data = df, x = \"age\", y = \"height_cm\", hue = \"positions\")\n\n# Axes level plot (drop the kind = )\nsns.lineplot(data = inner_ages, x = \"age\", y = \"height_cm\")\n\nYou can’t include kind = inside an axes level plot\n\nLet’s swap the colour variable from the scatter plot to the line plot\n# Figure level plot\nsns.relplot(data = df, x = \"age\", y = \"height_cm\")\n\n# Axes level plot (drop the kind = )\nsns.lineplot(data = inner_ages, x = \"age\", y = \"height_cm\", hue = \"positions\")\nFinally, let’s make the scatter dots smaller with s = 10 and grey with color = \"grey\".\n# Figure level plot\nsns.relplot(data = df, x = \"age\", y = \"height_cm\", s = 10, color = \"grey\")\n\n# Axes level plot (drop the kind = )\nsns.lineplot(data = inner_ages, x = \"age\", y = \"height_cm\", hue = \"positions\")",
+    "objectID": "Workshops/2 - Data processing.html#accessing-and-filtering-data",
+    "href": "Workshops/2 - Data processing.html#accessing-and-filtering-data",
+    "title": "Data Processing",
+    "section": "Accessing and Filtering Data",
+    "text": "Accessing and Filtering Data\nSo how do we access our data in Python? We use a type of indexing introduced by pandas, which revolves around using square brackets after the dataframe: df[...].\n\nAccessing columns\nTo access a column, index with its name: df[\"column_name\"]. For example,\ndf[\"name\"]\nreturns the “name” column. We can access multiple by providing a list of names\n# Save the names in a list and then index\ncolumn_names = [\"name\", \"Club\"]\ndf[column_names]\n\n# This is equivalent to\ndf[[\"name\", \"Club\"]]\nIf we want to do anything with it (like statistics or visualisation), it’s worth saving the column(s) as a new variable\ndf_subset = df[[\"name\", \"Club\"]]\n\n\nAccessing rows\nThere’s a few ways to access rows. The easiest is by slicing, df[start_row : end_row]. For example, if you want rows 5 to 10,\ndf[5 : 10]\n\nNote that the end row is not included\n\nIf you want to access a single row, we need to use df.loc[] or df.iloc[]. These are the go-to methods for accessing data if the above indexing isn’t sufficient.\n\ndf.loc[] accesses rows by label (defaults to row number but could be anything)\ndf.iloc[] accesses rows by row number exclusively\n\nBy default they line up, so\ndf.loc[5]\ndf.iloc[5]\nare often (but not always) the same.\nFinally, we can filter specific rows by a condition on one of the variables, e.g. only rows where variable \\(\\text{age} &gt; 25\\).\ndf[df[\"age\"] &gt; 25]\n# Or any other condition\nAs with the column case, it’s useful to save this as a variable\ndf_filtered = df[df[\"age\"] &gt; 15]",
     "crumbs": [
       "Workshops",
-      "Visualisation"
+      "Data Processing"
     ]
   },
   {
-    "objectID": "Workshops/3 - Visualisation.html#going-deeper-with-matplotlib",
-    "href": "Workshops/3 - Visualisation.html#going-deeper-with-matplotlib",
-    "title": "Visualisation",
-    "section": "Going deeper with matplotlib",
-    "text": "Going deeper with matplotlib\nSeaborn is great for simple and initial visualisations, but when you need to make adjustments it gets tricky. At its core, seaborn is just a simple way of using matplotlib, an extensive and popular plotting package. It was created as a way of doing MATLAB visualisations with Python, so if you’re coming from there, things will feel familiar.\nPros\n\nCustomisable. You can tweak almost every parameter of the visualisations\nFast. It can handle large data\nPopular. Lots of people use it, and knowing it will help you collaborate\n\nCons - a bit programmy\n\nSteep-ish learning curve. Creating basic plots can be easy, but its set up with enough complexity that it takes a bit of work to figure out what’s going on.\nCumbersome. You can tweak almost everything, but this means that it can take some effort to tweak anything.\n\nWe’re barely going to touch the matplotlib surface, but we’ll look at some essentials.\nTo begin with, we want to bring in matplotlib as follows\nimport matplotlib.pyplot as plt\n\nSaving plots\nBefore we move to adjusting the plot, let’s just look at how you save it. While you can do this with seaborn, the matplotlib way is also very simple.\nAs a first step, you should make a new folder. Navigate using your file explorer to the project and create a new folder called “plots”.\nNext, save the current plot with plt.savefig(\"place_location_here\"), and we have to do this at the same time that we make the plot. So run all this code at once:\n# Figure level plot\nsns.relplot(data = df, x = \"age\", y = \"height_cm\", s = 10, color = \"grey\")\n\n# Axes level plot (drop the kind = )\nsns.lineplot(data = inner_ages, x = \"age\", y = \"height_cm\", hue = \"positions\")\n\nplt.savefig(\"plots/first_saved_plot.png\")\n\n\nMaking modifications\n\nTitles\nNotice that the \\(y\\) axis has an ugly label? That’s because seaborn is just drawing from your dataframe.\nWe can change axis labels with\nplt.ylabel(\"Height (cm)\")\nand similarly you could change plt.xlabel(...).\n\nMake sure you run the above line at the same time as your plotting function. You can either * Highlight all the code and press F9 * Make a cell with #%% and press ctrl + enter\n\nWe can also change the legend title to “Position”\nplt.legend(title = \"Position\")\nAnd its location with loc = \"lower left\"\nplt.legend(title = \"Position\", loc = \"lower left\")\nAnd give the whole plot a title with\nplt.title(\"Players' heights vs ages\")\nAll of these together, with the plot, look like\n# Figure level plot\nsns.relplot(data = df, x = \"age\", y = \"height_cm\", s = 10, color = \"grey\")\n\n# Axes level plot (drop the kind = )\nsns.lineplot(data = inner_ages, x = \"age\", y = \"height_cm\", hue = \"positions\")\n\n# Titles\nplt.ylabel(\"Height (cm)\")\nplt.legend(title = \"Position\")\nplt.title(\"Players' heights vs ages\")\n\n\n\nAnnotations\nYou might want to annotate your plot with text and arrows. Text is simple with the plt.text() function; we just need to specify its coordinates and the contents.\nplt.text(38.5, 181, \"Not enough\\ndata for mean\")\n\nThe characters \\n mean ‘new line’\n\nWe could annotate with arrows too. This is more complex,\nplt.annotate(text = \"No short\\nolder players\", xy = [37,165], xytext = [40,172],\n             arrowprops = dict(width = 1, headwidth = 10, headlength = 10, \n                          facecolor = \"black\"))\n\nI’ve split this over multiple lines, but its still one function - check the brackets\n\nAll together, our plot has become\n# Figure level plot\nsns.relplot(data = df, x = \"age\", y = \"height_cm\", s = 10, color = \"grey\")\n\n# Axes level plot (drop the kind = )\nsns.lineplot(data = inner_ages, x = \"age\", y = \"height_cm\", hue = \"positions\")\n\n# Titles\nplt.ylabel(\"Height (cm)\")\nplt.legend(title = \"Position\", loc = \"lower left\")\nplt.title(\"Players' heights vs ages\")\n\n# Annotations\nplt.text(38.5, 181, \"Not enough\\ndata for mean\")\nplt.annotate(\"No short\\nolder players\", [37,165], [40,172], \n             arrowprops = dict(width = 1,headwidth = 10,headlength = 10, \n                               facecolor = \"black\"))\n\n\nAxis limits\nThe last feature we’ll look at is editing axis limits. Let’s try to make more room in the bottom left for the legend with the functions plt.xlim() and plt.ylim()\n# Figure level plot\nsns.relplot(data = df, x = \"age\", y = \"height_cm\", s = 10, color = \"grey\")\n\n# Axes level plot (drop the kind = )\nsns.lineplot(data = inner_ages, x = \"age\", y = \"height_cm\", hue = \"positions\")\n\n# Titles\nplt.ylabel(\"Height (cm)\")\nplt.legend(title = \"Position\", loc = \"lower left\")\nplt.title(\"Players' heights vs ages\")\n\n# Annotations\nplt.text(38.5, 181, \"Not enough\\ndata for mean\")\nplt.annotate(\"No short\\nolder players\", [37,165], [40,172], \n             arrowprops = dict(width = 1,headwidth = 10,headlength = 10, \n                               facecolor = \"black\"))\n\n# Axis limits\nplt.xlim([10,45])\nplt.ylim([150,210])\nI’m not sure that looks any better, but you get the idea!",
+    "objectID": "Workshops/2 - Data processing.html#basic-statistics",
+    "href": "Workshops/2 - Data processing.html#basic-statistics",
+    "title": "Data Processing",
+    "section": "Basic statistics",
+    "text": "Basic statistics\nHow might we perform some basic statistics on our data?\nTo check what kind of data each column is stored as, we can use the dtypes attribute:\ndf.dtypes\n\nIn general, pandas will bring in numbers with float64 and non-numeric data with object.\n\nThe describe() method is useful for descriptive statistics about our numerical columns:\ndf.describe()\nHowever, it will only show the two first ones and two last ones. We can focus on a specific column instead, for example one that was hidden previously:\ndf[\"age\"].describe()\nOr a categorical column:\ndf[\"nationality\"].describe()\n\nFor a categorical column, the information shown is different: for example, how many unique values there are, and what the most common value is.\n\nWhat if you want specific statistics about a particular column? Usually there are methods available:\n# Applicable to all columns\ndf[\"nationality\"].count()\ndf[\"nationality\"].unique()\n\n# For numeric columns only\ndf[\"height_cm\"].min()\ndf[\"height_cm\"].max()\ndf[\"height_cm\"].mean()\ndf[\"height_cm\"].median()\ndf[\"height_cm\"].std()\n# ...\nWe can use these methods to filter our data. For example, the row which has the maximum value of variable \\(x\\) is\nx_max = df[\"height_cm\"].max()\ndf[df[\"height_cm\"] == x_max]\n\n# Or in one line\ndf[df[\"height_cm\"] == df[\"height_cm\"].max()]\nbecause we are looking for the row in df[\"height_cm\"] (the whole column) that has the value df[\"height_cm\"].max().",
     "crumbs": [
       "Workshops",
-      "Visualisation"
+      "Data Processing"
     ]
   },
   {
-    "objectID": "Workshops/3 - Visualisation.html#interactivity-with-plotly",
-    "href": "Workshops/3 - Visualisation.html#interactivity-with-plotly",
-    "title": "Visualisation",
-    "section": "Interactivity with plotly",
-    "text": "Interactivity with plotly\nFor the last part of this section, we’re going to briefly look at making interactive plots with plotly.\nWe bring in the tools with\nimport plotly.express as px\n\nYou’ll probably need to install it first - use either\nconda install plotly\nOR\npip install plotly\ndepending on your installation.\n\nPlotly works by creating a visualisation like we’ve been doing, and then loading it into something dynamic, like a web browser. Spyder does not support interactive plots. This means we need to change the default settings with\nimport plotly.io as pio\npio.renderers.default = \"browser\"\nNow, plots should all load in your default browser.\n\nThe basics\nWe make plotly graphs very similarly to seaborn. Let’s take our first plot from above,\nsns.relplot(data = df, x = \"age\", y = \"height_cm\", s = 10, color = \"grey\")\nand turn it into a plotly one.\n\nWe need to use px.scatter instead of sns.relplot\nWe need to use data_frame = instead of data =\nLet’s remove the s = and color = for now\nSave the plot as a variable\n\npx.scatter(data_frame = df, x = \"age\", y = \"height_cm\")\nNotice how you can hover over the points now? It’s interactive!\n\n\nIntroducing more info and neatening up\nLike seaborn’s “hue”, we can use color = to introduce a third variable\npx.scatter(data_frame = df, x = \"age\", y = \"height_cm\", color = \"position\")\nAnd like seaborn’s “col”, we can facet with facet_col =\npx.scatter(data_frame = df, x = \"age\", y = \"height_cm\", color = \"position\",\n           facet_col = \"positions\")\nPersonally, I think these are too squished. We can specify the maximum number of columns with facet_col_wrap =\npx.scatter(data_frame = df, x = \"age\", y = \"height_cm\", color = \"positions\",\n           facet_col = \"positions\", facet_col_wrap = 2)\nFinally, let’s adjust the information in the hover. We can give each point a name with hover_name = - how about their actual names?\npx.scatter(data_frame = df, x = \"age\", y = \"height_cm\", color = \"positions\",\n           facet_col = \"positions\", facet_col_wrap = 2, hover_name = \"name\")\nAnd let’s also include their nationalities\npx.scatter(data_frame = df, x = \"age\", y = \"height_cm\", color = \"positions\",\n           facet_col = \"positions\", facet_col_wrap = 2, hover_name = \"name\",\n           hover_data = \"nationality\")\n\n\nSaving interactive plots\nSince these are interactive, we can’t save them as normal. The easiest option is to save them as HTML files - like websites - which we can open from our browsers.\nFirst, save the plot into a variable\nfig = px.scatter(data_frame = df, x = \"age\", y = \"height_cm\", color = \"positions\",\n                 facet_col = \"positions\", facet_col_wrap = 2, hover_name = \"name\",\n                 hover_data = \"nationality\")\nThen, write it to HTML\nfig.write_html(\"plot.html\")",
+    "objectID": "Workshops/2 - Data processing.html#challenge",
+    "href": "Workshops/2 - Data processing.html#challenge",
+    "title": "Data Processing",
+    "section": "Challenge",
+    "text": "Challenge\nReduce your dataset to \\(\\le 3\\) variables (columns) and \\(\\le 100\\) rows using conditions by filtering down to a particular subset of your data.",
     "crumbs": [
       "Workshops",
-      "Visualisation"
+      "Data Processing"
     ]
   },
   {
-    "objectID": "Workshops/3 - Visualisation.html#conclusion",
-    "href": "Workshops/3 - Visualisation.html#conclusion",
-    "title": "Visualisation",
-    "section": "Conclusion",
-    "text": "Conclusion",
+    "objectID": "Workshops/2 - Data processing.html#adding-and-removing-columns",
+    "href": "Workshops/2 - Data processing.html#adding-and-removing-columns",
+    "title": "Data Processing",
+    "section": "Adding and removing columns",
+    "text": "Adding and removing columns\nSometimes we need to add new columns. It’s the same process as overwriting existing columns - let’s make a new column called “zeroes” where every row is 0\ndf[\"zeroes\"] = 0\nWe can also send in a column, for example\ndf[\"copy_of_names\"] = df[\"name\"]\nPerhaps most usefully, we can manipulate the column we send in. For example, the deviation from the mean \\[|\\bar{x} - x_i|\\] can be computed for each row’s height:\ncol_x = df[\"height_cm\"]\navg_x = df[\"height_cm\"].mean()\n\ndf[\"deviation_from_mean_height\"] = abs(col_x - avg_x)\n\n# Or all together on one line,\ndf[\"deviation_from_mean_height\"] = abs(df[\"height_cm\"] - df[\"height_cm\"].mean())\nwhere abs(...) takes the absolute value\nNotice that we subtracted a value from a column. We can also perform mathematics with multiple columns:\ndf[\"product\"] = df[\"age\"]*df[\"height_cm\"]\nLet’s remove these new columns that we don’t need with the method df.drop(columns = [...]):\ndf.drop(columns = [\"zeroes\", \"copy_of_names\", \"deviation_from_mean_height\", \"product\"])",
     "crumbs": [
       "Workshops",
-      "Visualisation"
+      "Data Processing"
+    ]
+  },
+  {
+    "objectID": "Workshops/2 - Data processing.html#summaries",
+    "href": "Workshops/2 - Data processing.html#summaries",
+    "title": "Data Processing",
+    "section": "Summaries",
+    "text": "Summaries\nAfter cleaning up our data, we need to analyse it. This usually involves some kind of aggregation. For example, what is the average \\(x\\) per year? requires aggregating over variable \\(x\\) for each year.\nFirst, we need to group by a specific variable\ngb = df.groupby(\"age\")\nThis thing in itself is a pretty abstract Python object, best thought of as a dataframe where we’ve identified a grouping variable.\nNext, we need to apply some aggregation to it (the groupby tells it to do it for each year)\navg_height_by_age = gb[\"height_cm\"].agg(\"mean\")\nOf course, we could have done this in one line:\navg_height_by_age = df.groupby(\"year\").agg(\"mean\")\nThis is a really useful tool, because now we have something we can visualise. As the next session will show us, the visualisation tools generally just take in numbers and turn them into dots. We need to do the stats beforehand.\nAs a taster, try running\navg_height_by_age.plot()",
+    "crumbs": [
+      "Workshops",
+      "Data Processing"
+    ]
+  },
+  {
+    "objectID": "Workshops/2 - Data processing.html#exporting-results",
+    "href": "Workshops/2 - Data processing.html#exporting-results",
+    "title": "Data Processing",
+    "section": "Exporting results",
+    "text": "Exporting results\nThe last step in the process is saving the data. Let’s say we want to take that final dataframe and export it to a csv. That’s what the df.to_csv() method is for\navg_height_by_age.to_csv(\"data/avg_height_by_age.csv\")\nThis will save the dataframe to a .csv file and place it in the data folder.",
+    "crumbs": [
+      "Workshops",
+      "Data Processing"
+    ]
+  },
+  {
+    "objectID": "Workshops/2 - Data processing.html#resources",
+    "href": "Workshops/2 - Data processing.html#resources",
+    "title": "Data Processing",
+    "section": "Resources",
+    "text": "Resources\n\nOfficial pandas documentation\n\nGetting started\n10 Minutes to pandas\nUser guide\n\nMore visualisation modules:\n\nAltair\nBokeh\nVega\nMatplotlib\n\nOur compilation of useful Python links",
+    "crumbs": [
+      "Workshops",
+      "Data Processing"
+    ]
+  },
+  {
+    "objectID": "setup.html",
+    "href": "setup.html",
+    "title": "Intro and Setting Up",
+    "section": "",
+    "text": "Welcome to the Python Training Intensive! Over the next three days we’ll be covering the essentials that you’ll need to begin analysing your data with Python, alongside completing an independent project to practise your skills.",
+    "crumbs": [
+      "Workshops",
+      "Intro and Setting Up"
+    ]
+  },
+  {
+    "objectID": "setup.html#software",
+    "href": "setup.html#software",
+    "title": "Intro and Setting Up",
+    "section": "Software",
+    "text": "Software\nWe are going to use Spyder for writing and running Python. This is a friendly interactive development environment (IDE) aimed at researchers. However, you are more than welcome to use your own!\nPlease set up Python and your IDE in advance.\nIf you don’t have Python or an IDE, we recommend installing Spyder, which comes with Python.",
+    "crumbs": [
+      "Workshops",
+      "Intro and Setting Up"
+    ]
+  },
+  {
+    "objectID": "setup.html#creating-a-project",
+    "href": "setup.html#creating-a-project",
+    "title": "Intro and Setting Up",
+    "section": "Creating a Project",
+    "text": "Creating a Project\nIf you’re using Spyder, we recommend you create a project. Projects are just fancy folders, and they make it easier to access files (i.e. data) and export images (i.e. visualisations) all in the one place.\n\nOpen Spyder\nIn the Projects menu, click New Project…\nChoose New Directory, give your project a name and find an appropriate place on your computer for it.\nPress Create\n\nDone! We’ll work in this project for the duration of the intensives.",
+    "crumbs": [
+      "Workshops",
+      "Intro and Setting Up"
     ]
   },
   {
@@ -219,282 +401,112 @@
     ]
   },
   {
-    "objectID": "setup.html",
-    "href": "setup.html",
-    "title": "Intro and Setting Up",
+    "objectID": "Workshops/3 - Visualisation.html",
+    "href": "Workshops/3 - Visualisation.html",
+    "title": "Visualisation",
     "section": "",
-    "text": "Welcome to the Python Training Intensive! Over the next three days we’ll be covering the essentials that you’ll need to begin analysing your data with Python, alongside completing an independent project to practise your skills.",
+    "text": "In this third workshop we will cover\nSee analysis.py for seaborn stuff.",
     "crumbs": [
       "Workshops",
-      "Intro and Setting Up"
+      "Visualisation"
     ]
   },
   {
-    "objectID": "setup.html#software",
-    "href": "setup.html#software",
-    "title": "Intro and Setting Up",
-    "section": "Software",
-    "text": "Software\nWe are going to use Spyder for writing and running Python. This is a friendly interactive development environment (IDE) aimed at researchers. However, you are more than welcome to use your own!\nPlease set up Python and your IDE in advance.\nIf you don’t have Python or an IDE, we recommend installing Spyder, which comes with Python.",
-    "crumbs": [
-      "Workshops",
-      "Intro and Setting Up"
-    ]
-  },
-  {
-    "objectID": "setup.html#creating-a-project",
-    "href": "setup.html#creating-a-project",
-    "title": "Intro and Setting Up",
-    "section": "Creating a Project",
-    "text": "Creating a Project\nIf you’re using Spyder, we recommend you create a project. Projects are just fancy folders, and they make it easier to access files (i.e. data) and export images (i.e. visualisations) all in the one place.\n\nOpen Spyder\nIn the Projects menu, click New Project…\nChoose New Directory, give your project a name and find an appropriate place on your computer for it.\nPress Create\n\nDone! We’ll work in this project for the duration of the intensives.",
-    "crumbs": [
-      "Workshops",
-      "Intro and Setting Up"
-    ]
-  },
-  {
-    "objectID": "Workshops/2 - Data processing.html",
-    "href": "Workshops/2 - Data processing.html",
-    "title": "Data Processing",
-    "section": "",
-    "text": "In this second workshop we will cover\nThis hands-on course – directed at intermediate users – looks at using the pandas module to transform and visualise tabular data.",
-    "crumbs": [
-      "Workshops",
-      "Data Processing"
-    ]
-  },
-  {
-    "objectID": "Workshops/2 - Data processing.html#setting-up",
-    "href": "Workshops/2 - Data processing.html#setting-up",
-    "title": "Data Processing",
+    "objectID": "Workshops/3 - Visualisation.html#setting-up",
+    "href": "Workshops/3 - Visualisation.html#setting-up",
+    "title": "Visualisation",
     "section": "Setting up",
-    "text": "Setting up\n\nIntroducing pandas\nPandas is a Python module that introduces dataframes to Python. It gives us the tools we need to clean and transform data with Python.\nTo be able to use the functions included in pandas, we have to first import it:\nimport pandas as pd\npd is the usual nickname for the pandas module.\n\nIf you get an error, like No module named 'pandas', you’ll need to install it first, using either conda install pandas or pip install pandas, depending on your Python installation.\n\n\nThe DataFrame object\nPandas is built upon one key feature: the DataFrame class. In Python we have different built-in types, like int for integers and string for characters. Pandas introduces a new type, DataFrame, which stores data like a spreadsheet.\n\n\n\nSetting up the workspace\nTo make life easy, we should set up our workspace well.\n\nOpen your project folder using your file explorer, and create a new folder called “data”.\nDownload the data for today’s session\nMove the file into your new “data” folder\nNext, open your project in Spyder, and create a new script called “analysis.py”.\nOpen the “Files” tab in Spyder and check that you see two objects:\n\nThe file “analysis.py”\nThe folder “data”\n\n\n\n\nImporting data\nPandas offers a simple way to access data with its read.csv() function. We’ll save it into the variable df_raw:\ndf_raw = pd.read_csv(\"data/Players2024.csv\")\n\nYou can also provide a URL instead of a file path!\n\n\n\nAside - File Paths and backslashes\nJust a quick detour to discuss file paths of which there are two types: absolute and relative\n\nAbsolute\nAbsolute file paths always start at the “top” of your file system, e.g. one of the drives (like C:) for Windows users, so they are never ambiguous. It’s like providing your full address from country to street number.\nC://Users/my_username/research/data/really_important_secret_data.csv\n\n\nRelative\nRelative file paths start from your current file location. For files in my current folder, I just provide their name - like referring to another house on your street as “number 7”. Let’s assume we’re in the research folder.\nfile_in_my_current_folder.csv\nWe can go to down folders from our current location:\ndata/really_important_secret_data.csv\nAnd we can go up folders from our current location\n../../this_file_is_two_levels_up.csv\nOr a combination of the two (e.g. up one, then down into a different folder)\n../not_research/this_file_is_not_research.csv\nWhat matters is that the relative reference depends on where your code is and will break if you move the script!\n\n\nBackslashes\nOne last note: Windows uses backslashes for their file paths\nC:\\\\Users\\...\nBut Python uses backslashes as an escape character. For example, \"\\n\" is a newline, \"\\u1234\" is the unicode character U+1234 and confusingly \"\\\\\" is a single backslash. So we have to modify all Windows file paths to either\nC:\\\\\\\\Users\\\\...\n\nOR\n\nC://Users/...\nYou can choose whichever you prefer.\n\n\n\nInitial look at the data\nLet’s get back to data.\nWe can investigate the size of the data thanks to the shape attribute attached to all pandas dataframes:\ndf_raw.shape\nThe dataset contains dozens of columns. What are their names?\ndf_raw.columns\nLet’s subset our data to focus on a handful of variables.\n\n\nCreating a backup\nData analysis in Python is safe because our variables are copies of the data - we aren’t actually changing the files until we explicitly overwrite them. However, Python also has no undo, so if I delete something in my analysis, I can’t get it back - I have to start all over again.\nOne way to mitigate this issue is by making a copy of the data\ndf = df_raw.copy()\nNow we have two variables: df is what we’ll use, and df_raw stores the raw data. If we ever need to restart, we can simply run df = df_raw.copy().",
+    "text": "Setting up\nWith the data manipulation tools from pandas, we can now visualise our data. For this workshop we’ll be working from the “Players2024.csv” dataset, which we should bring in with pandas:\nimport pandas as pd\ndf = pd.read_csv(\"data/Players2024.csv\")\nTake a quick peak at the dataset to remind yourself\nprint(df)",
     "crumbs": [
       "Workshops",
-      "Data Processing"
+      "Visualisation"
     ]
   },
   {
-    "objectID": "Workshops/2 - Data processing.html#accessing-and-filtering-data",
-    "href": "Workshops/2 - Data processing.html#accessing-and-filtering-data",
-    "title": "Data Processing",
-    "section": "Accessing and Filtering Data",
-    "text": "Accessing and Filtering Data\nSo how do we access our data in Python? We use a type of indexing introduced by pandas, which revolves around using square brackets after the dataframe: df[...].\n\nAccessing columns\nTo access a column, index with its name: df[\"column_name\"]. For example,\ndf[\"name\"]\nreturns the “name” column. We can access multiple by providing a list of names\n# Save the names in a list and then index\ncolumn_names = [\"name\", \"Club\"]\ndf[column_names]\n\n# This is equivalent to\ndf[[\"name\", \"Club\"]]\nIf we want to do anything with it (like statistics or visualisation), it’s worth saving the column(s) as a new variable\ndf_subset = df[[\"name\", \"Club\"]]\n\n\nAccessing rows\nThere’s a few ways to access rows. The easiest is by slicing, df[start_row : end_row]. For example, if you want rows 5 to 10,\ndf[5 : 10]\n\nNote that the end row is not included\n\nIf you want to access a single row, we need to use df.loc[] or df.iloc[]. These are the go-to methods for accessing data if the above indexing isn’t sufficient.\n\ndf.loc[] accesses rows by label (defaults to row number but could be anything)\ndf.iloc[] accesses rows by row number exclusively\n\nBy default they line up, so\ndf.loc[5]\ndf.iloc[5]\nare often (but not always) the same.\nFinally, we can filter specific rows by a condition on one of the variables, e.g. only rows where variable \\(\\text{age} &gt; 25\\).\ndf[df[\"age\"] &gt; 25]\n# Or any other condition\nAs with the column case, it’s useful to save this as a variable\ndf_filtered = df[df[\"age\"] &gt; 15]",
+    "objectID": "Workshops/3 - Visualisation.html#seaborn-for-simple-visualisations",
+    "href": "Workshops/3 - Visualisation.html#seaborn-for-simple-visualisations",
+    "title": "Visualisation",
+    "section": "Seaborn for simple visualisations",
+    "text": "Seaborn for simple visualisations\nTo begin our visualisations, we’ll use the package seaborn, which allows you to quickly whip up decent graphs.\nimport seaborn as sns\n\nIt’s called “seaborn” as a reference to fictional character Sam Seaborn, whose initials are “sns”.\n\nSeaborn has three plotting functions\nsns.catplot(...) # for categorical plotting, e.g. bar plots, box plots etc.\nsns.relplot(...) # for relational plotting, e.g. line plots, scatter plots\nsns.displot(...) # for distributions, e.g. histograms\nWe’ll begin with the first.\n\nCategorical plots\nCategorical plots are produced with seaborn’s sns.catplot() function. There are two key pieces of information to pass:\n\nThe data\nThe variables\n\nLet’s see if there’s a relationship between the players’ heights and positions, by placing their positions on the \\(x\\) axis and heights on the \\(y\\).\nsns.catplot(data = df, x = \"positions\", y = \"height_cm\")\nOur first graph! This is called a swarm plot; it’s like a scatter plot for categorical variables.\nIt’s already revealed two things to us about the data:\n\nThere are some incorrect heights - nobody is shorter than 25cm!\nSomeone’s position is “missing”\n\nLet’s get rid of these with the data analysis techniques from last session\n# Remove missing position\ndf = df[df[\"positions\"] != \"Missing\"]\n\n# Ensure reasonable heights\ndf = df[df[\"height_cm\"] &gt; 100]\nRun the plot again, it’s more reasonable now\nsns.catplot(data = df, x = \"positions\", y = \"height_cm\")\n\nBar plots\nSwarm plots are interesting but not standard. You can change the plot type with the kind parameter\nsns.catplot(data = df, x = \"positions\", y = \"height_cm\", kind = \"bar\")\n\nMany aspects of your plot can be adjusted by sending in additional parameters and is where seaborn excels.\n\nIt seems like goalkeepers are taller, but not by much. Let’s look at the standard deviation for each position by changing the estimator = parameter (default is mean)\nsns.catplot(data = df, x = \"positions\", y = \"height_cm\", kind = \"bar\", estimator = \"std\")\nClearly there’s a lot less variation in goalkeepers - they’re all tall.\n\n\nBox plots\nLet’s make box plots instead. It’s the same procedure, just change to kind = \"box\" and remove estimator =\nsns.catplot(data = df, x = \"positions\", y = \"height_cm\", kind = \"box\")\nJust as we predicted.\n\n\n\nDistributions\n\nHistograms\nLet’s move to the “Age” parameter now. We can look at the distribution of ages with\nsns.displot(data = df, x = \"age\")\nLooks a bit funny with those gaps - let’s change the number of bins with bins = 28\nsns.displot(data = df, x = \"age\", bins = 28)\nNow, what if you wanted to look at the distribution for different variables? We can make a separate distribution for each position with the col = \"position\" argument, specifying a new column for each position\nsns.displot(data = df, x = \"age\", bins = 28, col = \"positions\")\n\n\nKernel density estimates\nFinally, you don’t have to do histograms. You could also do a Kernel Density Estimate, with kind = \"kde\" (let’s remove bins = and col =)\nsns.displot(data = df, x = \"age\", kind = \"kde\")\nIf you want a separate line for each position, we should indicate that each position needs a different colour/hue with hue = \"position\"\nsns.displot(data = df, x = \"age\", hue = \"position\", kind = \"kde\")\n\n\n\nRelational plots\nIt seems like players peak in their mid-twenties, but goalkeepers stay for longer. Let’s see if there’s a relationship between players’ age and height\n\nScatter plots\nWe’ll start with a scatter plot\nsns.relplot(data = df, x = \"age\", y = \"height_cm\")\nNot much of a trend there, although the bottom-right looks a bit emptier than the rest (could it be that short old players are the first to retire?).\nWe can use hue = to have a look at positions again\nsns.relplot(data = df, x = \"age\", y = \"height_cm\", hue = \"positions\")\nYup, goalkeepers are tall, and everyone else is a jumble.\n\n\nLine plots\nLet’s do a line plot of the average height per age.\nsns.relplot(data = df, x = \"age\", y = \"height_cm\", kind = \"line\")\nSeems pretty flat, except the ends are a bit weird because there’s not much data. Let’s eliminate everything before 17 and after 38 and plot it\n# Create smaller dataframe\ncondition = (df[\"age\"] &gt; 17) & (df[\"age\"] &lt; 38)\ninner_ages = df[condition]\n\n# Line plot\nsns.relplot(data = inner_ages, x = \"age\", y = \"height_cm\", kind = \"line\")\nLooks a bit shaky but that’s just because it’s zoomed in - notice that we go from 182cm to 184cm. We’ll fix this when we look at matplotlib in the next section.\n\n\nCombining the two\nWe can combine our scatter and line plots together.\n\nMake the first plot as normal\nFor all additional (overlaying) plots, use an axes-level plot instead of sns.relplot() etc. These just draw the points/bars/lines, and are normally behind-the-scenes. There’s one for every plot type, and look like\n\nsns.lineplot()\nsns.scatterplot()\nsns.boxplot()\nsns.histplot()\netc.\n\n\nFor example,\n# Figure level plot\nsns.relplot(data = df, x = \"age\", y = \"height_cm\", hue = \"positions\")\n\n# Axes level plot (drop the kind = )\nsns.lineplot(data = inner_ages, x = \"age\", y = \"height_cm\")\n\nYou can’t include kind = inside an axes level plot\n\nLet’s swap the colour variable from the scatter plot to the line plot\n# Figure level plot\nsns.relplot(data = df, x = \"age\", y = \"height_cm\")\n\n# Axes level plot (drop the kind = )\nsns.lineplot(data = inner_ages, x = \"age\", y = \"height_cm\", hue = \"positions\")\nFinally, let’s make the scatter dots smaller with s = 10 and grey with color = \"grey\".\n# Figure level plot\nsns.relplot(data = df, x = \"age\", y = \"height_cm\", s = 10, color = \"grey\")\n\n# Axes level plot (drop the kind = )\nsns.lineplot(data = inner_ages, x = \"age\", y = \"height_cm\", hue = \"positions\")",
     "crumbs": [
       "Workshops",
-      "Data Processing"
+      "Visualisation"
     ]
   },
   {
-    "objectID": "Workshops/2 - Data processing.html#basic-statistics",
-    "href": "Workshops/2 - Data processing.html#basic-statistics",
-    "title": "Data Processing",
-    "section": "Basic statistics",
-    "text": "Basic statistics\nHow might we perform some basic statistics on our data?\nTo check what kind of data each column is stored as, we can use the dtypes attribute:\ndf.dtypes\n\nIn general, pandas will bring in numbers with float64 and non-numeric data with object.\n\nThe describe() method is useful for descriptive statistics about our numerical columns:\ndf.describe()\nHowever, it will only show the two first ones and two last ones. We can focus on a specific column instead, for example one that was hidden previously:\ndf[\"age\"].describe()\nOr a categorical column:\ndf[\"nationality\"].describe()\n\nFor a categorical column, the information shown is different: for example, how many unique values there are, and what the most common value is.\n\nWhat if you want specific statistics about a particular column? Usually there are methods available:\n# Applicable to all columns\ndf[\"nationality\"].count()\ndf[\"nationality\"].unique()\n\n# For numeric columns only\ndf[\"height_cm\"].min()\ndf[\"height_cm\"].max()\ndf[\"height_cm\"].mean()\ndf[\"height_cm\"].median()\ndf[\"height_cm\"].std()\n# ...\nWe can use these methods to filter our data. For example, the row which has the maximum value of variable \\(x\\) is\nx_max = df[\"height_cm\"].max()\ndf[df[\"height_cm\"] == x_max]\n\n# Or in one line\ndf[df[\"height_cm\"] == df[\"height_cm\"].max()]\nbecause we are looking for the row in df[\"height_cm\"] (the whole column) that has the value df[\"height_cm\"].max().",
+    "objectID": "Workshops/3 - Visualisation.html#going-deeper-with-matplotlib",
+    "href": "Workshops/3 - Visualisation.html#going-deeper-with-matplotlib",
+    "title": "Visualisation",
+    "section": "Going deeper with matplotlib",
+    "text": "Going deeper with matplotlib\nSeaborn is great for simple and initial visualisations, but when you need to make adjustments it gets tricky. At its core, seaborn is just a simple way of using matplotlib, an extensive and popular plotting package. It was created as a way of doing MATLAB visualisations with Python, so if you’re coming from there, things will feel familiar.\nPros\n\nCustomisable. You can tweak almost every parameter of the visualisations\nFast. It can handle large data\nPopular. Lots of people use it, and knowing it will help you collaborate\n\nCons - a bit programmy\n\nSteep-ish learning curve. Creating basic plots can be easy, but its set up with enough complexity that it takes a bit of work to figure out what’s going on.\nCumbersome. You can tweak almost everything, but this means that it can take some effort to tweak anything.\n\nWe’re barely going to touch the matplotlib surface, but we’ll look at some essentials.\nTo begin with, we want to bring in matplotlib as follows\nimport matplotlib.pyplot as plt\n\nSaving plots\nBefore we move to adjusting the plot, let’s just look at how you save it. While you can do this with seaborn, the matplotlib way is also very simple.\nAs a first step, you should make a new folder. Navigate using your file explorer to the project and create a new folder called “plots”.\nNext, save the current plot with plt.savefig(\"place_location_here\"), and we have to do this at the same time that we make the plot. So run all this code at once:\n# Figure level plot\nsns.relplot(data = df, x = \"age\", y = \"height_cm\", s = 10, color = \"grey\")\n\n# Axes level plot (drop the kind = )\nsns.lineplot(data = inner_ages, x = \"age\", y = \"height_cm\", hue = \"positions\")\n\nplt.savefig(\"plots/first_saved_plot.png\")\n\n\nMaking modifications\n\nTitles\nNotice that the \\(y\\) axis has an ugly label? That’s because seaborn is just drawing from your dataframe.\nWe can change axis labels with\nplt.ylabel(\"Height (cm)\")\nand similarly you could change plt.xlabel(...).\n\nMake sure you run the above line at the same time as your plotting function. You can either * Highlight all the code and press F9 * Make a cell with #%% and press ctrl + enter\n\nWe can also change the legend title to “Position”\nplt.legend(title = \"Position\")\nAnd its location with loc = \"lower left\"\nplt.legend(title = \"Position\", loc = \"lower left\")\nAnd give the whole plot a title with\nplt.title(\"Players' heights vs ages\")\nAll of these together, with the plot, look like\n# Figure level plot\nsns.relplot(data = df, x = \"age\", y = \"height_cm\", s = 10, color = \"grey\")\n\n# Axes level plot (drop the kind = )\nsns.lineplot(data = inner_ages, x = \"age\", y = \"height_cm\", hue = \"positions\")\n\n# Titles\nplt.ylabel(\"Height (cm)\")\nplt.legend(title = \"Position\")\nplt.title(\"Players' heights vs ages\")\n\n\n\nAnnotations\nYou might want to annotate your plot with text and arrows. Text is simple with the plt.text() function; we just need to specify its coordinates and the contents.\nplt.text(38.5, 181, \"Not enough\\ndata for mean\")\n\nThe characters \\n mean ‘new line’\n\nWe could annotate with arrows too. This is more complex,\nplt.annotate(text = \"No short\\nolder players\", xy = [37,165], xytext = [40,172],\n             arrowprops = dict(width = 1, headwidth = 10, headlength = 10, \n                          facecolor = \"black\"))\n\nI’ve split this over multiple lines, but its still one function - check the brackets\n\nAll together, our plot has become\n# Figure level plot\nsns.relplot(data = df, x = \"age\", y = \"height_cm\", s = 10, color = \"grey\")\n\n# Axes level plot (drop the kind = )\nsns.lineplot(data = inner_ages, x = \"age\", y = \"height_cm\", hue = \"positions\")\n\n# Titles\nplt.ylabel(\"Height (cm)\")\nplt.legend(title = \"Position\", loc = \"lower left\")\nplt.title(\"Players' heights vs ages\")\n\n# Annotations\nplt.text(38.5, 181, \"Not enough\\ndata for mean\")\nplt.annotate(\"No short\\nolder players\", [37,165], [40,172], \n             arrowprops = dict(width = 1,headwidth = 10,headlength = 10, \n                               facecolor = \"black\"))\n\n\nAxis limits\nThe last feature we’ll look at is editing axis limits. Let’s try to make more room in the bottom left for the legend with the functions plt.xlim() and plt.ylim()\n# Figure level plot\nsns.relplot(data = df, x = \"age\", y = \"height_cm\", s = 10, color = \"grey\")\n\n# Axes level plot (drop the kind = )\nsns.lineplot(data = inner_ages, x = \"age\", y = \"height_cm\", hue = \"positions\")\n\n# Titles\nplt.ylabel(\"Height (cm)\")\nplt.legend(title = \"Position\", loc = \"lower left\")\nplt.title(\"Players' heights vs ages\")\n\n# Annotations\nplt.text(38.5, 181, \"Not enough\\ndata for mean\")\nplt.annotate(\"No short\\nolder players\", [37,165], [40,172], \n             arrowprops = dict(width = 1,headwidth = 10,headlength = 10, \n                               facecolor = \"black\"))\n\n# Axis limits\nplt.xlim([10,45])\nplt.ylim([150,210])\nI’m not sure that looks any better, but you get the idea!",
     "crumbs": [
       "Workshops",
-      "Data Processing"
+      "Visualisation"
     ]
   },
   {
-    "objectID": "Workshops/2 - Data processing.html#challenge",
-    "href": "Workshops/2 - Data processing.html#challenge",
-    "title": "Data Processing",
-    "section": "Challenge",
-    "text": "Challenge\nReduce your dataset to \\(\\le 3\\) variables (columns) and \\(\\le 100\\) rows using conditions by filtering down to a particular subset of your data.",
+    "objectID": "Workshops/3 - Visualisation.html#interactivity-with-plotly",
+    "href": "Workshops/3 - Visualisation.html#interactivity-with-plotly",
+    "title": "Visualisation",
+    "section": "Interactivity with plotly",
+    "text": "Interactivity with plotly\nFor the last part of this section, we’re going to briefly look at making interactive plots with plotly.\nWe bring in the tools with\nimport plotly.express as px\n\nYou’ll probably need to install it first - use either\nconda install plotly\nOR\npip install plotly\ndepending on your installation.\n\nPlotly works by creating a visualisation like we’ve been doing, and then loading it into something dynamic, like a web browser. Spyder does not support interactive plots. This means we need to change the default settings with\nimport plotly.io as pio\npio.renderers.default = \"browser\"\nNow, plots should all load in your default browser.\n\nThe basics\nWe make plotly graphs very similarly to seaborn. Let’s take our first plot from above,\nsns.relplot(data = df, x = \"age\", y = \"height_cm\", s = 10, color = \"grey\")\nand turn it into a plotly one.\n\nWe need to use px.scatter instead of sns.relplot\nWe need to use data_frame = instead of data =\nLet’s remove the s = and color = for now\nSave the plot as a variable\n\npx.scatter(data_frame = df, x = \"age\", y = \"height_cm\")\nNotice how you can hover over the points now? It’s interactive!\n\n\nIntroducing more info and neatening up\nLike seaborn’s “hue”, we can use color = to introduce a third variable\npx.scatter(data_frame = df, x = \"age\", y = \"height_cm\", color = \"position\")\nAnd like seaborn’s “col”, we can facet with facet_col =\npx.scatter(data_frame = df, x = \"age\", y = \"height_cm\", color = \"position\",\n           facet_col = \"positions\")\nPersonally, I think these are too squished. We can specify the maximum number of columns with facet_col_wrap =\npx.scatter(data_frame = df, x = \"age\", y = \"height_cm\", color = \"positions\",\n           facet_col = \"positions\", facet_col_wrap = 2)\nFinally, let’s adjust the information in the hover. We can give each point a name with hover_name = - how about their actual names?\npx.scatter(data_frame = df, x = \"age\", y = \"height_cm\", color = \"positions\",\n           facet_col = \"positions\", facet_col_wrap = 2, hover_name = \"name\")\nAnd let’s also include their nationalities\npx.scatter(data_frame = df, x = \"age\", y = \"height_cm\", color = \"positions\",\n           facet_col = \"positions\", facet_col_wrap = 2, hover_name = \"name\",\n           hover_data = \"nationality\")\n\n\nSaving interactive plots\nSince these are interactive, we can’t save them as normal. The easiest option is to save them as HTML files - like websites - which we can open from our browsers.\nFirst, save the plot into a variable\nfig = px.scatter(data_frame = df, x = \"age\", y = \"height_cm\", color = \"positions\",\n                 facet_col = \"positions\", facet_col_wrap = 2, hover_name = \"name\",\n                 hover_data = \"nationality\")\nThen, write it to HTML\nfig.write_html(\"plot.html\")",
     "crumbs": [
       "Workshops",
-      "Data Processing"
+      "Visualisation"
     ]
   },
   {
-    "objectID": "Workshops/2 - Data processing.html#adding-and-removing-columns",
-    "href": "Workshops/2 - Data processing.html#adding-and-removing-columns",
-    "title": "Data Processing",
-    "section": "Adding and removing columns",
-    "text": "Adding and removing columns\nSometimes we need to add new columns. It’s the same process as overwriting existing columns - let’s make a new column called “zeroes” where every row is 0\ndf[\"zeroes\"] = 0\nWe can also send in a column, for example\ndf[\"copy_of_names\"] = df[\"name\"]\nPerhaps most usefully, we can manipulate the column we send in. For example, the deviation from the mean \\[|\\bar{x} - x_i|\\] can be computed for each row’s height:\ncol_x = df[\"height_cm\"]\navg_x = df[\"height_cm\"].mean()\n\ndf[\"deviation_from_mean_height\"] = abs(col_x - avg_x)\n\n# Or all together on one line,\ndf[\"deviation_from_mean_height\"] = abs(df[\"height_cm\"] - df[\"height_cm\"].mean())\nwhere abs(...) takes the absolute value\nNotice that we subtracted a value from a column. We can also perform mathematics with multiple columns:\ndf[\"product\"] = df[\"age\"]*df[\"height_cm\"]\nLet’s remove these new columns that we don’t need with the method df.drop(columns = [...]):\ndf.drop(columns = [\"zeroes\", \"copy_of_names\", \"deviation_from_mean_height\", \"product\"])",
+    "objectID": "Workshops/3 - Visualisation.html#conclusion",
+    "href": "Workshops/3 - Visualisation.html#conclusion",
+    "title": "Visualisation",
+    "section": "Conclusion",
+    "text": "Conclusion",
     "crumbs": [
       "Workshops",
-      "Data Processing"
+      "Visualisation"
     ]
   },
   {
-    "objectID": "Workshops/2 - Data processing.html#summaries",
-    "href": "Workshops/2 - Data processing.html#summaries",
-    "title": "Data Processing",
-    "section": "Summaries",
-    "text": "Summaries\nAfter cleaning up our data, we need to analyse it. This usually involves some kind of aggregation. For example, what is the average \\(x\\) per year? requires aggregating over variable \\(x\\) for each year.\nFirst, we need to group by a specific variable\ngb = df.groupby(\"age\")\nThis thing in itself is a pretty abstract Python object, best thought of as a dataframe where we’ve identified a grouping variable.\nNext, we need to apply some aggregation to it (the groupby tells it to do it for each year)\navg_height_by_age = gb[\"height_cm\"].agg(\"mean\")\nOf course, we could have done this in one line:\navg_height_by_age = df.groupby(\"year\").agg(\"mean\")\nThis is a really useful tool, because now we have something we can visualise. As the next session will show us, the visualisation tools generally just take in numbers and turn them into dots. We need to do the stats beforehand.\nAs a taster, try running\navg_height_by_age.plot()",
-    "crumbs": [
-      "Workshops",
-      "Data Processing"
-    ]
-  },
-  {
-    "objectID": "Workshops/2 - Data processing.html#exporting-results",
-    "href": "Workshops/2 - Data processing.html#exporting-results",
-    "title": "Data Processing",
-    "section": "Exporting results",
-    "text": "Exporting results\nThe last step in the process is saving the data. Let’s say we want to take that final dataframe and export it to a csv. That’s what the df.to_csv() method is for\navg_height_by_age.to_csv(\"data/avg_height_by_age.csv\")\nThis will save the dataframe to a .csv file and place it in the data folder.",
-    "crumbs": [
-      "Workshops",
-      "Data Processing"
-    ]
-  },
-  {
-    "objectID": "Workshops/2 - Data processing.html#resources",
-    "href": "Workshops/2 - Data processing.html#resources",
-    "title": "Data Processing",
-    "section": "Resources",
-    "text": "Resources\n\nOfficial pandas documentation\n\nGetting started\n10 Minutes to pandas\nUser guide\n\nMore visualisation modules:\n\nAltair\nBokeh\nVega\nMatplotlib\n\nOur compilation of useful Python links",
-    "crumbs": [
-      "Workshops",
-      "Data Processing"
-    ]
-  },
-  {
-    "objectID": "Workshops/4 - Sharing and Publishing.html",
-    "href": "Workshops/4 - Sharing and Publishing.html",
-    "title": "Sharing and Publishing",
+    "objectID": "Workshops/5 - Statistics.html",
+    "href": "Workshops/5 - Statistics.html",
+    "title": "Statistics",
     "section": "",
-    "text": "In this workshop we cover using GitHub for sharing your source code, Git for version control, and Quarto for publishing outputs. Specifically, we look at:",
+    "text": "This session is aimed as an overview of how to perform some statistical modelling with Python. It is a Python workshop, not a statistics workshop - if you’d like to better understand the statistical models, or need help deciding what’s best for you, please consult a statistics resource or contact a statistician.\nIn this session, we’ll cover\nWe’ll use three new modules: - numpy - scipy.stats - statsmodels\nWe’ll be working from our “Players2024” dataset again. To bring it in and clean it up,",
     "crumbs": [
       "Workshops",
-      "Sharing and Publishing"
+      "Statistics"
     ]
   },
   {
-    "objectID": "Workshops/4 - Sharing and Publishing.html#quarto",
-    "href": "Workshops/4 - Sharing and Publishing.html#quarto",
-    "title": "Sharing and Publishing",
-    "section": "Quarto",
-    "text": "Quarto\nQuarto is a publishing system that allows creating documents, presentations, websites and dashboards that contain prose, code and code outputs. This means that such outputs can detail exactly what happened to the data, and outputs can be re-generated very quickly if, for example, the underlying dataset was updated, or if the analysis needs to change.\nLet’s try to create a document based on the visualisations we created earlier.\nThis new .py script will be made of cells, which can be inserted with the toolbar or the keyboard shortcut Ctrl+2.\nAt the top of our script, we need to include a Markdown cell that contains the document’s settings:\n# %% [markdown]\n# ---\n# title: Reproducible Output\n# author: Your Name\n# date: 2025-01-01\n# ---\nAll subsequent cells are going to be either [Markdown] cells (if they contain text, titles and other static contents) or python cells (if they contain executable code). For example:\n# %% [markdown]\n\"\"\"\n## Import the data\n\nLet's import the data:\n\"\"\"\n\n# %%\nimport pandas as pd\ndf = pd.read_csv(\"Players2024.csv\")\n\n# %% [markdown]\n\"\"\"\n## Plot the data\n\nLet's generate that **swarm plot** again:\n\"\"\"\n\n# %%\nimport seaborn as sns\nsns.catplot(data = df, x = \"positions\", y = \"height_cm\")\n\n# %% [markdown]\n\"\"\"\nWe now have a plot!\n\"\"\"\nIn the Markdown cells, we use the Markdown markup language to format the text. For example, using ## before some text defines a heading of level 2 (level 1 being the document’s title), and using ** around some text makes it bold. See more Markdown hints in the Quarto documentation.\n\nRendering\nFrom the iPython console, run the following command to render the document:\n!quarto render document.py\nThis should create a HTML document in your project directory, which you can open in a web browser by right-clicking on it in the Files tab and using “Open externally”.\nAs the default Quarto output is a HTML file, we can include interactive visualisations too.\n\n\nCell options\nIf you want to show the code but don’t want to run it, you can add the cell option #| eval: false. And if you want to show the output but not show the underlying code, use #| echo: false.\n# %% [markdown]\n\"\"\"\n## Interactive plots\n\nYou will need the plotly module:\n\"\"\"\n\n# %%\n#| eval: false\nconda install plotly\n\n# %% [markdown]\n\"\"\"\nAn interactive plot:\n\"\"\"\n\n# %%\n#| echo: false\nimport plotly.express as px\npx.scatter(data_frame = df, x = \"age\", y = \"height_cm\")\nAnd for adding a caption and alternative text to a figure:\n# %%\n#| fig-cap: \"Goalkeepers tend to be taller.\"\n#| fig-alt: \"A scatterplot of the relationsip between height and position.\"\nimport seaborn as sns\nsns.catplot(data = df, x = \"positions\", y = \"height_cm\")\nMany more cell options exist, including captioning and formatting visualisations. Note that these options can be used at the cell level as well as globally (by modifying the front matter at the top of the document).\nFor example, to make sure error and warning messages are never shown:\n# %% [markdown]\n# ---\n# title: Reproducible Output\n# author: Your Name\n# date: 2025-01-01\n# warning: false\n# error: false\n# ---\n\n\nOutput formats\nThe default output format in Quarto is HTML, which is by far the most flexible. However, Quarto is a very versatile publishing system and can generate many different output formats, including PDF, DOCX and ODT, slide formats, Markdown suited for GitHub… and even whole blogs, books and dashboards.\nLet’s try rendering a PDF:\n# %% [markdown]\n# ---\n# title: Reproducible Output\n# author: Your Name\n# date: 2025-01-01\n# format: pdf\n# ---\nWhen rendering PDFs, the first issue we might run into is the lack of a LaTeX distribution. If Quarto didn’t detect one, it will suggest to install tinytex (a minimal LaTeX distribution) with:\n!quarto install tinytex\nOnce that is installed, Quarto should render a PDF.\nAnother issue with our example document is that an interactive HTML visualisation won’t be renderd in the PDF. You can supress it by using the #| eval: false option:\n# %%\n#| eval: false\nimport plotly.express as px\npx.scatter(data_frame = df, x = \"age\", y = \"height_cm\")\n\nDashboard\nA great way to present a variety of outputs in a grid is by creating a HTML dashboard.\nLet’s modify our script to render a dashboard. First, change the output format:\n# %% [markdown]\n# ---\n# title: Reproducible Output\n# author: Your Name\n# date: 2025-01-01\n# format: dashboard\n# ---\nWe can already render the dashboard and see the result. Each panel can be expanded with the bottom-right button. Note that by default:\n\neach cell is rendered in a separate card\nheadings define the rows\nthe heading text is discarded\ncode is not shown (but can be by using echo: true)\n\nGiven this default behaviour, you might have to rethink a good part of your script to make it suited for a striking dashboard. For example, removing most of the text, customising the layout (tabsets, rows, card heights…) and adding custom cards like “value boxes”. Learn more about all these in the Quarto Dashboards documentation.\nAs a starting point, copy the current script across to a new script called dashboard.py and modify it so it matches the following:\n# %% [markdown]\n# ---\n# title: Reproducible Outputs\n# author: John Guillables\n# date: today\n# warning: false\n# error: false\n# format: dashboard\n# ---\n\n# %%\nimport pandas as pd\ndf = pd.read_csv(\"Players2024.csv\")\n\n# %% [markdown]\n\"\"\"\n## Figures {height=70%}\n\"\"\"\n\n# %%\n#| title: Goalkeepers tend to be taller\n#| fig-alt: \"A scatterplot of the relationsip between height and position.\"\nimport seaborn as sns\nsns.catplot(data = df, x = \"positions\", y = \"height_cm\")\n\n# %%\n#| title: Age vs Height\nimport plotly.express as px\npx.scatter(data_frame = df, x = \"age\", y = \"height_cm\")\n\n# %% [markdown]\n\"\"\"\n## Table\n\"\"\"\n\n# %%\n#| title: A glimpse at the dataset\ndf.head(10)\nThis results in a dashboard containing three cards organised in two rows. The top row uses 70% of the available height, and the bottom row shows a table of the top 10 rows of the dataset. Each card has a title.\n\n\n\nQuarto dashboard with three cards: static visualisation, interactive visualisation, and table.",
+    "objectID": "Workshops/5 - Statistics.html#descriptive-statistics",
+    "href": "Workshops/5 - Statistics.html#descriptive-statistics",
+    "title": "Statistics",
+    "section": "Descriptive Statistics",
+    "text": "Descriptive Statistics\nWe’ll start with sample size. All dataframes have most descriptive statistics functions available right off the bat which we access via the . operator.\nTo calculate the number of non-empty observations in a column, say the numeric variable df[\"height_cm\"], we use the .count() method\ndf[\"height_cm\"].count()\n\nMeasures of central tendancy\nWe can compute measures of central tendancy similarly. The average value is given by\ndf[\"height_cm\"].mean()\nthe median by\ndf[\"height_cm\"].median()\nand the mode by\ndf[\"height_cm\"].mode()\n\n.mode() returns a dataframe with the most frequent values as there can be multiple.\n\n\n\nMeasures of variance\nWe can also compute measures of variance. The minimum and maximum are as expected\ndf[\"height_cm\"].min()\ndf[\"height_cm\"].max()\nThe range is the difference\ndf[\"height_cm\"].min() - df[\"height_cm\"].max()\nQuantiles are given by .quantile(...) with the fraction inside. The inter-quartile range (IQR) is the difference between 25% and 75%.\nq1 = df[\"height_cm\"].quantile(0.25)\nq3 = df[\"height_cm\"].quantile(0.75)\nIQR = q3 - q1\nA column’s standard deviation and variance are given by\ndf[\"height_cm\"].std()\ndf[\"height_cm\"].var()\nAnd the standard error of the mean (SEM) with\ndf[\"height_cm\"].sem()\nYou can calculate the skewness and kurtosis (variation of tails) of a sample with\ndf[\"height_cm\"].skew()\ndf[\"height_cm\"].kurt()\nAll together, you can see a nice statistical summary with\ndf[\"height_cm\"].describe()\n\n\nMeasures of correlation\nIf you’ve got two numeric variables, you might want to examine covariance and correlation. These indicate how strongly the variables are linearly related. We’ll need to use the df[\"age\"] variable as well.\nThe covariance between “height_cm” and “age” is\ndf[\"height_cm\"].cov(df[\"age\"])\n\nThe .cov() function compares the column it’s attached to (here df[\"height_cm\"]) with the column you input (here df[\"age\"]). This means we could swap the columns without issue:\ndf[\"age\"].cov(df[\"height_cm\"])\n\nSimilarly, we can find the Pearson correlation coefficient between two columns.\ndf[\"height_cm\"].corr(df[\"age\"])\nYou can also specify “kendall” or “spearman” for their respective correlation coefficients\ndf[\"height_cm\"].corr(df[\"age\"], method = \"kendall\")\ndf[\"height_cm\"].corr(df[\"age\"], method = \"spearman\")\n\n\nReminder about groupbys\nBefore we move to inferential statistics, it’s worth reiterating the power of groupbys discussed in the second workshop.\nTo group by a specific variable, like “positions”, we use\ngb = df.groupby(\"positions\")\nBy applying our statistics to the gb object, we’ll apply them to every variable for each position. Note that we should specify numeric_only = True, because these statistics won’t work for non-numeric variables\ngb.mean(numeric_only = True)",
     "crumbs": [
       "Workshops",
-      "Sharing and Publishing"
+      "Statistics"
     ]
   },
   {
-    "objectID": "Workshops/4 - Sharing and Publishing.html#git-and-github",
-    "href": "Workshops/4 - Sharing and Publishing.html#git-and-github",
-    "title": "Sharing and Publishing",
-    "section": "Git and GitHub",
-    "text": "Git and GitHub\nGit is a vesion control system that allows to record a clean history of your project, track precise authorship, and collaborate asynchronously with others. It can be used offline, from the command line or with integration into Itegrated Desktop Environments (like RStudio, VS Code… Unfortunately, Spyder does not have Git integration).\nGitHub is one of many websites that allow you to host project that are tracked with Git. But even without using Git at all, it is possible to use GitHub to share and make your project public. Many researchers use it to make their code public alongside a published paper, to increase reproducibility and transparency. It can also be useful to build and share a portfolio of your work.\nLearning about the ins and out of Git takes time, so in this section we will mainly use GitHub as a place to upload and share your code and outputs, and as a starting point for learning more about Git in the future.\n\nGitHub\nGitHub is currently the most popular place for hosting, sharing and collaborating on code. You can create an account for free, and then create a repository for your project.\n\nCreate an account and log in\nClick on the “+” button (top right of the page)\nSelect “New repository”\nChoose a name and description for your repository\nTick “Add a README file” - this will be where you introduce your project\nClick “Create repository”\n\nFrom there, you can upload your files, and edit text-based files straight from your web browser if you need to.\nThe README file is a markdown file that can contain the most important information about your project. It’s important to populate it as it is the first document most people see. It could contain:\n\nName and description of the project\nHow to use it (installation process if any, examples…)\nWho is the author, who maintains it\nHow to contribute\n\nFor inspiration, see the pandas README file.",
+    "objectID": "Workshops/5 - Statistics.html#inferential-statistics",
+    "href": "Workshops/5 - Statistics.html#inferential-statistics",
+    "title": "Statistics",
+    "section": "Inferential Statistics",
+    "text": "Inferential Statistics\nInferential statistics requires using the module scipy.stats, which we’ll bring in with\nimport scipy.stats as stats\n\nSimple linear regressions\nLeast-squares regression for two sets of measurements can be performed with the function stats.linregress():\nstats.linregress(x = min_heights[\"age\"], y = df[\"height_cm\"])\nIf we store this as a variable, we can access the different values with the . operator. For example, the p-value is\nlm = stats.linregress(x = df[\"age\"], y = df[\"height_cm\"])\nlm.pvalue\n\nPlotting it\nNaturally, you’d want to plot this. We’ll need to use the overlaying techniques from the visualisation session. Let’s import seaborn and matplotlib\nimport seaborn as sns\nimport matplotlib.pyplot as plt\nStart by making a scatterplot of the data,\nsns.relplot(data = df, x = \"age\", y = \"height_cm\")\nThen, you’ll need to plot the regression as a line. For reference,\n\\[ y = \\text{slope}\\times x + \\text{intercept}\\]\nSo\nsns.relplot(data = df, x = \"age\", y = \"height_cm\")\n\nx_lm = df[\"age\"]\ny_lm = lm.slope*x_lm + lm.intercept\nsns.lineplot(x = x_lm, y = y_lm, color = \"r\")\n\n\n\n\\(t\\)-tests\nWe can also perform \\(t\\)-tests with the scipy.stats module. Typically, this is performed to examine the statistical signficance of a difference between two samples’ means. Let’s examine whether that earlier groupby result for is accurate for heights, specifically, are goalkeepers taller than non-goalkeepers?\nLet’s start by separating the goalkeepers from the non-goalkeepers in two variables\ngoalkeepers = df[df[\"positions\"] == \"Goalkeeper\"]\nnon_goalkeepers = df[df[\"positions\"] != \"Goalkeeper\"]\nThe \\(t\\)-test for the means of two independent samples is given by\nstats.ttest_ind(goalkeepers[\"height_cm\"], non_goalkeepers[\"height_cm\"])\nYielding a p-value of \\(8\\times 10^{-247}\\approx 0\\), indicating that the null-hypothesis (heights are the same) is extremely unlikely.\n\n\nANOVAs\nWhat about the means of the other three? We could use an ANOVA to examine them. We use the stats.f_oneway() function for this. However, this requires us to send a list of samples in for each group, so we should separate the three positions.\ndefender = df[df[\"positions\"] == \"Defender\"].height_cm\nmidfield = df[df[\"positions\"] == \"Midfield\"].height_cm\nattack = df[df[\"positions\"] == \"Attack\"].height_cm\nWe can then perform the ANOVA on this list of samples\nstats.f_oneway(defender, midfield, attack)\nWith \\(p = 3\\times10^{-84}\\), it looks like their positions are not all independent of height.\n\n\n\\(\\chi^2\\) tests\n\\(χ^2\\) tests are useful for examining the relationship of categorical variables by comparing the frequencies of each. Often, you’d use this if you can make a contingency table.\nWe only have one useful categorical variable here, “positions” (the others have too many unique values), so we’ll need to create another. Let’s see if there’s a relationship between players’ positions and names with the letter “a”.\nMake a binary column for players with the letter “a” in their names. To do this, we need to apply a string method to all the columns in the dataframe as follows\ndf[\"a_in_name\"] = df[\"name\"].str.contains(\"a\")\nLet’s cross tabulate positions with this new column\na_vs_pos = pd.crosstab(df[\"positions\"],df[\"a_in_name\"])\nprint(a_vs_pos)\nThe \\(χ^2\\) test’s job is to examine whether players’ positions depend on the presence of “a” in their name. To evaluate it we need to send the contingency table in:\nstats.chi2_contingency(a_vs_pos)\n\n\nMore complex modelling\nIf you need to do more advanced statistics, particularly if you need more regressions, you’ll likely need to turn to a different package: statsmodels. It is particularly useful for statistical modelling.\nWe’ll go through three examples\n\nSimple linear regressions (like before)\nMultiple linear regressions\nLogistic regressions\n\nWhat’s nice about statsmodels is that it gives an R-like interface and summaries.\nTo start with, let’s import the tools. We’ll use the formula interface, which offers us an R-like way of creating models.\nimport statsmodels.formula.api as smf\n\nSimple linear regressions revisited\nLet’s perform the same linear regression as before, looking at the “age” and “height variables”. Our thinking is that players’ heights dictate how long they can play, so we’ll make \\(x = \\text{height\\_cm}\\) and \\(y = \\text{age}\\).\nThe first step is to make the set up the variables. We’ll use the function smf.ols() for ordinary least squares. It takes in two imputs:\n\nThe formula string, in the form y ~ X1 + X2 ...\nThe data\n\nWe create the model and compute the fit\nmod = smf.ols(\"age ~ height_cm\", df)\nres = mod.fit()\nDone! Let’s take a look at the results\nres.summary()\nThat’s a lot nicer than with scipy. We can also make a plot by getting the model’s \\(y\\) values with res.fittedvalues\nsns.relplot(data = df, x = \"height_cm\", y = \"age\")\nsns.lineplot(x = df[\"age\"], y = res.fittedvalues, color = \"black\")\n\n\nGeneralised linear models\nThe statsmodels module has lots of advanced statistical models available. We’ll take a look at one more: Generalised Linear Models. The distributions they include are\n\nBinomial\nPoisson\nNegative Binomial\nGaussian (Normal)\nGamma\nInverse Gaussian\nTweedie\n\nWe’ll use the binomial option to create logistic regressions.\nLogistic regressions examine the distribution of binary data. For us, we can compare the heights of goalkeepers vs non-goalkeepers again. Let’s make a new column which is 1 for goalkeepers and 0 for non-goalkeepers:\ndf[\"gk\"] = (df[\"positions\"] == \"Goalkeeper\")*1\n\nWe have to multiply by 1 to turn True \\(\\rightarrow\\) 1 and False \\(\\rightarrow\\) 0\n\nNow, we can model this column with height. Specifically,\n\\[ \\text{gk} \\sim \\text{height\\_cm}\\]\nStart by making the model with the function smf.glm(). We need to specify the family of distributions; they all live in sm.families:\nmod = smf.glm(\"gk ~ height_cm\", data = df, family = sm.families.Binomial())\nNext, evaluate the results\nres = mod.fit()\nLet’s have a look at the summary:\nres.summary()\nFinally, we can plot the result like before\nsns.relplot(data = df, x = \"height_cm\", y = \"gk\")\nsns.lineplot(x = df[\"height_cm\"], y = res.fittedvalues, color = \"black\")",
     "crumbs": [
       "Workshops",
-      "Sharing and Publishing"
+      "Statistics"
     ]
   },
   {
-    "objectID": "Workshops/4 - Sharing and Publishing.html#further-resources",
-    "href": "Workshops/4 - Sharing and Publishing.html#further-resources",
-    "title": "Sharing and Publishing",
-    "section": "Further resources",
-    "text": "Further resources\n\n…\n…",
-    "crumbs": [
-      "Workshops",
-      "Sharing and Publishing"
-    ]
-  },
-  {
-    "objectID": "Workshops/6 - Programming.html",
-    "href": "Workshops/6 - Programming.html",
-    "title": "Programming Essentials",
+    "objectID": "Workshops/index.html",
+    "href": "Workshops/index.html",
+    "title": "Workshops",
     "section": "",
-    "text": "In this workshop we cover the building blocks for developing more complex code, looking at",
+    "text": "Over these three days we’ll cover six sessions of content:\n\n\n\nSession\nDescription\n\n\n\n\nThe Fundamentals\nThe basics of Python. Variables, functions and modules.\n\n\nData processing\nImporting, manipulating and analysing data with pandas\n\n\nVisualisation\nCreating visualisations of our data with seaborn, matplotlib and plotly\n\n\nSharing and Publishing\nUsing GitHub for sharing and version control, as well as quarto for publishing dashboards and websites.\n\n\nStatistics\nDescriptive and inferential statistics, with some regressions and hypothesis testing, using scipy.stats and statsmodels\n\n\nProgramming Essentials\nPython tools everyone should know. Conditionals, loops, functions and importing scripts.\n\n\n\nThese content sessions are pretty packed, and we won’t have too much time to deviate. That’s why we’ll also have five project sessions - see The Project for details. You’re welcome to ask lengthier questions and play around there!",
     "crumbs": [
-      "Workshops",
-      "Programming Essentials"
-    ]
-  },
-  {
-    "objectID": "Workshops/6 - Programming.html#directing-traffic-with-conditionals",
-    "href": "Workshops/6 - Programming.html#directing-traffic-with-conditionals",
-    "title": "Programming Essentials",
-    "section": "Directing traffic with conditionals",
-    "text": "Directing traffic with conditionals\nIn the first half of this session we’ll look at two types of control flows: conditionals and loops.\nConditionals allow you to put “gates” in your code, only running sections if a certain condition is true. They are common to most programming languages.\nIn Python, they are called if statements, because you use the if command. For example,\nif 5 &gt; 0:\n    print(\"We're inside the if statement\")\nThe line print(\"We're inside the if statement\") will only run if 5 &gt; 0 is true. If not, it’ll get skipped.\nIndents are essential. Only indented code will be governed by conditional\nif 5 &gt; 0:\n    print(\"We're inside the if statement\")\n\nprint(\"This code always runs\")\nWatch what happens if we change the condition\nif 5 &gt; 10:\n    print(\"We're inside the if statement\")\n\nprint(\"This code always runs\")\nNow, the first line doesn’t run. That’s the essence of a conditional.\nThere’s not much point to using a condition that will always be true. Typically, you’d use a variable in the condition, for example.\npet_age = 10\n\nif pet_age &gt; 10:\n    print(\"My pet is older than 10\")\n\nLogical operators\nHere is a table of the different operators you can make conditions with. When you run them, they always return either True or False.\n\n\n\n\n\n\n\n\nOperator\nTrue example\nDescription\n\n\n\n\n==\n10 == 10\nSame value and type\n\n\n!=\n\"10\" != 10\nDifferent value or type\n\n\n&gt;\n10 &gt; 5\nGreater than\n\n\n&gt;=\n10 &gt;= 10\nGreater than or equal to\n\n\n&lt;\n5 &lt; 10\nLess than\n\n\n&lt;=\n5 &lt;= 10\nLess than or equal to\n\n\nin\n\"a\" in \"apple\"\nFirst object exists in the second\n\n\nnot in\n\"b\" not in \"apple\"\nFirst object does not exist in the second\n\n\nand\n10 == 10 and \"a\" in \"apple\"\nOnly true if both conditions are true. Same as &\n\n\nor\n10 == 10 or \"b\" in \"apple\"\nAlways true if one condition is true. Same as \\|\n\n\n\n\n\nelif and else\nif statements only run if the condition is True. What happens if its False? That’s what the else command is for, it’s like a net that catches anything that slipped past if:\npet_age = 5\n\nif pet_age &gt; 10:\n    print(\"My pet is older than 10\")\nelse:\n    print(\"My pet is 10 or younger\")\n\nDon’t forget the colon :!\n\nCheck what happens when you change the age from 5 to 15.\nFinally, what if you wanted to check another condition only if the first one fails? That’s what elif (else-if) is for. It’s another if statement but it only runs if the first fails.\npet_age = 5\n\nif pet_age &gt; 10:\n    print(\"My pet is older than 10\")\nelif pet_age &lt; 5:\n    print(\"My pet is younger than 5\")\nelse:\n    print(\"My pet is between 5 and 10\")\nYou can include as many as you’d like\npet_age = 5\n\nif pet_age &gt; 10:\n    print(\"My pet is older than 10\")\nelif pet_age &lt; 5:\n    print(\"My pet is younger than 5\")\nelif pet_age &lt; 1:\n    print(\"My pet is freshly born\")\nelse:\n    print(\"My pet is between 5 and 10\")",
-    "crumbs": [
-      "Workshops",
-      "Programming Essentials"
-    ]
-  },
-  {
-    "objectID": "Workshops/6 - Programming.html#repeat-after-me",
-    "href": "Workshops/6 - Programming.html#repeat-after-me",
-    "title": "Programming Essentials",
-    "section": "Repeat after me",
-    "text": "Repeat after me\nSometimes you need to repeat a task multiple times. Sometimes hundreds. Maybe you need to loop through 1 million pieces of data. Not fun.\nPython’s loops offer us a way to run a section of code multiple times. There are two types: for loops, which run the code once for each element in a sequence (like a list or string), and while loops, which run until some condition is false.\n\nwhile loops\nThese are almost the same as if statements, except for the fact that they run the code multiple times. Let’s begin with a basic conditional\nnumber = 5\n\nif number &lt; 10:\n    print(number + \"is less than 10.\")\nThe print statement runs once if the condition is true.\nWhat if we wanted to check all the numbers between 5 and 10? We can use a while loop.\nnumber = 5\n\nwhile number &lt; 10:\n    print(number + \"is less than 10.\")\n    number = number + 1\nWe’ve done two things\n\nReplace if with while\nIntroduce number = number + 1 to increase the number each time.\n\n\nWithout step 2, we’d have an infinite loop – one that never stops, because the condition would always be true!\n\nWhile loops are useful for repeating code an indeterminate number of times.\n\n\nfor loops\nRealistically, you’re most likely to use a for loop. They’re inherently safer (you can’t have an infinite loop) and often handier.\nIn Python, for loops iterate through a sequence, like the objects in a list. This is more like other languages’ foreach, than most’s for.\nLet’s say you have a list of different fruit\nlist_of_fruits = [\"apple\", \"banana\", \"cherry\"]\nand you want to run a section of code on \"apple\", then \"banana\", then \"cherry\". Maybe you want to know which ones have the letter “a”. We can start with a for loop\nlist_of_fruits = [\"apple\", \"banana\", \"cherry\"]\n\nfor fruit in list_of_fruits:\n    print(fruit)\nThis loop’s job is to print out the variable fruit. But where is fruit defined? Well, the for loop runs print(fruit) for every element of list_of_fruits, storing the current element in the variable fruit. If we were to write it out explicitly, it would look like\nfruit = list_of_fruits[0]\nprint(fruit)\n\nfruit = list_of_fruits[1]\nprint(fruit)\n\nfruit = list_of_fruits[2]\nprint(fruit)\nLet’s return to our goal: working out which ones have an “a”. We need to put a conditional inside the loop:\nlist_of_fruits = [\"apple\", \"banana\", \"cherry\"]\n\nfor fruit in list_of_fruits:\n    if \"a\" in fruit:\n        print(\"a is in \" + fruit)\n    else:\n        print(\"a is not in \" + fruit)\n\n\nUsing range\nThere’s a special Python object which is useful for loops, the range. This object ‘contains’ all the numbers between a certain range. For example,\nrange(0,5)\ncover the numbers \\(0-4\\), and is somewhat equivalent to [0,1,2,3,4] (for looping purposes). Of course, we can choose a much bigger number:\nfor i in range(0,1000)\n    print(i)\nwill print every number between \\(0\\) and \\(1000\\). This can be useful if you need to loop through multiple objects by indexing.",
-    "crumbs": [
-      "Workshops",
-      "Programming Essentials"
-    ]
-  },
-  {
-    "objectID": "Workshops/6 - Programming.html#looking-under-the-hood-what-makes-ints-ints",
-    "href": "Workshops/6 - Programming.html#looking-under-the-hood-what-makes-ints-ints",
-    "title": "Programming Essentials",
-    "section": "Looking under the hood: what makes ints ints?",
-    "text": "Looking under the hood: what makes ints ints?\nPython is a high level programming language. Its features are often inspired by C and C++, and is itself built in C/C++.\nOne of the major innovations of C++, and object-oriented programming in general, are classes. We won’t go over how to write your own - it’s beyond the scope of this workshop - but they’re worth a conceptual understanding.\nEssentially, all Python variables follow a specific template, known as its class or type. It’s safe to use these interchangebly here. The class is a general template for the variable and it defines what methods (functions) and attributes (variables) live inside the variable.\nInside the variable? Where? Well, a variables contain more than just their value. We use the . operator to access anything besides the value that lives in the variable. For example, all strings have a function called .upper() that makes them uppercase:\nrandom_string = \"Hello, this is a sentence.\"\nprint(random_string.upper())\nLet me emphasise that all strings have .upper(). That makes upper() a method of strings.\nIn other words, a class is like an empty form that needs filling. The form string has a field called upper() that is filled with the function as defined above.",
-    "crumbs": [
-      "Workshops",
-      "Programming Essentials"
-    ]
-  },
-  {
-    "objectID": "Workshops/6 - Programming.html#building-your-own-machines",
-    "href": "Workshops/6 - Programming.html#building-your-own-machines",
-    "title": "Programming Essentials",
-    "section": "Building your own machines",
-    "text": "Building your own machines\nWe’ll wrap this session up by looking at custom functions and modules. So far, we’ve only used built-in functions or those from other people’s modules. But we can make our own!\nWe’ve only ever called functions - this is what we do when we use them. All functions need a definition, this is the code that gets run when they’re called.\n\nThe function definition\nFunctions are machines. They take some inputs, run some code with those inputs, and spit out one output. We need to define how they work before we use them. We should specify\n\nA name\nSome inputs\nThe code to run (the machine itself)\nAn output\n\nWe include these in three steps\n\nThe first line of the function definition (the function signature) specifies the name and inputs\nWe then indent all the code we want to run with our inputs\nWe end with a return statement, specifying the output\n\ndef insert_function_name_here(input_1_name, input_2_name, ...):\n    # Code code code\n    return output\nFor example, let’s create a function that converts centimetres to metres.\ndef cm_to_m(value_in_cm):\n    value_in_m = value_in_cm / 100\n    return value_in_m\nTaking it apart, we have\n\nName: cm_to_m\nInputs (just one): value_in_cm\nCode (just one line): value_in_m = value_in_cm / 100\nOutput: value_in_m\n\nImportantly, nothing happens when you run this code. Why? Because you’ve only defined the function, you haven’t used it yet.\nTo use this function, we need to call it. Let’s convert \\(10\\text{ cm}\\) to \\(\\text{m}\\).\ndef cm_to_m(value_in_cm):\n    value_in_m = value_in_cm / 100\n    return value_in_m\n\ncm_to_m(10)\nWhen we call the function, it runs with value_in_cm = 10.\nThat’s it! Every function that you use, built-in or imported, looks like this.\nBecause functions must be defined before called, and defining them produces no output, best practice is to place functions at the top of your script, below the import statements.\n\n\nDocstrings\nSomething you’ll spot on all professional functions are docstrings. This is what Python spits out with the help() function. You can make your own by writing it within triple quotes immediately after the signature ''' ''':\ndef cm_to_m(value_in_cm):\n    \"\"\"Converts centimetres to metres\"\"\"\n    value_in_m = value_in_cm / 100\n    return value_in_m\n\ncm_to_m(10)\nThat said, the best way to ensure clarity is to use a clear name.\n\n\nCreating modules\nWhat if you need to write lots of functions? We could write unit converters like above for hundreds of possibilities.\nIt’s useful to tuck these away in their own file, so they don’t clog up your main.py.\nLet’s make a new file called conversions.py, and move your function into it. Delete it from your current file.\nThen, to make sure it works, let’s make a new converter too, from centimetres to inches. Your conversions.py file should look like:\ndef cm_to_m(value_in_cm):\n    \"\"\"Converts centimetres to metres\"\"\"\n    value_in_m = value_in_cm / 100\n    return value_in_m\n\ndef cm_to_in(value_in_cm):\n    \"\"\"Converts centimetres to inches\"\"\"\n    value_in_inches = value_in_cm / 2.54\n    return value_in_inches\nLet’s make another script now called main.py. We’ll run our conversions here by pulling in the functions from conversions.py.\nInside main.py, you’ll need to import conversions.py. To access the functions, you’ll need to use . to look inside the module as usual:\nimport conversions\nmetres = conversions.cm_to_m(10)\ninches = conversions.cm_to_in(10)\n\nprint(\"10cm is \" + metres + \"m\")\nprint(\"10cm is \" + inches + \"\\\"\")\n\nTo include a double quote ” inside a string made of double quotes, escape it with a backslash: \\\".\n\nCongratulations, you’ve made your first module!",
-    "crumbs": [
-      "Workshops",
-      "Programming Essentials"
-    ]
-  },
-  {
-    "objectID": "Projects/details.html",
-    "href": "Projects/details.html",
-    "title": "Overview",
-    "section": "",
-    "text": "The best way to learn is by doing. That’s why, over the these three days, you are tasked with analysing, visualising and reporting on a set of data!\nRoughly 50% of our intensive is dedicated to working on the project. Working in groups of 2-4, you’ll need to use the techniques we learn to draw some observations about your chosen dataset.\nThe end goal will be a quick fire (low stakes) one-minute presentation with a dashboard to complement.",
-    "crumbs": [
-      "Workshops",
-      "The Project",
-      "Overview"
-    ]
-  },
-  {
-    "objectID": "Projects/details.html#the-datasets",
-    "href": "Projects/details.html#the-datasets",
-    "title": "Overview",
-    "section": "The datasets",
-    "text": "The datasets\nWe have eight datasets for you to choose from:\n\n\n\nDataset\nDescription\n\n\n\n\nWorld populations\nA summary of world populations and corresponding statistics\n\n\nSoccer players\nA summary of about 250 2024 soccer players\n\n\nCoffee survey\nA survey of coffee preferences\n\n\nMelbourne housing data\nA collection of houses for sale in Melbourne\n\n\nGoodreads books\nData for 50,000 goodreads books\n\n\nQueensland hospitals\nEmergency department statistics\n\n\nQueensland fuel prices\nFuel prices by the pump in Queensland\n\n\nAeroplane bird strikes\nAeroplane bird strike incidents fron the 90s",
-    "crumbs": [
-      "Workshops",
-      "The Project",
-      "Overview"
-    ]
-  },
-  {
-    "objectID": "Projects/details.html#project-outline",
-    "href": "Projects/details.html#project-outline",
-    "title": "Overview",
-    "section": "Project outline",
-    "text": "Project outline\nThere are a few key requirements for the project, but otherwise it’s up to you!\n\nAnalyse a dataset and create some visualisations\nPut together a final dashboard-style report. Anything from a powerpoint slide to an interactive dashboard will do!\nDeliver a quick fire one-minute presentation with your group\n\nWe’ll have 5 sessions during the intensive days to work on the project, just shy of six hours. The goal of these sessions is twofold\n\nTo work on the project, analysing data and creating visualisations\nTo dive deeper into the content, perfect for questions and conversations\n\nWhile you’ll be working in groups, everyone should practise analysing and visualising the data. We recommend distributing roles amongst the group, maybe looking at different variables or different presentation formats.\nYou’re welcome to use the project time however you’d like. Below is a rough guide if you’re unsure:\n\n\n\n\n\n\n\nSession\nRecommendation\n\n\n\n\nTuesday afternoon\nPick a dataset and play with the data\n\n\nWednesday morning\nMore exploratory analysis, consider dividing roles amongst group\n\n\nWednesday afternoon\nStart collecting initial visualisations and preparing format (e.g. dashboard)\n\n\nThursday morning\nContinue analysing and creating visualisations\n\n\nThursday afternoon\nPolish up results\n\n\n\nThe presentations will be during Thursday’s final session at 2:50pm.\nGood luck!",
-    "crumbs": [
-      "Workshops",
-      "The Project",
-      "Overview"
-    ]
-  },
-  {
-    "objectID": "Projects/project_gallery.html",
-    "href": "Projects/project_gallery.html",
-    "title": "Project Gallery",
-    "section": "",
-    "text": "Goalkeepers and their heights\n\n\n\n\n\n\nCameron West and Stéphane Guillou\n\n\nJan 2, 2025\n\n\n\n\n\n\n\n\nNo matching items",
-    "crumbs": [
-      "Workshops",
-      "The Project",
-      "Project Gallery"
+      "Workshops"
     ]
   },
   {

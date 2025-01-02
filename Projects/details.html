@@ -67,6 +67,35 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
@@ -212,6 +241,11 @@ ul.task-list li input[type="checkbox"] {
   <ul>
   <li><a href="#the-datasets" id="toc-the-datasets" class="nav-link active" data-scroll-target="#the-datasets">The datasets</a></li>
   <li><a href="#project-outline" id="toc-project-outline" class="nav-link" data-scroll-target="#project-outline">Project outline</a></li>
+  <li><a href="#submission" id="toc-submission" class="nav-link" data-scroll-target="#submission">Submission</a>
+  <ul class="collapse">
+  <li><a href="#upload-dashboard-to-github" id="toc-upload-dashboard-to-github" class="nav-link" data-scroll-target="#upload-dashboard-to-github">Upload dashboard to GitHub</a></li>
+  <li><a href="#upload-dashboard-to-teams" id="toc-upload-dashboard-to-teams" class="nav-link" data-scroll-target="#upload-dashboard-to-teams">Upload dashboard to Teams</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -240,6 +274,7 @@ ul.task-list li input[type="checkbox"] {
 <p>The best way to learn is by doing. That’s why, over the these three days, <strong>you are tasked with analysing, visualising and reporting on a set of data!</strong></p>
 <p>Roughly 50% of our intensive is dedicated to working on the project. Working in groups of 2-4, you’ll need to use the techniques we learn to draw some observations about your chosen dataset.</p>
 <p>The end goal will be a quick fire (low stakes) one-minute presentation with a dashboard to complement.</p>
+<p><a href="#submission">See below</a> for submission details.</p>
 <section id="the-datasets" class="level2">
 <h2 class="anchored" data-anchor-id="the-datasets">The datasets</h2>
 <p>We have eight datasets for you to choose from:</p>
@@ -337,8 +372,34 @@ ul.task-list li input[type="checkbox"] {
 </table>
 <p>The presentations will be during Thursday’s final session at 2:50pm.</p>
 <p>Good luck!</p>
+</section>
+<section id="submission" class="level2">
+<h2 class="anchored" data-anchor-id="submission">Submission</h2>
+<p>There are two ways you can upload your visualisations.</p>
+<section id="upload-dashboard-to-github" class="level3">
+<h3 class="anchored" data-anchor-id="upload-dashboard-to-github">Upload dashboard to GitHub</h3>
+<p>This is the advanced way of doing things - we recommend this way, because it’ll show you a good insight into using GitHub.</p>
+<ol type="1">
+<li><a href="https://github.com/">Create a GitHub account and log in</a></li>
+<li>Create a fork of our [python-training-intensive] repository. This is a copy of the repo in your account, changes <em>will not automatically affect the main repo</em>. <strong>Leave all settings unchanged</strong>.</li>
+<li>Go into the <code>Projects</code> folder, and click <code>Add file</code> <span class="math inline">\(\rightarrow\)</span> <code>Create new file</code>.</li>
+<li>Give it a name but <strong>no content</strong>. This will be your folder. Press <code>Commit changes...</code>.</li>
+<li>Go into your new folder and click <code>Add file</code> <span class="math inline">\(\rightarrow\)</span> <code>Upload files</code>.</li>
+<li>Upload your dashboard and associated files. Press <code>Commit changes</code>.</li>
+<li>Press <code>&lt;&gt; Code</code> (top left) to go back to the top level of the repo</li>
+<li>Press <code>Contribute</code> <span class="math inline">\(\rightarrow\)</span> <code>Open pull request</code> to request merging your files into the main repo</li>
+<li>Press <code>Create pull request</code> when you’re ready.</li>
+<li>If you need to make further changes, no worries - the pull request will stay up to date with these <strong>until approved or closed</strong>.</li>
+</ol>
+<p>Give it a go if you can!</p>
+<p>If there’s any issues, we’ll leave a comment for you to fix up the merge and we’ll approve it when ready.</p>
+</section>
+<section id="upload-dashboard-to-teams" class="level3">
+<h3 class="anchored" data-anchor-id="upload-dashboard-to-teams">Upload dashboard to Teams</h3>
+<p>If you’re having issues with the GitHub approach, we can upload it for you. Just put your folder with the dashboard into our <a href="https://uq.sharepoint.com/:f:/r/teams/1qktlisq/Shared%20Documents/R%20User%20Group/R%20Training%20Intensive%20Projects?csf=1&amp;web=1&amp;e=wwVB7w">Teams folder</a>.</p>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->
