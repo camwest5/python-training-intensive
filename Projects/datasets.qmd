@@ -18,3 +18,16 @@ We have eight datasets for you to choose from. **We recommend saving your data i
 | [Aeroplane bird strikes](../data_sources/birds_strikes.csv) | Aeroplane bird strike incidents fron the 90s| 
 
 ## Tips
+
+Here's a few general tips.
+
+| Dataset | Tips | 
+| --- | --- |
+| World populations |  | 
+| Soccer players |  |
+| Coffee survey |  | 
+| Melbourne housing data || 
+| Goodreads books |  |
+| Queensland hospitals |  |
+| Queensland fuel prices | | 
+| Aeroplane bird strikes | | 
