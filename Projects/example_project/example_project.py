@@ -19,6 +19,12 @@ df = df[df["positions"] != "Missing"]
 # Ensure reasonable heights
 df = df[df["height_cm"] > 100]
 
+#%% [markdown]
+"""
+## Row {height = 10%}
+**[Download the code for this dashboard](../example_project.zip)**
+"""
+
 # %% [markdown]
 """
 ## Figures {height=70%}
