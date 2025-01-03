@@ -3,7 +3,6 @@ project:
   render: 
     - setup.md
     - "Workshops/*"
-    - "WIPs/*"
     - "Projects/*"
 
 website:
@@ -49,5 +48,5 @@ format:
     theme: 
       - default
       - custom.scss
-
     toc: true
+    embed-resources: false
