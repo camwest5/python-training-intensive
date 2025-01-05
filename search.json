@@ -4,7 +4,7 @@
     "href": "Projects/project_gallery.html",
     "title": "Project Gallery",
     "section": "",
-    "text": "Goalkeepers and their heights\n\n\n\n\n\n\nCameron West and Stéphane Guillou\n\n\nJan 3, 2025\n\n\n\n\n\n\n\n\nNo matching items",
+    "text": "Goalkeepers and their heights\n\n\n\n\n\n\nCameron West and Stéphane Guillou\n\n\nJan 5, 2025\n\n\n\n\n\n\n\n\nNo matching items",
     "crumbs": [
       "Workshops",
       "The Project",
@@ -271,7 +271,18 @@
     "href": "setup.html",
     "title": "Intro and Setting Up",
     "section": "",
-    "text": "Welcome to the Python Training Intensive! Over the next three days we’ll be covering the essentials that you’ll need to begin analysing your data with Python, alongside completing an independent project to practise your skills.",
+    "text": "Welcome to our three-day Python training intensive! By Thursday afternoon, you’ll have learnt the R skills to manipulate, visualise and present data. We’ll spend roughly half the time learning content, and half the time working on a project in groups.\nAs we set up, there’s a few things to do, if you haven’t already\n\nInstall the software\nIntroduce yourself to your table\nJoin our Teams channel\nRegister your attendance",
+    "crumbs": [
+      "Workshops",
+      "Intro and Setting Up"
+    ]
+  },
+  {
+    "objectID": "setup.html#overview",
+    "href": "setup.html#overview",
+    "title": "Intro and Setting Up",
+    "section": "",
+    "text": "Welcome to our three-day Python training intensive! By Thursday afternoon, you’ll have learnt the R skills to manipulate, visualise and present data. We’ll spend roughly half the time learning content, and half the time working on a project in groups.\nAs we set up, there’s a few things to do, if you haven’t already\n\nInstall the software\nIntroduce yourself to your table\nJoin our Teams channel\nRegister your attendance",
     "crumbs": [
       "Workshops",
       "Intro and Setting Up"
