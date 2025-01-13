@@ -16,7 +16,7 @@ Conditionals allow you to put "gates" in your code, only running sections if a c
 
 In Python, they are called `if` statements, because you use the `if` command. For example,
 
-```python
+```{python}
 if 5 > 0:
     print("We're inside the if statement")
 ```
@@ -25,7 +25,7 @@ The line `print("We're inside the if statement")` **will only run if `5 > 0` is 
 
 Indents are essential. Only indented code will be governed by conditional
 
-```python
+```{python}
 if 5 > 0:
     print("We're inside the if statement")
 
@@ -34,7 +34,7 @@ print("This code always runs")
 
 Watch what happens if we change the condition
 
-```python
+```{python}
 if 5 > 10:
     print("We're inside the if statement")
 
@@ -45,7 +45,7 @@ Now, the first line **doesn't run**. That's the essence of a conditional.
 
 There's not much point to using a condition that will always be true. Typically, you'd use a variable in the condition, for example.
 
-```python
+```{python}
 pet_age = 10
 
 if pet_age > 10:
@@ -73,7 +73,7 @@ Here is a table of the different operators you can make conditions with. When yo
 
 `if` statements only run if the condition is **True**. What happens if its **False**? That's what the `else` command is for, it's like a net that catches anything that slipped past `if`:
 
-```python
+```{python}
 pet_age = 5
 
 if pet_age > 10:
@@ -88,7 +88,7 @@ Check what happens when you change the age from 5 to 15.
 
 Finally, what if you wanted to check another condition **only if the first one fails**? That's what `elif` (else-if) is for. It's another if statement but it only runs if the first fails.
 
-```python
+```{python}
 pet_age = 5
 
 if pet_age > 10:
@@ -100,7 +100,7 @@ else:
 ```
 
 You can include as many as you'd like
-```python
+```{python}
 pet_age = 5
 
 if pet_age > 10:
@@ -122,22 +122,23 @@ Python's loops offer us a way to run a section of code multiple times. There are
 ### `while` loops
 These are almost the same as `if` statements, except for the fact that they run the code multiple times. Let's begin with a basic conditional
 
-```python
+```{python}
 number = 5
 
 if number < 10:
-    print(number + "is less than 10.")
+    print(str(number) + " is less than 10.")
 ```
+> Using `str(number)` turns the number into a string, which lets us combine it with " is less than 10."
 
 The `print` statement runs once if the condition is true. 
 
 What if we wanted to check all the numbers between 5 and 10? We can use a while loop.
 
-```python
+```{python}
 number = 5
 
 while number < 10:
-    print(number + "is less than 10.")
+    print(str(number) + " is less than 10.")
     number = number + 1
 ```
 
@@ -157,13 +158,13 @@ In Python, `for` loops iterate through a sequence, like the objects in a list. T
 
 Let's say you have a list of different fruit
 
-```python
+```{python}
 list_of_fruits = ["apple", "banana", "cherry"]
 ```
 
 and you want to run a section of code on `"apple"`, then `"banana"`, then `"cherry"`. Maybe you want to know which ones have the letter "a". We can start with a `for` loop
 
-```python
+```{python}
 list_of_fruits = ["apple", "banana", "cherry"]
 
 for fruit in list_of_fruits:
@@ -172,7 +173,7 @@ for fruit in list_of_fruits:
 
 This loop's job is to print out the variable `fruit`. But where is `fruit` defined? Well, the `for` loop runs `print(fruit)` for every element of `list_of_fruits`, **storing the current element in the variable `fruit`**. If we were to write it out explicitly, it would look like
 
-```python
+```{python}
 fruit = list_of_fruits[0]
 print(fruit)
 
@@ -185,7 +186,7 @@ print(fruit)
 
 Let's return to our goal: working out which ones have an "a". We need to put a **conditional** inside the loop:
 
-```python
+```{python}
 list_of_fruits = ["apple", "banana", "cherry"]
 
 for fruit in list_of_fruits:
@@ -199,14 +200,15 @@ for fruit in list_of_fruits:
 
 There's a special Python object which is useful for loops, the `range`. This object 'contains' all the numbers between a certain range. For example,
 
-```python
+```{python}
 range(0,5)
 ```
 
 cover the numbers $0-4$, and is somewhat equivalent to `[0,1,2,3,4]` (for looping purposes). Of course, we can choose a *much* bigger number:
 
-```python
-for i in range(0,1000)
+```{python}
+#| eval: false
+for i in range(0,1000):
     print(i)
 ```
  will print *every number* between $0$ and $1000$. This can be useful if you need to loop through multiple objects by indexing.
@@ -221,7 +223,7 @@ Essentially, all Python variables follow a specific template, known as its *clas
 
 Inside the variable? Where? Well, a variables contain more than just their value. We use the `.` operator to access anything besides the value that lives in the variable. For example, all strings have a function called `.upper()` that makes them uppercase:
 
-```python
+```{python}
 random_string = "Hello, this is a sentence."
 print(random_string.upper())
 ```
@@ -253,7 +255,8 @@ We include these in three steps
 
 
 
-```python
+```{python}
+#| eval: false
 def insert_function_name_here(input_1_name, input_2_name, ...):
     # Code code code
     return output
@@ -261,7 +264,7 @@ def insert_function_name_here(input_1_name, input_2_name, ...):
 
 For example, let's create a function that converts centimetres to metres.
 
-```python
+```{python}
 def cm_to_m(value_in_cm):
     value_in_m = value_in_cm / 100
     return value_in_m
@@ -278,7 +281,7 @@ Importantly, **nothing happens when you run this code**. Why? Because you've onl
 
 To use this function, we need to call it. Let's convert $10\text{ cm}$ to $\text{m}$.
 
-```python
+```{python}
 def cm_to_m(value_in_cm):
     value_in_m = value_in_cm / 100
     return value_in_m
@@ -295,7 +298,7 @@ Because functions must be defined before called, and defining them produces no o
 ### Docstrings
 Something you'll spot on all professional functions are docstrings. This is what Python spits out with the `help()` function. You can make your own by writing it within triple quotes **immediately after the signature** `''' '''`:
 
-```python
+```{python}
 def cm_to_m(value_in_cm):
     """Converts centimetres to metres"""
     value_in_m = value_in_cm / 100
@@ -316,7 +319,7 @@ Let's make a new file called **conversions.py**, and move your function into it.
 
 Then, to make sure it works, let's make a new converter too, from centimetres to inches. Your **conversions.py** file should look like:
 
-```python
+```{python}
 def cm_to_m(value_in_cm):
     """Converts centimetres to metres"""
     value_in_m = value_in_cm / 100
@@ -332,7 +335,8 @@ Let's make another script now called **main.py**. We'll run our conversions here
 
 Inside **main.py**, you'll need to import conversions.py. To access the functions, you'll need to use `.` to look inside the module as usual:
 
-```python
+```{python}
+#| eval: false
 import conversions
 metres = conversions.cm_to_m(10)
 inches = conversions.cm_to_in(10)

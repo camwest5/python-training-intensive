@@ -15,27 +15,35 @@ See analysis.py for seaborn stuff.
 ## Setting up
 With the data manipulation tools from pandas, we can now visualise our data. For this workshop we'll be working from the "Players2024.csv" dataset, which we should bring in with pandas:
 
-```python
+```{python}
+#| eval: false
 import pandas as pd
 df = pd.read_csv("data/Players2024.csv")
 ```
 
+```{python}
+#| echo: false
+import pandas as pd
+df = pd.read_csv("../data_sources/Players2024.csv")
+```
+
 Take a quick peak at the dataset to remind yourself
-```python
+```{python}
 print(df)
 ```
 
 ## Seaborn for simple visualisations
 To begin our visualisations, we'll use the package [seaborn]((https://seaborn.pydata.org/index.html)), which allows you to quickly whip up decent graphs. 
 
-```python
+```{python}
 import seaborn as sns
 ```
 
 > It's called "seaborn" as a reference to fictional character [Sam Seaborn](https://en.wikipedia.org/wiki/Sam_Seaborn), whose initials are "sns".
 
 Seaborn has three plotting functions
-```python
+```{python}
+#| eval: false
 sns.catplot(...) # for categorical plotting, e.g. bar plots, box plots etc.
 sns.relplot(...) # for relational plotting, e.g. line plots, scatter plots
 sns.displot(...) # for distributions, e.g. histograms
@@ -51,7 +59,7 @@ Categorical plots are produced with seaborn's `sns.catplot()` function. There ar
 Let's see if there's a relationship between the players' **heights** and **positions**, by placing their positions on the $x$ axis and heights on the $y$. 
 
 
-```python
+```{python}
 sns.catplot(data = df, x = "positions", y = "height_cm")
 ```
 Our first graph! This is called a *swarm* plot; it's like a scatter plot for categorical variables.
@@ -63,7 +71,7 @@ It's already revealed two things to us about the data:
 
 Let's get rid of these with the data analysis techniques from last session
 
-```python
+```{python}
 # Remove missing position
 df = df[df["positions"] != "Missing"]
 
@@ -72,7 +80,7 @@ df = df[df["height_cm"] > 100]
 ```
 
 Run the plot again, it's more reasonable now
-```python
+```{python}
 sns.catplot(data = df, x = "positions", y = "height_cm")
 ```
 
@@ -80,7 +88,7 @@ sns.catplot(data = df, x = "positions", y = "height_cm")
 
 Swarm plots are interesting but not standard. You can change the plot type with the `kind` parameter
 
-```python
+```{python}
 sns.catplot(data = df, x = "positions", y = "height_cm", kind = "bar")
 ```
 
@@ -88,7 +96,7 @@ sns.catplot(data = df, x = "positions", y = "height_cm", kind = "bar")
 
 It seems like goalkeepers are taller, but not by much. Let's look at the standard deviation for each position by changing the `estimator = ` parameter (default is mean)
 
-```python
+```{python}
 sns.catplot(data = df, x = "positions", y = "height_cm", kind = "bar", estimator = "std")
 ```
 
@@ -98,7 +106,7 @@ Clearly there's a lot less variation in goalkeepers - they're all tall.
 
 Let's make box plots instead. It's the same procedure, just change to `kind = "box"` and remove `estimator = `
 
-```python
+```{python}
 sns.catplot(data = df, x = "positions", y = "height_cm", kind = "box")
 ```
 
@@ -109,32 +117,33 @@ Just as we predicted.
 #### Histograms
 Let's move to the "Age" parameter now. We can look at the distribution of ages with
 
-```python
+```{python}
 sns.displot(data = df, x = "age")
 ```
 
 Looks a bit funny with those gaps - let's change the number of bins with `bins = 28`
 
-```python
+```{python}
 sns.displot(data = df, x = "age", bins = 28)
 ```
 
-Now, what if you wanted to look at the distribution for different variables? We can make a separate distribution for each position with the `col = "position"` argument, specifying a new column for each position
+Now, what if you wanted to look at the distribution for different variables? We can make a separate distribution for each position with the `col = "positions"` argument, specifying a new column for each position
 
-```python
+```{python}
+#| out-width = 100%
 sns.displot(data = df, x = "age", bins = 28, col = "positions")
 ```
 
 #### Kernel density estimates
 Finally, you don't *have* to do histograms. You could also do a Kernel Density Estimate, with `kind = "kde"` (let's remove `bins = ` and `col = `)
 
-```python
+```{python}
 sns.displot(data = df, x = "age", kind = "kde")
 ```
 
-If you want a separate line for each position, we should indicate that each position needs a different colour/hue with `hue = "position"`
-```python
-sns.displot(data = df, x = "age", hue = "position", kind = "kde")
+If you want a separate line for each position, we should indicate that each position needs a different colour/hue with `hue = "positions"`
+```{python}
+sns.displot(data = df, x = "age", hue = "positions", kind = "kde")
 ```
 
 ### Relational plots
@@ -145,7 +154,7 @@ It seems like players peak in their mid-twenties, but goalkeepers stay for longe
 
 We'll start with a scatter plot
 
-```python
+```{python}
 sns.relplot(data = df, x = "age", y = "height_cm")
 ```
 
@@ -153,7 +162,7 @@ Not much of a trend there, although the bottom-right looks a bit emptier than th
 
 We can use `hue = ` to have a look at positions again
 
-```python
+```{python}
 sns.relplot(data = df, x = "age", y = "height_cm", hue = "positions")
 ```
 
@@ -163,13 +172,13 @@ Yup, goalkeepers are tall, and everyone else is a jumble.
 
 Let's do a line plot of the average height per age.
 
-```python
+```{python}
 sns.relplot(data = df, x = "age", y = "height_cm", kind = "line")
 ```
 
 Seems pretty flat, except the ends are a bit weird because there's not much data. Let's eliminate everything before 17 and after 38 and plot it
 
-```python
+```{python}
 # Create smaller dataframe
 condition = (df["age"] > 17) & (df["age"] < 38)
 inner_ages = df[condition]
@@ -193,7 +202,7 @@ We can combine our scatter and line plots together.
     * etc.
 
 For example,
-```python
+```{python}
 # Figure level plot
 sns.relplot(data = df, x = "age", y = "height_cm", hue = "positions")
 
@@ -203,7 +212,7 @@ sns.lineplot(data = inner_ages, x = "age", y = "height_cm")
 > **You can't include `kind = ` inside an axes level plot**
 
 Let's swap the colour variable from the scatter plot to the line plot
-```python
+```{python}
 # Figure level plot
 sns.relplot(data = df, x = "age", y = "height_cm")
 
@@ -212,7 +221,7 @@ sns.lineplot(data = inner_ages, x = "age", y = "height_cm", hue = "positions")
 ```
 
 Finally, let's make the scatter dots smaller with `s = 10` and grey with `color = "grey"`.
-```python
+```{python}
 # Figure level plot
 sns.relplot(data = df, x = "age", y = "height_cm", s = 10, color = "grey")
 
@@ -240,7 +249,7 @@ We're barely going to touch the matplotlib surface, but we'll look at some essen
 
 To begin with, we want to bring in matplotlib as follows
 
-```python
+```{python}
 import matplotlib.pyplot as plt
 ```
 
@@ -251,12 +260,9 @@ Before we move to adjusting the plot, let's just look at how you save it. While 
 As a first step, you should make a new folder. Navigate using your file explorer to the project and create a new folder called "plots".
 
 Next, save the current plot with `plt.savefig("place_location_here")`, and **we have to do this at the same time that we make the plot**. So run all this code at once:
-```python
-# Figure level plot
-sns.relplot(data = df, x = "age", y = "height_cm", s = 10, color = "grey")
+```{python}
+#| eval: false
 
-# Axes level plot (drop the kind = )
-sns.lineplot(data = inner_ages, x = "age", y = "height_cm", hue = "positions")
 
 plt.savefig("plots/first_saved_plot.png")
 ```
@@ -268,9 +274,14 @@ plt.savefig("plots/first_saved_plot.png")
 #### Titles
 Notice that the $y$ axis has an ugly label? That's because seaborn is just drawing from your dataframe.
 
-We can change axis labels with
+We can change axis labels with `plt.ylabel()`
 
-```python
+```{python}
+# Plotting functions
+sns.relplot(data = df, x = "age", y = "height_cm", s = 10, color = "grey")
+sns.lineplot(data = inner_ages, x = "age", y = "height_cm", hue = "positions")
+
+# Customisation
 plt.ylabel("Height (cm)")
 ```
 and similarly you could change `plt.xlabel(...)`.
@@ -279,24 +290,31 @@ and similarly you could change `plt.xlabel(...)`.
 > * Highlight **all** the code and press <kbd>F9</kbd>
 > * Make a cell with `#%%` and press <kbd>ctrl</kbd> + <kbd>enter</kbd>
 
-We can also change the legend title to "Position"
-```python
-plt.legend(title = "Position")
+We can also change the legend title to "positions" with `plt.legend()`
+```{python}
+# Plotting functions
+sns.relplot(data = df, x = "age", y = "height_cm", s = 10, color = "grey")
+sns.lineplot(data = inner_ages, x = "age", y = "height_cm", hue = "positions")
+
+# Customisation
+plt.ylabel("Height (cm)")
+plt.legend(title = "positions")
 ```
 
 And its location with `loc = "lower left"`
-```python
-plt.legend(title = "Position", loc = "lower left")
+```{python}
+# Plotting functions
+sns.relplot(data = df, x = "age", y = "height_cm", s = 10, color = "grey")
+sns.lineplot(data = inner_ages, x = "age", y = "height_cm", hue = "positions")
+
+# Customisation
+plt.ylabel("Height (cm)")
+plt.legend(title = "positions")
 ```
 
-And give the whole plot a title with
-```python
-plt.title("Players' heights vs ages")
-```
+And give the whole plot a title with `plt.title()`
 
-All of these together, with the plot, look like
-
-```python
+```{python}
 # Figure level plot
 sns.relplot(data = df, x = "age", y = "height_cm", s = 10, color = "grey")
 
@@ -305,7 +323,7 @@ sns.lineplot(data = inner_ages, x = "age", y = "height_cm", hue = "positions")
 
 # Titles
 plt.ylabel("Height (cm)")
-plt.legend(title = "Position")
+plt.legend(title = "positions")
 plt.title("Players' heights vs ages")
 ```
 
@@ -313,14 +331,39 @@ plt.title("Players' heights vs ages")
 
 You might want to annotate your plot with text and arrows. Text is simple with the `plt.text()` function; we just need to specify its coordinates and the contents.
 
-```python
+```{python}
+# Figure level plot
+sns.relplot(data = df, x = "age", y = "height_cm", s = 10, color = "grey")
+
+# Axes level plot (drop the kind = )
+sns.lineplot(data = inner_ages, x = "age", y = "height_cm", hue = "positions")
+
+# Titles
+plt.ylabel("Height (cm)")
+plt.legend(title = "positions")
+plt.title("Players' heights vs ages")
+
+# Annotations
 plt.text(38.5, 181, "Not enough\ndata for mean")
 ```
 > The characters `\n` mean 'new line'
 
-We could annotate with arrows too. This is more complex, 
+We could annotate with arrows too. This is more complex, using the `plt.annotate()` function:
 
-```python
+```{python}
+# Figure level plot
+sns.relplot(data = df, x = "age", y = "height_cm", s = 10, color = "grey")
+
+# Axes level plot (drop the kind = )
+sns.lineplot(data = inner_ages, x = "age", y = "height_cm", hue = "positions")
+
+# Titles
+plt.ylabel("Height (cm)")
+plt.legend(title = "positions")
+plt.title("Players' heights vs ages")
+
+# Annotations
+plt.text(38.5, 181, "Not enough\ndata for mean")
 plt.annotate(text = "No short\nolder players", xy = [37,165], xytext = [40,172],
              arrowprops = dict(width = 1, headwidth = 10, headlength = 10, 
                           facecolor = "black"))
@@ -329,30 +372,11 @@ plt.annotate(text = "No short\nolder players", xy = [37,165], xytext = [40,172],
 
 All together, our plot has become
 
-```python
-# Figure level plot
-sns.relplot(data = df, x = "age", y = "height_cm", s = 10, color = "grey")
-
-# Axes level plot (drop the kind = )
-sns.lineplot(data = inner_ages, x = "age", y = "height_cm", hue = "positions")
-
-# Titles
-plt.ylabel("Height (cm)")
-plt.legend(title = "Position", loc = "lower left")
-plt.title("Players' heights vs ages")
-
-# Annotations
-plt.text(38.5, 181, "Not enough\ndata for mean")
-plt.annotate("No short\nolder players", [37,165], [40,172], 
-             arrowprops = dict(width = 1,headwidth = 10,headlength = 10, 
-                               facecolor = "black"))
-```
-
 ### Axis limits
 
 The last feature we'll look at is editing axis limits. Let's try to make more room in the bottom left for the legend with the functions `plt.xlim()` and `plt.ylim()`
 
-```python
+```{python}
 # Figure level plot
 sns.relplot(data = df, x = "age", y = "height_cm", s = 10, color = "grey")
 
@@ -361,7 +385,7 @@ sns.lineplot(data = inner_ages, x = "age", y = "height_cm", hue = "positions")
 
 # Titles
 plt.ylabel("Height (cm)")
-plt.legend(title = "Position", loc = "lower left")
+plt.legend(title = "positions", loc = "lower left")
 plt.title("Players' heights vs ages")
 
 # Annotations
@@ -383,7 +407,7 @@ For the last part of this section, we're going to briefly look at making interac
 
 We bring in the tools with
 
-```python
+```{python}
 import plotly.express as px
 ```
 
@@ -399,9 +423,15 @@ import plotly.express as px
 
 Plotly works by creating a visualisation like we've been doing, and then loading it into something dynamic, like a web browser. **Spyder does not support interactive plots**. This means we need to change the default settings with
 
-```python
+```{python}
+#| eval: false
 import plotly.io as pio
 pio.renderers.default = "browser"
+```
+
+```{python}
+#| echo: false
+import plotly.io as pio
 ```
 
 Now, plots should all load in your default browser.
@@ -410,7 +440,7 @@ Now, plots should all load in your default browser.
 
 We make plotly graphs very similarly to seaborn. Let's take our first plot from above,
 
-```python
+```{python}
 sns.relplot(data = df, x = "age", y = "height_cm", s = 10, color = "grey")
 ```
 
@@ -421,7 +451,7 @@ and turn it into a plotly one.
 3. Let's remove the `s = ` and `color = ` for now
 4. Save the plot as a variable
 
-```python
+```{python}
 px.scatter(data_frame = df, x = "age", y = "height_cm")
 ```
 
@@ -431,34 +461,34 @@ Notice how you can hover over the points now? It's interactive!
 
 Like seaborn's "hue", we can use `color = ` to introduce a third variable
 
-```python
-px.scatter(data_frame = df, x = "age", y = "height_cm", color = "position")
+```{python}
+px.scatter(data_frame = df, x = "age", y = "height_cm", color = "positions")
 ```
 
 And like seaborn's "col", we can facet with `facet_col = `
 
-```python
-px.scatter(data_frame = df, x = "age", y = "height_cm", color = "position",
+```{python}
+px.scatter(data_frame = df, x = "age", y = "height_cm", color = "positions",
            facet_col = "positions")
 ```
 
 Personally, I think these are too squished. We can specify the maximum number of columns with `facet_col_wrap = `
 
-```python
+```{python}
 px.scatter(data_frame = df, x = "age", y = "height_cm", color = "positions",
            facet_col = "positions", facet_col_wrap = 2)
 ```
 
 Finally, let's adjust the information in the hover. We can give each point a name with `hover_name = ` - how about their actual names?
 
-```python
+```{python}
 px.scatter(data_frame = df, x = "age", y = "height_cm", color = "positions",
            facet_col = "positions", facet_col_wrap = 2, hover_name = "name")
 ```
 
 And let's also include their nationalities
 
-```python
+```{python}
 px.scatter(data_frame = df, x = "age", y = "height_cm", color = "positions",
            facet_col = "positions", facet_col_wrap = 2, hover_name = "name",
            hover_data = "nationality")
@@ -469,7 +499,7 @@ px.scatter(data_frame = df, x = "age", y = "height_cm", color = "positions",
 Since these are interactive, we can't save them as normal. The easiest option is to save them as HTML files - like websites - which we can open from our browsers.
 
 First, save the plot into a variable
-```python
+```{python}
 fig = px.scatter(data_frame = df, x = "age", y = "height_cm", color = "positions",
                  facet_col = "positions", facet_col_wrap = 2, hover_name = "name",
                  hover_data = "nationality")
@@ -477,8 +507,7 @@ fig = px.scatter(data_frame = df, x = "age", y = "height_cm", color = "positions
 
 Then, write it to HTML
 
-```python
+```{python}
+#| eval: false
 fig.write_html("plot.html")
 ```
-
-## Conclusion

@@ -19,7 +19,7 @@ Pandas is a Python module that introduces dataframes to Python. It gives us the 
 
 To be able to use the functions included in pandas, we have to first import it:
 
-``` python
+```{python}
 import pandas as pd
 ```
 
@@ -47,8 +47,14 @@ To make life easy, we should set up our workspace well.
 
 Pandas offers a simple way to access data with its `read.csv()` function. We'll save it into the variable `df_raw`:
 
-``` python
+```{python}
+#| eval: false
 df_raw = pd.read_csv("data/Players2024.csv")
+```
+
+```{python}
+#| echo: false
+df_raw = pd.read_csv("../data_sources/Players2024.csv")
 ```
 
 > You can also provide a URL instead of a file path!
@@ -66,7 +72,7 @@ C://Users/my_username/research/data/really_important_secret_data.csv
 
 #### Relative
 
-Relative file paths start from **your current file location**. For files in my current folder, I just provide their name - like referring to another house on your street as "number 7". **Let's assume we're in the research folder**.
+Relative file paths start from **your current working directory**, which is usually the top folder of a Spyder project. For files in my current folder, I just provide their name - like referring to another house on your street as "number 7". **Let's assume we're in the "research" folder**.
 
 ```bash
 file_in_my_current_folder.csv
@@ -97,15 +103,12 @@ One last note: Windows uses backslashes for their file paths
 ```bash
 C:\\Users\...
 ```
-But Python uses backslashes as an escape character. For example, `"\n"` is a newline, `"\u1234"` is the unicode character U+1234 and confusingly `"\\"` is a **single** backslash. So we have to modify all Windows file paths to either
-```bash
-C:\\\\Users\\...
+But Python uses backslashes as an escape character. For example, `"\n"` is a newline, `"\u1234"` is the unicode character U+1234 and confusingly `"\\"` is a **single** backslash. The easist way to get around this is by prefixing `r` to all strings: this makes them *raw*.
 
-OR
-
-C://Users/...
+```{python}
+#| eval: false
+windows_url = r"C:\\Users\..."
 ```
-You can choose whichever you prefer.
 
 ### Initial look at the data
 
@@ -113,13 +116,13 @@ Let's get back to data.
 
 We can investigate the size of the data thanks to the `shape` attribute attached to all pandas dataframes:
 
-``` python
+```{python}
 df_raw.shape
 ```
 
 The dataset contains dozens of columns. What are their names?
 
-``` python
+```{python}
 df_raw.columns
 ```
 
@@ -131,7 +134,7 @@ Data analysis in Python is safe because our variables are *copies* of the data -
 
 One way to mitigate this issue is by making a copy of the data
 
-```python
+```{python}
 df = df_raw.copy()
 ```
 
@@ -144,30 +147,30 @@ So how do we access our data in Python? We use a type of indexing introduced by 
 ### Accessing columns
 To access a column, index with its name: `df["column_name"]`. For example, 
 
-```python
+```{python}
 df["name"]
 ```
 
 returns the "name" column. We can access multiple by providing a **list** of names
-```python
+```{python}
 # Save the names in a list and then index
-column_names = ["name", "Club"]
+column_names = ["name", "club"]
 df[column_names]
 
 # This is equivalent to
-df[["name", "Club"]]
+df[["name", "club"]]
 ```
 
 If we want to *do* anything with it (like statistics or visualisation), it's worth saving the column(s) as a new variable
 
-```python
-df_subset = df[["name", "Club"]]
+```{python}
+df_subset = df[["name", "club"]]
 ```
 
 ### Accessing rows
 There's a few ways to access rows. The easiest is by slicing, `df[start_row : end_row]`. For example, if you want rows 5 to 10,
 
-```python
+```{python}
 df[5 : 10]
 ```
 
@@ -180,7 +183,7 @@ If you want to access a single row, we need to use `df.loc[]` or `df.iloc[]`. Th
 
 By default they line up, so
 
-```python
+```{python}
 df.loc[5]
 df.iloc[5]
 ```
@@ -189,13 +192,13 @@ are often (**but not always**) the same.
 
 Finally, we can filter specific rows **by a condition** on one of the variables, e.g. *only rows where variable $\text{age} > 25$*.
 
-```python
+```{python}
 df[df["age"] > 25]
 # Or any other condition
 ```
 
 As with the column case, it's useful to save this as a variable
-```python
+```{python}
 df_filtered = df[df["age"] > 15]
 ```
 
@@ -205,7 +208,7 @@ How might we perform some basic statistics on our data?
 
 To check what kind of data each column is stored as, we can use the `dtypes` attribute:
 
-``` python
+```{python}
 df.dtypes
 ```
 
@@ -213,19 +216,19 @@ df.dtypes
 
 The `describe()` method is useful for descriptive statistics about our numerical columns:
 
-``` python
+```{python}
 df.describe()
 ```
 
 However, it will only show the two first ones and two last ones. We can focus on a specific column instead, for example one that was hidden previously:
 
-``` python
+```{python}
 df["age"].describe()
 ```
 
 Or a categorical column:
 
-``` python
+```{python}
 df["nationality"].describe()
 ```
 
@@ -233,7 +236,7 @@ df["nationality"].describe()
 
 What if you want specific statistics about a particular column? Usually there are methods available:
 
-```python
+```{python}
 # Applicable to all columns
 df["nationality"].count()
 df["nationality"].unique()
@@ -249,7 +252,7 @@ df["height_cm"].std()
 
 We can use these methods to filter our data. For example, the row which has the maximum value of variable $x$ is
 
-```python
+```{python}
 x_max = df["height_cm"].max()
 df[df["height_cm"] == x_max]
 
@@ -265,19 +268,19 @@ because we are looking for the row in `df["height_cm"]` (the whole column) that 
 ## Adding and removing columns
 Sometimes we need to add new columns. It's the same process as overwriting existing columns - let's make a new column called "zeroes" where every row is 0
 
-```python
+```{python}
 df["zeroes"] = 0
 ```
 
 We can also send in a column, for example
-```python
+```{python}
 df["copy_of_names"] = df["name"]
 ```
 
 Perhaps most usefully, we can manipulate the column we send in. For example, the deviation from the mean
 $$|\bar{x} - x_i|$$
 can be computed for each row's height:
-```python
+```{python}
 col_x = df["height_cm"]
 avg_x = df["height_cm"].mean()
 
@@ -289,14 +292,14 @@ df["deviation_from_mean_height"] = abs(df["height_cm"] - df["height_cm"].mean())
 where `abs(...)` takes the absolute value
 
 Notice that we subtracted a value from a column. We can also perform mathematics with multiple columns:
-```python
+```{python}
 df["product"] = df["age"]*df["height_cm"]
 ```
 
 Let's remove these new columns that we don't need with the method `df.drop(columns = [...])`:
 
-```python
-df.drop(columns = ["zeroes", "copy_of_names", "deviation_from_mean_height", "product"])
+```{python}
+df = df.drop(columns = ["zeroes", "copy_of_names", "deviation_from_mean_height", "product"])
 ```
 
 ## Summaries
@@ -305,7 +308,7 @@ After cleaning up our data, we need to analyse it. This usually involves some ki
 
 First, we need to group by a specific variable
 
-```python
+```{python}
 gb = df.groupby("age")
 ```
 
@@ -313,19 +316,19 @@ This thing in itself is a pretty abstract Python object, best thought of as a da
 
 Next, we need to apply some aggregation to it (the groupby tells it to do it for each year)
 
-```python
+```{python}
 avg_height_by_age = gb["height_cm"].agg("mean")
 ```
 
 Of course, we could have done this in one line:
-```python
-avg_height_by_age = df.groupby("year").agg("mean")
+```{python}
+avg_height_by_age = df.groupby("age")["height_cm"].agg("mean")
 ```
 
 This is a really useful tool, because now we have something we can *visualise*. As the next session will show us, the visualisation tools generally just take in numbers and turn them into dots. We need to do the stats *beforehand*.
 
 As a taster, try running
-```python
+```{python}
 avg_height_by_age.plot()
 ```
 
@@ -333,7 +336,8 @@ avg_height_by_age.plot()
 
 The last step in the process is saving the data. Let's say we want to take that final dataframe and export it to a csv. That's what the `df.to_csv()` method is for
 
-```python
+```{python}
+#| eval: false
 avg_height_by_age.to_csv("data/avg_height_by_age.csv")
 ```
 

@@ -25,10 +25,20 @@ We'll use three new modules:
 
 We'll be working from our "Players2024" dataset again. To bring it in and clean it up,
 
-```python
+```{python}
+#| eval: false
 import pandas as pd
 
-df = pd.read_csv("Players2024.csv")
+df = pd.read_csv("data/Players2024.csv")
+df = df[df["positions"] != "Missing"]
+df = df[df["height_cm"] > 100]
+```
+
+```{python}
+#| echo: false
+import pandas as pd
+
+df = pd.read_csv("../data_sources/Players2024.csv")
 df = df[df["positions"] != "Missing"]
 df = df[df["height_cm"] > 100]
 ```
@@ -39,26 +49,26 @@ We'll start with sample size. All dataframes have most descriptive statistics fu
 
 To calculate the number of non-empty observations in a column, say the numeric variable `df["height_cm"]`, we use the `.count()` method
 
-```python
+```{python}
 df["height_cm"].count()
 ```
 
 ### Measures of central tendancy
 We can compute measures of central tendancy similarly. The average value is given by
 
-```python
+```{python}
 df["height_cm"].mean()
 ```
 
 the median by
 
-```python
+```{python}
 df["height_cm"].median()
 ```
 
 and the mode by
 
-```python
+```{python}
 df["height_cm"].mode()
 ```
 
@@ -69,20 +79,20 @@ df["height_cm"].mode()
 
 We can also compute measures of variance. The minimum and maximum are as expected
 
-```python
+```{python}
 df["height_cm"].min()
 df["height_cm"].max()
 ```
 
 The range is the difference
 
-```python
+```{python}
 df["height_cm"].min() - df["height_cm"].max()
 ```
 
 Quantiles are given by `.quantile(...)` with the fraction inside. The inter-quartile range (IQR) is the difference between 25% and 75%.
 
-```python
+```{python}
 q1 = df["height_cm"].quantile(0.25)
 q3 = df["height_cm"].quantile(0.75)
 IQR = q3 - q1
@@ -90,27 +100,27 @@ IQR = q3 - q1
 
 A column's standard deviation and variance are given by
 
-```python
+```{python}
 df["height_cm"].std()
 df["height_cm"].var()
 ```
 
 And the standard error of the mean (SEM) with
 
-```python
+```{python}
 df["height_cm"].sem()
 ```
 
 You can calculate the skewness and kurtosis (variation of tails) of a sample with
 
-```python
+```{python}
 df["height_cm"].skew()
 df["height_cm"].kurt()
 ```
 
 All together, you can see a nice statistical summary with
 
-```python
+```{python}
 df["height_cm"].describe()
 ```
 
@@ -120,25 +130,25 @@ If you've got two numeric variables, you might want to examine covariance and co
 
 The covariance between "height_cm" and "age" is
 
-```python
+```{python}
 df["height_cm"].cov(df["age"])
 ```
 
 > The `.cov()` function compares the column it's attached to (here `df["height_cm"]`) with the column you input (here `df["age"]`). This means we could swap the columns without issue:
 >
-> ```python
+> ```{python}
 > df["age"].cov(df["height_cm"])
 > ```
 
 Similarly, we can find the Pearson correlation coefficient between two columns. 
 
-```python
+```{python}
 df["height_cm"].corr(df["age"])
 ```
 
 You can also specify "kendall" or "spearman" for their respective correlation coefficients
 
-```python
+```{python}
 df["height_cm"].corr(df["age"], method = "kendall")
 df["height_cm"].corr(df["age"], method = "spearman")
 ```
@@ -149,13 +159,13 @@ Before we move to inferential statistics, it's worth reiterating the power of gr
 
 To group by a specific variable, like "positions", we use 
 
-```python
+```{python}
 gb = df.groupby("positions")
 ```
 
 By applying our statistics to the `gb` object, we'll apply them to *every* variable for *each* position. Note that we should specify `numeric_only = True`, because these statistics won't work for non-numeric variables
 
-```python
+```{python}
 gb.mean(numeric_only = True)
 ```
 
@@ -164,22 +174,22 @@ gb.mean(numeric_only = True)
 
 Inferential statistics requires using the module `scipy.stats`, which we'll bring in with
 
-```python
+```{python}
 import scipy.stats as stats
 ```
 
 
 ### Simple linear regressions
 
-Least-squares regression for two sets of measurements can be performed with the function `stats.linregress()`:
+Least-squares regression for two sets of measurements can be performed with the function `stats.linregress()`"
 
-```python
-stats.linregress(x = min_heights["age"], y = df["height_cm"])
+```{python}
+stats.linregress(x = df["age"], y = df["height_cm"])
 ```
 
 If we store this as a variable, we can access the different values with the `.` operator. For example, the p-value is
 
-```python
+```{python}
 lm = stats.linregress(x = df["age"], y = df["height_cm"])
 lm.pvalue
 ```
@@ -188,14 +198,14 @@ lm.pvalue
 
 Naturally, you'd want to plot this. We'll need to use the overlaying techniques from the visualisation session. Let's import **seaborn** and **matplotlib**
 
-```python
+```{python}
 import seaborn as sns
 import matplotlib.pyplot as plt
 ```
 
 Start by making a scatterplot of the data,
 
-```python
+```{python}
 sns.relplot(data = df, x = "age", y = "height_cm")
 ```
 
@@ -204,7 +214,7 @@ Then, you'll need to plot the regression as a line. For reference,
 $$ y = \text{slope}\times x + \text{intercept}$$
 
 So
-```python
+```{python}
 sns.relplot(data = df, x = "age", y = "height_cm")
 
 x_lm = df["age"]
@@ -218,14 +228,14 @@ We can also perform $t$-tests with the `scipy.stats` module. Typically, this is 
 
 Let's start by separating the goalkeepers from the non-goalkeepers in two variables
 
-```python
+```{python}
 goalkeepers = df[df["positions"] == "Goalkeeper"]
 non_goalkeepers = df[df["positions"] != "Goalkeeper"]
 ```
 
 The $t$-test for the means of two independent samples is given by
 
-```python
+```{python}
 stats.ttest_ind(goalkeepers["height_cm"], non_goalkeepers["height_cm"])
 ```
 
@@ -235,7 +245,7 @@ Yielding a p-value of $8\times 10^{-247}\approx 0$, indicating that the null-hyp
 
 What about the means of the other three? We could use an ANOVA to examine them. We use the `stats.f_oneway()` function for this. However, this requires us to send a list of samples in for each group, so we should separate the three positions. 
 
-```python
+```{python}
 defender = df[df["positions"] == "Defender"].height_cm
 midfield = df[df["positions"] == "Midfield"].height_cm
 attack = df[df["positions"] == "Attack"].height_cm
@@ -243,7 +253,7 @@ attack = df[df["positions"] == "Attack"].height_cm
 
 We can then perform the ANOVA on this list of samples
 
-```python
+```{python}
 stats.f_oneway(defender, midfield, attack)
 ```
 
@@ -257,20 +267,20 @@ We only have one useful categorical variable here, "positions" (the others have 
 
 Make a binary column for players with the letter "a" in their names. To do this, we need to apply a string method to *all* the columns in the dataframe as follows
 
-```python
+```{python}
 df["a_in_name"] = df["name"].str.contains("a")
 ```
 
 Let's cross tabulate positions with this new column
 
-```python
+```{python}
 a_vs_pos = pd.crosstab(df["positions"],df["a_in_name"])
 print(a_vs_pos)
 ```
 
 The $χ^2$ test's job is to examine whether players' positions depend on the presence of "a" in their name. To evaluate it we need to send the contingency table in:
 
-```python
+```{python}
 stats.chi2_contingency(a_vs_pos)
 ```
 
@@ -288,7 +298,7 @@ What's nice about `statsmodels` is that it gives an R-like interface and summari
 
 To start with, let's import the tools. We'll use the *formula* interface, which offers us an R-like way of creating models.
 
-```python
+```{python}
 import statsmodels.formula.api as smf
 ```
 
@@ -303,22 +313,23 @@ The first step is to make the set up the variables. We'll use the function `smf.
 
 We create the model and compute the fit
 
-```python
+```{python}
 mod = smf.ols("age ~ height_cm", df)
 res = mod.fit()
 ```
 
 Done! Let's take a look at the results
 
-```python
+```{python}
 res.summary()
 ```
 
+\
 That's a lot nicer than with scipy. We can also make a plot by getting the model's $y$ values with `res.fittedvalues`
 
-```python
+```{python}
 sns.relplot(data = df, x = "height_cm", y = "age")
-sns.lineplot(x = df["age"], y = res.fittedvalues, color = "black")
+sns.lineplot(x = df["height_cm"], y = res.fittedvalues, color = "black")
 ```
 
 #### Generalised linear models
@@ -337,37 +348,38 @@ We'll use the *binomial* option to create logistic regressions.
 
 Logistic regressions examine the distribution of binary data. For us, we can compare the heights of **goalkeepers vs non-goalkeepers** again. Let's make a new column which is `1` for goalkeepers and `0` for non-goalkeepers:
 
-```python
+```{python}
 df["gk"] = (df["positions"] == "Goalkeeper")*1
 ```
 
-> We have to multiply by 1 to turn `True` $\rightarrow$ `1` and `False` $\rightarrow$ `0`
+> Multiplying by 1 turns `True` $\rightarrow$ `1` and `False` $\rightarrow$ `0`
 
 Now, we can model this column with height. Specifically,
 
 $$ \text{gk} \sim \text{height\_cm}$$
 
-Start by making the model with the function `smf.glm()`. We need to specify the family of distributions; they all live in `sm.families`:
+Start by making the model with the function `smf.glm()`. We need to specify the family of distributions; they all live in `sm.families`, which comes from a different submodule that we should import:
 
-```python
+```{python}
+import statsmodels.api as sm
 mod = smf.glm("gk ~ height_cm", data = df, family = sm.families.Binomial())
 ```
 
 Next, evaluate the results
 
-```python
+```{python}
 res = mod.fit()
 ```
 
 Let's have a look at the summary:
 
-```python
+```{python}
 res.summary()
 ```
 
 Finally, we can plot the result like before
 
-```python
+```{python}
 sns.relplot(data = df, x = "height_cm", y = "gk")
 sns.lineplot(x = df["height_cm"], y = res.fittedvalues, color = "black")
 ```

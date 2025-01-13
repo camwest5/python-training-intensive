@@ -31,19 +31,19 @@ To start with, we can use Python like a calculator. Type the following
 **commands** in the console, and press <kbd>Enter</kbd> to **execute**
 them:
 
-``` python
+```{python}
 1 + 1
 ```
 
-```python
+```{python}
 2 * 3
 ```
 
-```python
+```{python}
 4 / 10
 ```
 
-```python
+```{python}
 5 ** 2
 ```
 
@@ -57,19 +57,19 @@ Essentially, a variable is a named container. We access it by its **name**, and 
 
 To create a variable, you need to choose a name and a value with `name = value`. For example
 
-```python
+```{python}
 example_int = 42
 ```
 
 Whenever you use the variable's name, Python will now access its value:
 
-```python
+```{python}
 example_int
 ```
 
 We can use the variables in place of the values
 
-```python
+```{python}
 example_float = 5.678
 product = example_int * example_float
 product
@@ -93,7 +93,7 @@ Even simpler than integers is the **boolean** type. These are either 1
 or 0 (True or False), representing a single binary unit (bit). Don’t be
 fooled by the words, these work like numbers: `True + True` gives `2`.
 
-``` python
+```{python}
 example_bool = True
 ```
 
@@ -107,7 +107,7 @@ Let’s look at variable types which aren’t (necessarily) numbers.
 example, **strings** store a sequence of characters and are created with
 quotation marks `'blah blah blah'` or `"blah blah blah"`:
 
-``` python
+```{python}
 example_string = 'This is an example of a string!'
 ```
 
@@ -116,7 +116,7 @@ example_string = 'This is an example of a string!'
 We can also create **lists**, which will store several variables (not
 necessarily of the same type). We need to use square brackets for that:
 
-``` python
+```{python}
 example_numbers = [38, 3, 54, 17, 7]
 example_diverse = [3, 'Hi!', 9.0]
 ```
@@ -129,7 +129,7 @@ Operations on sequences are a bit different to numbers. We can still use
 `+` and `*`, but they will concatenate (append) and duplicate, rather
 than perform arithmetic.
 
-``` python
+```{python}
 example_string + ' How are you?'
 example_numbers + example_diverse
 3 * example_numbers
@@ -137,8 +137,9 @@ example_numbers + example_diverse
 
 However, depending on the variable, some operations won’t work:
 
-``` python
-sentence + favNumber
+```{python}
+#| error: true
+example_string + example_int
 ```
 
 There are other data types like tuples, dictionaries and sets, but we
@@ -156,7 +157,7 @@ covered:
 The **generator** commands are new. We use these to manually change the
 variable type. For example,
 
-``` python
+```{python}
 int(True)
 ```
 
@@ -170,7 +171,7 @@ We can access part of a sequence by **indexing**. Sequences are ordered,
 **starting at 0**, so the first element has index 0, the second index 1,
 the third 2 and so on. For example, see what these commands return:
 
-``` python
+```{python}
 example_string[0]
 example_string[6]
 example_numbers[4]
@@ -180,8 +181,8 @@ If you want more than one element in a sequence, you can **slice**.
 Simple slices specify a range to slice, from the first index to the
 last, **but not including the last**. For example:
 
-``` python
-myList[0:4]
+```{python}
+example_numbers[0:4]
 ```
 
 That command returns elements from position 0 up to - but not
@@ -213,7 +214,7 @@ something like this:
 
 Try typing a line of code in your new script, such as
 
-``` python
+```{python}
 example_message = "This is an example message"
 example_message
 ```
@@ -234,12 +235,12 @@ button.
 verbs of Python, because they do things to and with our variables. Here
 are a few examples of built-in functions:
 
-``` python
-len(myList)
-min(myList)
-max(myList)
-sum(myList)
-round(otherNumber)
+```{python}
+len(example_numbers)
+min(example_numbers)
+max(example_numbers)
+sum(example_numbers)
+round(example_float)
 ```
 
 Functions always have parentheses () after their name, and they can take
@@ -249,8 +250,8 @@ do, and how the user wants to use them.
 Here, we use two arguments to modify the default behaviour of the
 `round()` function:
 
-``` python
-round(otherNumber, 2)
+```{python}
+round(example_float, 2)
 ```
 
 > Notice how Spyder gives you hints about the available arguments after
@@ -267,37 +268,38 @@ are many others:
 
 | Operator | Function | Description | Example command |
 |----|----|----|----|
-| = | Assignment | Assigns values to variables | `a = 7` |
-| \# | Comment | Excludes any following text from being run | `# This text will be ignored by Python` |
+| `=` | Assignment | Assigns values to variables | `a = 7` |
+| `#` | Comment | Excludes any following text from being run | `# This text will be ignored by Python` |
 
 #### Mathematical
 
 | Operator | Function | Description | Example command | Example output |
 |----|----|----|----|----|
-| \+ | Addition | Adds or concatenates values, depending on variable types | `7 + 3` or `"a" + "b"` | `10` or `'ab'` |
-| \- | Subtraction | Subtracts numerical values | `8 - 3` | `5` |
-| \* | Multiplication | Multiplies values, depending on variable types | `7 * 2` or `"a" * 3` | `14` or `'aaa'` |
-| / | Division | Divides numerical vlues | `3 / 4` | `0.75` |
-| \*\* | Exponentiation | Raises a numerical value to a power | `7 ** 2` | `49` |
-| % | Remainder | Takes the remainder of numerical values | `13 % 7` | `6` |
+| `+` | Addition | Adds or concatenates values, depending on variable types | `7 + 3` or `"a" + "b"` | `10` or `'ab'` |
+| `-` | Subtraction | Subtracts numerical values | `8 - 3` | `5` |
+| `*` | Multiplication | Multiplies values, depending on variable types | `7 * 2` or `"a" * 3` | `14` or `'aaa'` |
+| `**` | Exponentiation | Raises a numerical value to a power | `7 ** 2` | `49` |
+| `/` | Division | Divides numerical values | `3 / 4` | `0.75` |
+| `//` | Floor division | Divides numerical values and then rounds down | `3 // 4` | `0` | 
+| `%` | Remainder | Takes the remainder of numerical values | `13 % 7` | `6` |
 
 #### Comparison
 
 | Operator | Function | Description | Example command | Example output |
 |----|----|----|----|----|
-| == | Equal to | Checks whether two variables are the same and outputs a boolean | `1 == 1` | `True` |
-| != | Not equal to | Checks whether two variables are different | `'1' != 1` | `True` |
-| \> | Greater than | Checks whether one variable is greater than the other | `1 > 1` | `False` |
-| \>= | Greater than or equal to | Checks whether greater than (\>) or equal to (==) are true | `1 >= 1` | `True` |
-| \< | Less than | Checks whether one variable is less than the other | `0 < 1` | `True` |
-| \<= | Less than or equal to | Checks whether less than (\<) or equal to (==) are true | `0 <= 1` | `True` |
+| `==` | Equal to | Checks whether two variables are the same and outputs a boolean | `1 == 1` | `True` |
+| `!=` | Not equal to | Checks whether two variables are different | `'1' != 1` | `True` |
+| `>` | Greater than | Checks whether one variable is greater than the other | `1 > 1` | `False` |
+| `>=` | Greater than or equal to | Checks whether greater than (\>) or equal to (==) are true | `1 >= 1` | `True` |
+| `<` | Less than | Checks whether one variable is less than the other | `0 < 1` | `True` |
+| `<=` | Less than or equal to | Checks whether less than (\<) or equal to (==) are true | `0 <= 1` | `True` |
 
 ## Finding help
 
 To find help about a function, you can use the `help()` function, or a
 `?` after a function name:
 
-``` python
+```{python}
 help(max)
 print?
 ```
@@ -317,13 +319,14 @@ Python, on its own, requires a lot of manual programming for advanced tasks. Wha
 
 To bring in advanced variables and functions that other's have made, we need to import the module. For example
 
-```python
+```{python}
+#| error: true
 pi
 ```
 
 returns an error, because it's undefined. But the `math` module contains a variable called `pi`:
 
-```python
+```{python}
 import math
 math.pi
 ```
@@ -336,7 +339,7 @@ Arrays are a data type introduced by `numpy`, a module with many functions usefu
 
 For example, you can convert the list we created before to then do mathematical operations on each one of its elements:
 
-```python
+```{python}
 import numpy as np
 example_array = np.array(example_numbers)
 example_array * 2
@@ -346,28 +349,42 @@ example_array * 2
 
 `pandas` introduces dataframes, which are often used to store two-dimensional datasets with different kinds of variables in each column. If your data is stored as a spreadsheet, you probably want to import it with a pandas function.
 
-Here is an example of creating a pandas dataframe from scratch, populating it by hand:
+First, we'll need to install and import the `pandas` module. Install it as before (either with `pip` or `conda`), and then run
 
-```python
+```{python}
 import pandas as pd
-
-# Create initial dataframe
-df = pd.DataFrame(columns=['Name', 'Age'])
-
-# Populate with data
-df.loc[1] = 'Josephine', 70
-df.loc[2] = 'Dilsah', 38
-
-df
 ```
 
-> You can double-click on a dataframe in the Variable explorer to explore it in a separate window.
+Now, let's import some data to get ready for the next session. 
+
+1. Create a new folder in your project called `data`
+1. [Download the Players2024.csv](../data_sources/Players2024.csv) file
+1. Move it into your new `data` folder
+1. Use the function `pd.read_csv()` to load the data:
+
+```{python}
+#| eval: false
+df = pd.read_csv("data/Players2024.csv")
+```
+
+```{python}
+#| echo: false
+df = pd.read_csv("../data_sources/Players2024.csv")
+```
+
+You'll see that it's now in your variable explorer. You can double-click on a dataframe in the Variable explorer to explore it in a separate window.
+
+We'll look at manipulating these dataframe objects in the next session. For now, try running the `df.head()` function to examine the first few rows:
+
+```{python}
+df.head()
+```
 
 ### Matplotlib for visualisation
 
 `matplotlib` is a large collection of data visualisation functions, and `pyplot` is a submodule of `matplotlib` that contains essentials.
 
-```python
+```{python}
 import matplotlib.pyplot as plt
 plt.plot(example_array)
 ```
@@ -378,7 +395,7 @@ This shows a plot in the Plots tab of Spyder.
 
 The default look is a line plot that joins all the points, but we can style a plot with only a few characters:
 
-```python
+```{python}
 # blue circles
 plt.plot(example_array, 'bo')
 
@@ -388,14 +405,14 @@ plt.plot(example_array, 'gs--')
 
 Extra arguments can be used to style further:
 
-```python
+```{python}
 # red, diamonds, solid line; change width of line and size of diamonds:
 plt.plot(example_array, 'rd-', linewidth=3, markersize=10)
 ```
 
 To find out about the styling shorthand and all other arguments, look at the documentation:
 
-```python
+```{python}
 plt.plot?
 ```
 
@@ -405,7 +422,8 @@ The math module is **built-in** - the module came when I installed Python, and t
 
 Installing modules depends on whether you have a conda environment or not. To check, run
 
-```python
+```{python}
+#| eval: false
 conda
 ```
 
@@ -418,7 +436,9 @@ conda
 
 You can install packages with
 
-```python
+```{python}
+#| eval: false
+
 conda install package_name
 ```
 
@@ -428,17 +448,19 @@ conda install package_name
 
 You can install packages with
 
-```python
+```{python}
+#| eval: false
+
 pip install package_name
 ```
 
-> You likely have a pip environment if you installed Python manually and/or are not using Spyder
+> You likely have a pip environment if you installed Python manually or are using an older (before Oct 2024) version of Spyder (e.g. Spyder 5) 
 
 ### Plotly Express for interactive visualisations
 
 One module that isn't built-in is **plotly**, which we can use for interactive visualisations.
 
-```python
+```{python}
 import plotly.io as pio
 import plotly.express as px
 
@@ -446,7 +468,7 @@ import plotly.express as px
 pio.renderers.default='browser'
 
 # Create bar plot
-px.bar(df, x = "Name", y = "Age")
+px.histogram(df, x = "age", color = "positions")
 ```
 
 ## Saving your work

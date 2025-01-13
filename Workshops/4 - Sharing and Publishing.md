@@ -19,7 +19,7 @@ This new `.py` script will be made of **cells**, which can be inserted with the 
 
 At the top of our script, we need to include a Markdown cell that contains the document's settings:
 
-```
+```python
 # %% [markdown]
 # ---
 # title: Reproducible Output
@@ -30,7 +30,7 @@ At the top of our script, we need to include a Markdown cell that contains the d
 
 All subsequent cells are going to be either `[Markdown]` cells (if they contain text, titles and other static contents) or python cells (if they contain executable code). For example:
 
-```
+```python
 # %% [markdown]
 """
 ## Import the data
@@ -65,7 +65,7 @@ In the Markdown cells, we use the Markdown markup language to format the text. F
 
 From the iPython console, run the following command to render the document:
 
-```
+```python
 !quarto render document.py
 ```
 
@@ -77,7 +77,7 @@ As the default Quarto output is a HTML file, we can include interactive visualis
 
 If you want to show the code but don't want to run it, you can add the cell option `#| eval: false`. And if you want to show the output but not show the underlying code, use `#| echo: false`.
 
-```
+```python
 # %% [markdown]
 """
 ## Interactive plots
@@ -102,7 +102,7 @@ px.scatter(data_frame = df, x = "age", y = "height_cm")
 
 And for adding a caption and alternative text to a figure:
 
-```
+```python
 # %%
 #| fig-cap: "Goalkeepers tend to be taller."
 #| fig-alt: "A scatterplot of the relationsip between height and position."
@@ -114,7 +114,7 @@ sns.catplot(data = df, x = "positions", y = "height_cm")
 
 For example, to make sure error and warning messages are never shown:
 
-```
+```python
 # %% [markdown]
 # ---
 # title: Reproducible Output
@@ -131,7 +131,7 @@ The default output format in Quarto is HTML, which is by far the most flexible. 
 
 Let's try rendering a PDF:
 
-```
+```python
 # %% [markdown]
 # ---
 # title: Reproducible Output
@@ -143,7 +143,7 @@ Let's try rendering a PDF:
 
 When rendering PDFs, the first issue we might run into is the lack of a LaTeX distribution. If Quarto didn't detect one, it will suggest to install tinytex (a minimal LaTeX distribution) with:
 
-```
+```python
 !quarto install tinytex
 ```
 
@@ -151,7 +151,7 @@ Once that is installed, Quarto should render a PDF.
 
 Another issue with our example document is that an interactive HTML visualisation won't be renderd in the PDF. You can supress it by using the `#| eval: false` option:
 
-```
+```python
 # %%
 #| eval: false
 import plotly.express as px
@@ -164,7 +164,7 @@ A great way to present a variety of outputs in a grid is by creating a HTML dash
 
 Let's modify our script to render a dashboard. First, change the output format:
 
-```
+```python
 # %% [markdown]
 # ---
 # title: Reproducible Output
@@ -185,7 +185,7 @@ Given this default behaviour, you might have to rethink a good part of your scri
 
 As a starting point, copy the current script across to a new script called `dashboard.py` and modify it so it matches the following:
 
-```
+```python
 # %% [markdown]
 # ---
 # title: Reproducible Outputs
@@ -259,8 +259,3 @@ The README file is a markdown file that can contain the most important informati
 * How to contribute
 
 For inspiration, see the [pandas README file](https://github.com/pandas-dev/pandas?tab=readme-ov-file#pandas-powerful-python-data-analysis-toolkit).
-
-## Further resources
-
-* ...
-* ...
