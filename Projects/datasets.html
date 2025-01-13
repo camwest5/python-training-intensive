@@ -20,6 +20,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -211,7 +245,12 @@ ul.task-list li input[type="checkbox"] {
    
   <ul>
   <li><a href="#datasets" id="toc-datasets" class="nav-link active" data-scroll-target="#datasets">Datasets</a></li>
-  <li><a href="#tips" id="toc-tips" class="nav-link" data-scroll-target="#tips">Tips</a></li>
+  <li><a href="#tips" id="toc-tips" class="nav-link" data-scroll-target="#tips">Tips</a>
+  <ul class="collapse">
+  <li><a href="#hotkeys" id="toc-hotkeys" class="nav-link" data-scroll-target="#hotkeys">Hotkeys</a></li>
+  <li><a href="#data-manipulation" id="toc-data-manipulation" class="nav-link" data-scroll-target="#data-manipulation">Data manipulation</a></li>
+  <li><a href="#visualisation" id="toc-visualisation" class="nav-link" data-scroll-target="#visualisation">Visualisation</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -245,95 +284,200 @@ ul.task-list li input[type="checkbox"] {
 <tr class="header">
 <th>Dataset</th>
 <th>Description</th>
+<th>Source</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
 <td><a href="../data_sources/population.csv">World populations</a></td>
 <td>A summary of world populations and corresponding statistics</td>
+<td>Data from a <a href="https://github.com/rfordatascience/tidytuesday/blob/main/data/2024/2024-10-22/readme.md">Tidy Tuesday post on 2014 CIA World Factbook data</a></td>
 </tr>
 <tr class="even">
 <td><a href="../data_sources/Players2024.csv">Soccer players</a></td>
-<td>A summary of 2024 soccer players</td>
+<td>A summary of approx. 6000 soccer players from 2024</td>
+<td>Data from a <a href="https://www.kaggle.com/datasets/asemmustafa/football-players-2024-dataset">Kaggle submission</a>.</td>
 </tr>
 <tr class="odd">
 <td><a href="../data_sources/coffee_survey.csv">Coffee survey</a></td>
-<td>A survey of coffee preferences</td>
+<td>A survey of blind coffee tasting results</td>
+<td>Data from a <a href="https://www.kaggle.com/datasets/sujaykapadnis/lets-do-some-coffee-tasting">Kaggle submission</a></td>
 </tr>
 <tr class="even">
 <td><a href="../data_sources/gapminder.csv">Gapminder</a></td>
 <td>GDP and life expectancy data by country</td>
+<td>Data from the <a href="https://github.com/resbaz/r-novice-gapminder">Research Bazaar’s R novice tutorial</a>, sourced from <a href="https://www.gapminder.org/">Gapminder</a>.</td>
 </tr>
 <tr class="odd">
 <td><a href="../data_sources/melb_data.csv">Melbourne housing data</a></td>
-<td>A collection of houses for sale in Melbourne</td>
+<td>A collection of houses for sale in Melbourne.</td>
+<td>Data from a <a href="https://www.kaggle.com/datasets/dansbecker/melbourne-housing-snapshot">Kaggle submission</a></td>
 </tr>
 <tr class="even">
 <td><a href="../data_sources/books.csv">Goodreads books</a></td>
-<td>Data from Goodreads books</td>
+<td>A summary of books on Goodreads.</td>
+<td>Data from a <a href="https://www.kaggle.com/datasets/jealousleopard/goodreadsbooks">Kaggle submission</a></td>
 </tr>
 <tr class="odd">
 <td><a href="../data_sources/hospital_data.csv">Queensland hospitals</a></td>
-<td>Emergency department statistics</td>
+<td>Queensland emergency department statistics.</td>
+<td>Data from the Queensland Government’s <a href="https://www.data.qld.gov.au/dataset/emergency-departments-quarterly-data">Open Data Portal</a>.</td>
 </tr>
 <tr class="even">
 <td><a href="../data_sources/qld_fuel.csv">Queensland fuel prices</a></td>
 <td>Fuel prices by the pump in Queensland</td>
+<td>Data from the Queensland Government’s <a href="https://www.data.qld.gov.au/dataset/fuel-price-reporting-2024">Open Data Portal</a></td>
 </tr>
 <tr class="odd">
 <td><a href="../data_sources/birds_strikes.csv">Aeroplane bird strikes</a></td>
 <td>Aeroplane bird strike incidents fron the 90s</td>
+<td>Data from a <a href="https://github.com/rfordatascience/tidytuesday/tree/2500765853ea5235409d936cf9bbbf7d5f8b6881/data/2019/2019-07-23">Tidy Tuesday post</a> sourced from an <a href="https://wildlife.faa.gov/home">FAA database</a></td>
 </tr>
 </tbody>
 </table>
 </section>
 <section id="tips" class="level2">
 <h2 class="anchored" data-anchor-id="tips">Tips</h2>
-<p>Here’s a few general tips.</p>
+<p>Here’s a few general tips. In addition, we strongly recommend using <a href="https://rstudio.github.io/cheatsheets/">popular cheatsheets</a>, which give a quick and easy reference for common packages and functions, and <a href="https://www.data-to-viz.com/">from Data to Viz</a>, which guides you through choosing a visualisation.</p>
+<section id="hotkeys" class="level3">
+<h3 class="anchored" data-anchor-id="hotkeys">Hotkeys</h3>
 <table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
 <thead>
 <tr class="header">
-<th>Dataset</th>
-<th>Tips</th>
+<th>Code</th>
+<th>Hotkey</th>
+<th>Description</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td>World populations</td>
 <td></td>
+<td><kbd>Ctrl</kbd>+<kbd>Enter</kbd></td>
+<td>Run current cell (when in Script)</td>
 </tr>
 <tr class="even">
-<td>Soccer players</td>
 <td></td>
+<td><kbd>Esc</kbd>+<kbd>C</kbd></td>
+<td>Cancel current operation (when in Console)</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="data-manipulation" class="level3">
+<h3 class="anchored" data-anchor-id="data-manipulation">Data manipulation</h3>
+<p>Use the <code>pandas</code> package to analyse your data:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<section id="importing-and-exporting-data" class="level4">
+<h4 class="anchored" data-anchor-id="importing-and-exporting-data">Importing and exporting data</h4>
+<p>In case you’ve forgotten, use the <code>read.csv()</code> function to import data:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_csv(<span class="st">"data/dataset.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>If you’d like to export any files from Python to “.csv”, use the <code>.to_csv()</code> method</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>df.to_csv(<span class="st">"data/output_name.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="initial-exploration" class="level4">
+<h4 class="anchored" data-anchor-id="initial-exploration">Initial exploration</h4>
+<p>You’ll want to explore the data to start with - below are a few functions to get started.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Function</th>
+<th>Example</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>df.columns</code></td>
+<td></td>
+<td>Returns the variable names</td>
+</tr>
+<tr class="even">
+<td><code>df.info()</code></td>
+<td></td>
+<td>Returns the structure of the dataset (variable names, counts and types)</td>
 </tr>
 <tr class="odd">
-<td>Coffee survey</td>
+<td><code>df["variable"]</code></td>
 <td></td>
+<td>Returns a specific column</td>
 </tr>
 <tr class="even">
-<td>Melbourne housing data</td>
+<td><code>pd.unique("variable")</code></td>
 <td></td>
+<td>Returns the unique values of a variable</td>
 </tr>
 <tr class="odd">
-<td>Goodreads books</td>
-<td></td>
-</tr>
-<tr class="even">
-<td>Queensland hospitals</td>
-<td></td>
-</tr>
-<tr class="odd">
-<td>Queensland fuel prices</td>
-<td></td>
-</tr>
-<tr class="even">
-<td>Aeroplane bird strikes</td>
+<td><code>df.describe()</code> or <code>df["variable"].describe()</code></td>
+<td>Returns a statistical summary of the dataset or a variable</td>
 <td></td>
 </tr>
 </tbody>
 </table>
+</section>
+<section id="removing-nans" class="level4">
+<h4 class="anchored" data-anchor-id="removing-nans">Removing <code>nan</code>s</h4>
+<p>We can remove <code>nan</code>s by filtering with the condition <code>df["variable"].notna()</code>:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> df[df[<span class="st">"variable"</span>].notna()]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="time-series-data" class="level4">
+<h4 class="anchored" data-anchor-id="time-series-data">Time series data</h4>
+<p>If you’ve picked a dataset with time-series data (e.g.&nbsp;a “date” variable), you should transform that variable so that it visualises better:</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>df[<span class="st">"variable"</span>] <span class="op">=</span> pd.to_datetime(df[<span class="st">"variable"</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="categorical-and-ordered-data" class="level4">
+<h4 class="anchored" data-anchor-id="categorical-and-ordered-data">Categorical and ordered data</h4>
+<p>If you’re dealing with categorical data, it can be helpful to tell Python</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>df[<span class="st">"variable"</span>] <span class="op">=</span> df[<span class="st">"variable"</span>].astype(<span class="st">"category"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>To manually specify the order of categories, use the <code>df["variable"].cat.reorder_categories()</code> function and use the <code>ordered = True</code> parameter</p>
+<pre><code>df["variable"] = df["variable"].cat.reorder_categories(["cat1", "cat2", ...], ordered = True)</code></pre>
+<blockquote class="blockquote">
+<p>This is particularly useful for the <strong>Coffee survey</strong> dataset.</p>
+</blockquote>
+<p>If you’re dealing with categorical data, look at the <a href="https://pandas.pydata.org/docs/user_guide/categorical.html">pandas guide</a> for inspiration and help.</p>
+</section>
+<section id="renaming-variables" class="level4">
+<h4 class="anchored" data-anchor-id="renaming-variables">Renaming variables</h4>
+<p>Some datasets have cumbersome names for their variables. We can change variable names with <code>df.rename()</code>, sending a <em>dictionary</em> to the <code>columns =</code> parameter:</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> df.rename(columns <span class="op">=</span> {<span class="st">"old_name"</span>: <span class="st">"new_name"</span>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>This is particularly useful for the <strong>World population</strong> dataset.</p>
+<blockquote class="blockquote">
+<p>A <em>dictionary</em> is a Python variable with key-value pairs. The structure is <code>key: value</code>, so above we have a dictionary with one key, <code>"old_name"</code> and corresponding value <code>"new_name"</code>. They are created as follows:</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>example_dictionary <span class="op">=</span> {<span class="st">"key1"</span>: <span class="st">"value1"</span>,</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>                      <span class="st">"key2"</span>: <span class="st">"value2"</span>,</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>                      <span class="st">"key3"</span>: <span class="st">"value3"</span>,</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>                      ...}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<blockquote class="blockquote">
+<p>Note that multiple lines are used purely for readability, you could just as well do this on one line.</p>
+</blockquote>
+</blockquote>
+</section>
+</section>
+<section id="visualisation" class="level3">
+<h3 class="anchored" data-anchor-id="visualisation">Visualisation</h3>
+<p>You can make simple visualisations with <code>seaborn</code>’s <code>relplot()</code>, <code>catplot()</code> and <code>displot()</code> functions</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>sns.relplot(data <span class="op">=</span> df, x <span class="op">=</span> <span class="st">"variable_x"</span>, y <span class="op">=</span> <span class="st">"variable_y"</span>, hue <span class="op">=</span> <span class="st">"variable_colour"</span>, ...)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>We can add plot elements easily with <code>matplotlib.pyplot</code></p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>sns.relplot(data <span class="op">=</span> df, x <span class="op">=</span> <span class="st">"variable_x"</span>, y <span class="op">=</span> <span class="st">"variable_y"</span>, hue <span class="op">=</span> <span class="st">"variable_colour"</span>, ...)</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">"x axis label"</span>)</span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">"y axis label"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->
