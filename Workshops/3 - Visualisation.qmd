@@ -130,7 +130,6 @@ sns.displot(data = df, x = "age", bins = 28)
 Now, what if you wanted to look at the distribution for different variables? We can make a separate distribution for each position with the `col = "positions"` argument, specifying a new column for each position
 
 ```{python}
-#| out-width = 100%
 sns.displot(data = df, x = "age", bins = 28, col = "positions")
 ```
 
