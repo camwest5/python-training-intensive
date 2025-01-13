@@ -439,7 +439,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>If you’re dealing with categorical data, it can be helpful to tell Python</p>
 <div class="sourceCode" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>df[<span class="st">"variable"</span>] <span class="op">=</span> df[<span class="st">"variable"</span>].astype(<span class="st">"category"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>To manually specify the order of categories, use the <code>df["variable"].cat.reorder_categories()</code> function and use the <code>ordered = True</code> parameter</p>
-<pre><code>df["variable"] = df["variable"].cat.reorder_categories(["cat1", "cat2", ...], ordered = True)</code></pre>
+<div class="sourceCode" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>df[<span class="st">"variable"</span>] <span class="op">=</span> df[<span class="st">"variable"</span>].cat.reorder_categories([<span class="st">"cat1"</span>, <span class="st">"cat2"</span>, ...], ordered <span class="op">=</span> <span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <blockquote class="blockquote">
 <p>This is particularly useful for the <strong>Coffee survey</strong> dataset.</p>
 </blockquote>
