@@ -189,7 +189,7 @@ As a starting point, copy the current script across to a new script called `dash
 # %% [markdown]
 # ---
 # title: Reproducible Outputs
-# author: John Guillables
+# author: Your Name
 # date: today
 # warning: false
 # error: false
@@ -230,9 +230,29 @@ This results in a dashboard containing three cards organised in two rows. The to
 
 ![Quarto dashboard with three cards: static visualisation, interactive visualisation, and table.](img/dashboard.png)
 
+### Themes
+
+To quickly style your dashboard differently, you can use a Bootstrap theme in your header like so:
+
+```
+# %% [markdown]
+# ---
+# title: Reproducible Outputs
+# author: Your Name
+# date: today
+# warning: false
+# error: false
+# format:
+#   dashboard:
+#     theme: quartz
+# ---
+```
+
+See [a list of what other themes are available](https://quarto.org/docs/dashboards/theming.html).
+
 ## Git and GitHub
 
-**Git** is a vesion control system that allows to record a clean history of your project, track precise authorship, and collaborate asynchronously with others. It can be used offline, from the command line or with integration into Itegrated Desktop Environments (like RStudio, VS Code... Unfortunately, Spyder does not have Git integration).
+**Git** is a version control system that allows to record a clean history of your project, track precise authorship, and collaborate asynchronously with others. It can be used offline, from the command line or with integration into Integrated Desktop Environments (like RStudio, VS Code... Unfortunately, Spyder does not have Git integration).
 
 **GitHub** is one of many websites that allow you to host project that are tracked with Git. But even without using Git at all, it is possible to use GitHub to share and make your project public. Many researchers use it to make their code public alongside a published paper, to increase reproducibility and transparency. It can also be useful to build and share a portfolio of your work.
 
@@ -259,3 +279,13 @@ The README file is a markdown file that can contain the most important informati
 * How to contribute
 
 For inspiration, see the [pandas README file](https://github.com/pandas-dev/pandas?tab=readme-ov-file#pandas-powerful-python-data-analysis-toolkit).
+
+To practice managing a git repository on GitHub, try creating a personal portfolio repository where you can showcase what you have worked on and the outputs your are most proud of.
+
+## Further resources
+
+* Some alternatives to GitHub: [Codeberg](https://codeberg.org/) and [Gitlab](https://gitlab.com)
+* [Quarto documentation](https://quarto.org/)
+* [Course on Git from the command line](https://github.com/uqlibrary/technology-training/blob/master/Git/git.md)
+* [Course on Git with GitHub](https://github.com/uqlibrary/technology-training/blob/master/Git/GitHub/GitHub_intro.md)
+* [How to use GitHub Pages to publish Quarto outputs](https://quarto.org/docs/publishing/github-pages.html)
