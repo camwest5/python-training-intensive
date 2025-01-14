@@ -249,11 +249,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#rendering" id="toc-rendering" class="nav-link" data-scroll-target="#rendering">Rendering</a></li>
   <li><a href="#cell-options" id="toc-cell-options" class="nav-link" data-scroll-target="#cell-options">Cell options</a></li>
   <li><a href="#output-formats" id="toc-output-formats" class="nav-link" data-scroll-target="#output-formats">Output formats</a></li>
+  <li><a href="#themes" id="toc-themes" class="nav-link" data-scroll-target="#themes">Themes</a></li>
   </ul></li>
   <li><a href="#git-and-github" id="toc-git-and-github" class="nav-link" data-scroll-target="#git-and-github">Git and GitHub</a>
   <ul class="collapse">
   <li><a href="#github" id="toc-github" class="nav-link" data-scroll-target="#github">GitHub</a></li>
   </ul></li>
+  <li><a href="#further-resources" id="toc-further-resources" class="nav-link" data-scroll-target="#further-resources">Further resources</a></li>
   </ul>
 </nav>
     </div>
@@ -415,7 +417,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="sourceCode" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># %% [markdown]</span></span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="co"># ---</span></span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="co"># title: Reproducible Outputs</span></span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="co"># author: John Guillables</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="co"># author: Your Name</span></span>
 <span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="co"># date: today</span></span>
 <span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a><span class="co"># warning: false</span></span>
 <span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a><span class="co"># error: false</span></span>
@@ -459,10 +461,26 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </section>
 </section>
+<section id="themes" class="level3">
+<h3 class="anchored" data-anchor-id="themes">Themes</h3>
+<p>To quickly style your dashboard differently, you can use a Bootstrap theme in your header like so:</p>
+<pre><code># %% [markdown]
+# ---
+# title: Reproducible Outputs
+# author: Your Name
+# date: today
+# warning: false
+# error: false
+# format:
+#   dashboard:
+#     theme: quartz
+# ---</code></pre>
+<p>See <a href="https://quarto.org/docs/dashboards/theming.html">a list of what other themes are available</a>.</p>
+</section>
 </section>
 <section id="git-and-github" class="level2">
 <h2 class="anchored" data-anchor-id="git-and-github">Git and GitHub</h2>
-<p><strong>Git</strong> is a vesion control system that allows to record a clean history of your project, track precise authorship, and collaborate asynchronously with others. It can be used offline, from the command line or with integration into Itegrated Desktop Environments (like RStudio, VS Code… Unfortunately, Spyder does not have Git integration).</p>
+<p><strong>Git</strong> is a version control system that allows to record a clean history of your project, track precise authorship, and collaborate asynchronously with others. It can be used offline, from the command line or with integration into Integrated Desktop Environments (like RStudio, VS Code… Unfortunately, Spyder does not have Git integration).</p>
 <p><strong>GitHub</strong> is one of many websites that allow you to host project that are tracked with Git. But even without using Git at all, it is possible to use GitHub to share and make your project public. Many researchers use it to make their code public alongside a published paper, to increase reproducibility and transparency. It can also be useful to build and share a portfolio of your work.</p>
 <p>Learning about the ins and out of Git takes time, so in this section we will mainly use GitHub as a place to upload and share your code and outputs, and as a starting point for learning more about Git in the future.</p>
 <section id="github" class="level3">
@@ -485,9 +503,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>How to contribute</li>
 </ul>
 <p>For inspiration, see the <a href="https://github.com/pandas-dev/pandas?tab=readme-ov-file#pandas-powerful-python-data-analysis-toolkit">pandas README file</a>.</p>
-
-
+<p>To practice managing a git repository on GitHub, try creating a personal portfolio repository where you can showcase what you have worked on and the outputs your are most proud of.</p>
 </section>
+</section>
+<section id="further-resources" class="level2">
+<h2 class="anchored" data-anchor-id="further-resources">Further resources</h2>
+<ul>
+<li>Some alternatives to GitHub: <a href="https://codeberg.org/">Codeberg</a> and <a href="https://gitlab.com">Gitlab</a></li>
+<li><a href="https://quarto.org/">Quarto documentation</a></li>
+<li><a href="https://github.com/uqlibrary/technology-training/blob/master/Git/git.md">Course on Git from the command line</a></li>
+<li><a href="https://github.com/uqlibrary/technology-training/blob/master/Git/GitHub/GitHub_intro.md">Course on Git with GitHub</a></li>
+<li><a href="https://quarto.org/docs/publishing/github-pages.html">How to use GitHub Pages to publish Quarto outputs</a></li>
+</ul>
+
+
 </section>
 
 </main> <!-- /main -->
