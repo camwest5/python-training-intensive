@@ -26,9 +26,11 @@ Here's a few general tips. In addition, we strongly recommend using [popular che
 ### Hotkeys
 | Code | Hotkey | Description |
 | --- | --- | --- |
+|  | <kbd>F9</kbd> (or <kbd>Fn</kbd> + <kbd>F9</kbd>) | Run current line |
+| `# %%` | <kbd>Ctrl</kbd> + <kbd>2</kbd> | New cell (only in Spyder) |
 |  | <kbd>Ctrl</kbd>+<kbd>Enter</kbd> | Run current cell (when in Script) |
-|  | <kbd>Esc</kbd>+<kbd>C</kbd> | Cancel current operation (when in Console) |
-
+|  | <kbd>Ctrl</kbd>+<kbd>C</kbd> | Cancel current operation (when in Console) |
+  
 ### Data manipulation
 
 Use the `pandas` package to analyse your data:
