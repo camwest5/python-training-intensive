@@ -245,7 +245,7 @@ state_with_max_count
 #| title: "Which phase of flight sees highest likelihood of birds strike?"
 #| icon: rulers
 #| color: secondary
-"Approach : " + df_filtered["phase_of_flt"].count()
+"Approach : " + str(df_filtered["phase_of_flt"].count())
 
 
 # %%
