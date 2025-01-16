@@ -5,6 +5,6 @@ statsmodels
 scipy
 plotly
 streamlit
-PIL
+pillow
 numpy
 geopandas
