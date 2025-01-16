@@ -4,3 +4,7 @@ seaborn
 statsmodels
 scipy
 plotly
+streamlit
+PIL
+numpy
+geopandas

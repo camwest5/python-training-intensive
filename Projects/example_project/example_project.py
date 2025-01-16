@@ -41,7 +41,6 @@ _ = plt.ylabel("Height (cm)")
 _ = plt.savefig("tb.png")
 plt.show()
 
-
 # %%
 #| title: Age vs Height
 import plotly.express as px
@@ -61,3 +60,23 @@ px.scatter(data_frame = df, x = "age", y = "height_cm", color = "positions",
 # %%
 #| title: A glimpse at the dataset
 df.head(10)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
