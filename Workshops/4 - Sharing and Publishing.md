@@ -11,11 +11,29 @@ In this workshop we cover using GitHub for sharing your source code, Git for ver
 
 ## Quarto
 
-Quarto is a publishing system that allows creating documents, presentations, websites and dashboards that contain prose, code and code outputs. This means that such outputs can detail exactly what happened to the data, and outputs can be re-generated very quickly if, for example, the underlying dataset was updated, or if the analysis needs to change.
+[Quarto](https://quarto.org) is a publishing system that allows creating documents, presentations, websites and dashboards that contain prose, code and code outputs. This means that such outputs can detail exactly what happened to the data, and outputs can be re-generated very quickly if, for example, the underlying dataset was updated, or if the analysis needs to change.
 
-Let's try to create a document based on the visualisations we created earlier.
+### Installing Quarto
 
-This new `.py` script will be made of **cells**, which can be inserted with the toolbar or the keyboard shortcut <kbd>Ctrl</kbd>+<kbd>2</kbd>.
+Follow the [instructions to install Quarto](https://quarto.org/docs/get-started/) on your computer. Quarto is a command line tool available for all major operating systems.
+
+::: {callout-note}
+We can write Quarto files in Spyder, but there is (at the time of writing) no integration of it into the Spyder interface. Other IDEs make it easier to interact with Quarto functions and write Quarto files, like R Studio.
+:::
+
+Once Quarto is installed, restart Spyder and try running `!quarto version` in Spyder's IPython console. If it returns a version number, Quarto was installed successfully and you will be able to run Quarto commands straight from Spyder (using the `!` at the beginning).
+
+If the IPython console can't find Quarto, try to run `quarto version` (without the `!`) in a command line interface outside Spyder (bash, macOS's Terminal, PowerShell...). You will have to use the tool that finds Quarto to run Quarto commands later.
+
+### Create a Quarto file
+
+Let's try to create a document based on the visualisations we created earlier. Create a new Python script and save it as "document.py" at the top of the project directory.
+
+:::{.callout-warning}
+When rendering individual Quarto files, paths to files (like the one you use to import some data) will be understood as `relative to the file itself`. This means that, to avoid confusion, it is best to save your Quarto file at the top of your project directory, so you can use the same relative paths as in the rest of your scripts.
+:::
+
+This new `.py` script will be made of **cells**, which can be inserted with the toolbar or the keyboard shortcut <kbd>Ctrl</kbd>+<kbd>2</kbd>. (You can also write the delimiter `# %%` by hand if you have an older version of Spyder, or if you find it more convenient.)
 
 At the top of our script, we need to include a Markdown cell that contains the document's settings:
 
@@ -28,7 +46,7 @@ At the top of our script, we need to include a Markdown cell that contains the d
 # ---
 ```
 
-All subsequent cells are going to be either `[Markdown]` cells (if they contain text, titles and other static contents) or python cells (if they contain executable code). For example:
+All subsequent cells are going to be either `[markdown]` cells (if they contain text, titles and other static contents) or python cells (if they contain executable code). For example:
 
 ```python
 # %% [markdown]
@@ -59,23 +77,35 @@ We now have a plot!
 """
 ```
 
-In the Markdown cells, we use the Markdown markup language to format the text. For example, using `##` before some text defines a heading of level 2 (level 1 being the document's title), and using `**` around some text makes it bold. See [more Markdown hints in the Quarto documentation](https://quarto.org/docs/authoring/markdown-basics.html).
+In the Markdown cells, we use the Markdown markup language to format the text. For example, using `## ` before some text defines a heading of level 2 (level 1 being the document's title), and using `**` around some text makes it bold. See [more Markdown hints in the Quarto documentation](https://quarto.org/docs/authoring/markdown-basics.html).
 
 ### Rendering
 
-From the iPython console, run the following command to render the document:
+From the IPython console, run the following command to render the document:
 
-```python
+```
 !quarto render document.py
+```
+
+If you use a different command line tool to run quarto, do not use the `!` in front:
+
+```
+quarto render document.py
 ```
 
 This should create a HTML document in your project directory, which you can open in a web browser by right-clicking on it in the Files tab and using "Open externally".
 
-As the default Quarto output is a HTML file, we can include interactive visualisations too.
+#### Troubleshooting
+
+If the rendering step fails, it might be because some modules are missing. This is more common if Quarto uses a different Python environment to Spyder. Use the right command to install the missing modules (depending on your system, `pip install` or `conda install`) and try rendering again.
+
+If the issue relates to a missing Python kernel, you might have to install jupyter. See options for different package managers in the [Quarto documentation about Python](https://quarto.org/docs/computations/python.html#installation).
 
 ### Cell options
 
-If you want to show the code but don't want to run it, you can add the cell option `#| eval: false`. And if you want to show the output but not show the underlying code, use `#| echo: false`.
+As the default Quarto output is a HTML file, we can include interactive visualisations too.
+
+Let's say we also want to let our readers know that they need to install Plotly in order to create interactive visualisations. If you want to show the corresponding code in your document but don't want to run it, you can add the cell option `#| eval: false`. (And if you want to show the output but not show the underlying code, use `#| echo: false`.)
 
 ```python
 # %% [markdown]
