@@ -11,7 +11,7 @@
 # %%
 
 import pandas as pd
-df = pd.read_csv("data/books.csv")
+df = pd.read_csv("books.csv")
 
 df = df[df["num_pages"] > 100 ]
 df = df[df["ratings_count"] != 0 ]
