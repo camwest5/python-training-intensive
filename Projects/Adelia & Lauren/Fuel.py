@@ -19,7 +19,7 @@ import pandas as pd
 import matplotlib.pyplot as pld
 import seaborn as sns
 import plotly.express as px
-fuel = pd.read_csv("qld_fuel.csv")
+fuel = pd.read_csv("data/qld_fuel.csv")
 
 #Transform data and choose 4 fuel types of interest
 fuel['Date'] = pd.to_datetime(fuel["TransactionDateutc"]).dt.date
