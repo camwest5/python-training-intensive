@@ -20,7 +20,7 @@ import plotly.io as pio
 
 # %%
 
-book_raw = pd.read_csv("data/goodreads_books.csv")
+book_raw = pd.read_csv("../../data_sources/goodreads_books.csv")
 
 book = book_raw.copy() 
 
