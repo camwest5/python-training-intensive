@@ -8,3 +8,4 @@ streamlit
 pillow
 numpy
 geopandas
+itables
