@@ -2,7 +2,7 @@
 # ---
 # title: Bird Strikes and Aeroplane Damages in the U.S. (1990-1999)
 # author: Liz & Koyo
-# Date: today
+# Date: 2025-01-16
 # format: 
 #   dashboard: 
 #    theme: sandstone
@@ -245,7 +245,7 @@ state_with_max_count
 #| title: "Which phase of flight sees highest likelihood of birds strike?"
 #| icon: rulers
 #| color: secondary
-"Approach : " + str(df_filtered["phase_of_flt"].count())
+f"Approach : {df_filtered["phase_of_flt"].count()}"
 
 
 # %%

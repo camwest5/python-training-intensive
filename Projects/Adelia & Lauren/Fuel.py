@@ -2,7 +2,7 @@
 # ---
 # title: Queensland Fuel Price in 2023
 # author: Adelia & Lauren
-# date: today
+# date: 2025-01-16
 # warning: false
 #format:
 #    dashboard:

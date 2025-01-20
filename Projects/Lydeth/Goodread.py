@@ -2,7 +2,7 @@
 # ---
 # title: The popular author
 # author: Goodread  
-# date: today
+# date: 2025-01-16
 # format: 
 #   dashboard: 
 #       theme: sketchy
@@ -13,6 +13,7 @@ import pandas as pd
 import seaborn as sns
 import matplotlib.pyplot as plt
 import plotly.express as px
+import datetime as dt
 df_raw = pd.read_csv('books.csv')
 
 df = df_raw.copy()

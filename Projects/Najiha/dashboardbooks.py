@@ -2,7 +2,7 @@
 #---
 #title: Analyzing the Relationship between Ratings and Reviews for Books
 #author: Nurul Najihah
-#date: 15th Jan 2025
+#date: 2025-01-15
 #warning: false
 #format:
 #   dashboard:

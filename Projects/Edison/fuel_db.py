@@ -1,8 +1,8 @@
 # %% [markdown]
 # ---
-# title: Fuel Comsuption
+# title: Fuel Consumption
 # author: Edison Vargas
-# date: today
+# date: 2025-01-16
 # format: 
 #   dashboard:
 #       theme: journal

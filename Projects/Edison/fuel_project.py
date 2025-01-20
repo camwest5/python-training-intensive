@@ -1,10 +1,11 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Tue Jan 14 06:54:58 2025
+# %% [markdown]
+# ---
+# title: Fuel Consumption
+# author: Edison Vargas
+# date: 2025-01-16
+# ---
 
-@author: user
-"""
-
+#%% 
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
@@ -78,13 +79,13 @@ plt.show()
 # Remove unleaded Fuel_type
 df1 = df[df["Fuel_Type"] != "Unleaded"]
 
-sns.catplot(data = df1, x = "Site_State", y = "Fuel_Type")
+# sns.catplot(data = df1, x = "Site_State", y = "Fuel_Type")
 plt.show()
 
 # Remove unknown Site_Brand
 df2 = df[df["Site_Brand"] != "Unknown"]
 
-sns.catplot(data = df2, x = "Site_State", y = "Site_Brand", kind = "bar")
+# sns.catplot(data = df2, x = "Site_State", y = "Site_Brand", kind = "bar")
 plt.show()
 
 
@@ -94,12 +95,12 @@ plt.show()
 sns.displot(data = df, x = "unit_price", hue = "Fuel_Type", kind = "kde")
 plt.show()
 
-sns.catplot(data=df, x="unit_price", y="Fuel_type")
+# sns.catplot(data=df, x="unit_price", y="Fuel_type")
 plt.show()
 # %%
 
 import pandas as pd
-fuel = pd.read_csv("data/qld_fuel.csv")
+fuel = pd.read_csv("data/data/qld_fuel.csv")
 import geopandas 
 fuel_geo = geopandas.GeoDataFrame(fuel, geometry = geopandas.points_from_xy(x = fuel.Site_Longitude, y = fuel.Site_Latitude)) 
 fuel_geo.plot()
@@ -116,7 +117,7 @@ figure.write_html("fuel.html")
 #| title: "Location of stations"
 #| color: primary
 import pandas as pd
-fuel = pd.read_csv("data/qld_fuel.csv")
+fuel = pd.read_csv("data/data/qld_fuel.csv")
 import geopandas 
 fuel_geo = geopandas.GeoDataFrame(fuel, geometry = geopandas.points_from_xy(x = fuel.Site_Longitude, y = fuel.Site_Latitude)) 
 fuel_geo.plot()

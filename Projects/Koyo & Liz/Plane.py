@@ -2,7 +2,7 @@
 # ---
 # title: Aeroplane Bird Strike Incidents
 # author: Koyo Yanagisawa
-# date: 15/01/25
+# date: 2025-01-15
 # warning: false
 # error: false
 # format: dashboard

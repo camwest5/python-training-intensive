@@ -2,7 +2,7 @@
 # ---
 # title: Goodreads document
 # author: Emma
-# date: today
+# date: 2025-01-16
 # format: 
 #   dashboard: 
 #       theme: sketchy
