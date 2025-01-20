@@ -79,8 +79,7 @@ ul.task-list li input[type="checkbox"] {
 
     const options = {
       valueNames: ['listing-title','listing-author','listing-date','listing-image','listing-description',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
-      page: 18,
-    pagination: { item: "<li class='page-item'><a class='page page-link' href='#'></a></li>" },
+      
       searchColumns: ["listing-title","listing-author","listing-date","listing-image","listing-description"],
     };
 
@@ -297,7 +296,7 @@ window.Quarto = {
 
 <div class="quarto-listing quarto-listing-container-grid" id="listing-listing">
 <div class="list grid quarto-listing-cols-3">
-<div class="g-col-1" data-index="0" data-listing-date-sort="1772323200000" data-listing-file-modified-sort="1737011786423" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="236">
+<div class="g-col-1" data-index="0" data-listing-date-sort="1736899200000" data-listing-file-modified-sort="1737337385093" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="236">
 <a href="../Projects/Koyo &amp; Liz/Plane.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <div class="listing-item-img-placeholder card-img-top" style="height: 150px;">&nbsp;</div>
@@ -313,14 +312,14 @@ Aeroplane Bird Strike Incidents
 Koyo Yanagisawa
 </div>
 <div class="listing-date">
-Mar 1, 2026
+Jan 15, 2025
 </div>
 </div>
 </div>
 </div>
 </a>
 </div>
-<div class="g-col-1" data-index="1" data-listing-date-sort="NaN" data-listing-file-modified-sort="1737011786473" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="81">
+<div class="g-col-1" data-index="1" data-listing-date-sort="1736899200000" data-listing-file-modified-sort="1737337385122" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="81">
 <a href="../Projects/Najiha/dashboardbooks.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <div class="listing-item-img-placeholder card-img-top" style="height: 150px;">&nbsp;</div>
@@ -336,14 +335,14 @@ Analyzing the Relationship between Ratings and Reviews for Books
 Nurul Najihah
 </div>
 <div class="listing-date">
-Invalid Date
+Jan 15, 2025
 </div>
 </div>
 </div>
 </div>
 </a>
 </div>
-<div class="g-col-1" data-index="2" data-listing-file-modified-sort="1737011786432" data-listing-reading-time-sort="4" data-listing-word-count-sort="729">
+<div class="g-col-1" data-index="2" data-listing-file-modified-sort="1737337385103" data-listing-reading-time-sort="4" data-listing-word-count-sort="727">
 <a href="../Projects/Koyo &amp; Liz/project.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <div class="listing-item-img-placeholder card-img-top" style="height: 150px;">&nbsp;</div>
@@ -363,13 +362,13 @@ Liz &amp; Koyo
 </div>
 </a>
 </div>
-<div class="g-col-1" data-index="3" data-listing-date-sort="1736985600000" data-listing-file-modified-sort="1737011786413" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="193">
+<div class="g-col-1" data-index="3" data-listing-date-sort="1736985600000" data-listing-file-modified-sort="1737337385084" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="193">
 <a href="../Projects/Edison/fuel_db.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <div class="listing-item-img-placeholder card-img-top" style="height: 150px;">&nbsp;</div>
 <div class="card-body post-contents">
 <h5 class="no-anchor card-title listing-title">
-Fuel Comsuption
+Fuel Consumption
 </h5>
 <div class="card-text listing-description">
 
@@ -386,7 +385,38 @@ Jan 16, 2025
 </div>
 </a>
 </div>
-<div class="g-col-1" data-index="4" data-listing-date-sort="1736985600000" data-listing-file-modified-sort="1737011786482" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="188">
+<div class="g-col-1" data-index="4" data-listing-date-sort="1736985600000" data-listing-file-modified-sort="1737337385084" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="198">
+<a href="../Projects/Edison/fuel_project.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<p class="card-img-top"><img src="Edison/fuel_project_files/figure-html/cell-4-output-1.png" style="height: 150px;"  class="thumbnail-image card-img"/></p>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+Fuel Consumption
+</h5>
+<div class="card-text listing-description">
+
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb1-2"><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb1-3"><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
+<span id="cb1-4"></span>
+<span id="cb1-5">df <span class="op">=</span> pd.read_csv(<span class="st">"data/data/qld_fuel.csv"</span>)</span>
+<span id="cb1-6"><span class="bu">print</span>(df)</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>        Unnamed: 0    SiteId               …</code></pre></div>
+</div>
+<div class="card-attribution card-text-small justify">
+<div class="listing-author">
+Edison Vargas
+</div>
+<div class="listing-date">
+Jan 16, 2025
+</div>
+</div>
+</div>
+</div>
+</a>
+</div>
+<div class="g-col-1" data-index="5" data-listing-date-sort="1737331200000" data-listing-file-modified-sort="1737337385132" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="188">
 <a href="../Projects/example_project/example_project.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
@@ -404,14 +434,14 @@ Goalkeepers and their heights
 Cameron West and Stéphane Guillou
 </div>
 <div class="listing-date">
-Jan 16, 2025
+Jan 20, 2025
 </div>
 </div>
 </div>
 </div>
 </a>
 </div>
-<div class="g-col-1" data-index="5" data-listing-date-sort="1736985600000" data-listing-file-modified-sort="1737011785843" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="230">
+<div class="g-col-1" data-index="6" data-listing-date-sort="1736985600000" data-listing-file-modified-sort="1737337384353" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="230">
 <a href="../Projects/Caira/dashboardbooks.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <div class="listing-item-img-placeholder card-img-top" style="height: 150px;">&nbsp;</div>
@@ -434,7 +464,7 @@ Jan 16, 2025
 </div>
 </a>
 </div>
-<div class="g-col-1" data-index="6" data-listing-date-sort="1736985600000" data-listing-file-modified-sort="1737011786413" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="304">
+<div class="g-col-1" data-index="7" data-listing-date-sort="1736985600000" data-listing-file-modified-sort="1737337385084" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="304">
 <a href="../Projects/Emma/Goodread.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <div class="listing-item-img-placeholder card-img-top" style="height: 150px;">&nbsp;</div>
@@ -457,7 +487,7 @@ Jan 16, 2025
 </div>
 </a>
 </div>
-<div class="g-col-1" data-index="7" data-listing-file-modified-sort="1737011786473" data-listing-reading-time-sort="2" data-listing-word-count-sort="291">
+<div class="g-col-1" data-index="8" data-listing-date-sort="1736985600000" data-listing-file-modified-sort="1737337385122" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="291">
 <a href="../Projects/Python-project-Nish/dashboard.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <div class="listing-item-img-placeholder card-img-top" style="height: 150px;">&nbsp;</div>
@@ -468,16 +498,19 @@ Project-Python
 <div class="card-text listing-description">
 
 </div>
-<div class="card-attribution card-text-small start">
+<div class="card-attribution card-text-small justify">
 <div class="listing-author">
 
+</div>
+<div class="listing-date">
+Jan 16, 2025
 </div>
 </div>
 </div>
 </div>
 </a>
 </div>
-<div class="g-col-1" data-index="8" data-listing-date-sort="1736985600000" data-listing-file-modified-sort="1737011785634" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="467">
+<div class="g-col-1" data-index="9" data-listing-date-sort="1736985600000" data-listing-file-modified-sort="1737337384147" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="467">
 <a href="../Projects/Adelia &amp; Lauren/Fuel.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <div class="listing-item-img-placeholder card-img-top" style="height: 150px;">&nbsp;</div>
@@ -500,7 +533,7 @@ Jan 16, 2025
 </div>
 </a>
 </div>
-<div class="g-col-1" data-index="9" data-listing-date-sort="1736985600000" data-listing-file-modified-sort="1737011786455" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="172">
+<div class="g-col-1" data-index="10" data-listing-date-sort="1736985600000" data-listing-file-modified-sort="1737337385103" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="175">
 <a href="../Projects/Lydeth/Goodread.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <div class="listing-item-img-placeholder card-img-top" style="height: 150px;">&nbsp;</div>
@@ -523,221 +556,10 @@ Jan 16, 2025
 </div>
 </a>
 </div>
-<div class="g-col-1" data-index="10" data-listing-file-modified-sort="1737011785634">
-<a href="../Projects/Adelia &amp; Lauren/Adelia&amp;Lauren_Fuel.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<div class="card-body post-contents">
-<div class="card-text listing-description">
-
-</div>
-<div class="card-attribution card-text-small start">
-<div class="listing-author">
-
-</div>
-</div>
-</div>
-</div>
-</a>
-</div>
-<div class="g-col-1" data-index="11" data-listing-file-modified-sort="1737011949149">
-<a href="../Projects/Adelia &amp; Lauren/Fuel.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<div class="card-body post-contents">
-<div class="card-text listing-description">
-
-</div>
-<div class="card-attribution card-text-small start">
-<div class="listing-author">
-
-</div>
-</div>
-</div>
-</div>
-</a>
-</div>
-<div class="g-col-1" data-index="12" data-listing-file-modified-sort="1737011956138">
-<a href="../Projects/Caira/dashboardbooks.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<div class="card-body post-contents">
-<div class="card-text listing-description">
-
-</div>
-<div class="card-attribution card-text-small start">
-<div class="listing-author">
-
-</div>
-</div>
-</div>
-</div>
-</a>
-</div>
-<div class="g-col-1" data-index="13" data-listing-file-modified-sort="1737011786349">
-<a href="../Projects/Edison/fuel.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<div class="card-body post-contents">
-<div class="card-text listing-description">
-
-</div>
-<div class="card-attribution card-text-small start">
-<div class="listing-author">
-
-</div>
-</div>
-</div>
-</div>
-</a>
-</div>
-<div class="g-col-1" data-index="14" data-listing-file-modified-sort="1737011987029">
-<a href="../Projects/Edison/fuel_db.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<div class="card-body post-contents">
-<div class="card-text listing-description">
-
-</div>
-<div class="card-attribution card-text-small start">
-<div class="listing-author">
-
-</div>
-</div>
-</div>
-</div>
-</a>
-</div>
-<div class="g-col-1" data-index="15" data-listing-file-modified-sort="1737011786413">
-<a href="../Projects/Edison/fuel_project.py" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<div class="card-body post-contents">
-<div class="card-text listing-description">
-
-</div>
-<div class="card-attribution card-text-small start">
-<div class="listing-author">
-
-</div>
-</div>
-</div>
-</div>
-</a>
-</div>
-<div class="g-col-1" data-index="16" data-listing-file-modified-sort="1737011993322">
-<a href="../Projects/Emma/Goodread.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<div class="card-body post-contents">
-<div class="card-text listing-description">
-
-</div>
-<div class="card-attribution card-text-small start">
-<div class="listing-author">
-
-</div>
-</div>
-</div>
-</div>
-</a>
-</div>
-<div class="g-col-1" data-index="17" data-listing-file-modified-sort="1737012010102">
-<a href="../Projects/Koyo &amp; Liz/Plane.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<div class="card-body post-contents">
-<div class="card-text listing-description">
-
-</div>
-<div class="card-attribution card-text-small start">
-<div class="listing-author">
-
-</div>
-</div>
-</div>
-</div>
-</a>
-</div>
-<div class="g-col-1" data-index="18" data-listing-file-modified-sort="1737012001865">
-<a href="../Projects/Koyo &amp; Liz/project.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<div class="card-body post-contents">
-<div class="card-text listing-description">
-
-</div>
-<div class="card-attribution card-text-small start">
-<div class="listing-author">
-
-</div>
-</div>
-</div>
-</div>
-</a>
-</div>
-<div class="g-col-1" data-index="19" data-listing-file-modified-sort="1737012015681">
-<a href="../Projects/Lydeth/Goodread.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<div class="card-body post-contents">
-<div class="card-text listing-description">
-
-</div>
-<div class="card-attribution card-text-small start">
-<div class="listing-author">
-
-</div>
-</div>
-</div>
-</div>
-</a>
-</div>
-<div class="g-col-1" data-index="20" data-listing-file-modified-sort="1737012156678">
-<a href="../Projects/Najiha/dashboardbooks.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<div class="card-body post-contents">
-<div class="card-text listing-description">
-
-</div>
-<div class="card-attribution card-text-small start">
-<div class="listing-author">
-
-</div>
-</div>
-</div>
-</div>
-</a>
-</div>
-<div class="g-col-1" data-index="21" data-listing-file-modified-sort="1737012178971">
-<a href="../Projects/Python-project-Nish/dashboard.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<div class="card-body post-contents">
-<div class="card-text listing-description">
-
-</div>
-<div class="card-attribution card-text-small start">
-<div class="listing-author">
-
-</div>
-</div>
-</div>
-</div>
-</a>
-</div>
-<div class="g-col-1" data-index="22" data-listing-file-modified-sort="1737012185072">
-<a href="../Projects/example_project/example_project.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<div class="card-body post-contents">
-<div class="card-text listing-description">
-
-</div>
-<div class="card-attribution card-text-small start">
-<div class="listing-author">
-
-</div>
-</div>
-</div>
-</div>
-</a>
-</div>
 </div>
 <div class="listing-no-matching d-none">
 No matching items
 </div>
-<nav id="listing-pagination" class="listing-pagination" aria-label="Page Navigation">
-  <ul class="pagination"></ul>
-</nav>
 </div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
