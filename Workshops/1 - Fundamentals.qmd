@@ -474,11 +474,7 @@ px.histogram(df, x = "age", color = "positions")
 
 ```{python}
 #| echo: false
-import plotly.io as pio
 import plotly.express as px
-
-# Set renderer
-pio.renderers.default='browser'
 
 # Create bar plot
 px.histogram(df, x = "age", color = "positions")
