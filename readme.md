@@ -1,4 +1,4 @@
-This is a repository for the UQ Library Python for Data Analysis Training Intensive being held between 14th and 16th of January 2025.
+This is a repository for the UQ Library Python for Data Analysis Training Intensive being held between 8th and 10th of July 2025.
 
 Over the course of our three-day training series, you will learn
 - The basics of Python
