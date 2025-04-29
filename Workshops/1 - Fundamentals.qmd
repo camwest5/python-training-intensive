@@ -461,6 +461,19 @@ pip install package_name
 One module that isn't built-in is **plotly**, which we can use for interactive visualisations.
 
 ```{python}
+#| eval: false
+import plotly.io as pio
+import plotly.express as px
+
+# Set renderer
+pio.renderers.default='browser'
+
+# Create bar plot
+px.histogram(df, x = "age", color = "positions")
+```
+
+```{python}
+#| echo: false
 import plotly.io as pio
 import plotly.express as px
 
