@@ -4,6 +4,7 @@ project:
     - setup.md
     - "Workshops/*"
     - "Projects/*"
+    - project_gallery.qmd
 
 website:
   title: "Python Training Intensive"
@@ -13,35 +14,20 @@ website:
       - text: "Workshops"
         href: Workshops/index.qmd
       - text: "Project Gallery"
-        href: Projects/project_gallery.qmd
+        href: project_gallery.qmd
+      - text: "UQ Library Technology Training"
+        href: https://uqlibrary.github.io/technology-training
   sidebar: 
-    contents:
-      - setup.md
-      - auto: "Workshops"
-      - section: The Project
-        contents:
-        - auto: "Projects/*"
+    - title: "Workshops"
+      collapse-level: 1
+      contents:
+        - setup.md
+        - auto: "Workshops"
+        - section: The Project
+          contents:
+          - auto: "Projects/*"
+    
 
-
-## Hybrid nav - probably not worth it
-#  navbar:
-#    search: true
-#    left:
-#      - text: "Workshops"
-#        href: Workshops/Workshops.md
-#      - text: "Project"
-#        href: Project/project.md
-
-#  sidebar:
-#    - title: "Workshops"
-#      contents:
-#        - href: setup.md
-#          text: Setup
-#        - auto: "Workshops"
-
-#    - title: "Project"
-#      contents:
-#        - auto: "Project"
 
 format:
   html:
