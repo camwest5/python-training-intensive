@@ -19,6 +19,78 @@ We have nine datasets for you to choose from. **We recommend saving your data in
 | [Queensland fuel prices](../data_sources/qld_fuel.csv) | Fuel prices by the pump in Queensland | Data from the Queensland Government's [Open Data Portal](https://www.data.qld.gov.au/dataset/fuel-price-reporting-2024)
 | [Aeroplane bird strikes](../data_sources/birds_strikes.csv) | Aeroplane bird strike incidents fron the 90s| Data from a [Tidy Tuesday post](https://github.com/rfordatascience/tidytuesday/tree/2500765853ea5235409d936cf9bbbf7d5f8b6881/data/2019/2019-07-23) sourced from an [FAA database](https://wildlife.faa.gov/home)
 
+## Getting started
+
+Your goal is to analyse and present on one of these datasets. Getting started can sometimes be a bit daunting! For this, we've got a few initial ideas for each dataset.
+
+```python
+df.info()
+```
+
+```{python}
+#| echo: false
+import pandas as pd
+import seaborn as sns
+```
+
+### World populations
+
+```{python}
+#| echo: false
+df = pd.read_csv("../data_sources/population.csv")
+```
+
+There's a lot of columns here! We can break it down into two categories
+
+- Identifiers, e.g. `region`, `Year`.
+- Observations, e.g. `Jan.Population`, `Male.LifeExpectancy.at.Age.80..years.`.
+
+To start small, filter the dataset for a particular region. First, use `df["Region"].unique()` to see your options. For example, to pick out Australia,
+
+```{python}
+aus = df[df["Region"] == "Australia"]
+```
+
+If you want multiple regions, you can use the **or** operator `|`: 
+```{python}
+aus_nz = df[(df["Region"] == "Australia") | (df["Region"] == "New Zealand")]
+```
+
+We could consider how the variables have changed over time with the `"Year"` column. We can use seaborn's `sns.relplot()` function, with `kind = "line"`, to make a line plot of the data.
+
+To get started with this dataset,
+
+1. Filter the data for particular region(s) 
+2. Choose a variable to plot against "Year"
+3. Use `sns.relplot()` to visualise the relationship
+
+The plot below follows these steps for the `"Net.Migration.Rate..per.1.000.population."` variable.
+
+One final tip: the variable names in this dataset are *long*. Use [`df.rename()`](#renaming-variables) to rename them.
+
+```{python}
+#| echo: false
+sns.relplot(aus_nz, x = "Year", y = "Net.Migration.Rate..per.1.000.population.", hue = "Region", kind = "line")
+```
+
+### Soccer players
+
+This dataset is being used in our workshops, so hopefully you've already got this one working!
+
+### Coffee survey
+
+
+
+### Gapminder
+
+### Melbourne housing data
+
+### Goodreads books
+
+### Queensland hospitals
+
+### Queensland fuel prices
+
 ## Tips
 
 Here's a few general tips. In addition, we strongly recommend using [popular cheatsheets](https://rstudio.github.io/cheatsheets/), which give a quick and easy reference for common packages and functions, and [from Data to Viz](https://www.data-to-viz.com/), which guides you through choosing a visualisation.
