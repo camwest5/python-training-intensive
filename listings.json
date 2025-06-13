@@ -4,5 +4,21 @@
     "items": [
       "/Projects/example_project/example_project.html"
     ]
+  },
+  {
+    "listing": "/Past_projects/project_gallery.html",
+    "items": [
+      "/Past_projects/Koyo & Liz/Plane.html",
+      "/Past_projects/Najiha/dashboardbooks.html",
+      "/Past_projects/Koyo & Liz/project.html",
+      "/Past_projects/Edison/fuel_db.html",
+      "/Past_projects/Edison/fuel_project.html",
+      "/Past_projects/example_project/example_project.html",
+      "/Past_projects/Caira/dashboardbooks.html",
+      "/Past_projects/Emma/Goodread.html",
+      "/Past_projects/Python-project-Nish/dashboard.html",
+      "/Past_projects/Adelia & Lauren/Fuel.html",
+      "/Past_projects/Lydeth/Goodread.html"
+    ]
   }
 ]
