@@ -46,3 +46,6 @@ format:
       - custom.scss
     toc: true
     embed-resources: false
+
+execute:
+  freeze: auto
