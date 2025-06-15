@@ -1,5 +1,9 @@
 ---
 title: Intro and Setting Up
+format: 
+  html:
+    include-in-header:
+      - text: <meta name="google-site-verification" content="lH7jPI_Tg64yiGhs_IV-_zClImxRtEK7aGXhAEl68g0" />
 ---
 
 ## Overview
