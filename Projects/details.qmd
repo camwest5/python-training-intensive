@@ -9,7 +9,7 @@ Roughly 50% of our intensive is dedicated to working on the project. Working in 
 
 The end goal will be a quick fire (low stakes) one-minute presentation with a dashboard to complement.
 
-See the [datasets](datasets.qmd) page for the data and [below](#submission) for submission details.
+See the [datasets](scaffold.qmd) page for the data and [below](#submission) for submission details.
 
 ## Project outline
 
