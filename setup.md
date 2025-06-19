@@ -1,5 +1,5 @@
 ---
-title: Intro and Setting Up
+title: Python Training Intensive
 format: 
   html:
     include-in-header:
