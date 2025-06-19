@@ -4,7 +4,7 @@
     "href": "project_gallery.html",
     "title": "Project Gallery",
     "section": "",
-    "text": "Goalkeepers and their heights\n\n\n\n\n\n\nCameron West and Stéphane Guillou\n\n\nJun 15, 2025\n\n\n\n\n\n\nNo matching items",
+    "text": "Goalkeepers and their heights\n\n\n\n\n\n\nCameron West and Stéphane Guillou\n\n\nJun 19, 2025\n\n\n\n\n\n\nNo matching items",
     "crumbs": [
       "Project Gallery",
       "Winter 2025"
@@ -278,45 +278,45 @@
   {
     "objectID": "setup.html",
     "href": "setup.html",
-    "title": "Intro and Setting Up",
+    "title": "Python Training Intensive",
     "section": "",
     "text": "Welcome to our three-day Python training intensive! By Thursday afternoon, you’ll have learnt the Python skills to manipulate, visualise and present data. We’ll spend roughly half the time learning content, and half the time working on a project in groups.\nAs we set up, there’s a few things to do, if you haven’t already\n\nInstall the software\nIntroduce yourself to your table\nJoin our Teams channel\nRegister your attendance",
     "crumbs": [
       "Workshops",
-      "Intro and Setting Up"
+      "Python Training Intensive"
     ]
   },
   {
     "objectID": "setup.html#overview",
     "href": "setup.html#overview",
-    "title": "Intro and Setting Up",
+    "title": "Python Training Intensive",
     "section": "",
     "text": "Welcome to our three-day Python training intensive! By Thursday afternoon, you’ll have learnt the Python skills to manipulate, visualise and present data. We’ll spend roughly half the time learning content, and half the time working on a project in groups.\nAs we set up, there’s a few things to do, if you haven’t already\n\nInstall the software\nIntroduce yourself to your table\nJoin our Teams channel\nRegister your attendance",
     "crumbs": [
       "Workshops",
-      "Intro and Setting Up"
+      "Python Training Intensive"
     ]
   },
   {
     "objectID": "setup.html#software",
     "href": "setup.html#software",
-    "title": "Intro and Setting Up",
+    "title": "Python Training Intensive",
     "section": "Software",
     "text": "Software\nWe are going to use Spyder for writing and running Python. This is a friendly interactive development environment (IDE) aimed at researchers. However, you are more than welcome to use your own!\nPlease set up Python and your IDE in advance. If you don’t have Python or an IDE, we recommend installing Spyder, which comes with Python.\nWe’ll also be using the rendering and publishing tool Quarto from day 2, so please download and install Quarto.\n\nGoogle Colab\nIf you aren’t able to install Python and a suitable IDE on your device (e.g. if you do not have permission) then we can find an online alternative for you, likely in the form of Google Colab. Let us know and we’ll help you get set up!",
     "crumbs": [
       "Workshops",
-      "Intro and Setting Up"
+      "Python Training Intensive"
     ]
   },
   {
     "objectID": "setup.html#creating-a-project",
     "href": "setup.html#creating-a-project",
-    "title": "Intro and Setting Up",
+    "title": "Python Training Intensive",
     "section": "Creating a Project",
     "text": "Creating a Project\nIf you’re using Spyder, we recommend you create a project. Projects are just fancy folders, and they make it easier to access files (i.e. data) and export images (i.e. visualisations) all in the one place.\n\nOpen Spyder\nIn the Projects menu, click New Project…\nChoose New Directory, give your project a name and find an appropriate place on your computer for it.\nPress Create\n\nDone! We’ll work in this project for the duration of the intensives.",
     "crumbs": [
       "Workshops",
-      "Intro and Setting Up"
+      "Python Training Intensive"
     ]
   },
   {
@@ -580,7 +580,7 @@
     "href": "Past_projects/project_gallery.html",
     "title": "Projects from summer 2025",
     "section": "",
-    "text": "Aeroplane Bird Strike Incidents\n\n\n\n\n\n\nKoyo Yanagisawa\n\n\nJan 15, 2025\n\n\n\n\n\n\n\n\n\n\n\nAnalyzing the Relationship between Ratings and Reviews for Books\n\n\n\n\n\n\nNurul Najihah\n\n\nJan 15, 2025\n\n\n\n\n\n\n\n\n\n\n\nBird Strikes and Aeroplane Damages in the U.S. (1990-1999)\n\n\n\n\n\n\nLiz & Koyo\n\n\n\n\n\n\n\n\n\n\n\nFuel Consumption\n\n\n\n\n\n\nEdison Vargas\n\n\nJan 16, 2025\n\n\n\n\n\n\n\n\n\n\n\nFuel Consumption\n\n\n\n\n\n\nEdison Vargas\n\n\nJan 16, 2025\n\n\n\n\n\n\n\n\n\n\n\n\n\nGoalkeepers and their heights\n\n\n\n\n\n\nCameron West and Stéphane Guillou\n\n\nJun 15, 2025\n\n\n\n\n\n\n\n\n\n\n\nGoodreads\n\n\n\n\n\n\nCaira\n\n\nJan 16, 2025\n\n\n\n\n\n\n\n\n\n\n\nGoodreads document\n\n\n\n\n\n\nEmma\n\n\nJan 16, 2025\n\n\n\n\n\n\n\n\n\n\n\nProject-Python\n\n\n\n\n\n\n\n\n\nJan 16, 2025\n\n\n\n\n\n\n\n\n\n\n\nQueensland Fuel Price in 2023\n\n\n\n\n\n\nAdelia & Lauren\n\n\nJan 16, 2025\n\n\n\n\n\n\n\n\n\n\n\nThe popular author\n\n\n\n\n\n\nGoodread\n\n\nJan 16, 2025\n\n\n\n\n\n\nNo matching items",
+    "text": "Aeroplane Bird Strike Incidents\n\n\n\n\n\n\nKoyo Yanagisawa\n\n\nJan 15, 2025\n\n\n\n\n\n\n\n\n\n\n\nAnalyzing the Relationship between Ratings and Reviews for Books\n\n\n\n\n\n\nNurul Najihah\n\n\nJan 15, 2025\n\n\n\n\n\n\n\n\n\n\n\nBird Strikes and Aeroplane Damages in the U.S. (1990-1999)\n\n\n\n\n\n\nLiz & Koyo\n\n\n\n\n\n\n\n\n\n\n\nFuel Consumption\n\n\n\n\n\n\nEdison Vargas\n\n\nJan 16, 2025\n\n\n\n\n\n\n\n\n\n\n\nFuel Consumption\n\n\n\n\n\n\nEdison Vargas\n\n\nJan 16, 2025\n\n\n\n\n\n\n\n\n\n\n\n\n\nGoalkeepers and their heights\n\n\n\n\n\n\nCameron West and Stéphane Guillou\n\n\nJun 19, 2025\n\n\n\n\n\n\n\n\n\n\n\nGoodreads\n\n\n\n\n\n\nCaira\n\n\nJan 16, 2025\n\n\n\n\n\n\n\n\n\n\n\nGoodreads document\n\n\n\n\n\n\nEmma\n\n\nJan 16, 2025\n\n\n\n\n\n\n\n\n\n\n\nProject-Python\n\n\n\n\n\n\n\n\n\nJan 16, 2025\n\n\n\n\n\n\n\n\n\n\n\nQueensland Fuel Price in 2023\n\n\n\n\n\n\nAdelia & Lauren\n\n\nJan 16, 2025\n\n\n\n\n\n\n\n\n\n\n\nThe popular author\n\n\n\n\n\n\nGoodread\n\n\nJan 16, 2025\n\n\n\n\n\n\nNo matching items",
     "crumbs": [
       "Project Gallery",
       "Past projects",
