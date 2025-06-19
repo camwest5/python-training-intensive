@@ -528,6 +528,41 @@
     ]
   },
   {
+    "objectID": "Projects/example_project/example_project.html",
+    "href": "Projects/example_project/example_project.html",
+    "title": "Goalkeepers and their heights",
+    "section": "",
+    "text": "Code\nimport matplotlib.pyplot as plt\nimport pandas as pd\nimport plotly.express as px\nimport seaborn as sns\n\ndf_raw = pd.read_csv(\"../../data_sources/Players2024.csv\")"
+  },
+  {
+    "objectID": "Projects/example_project/example_project.html#a-glimpse-at-the-dataset",
+    "href": "Projects/example_project/example_project.html#a-glimpse-at-the-dataset",
+    "title": "Goalkeepers and their heights",
+    "section": "A glimpse at the dataset",
+    "text": "A glimpse at the dataset\nWe’ll begin just by taking a glimpse at the dataset:\n\n\nCode\ndf_raw.head(10)\n\n\n\n\n\n\n\n\n\nname\nbirth_date\nheight_cm\npositions\nnationality\nage\nclub\n\n\n\n\n0\nJames Milner\n1986-01-04\n175.0\nMidfield\nEngland\n38\nBrighton and Hove Albion Football Club\n\n\n1\nAnastasios Tsokanis\n1991-05-02\n176.0\nMidfield\nGreece\n33\nVolou Neos Podosferikos Syllogos\n\n\n2\nJonas Hofmann\n1992-07-14\n176.0\nMidfield\nGermany\n32\nBayer 04 Leverkusen Fußball\n\n\n3\nPepe Reina\n1982-08-31\n188.0\nGoalkeeper\nSpain\n42\nCalcio Como\n\n\n4\nLionel Carole\n1991-04-12\n180.0\nDefender\nFrance\n33\nKayserispor Kulübü\n\n\n5\nLudovic Butelle\n1983-04-03\n188.0\nGoalkeeper\nFrance\n41\nStade de Reims\n\n\n6\nDaley Blind\n1990-03-09\n180.0\nDefender\nNetherlands\n34\nGirona Fútbol Club S. A. D.\n\n\n7\nCraig Gordon\n1982-12-31\n193.0\nGoalkeeper\nScotland\n41\nHeart of Midlothian Football Club\n\n\n8\nDimitrios Sotiriou\n1987-09-13\n185.0\nGoalkeeper\nGreece\n37\nOmilos Filathlon Irakliou FC\n\n\n9\nAlessio Cragno\n1994-06-28\n184.0\nGoalkeeper\nItaly\n30\nAssociazione Calcio Monza"
+  },
+  {
+    "objectID": "Projects/example_project/example_project.html#cleaning-the-data",
+    "href": "Projects/example_project/example_project.html#cleaning-the-data",
+    "title": "Goalkeepers and their heights",
+    "section": "Cleaning the data",
+    "text": "Cleaning the data\nThe data had a few issues, as the following plot shows:\n\n\nCode\nsns.catplot(df_raw, x = \"positions\", y = \"height_cm\")\n\n\n\n\n\n\n\n\n\nIt looks like some of the players’ positions and heights were recorded incorrectly. To clean, let’s remove the “Missing” positions and ensure that heights are reasonable:\n\n\nCode\ndf = df_raw.copy()\n\n# Remove missing position\ndf = df[df[\"positions\"] != \"Missing\"]\n\n# Ensure reasonable heights\ndf = df[df[\"height_cm\"] &gt; 100]\n\n\nTo confirm, let’s plot the outliers in a different colour\n\n\nCode\n# Identify outliers\noutliers = pd.concat([df_raw,df]).drop_duplicates(keep = False)\n\nsns.catplot(df, x = \"positions\", y = \"height_cm\")\nsns.stripplot(outliers, x = \"positions\", y = \"height_cm\", color = \"r\")"
+  },
+  {
+    "objectID": "Projects/example_project/example_project.html#visualising-the-players-heights",
+    "href": "Projects/example_project/example_project.html#visualising-the-players-heights",
+    "title": "Goalkeepers and their heights",
+    "section": "Visualising the players’ heights",
+    "text": "Visualising the players’ heights\nAfter cleaning the data we can now analyse the players’ heights to see if there’s differences between positions. A box plot can show the distribution of heights:\n\n\nCode\nsns.catplot(data = df, x = \"positions\", y = \"height_cm\", kind = \"box\", order = [\"Goalkeeper\", \"Defender\", \"Midfield\", \"Attack\"])\nplt.xlabel(\"Position\")\nplt.ylabel(\"Height (cm)\")\nplt.savefig(\"tb.png\")\nplt.show()\n\n\n\n\n\n\n\n\n\nIt looks like goalkeepers are taller than the rest!\nLet’s through the age variable into the mix, to see if players’ heights allow them to compete longer.\n\n\nCode\npx.scatter(data_frame = df, x = \"age\", y = \"height_cm\", color = \"positions\",\n           facet_col = \"positions\", facet_col_wrap = 2, hover_name = \"name\",\n           hover_data = \"nationality\", labels = {\"height_cm\": \"Height (cm)\",\n                                                 \"positions\": \"Position\"})\n\n\n        \n        \n        \n\n\n                            \n                                            \n\n\nIt doesn’t look like there’s a relationship between heights and ages, but clearly it affects their position!"
+  },
+  {
+    "objectID": "Projects/example_project/example_project.html#global-spread",
+    "href": "Projects/example_project/example_project.html#global-spread",
+    "title": "Goalkeepers and their heights",
+    "section": "Global spread",
+    "text": "Global spread\nWe haven’t looked at the nationality column yet. Let’s draw up a map using plotly to see where the players come from.\n\n\nCode\n# Change country names to match plotly reference\ndf[\"nationality\"] = df[\"nationality\"].replace([\"England\", \"Türkiye\", \"Cote d'Ivoire\", \n                                               \"Northern Ireland\", \"Wales\"], \n                                               [\"United Kingdom\", \"Turkey\", \"Ivory Coast\",\n                                                \"United Kingdom\", \"United Kingdom\"])\n\n# Make the count\ncountries = df.value_counts(\"nationality\")\n\n# Make the plot\npx.choropleth(locations = countries.index, locationmode = \"country names\", color = countries,\n              labels = {\"locations\": \"Country\", \"color\": \"# of players\"})\n\n\n                            \n                                            \n\n\nLooks like most players are from Europe. Pan and zoom to see the finer details."
+  },
+  {
     "objectID": "Projects/tips.html",
     "href": "Projects/tips.html",
     "title": "Tips",
