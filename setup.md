@@ -20,7 +20,7 @@ As we set up, there's a few things to do, if you haven't already
 
 We are going to use [Spyder](https://www.spyder-ide.org/) for writing and running Python. This is a friendly interactive development environment (IDE) aimed at researchers. **However, you are more than welcome to use your own!**
 
-Please set up Python and your IDE in advance. If you don't have Python or an IDE, we recommend [installing Spyder](https://www.spyder-ide.org/), which comes with Python.
+Please set up Python and your IDE in advance. If you don't have Python or an IDE, we recommend [installing the Anaconda distribution](https://www.anaconda.com/download/success), which comes with Python.
 
 We'll also be using the rendering and publishing tool Quarto from day 2, so please [download and install Quarto](https://quarto.org/docs/download/).
 
