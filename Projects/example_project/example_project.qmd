@@ -1,17 +1,19 @@
 ---
 title: Goalkeepers and their heights
 author: Cameron West and Stéphane Guillou
-date: today
+date: 23-Jun-25
 warning: false
-error: false
 image: tb.png
 format:
   html:
     code-fold: true
-    code_summary: "Show the code"
+    code-summary: "Show code"
+    code-tools: true
 ---
 
 ```{python}
+#| code-summary: "Set up code"
+
 import matplotlib.pyplot as plt
 import pandas as pd
 import plotly.express as px
