@@ -41,7 +41,11 @@ Good luck!
 
 ## Design and submissions
 
-We've put together an [example dashboard](example_project/example_project.qmd) which you're welcome to start from. [Download the code](example_project.zip) to have a look at our example. You can also see a gallery of examples on [Quarto's website](https://quarto.org/docs/gallery/#dashboards).
+We recommend starting from our [template](template.qmd). 
+
+We've also put together an [example report](example_project/example_project.qmd) which you're welcome to look at - you can download the code from there.
+
+Finally, you can also see a gallery of examples on [Quarto's website](https://quarto.org/docs/gallery/#dashboards).
 
 ### Uploading the submission
 

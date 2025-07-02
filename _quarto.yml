@@ -30,6 +30,7 @@ website:
         - section: The Project
           contents:
           - auto: "Projects/*"
+
     - title: "Project Gallery"
       contents:
         - text: "Winter 2025"
