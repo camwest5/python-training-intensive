@@ -6,6 +6,7 @@ project:
     - "Projects/*"
     - "Past_projects/*"
     - project_gallery.qmd
+    - "!Past_projects/converter.py"
 
 website:
   title: "Python Training Intensive"
