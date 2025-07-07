@@ -88,6 +88,7 @@ sns.catplot(data = df, x = "positions", y = "height_cm")
 If your plots aren't appearing, then it might be due to a known bug. The latest versions of Spyder and matplotlib solve the problem, but we can apply a fix locally for now.
 
 **Step 1.**
+
 Check that it's not a different issue. If you see *any* error message, **then this bug is not the problem** - you should solve the error first.
 
 Assuming there is no error message, this bug is featuring if
@@ -109,7 +110,18 @@ This won't fix the problem, but it will let you manually see the plots.
 
 **Step 2.**
 
-There are three ways which might fix the bug. The first is to run
+Before you try to fix the issue manually, updating Spyder to the latest version should solve the issue.
+
+1. Save your work and close Spyder
+2. Open the Anaconda Navigator
+3. Press the settings button **on the Spyder pane**
+4. Press "Update Application"
+
+Once it's done, relaunch Spyder and give it a go.
+
+**Step 3.**
+
+There are three ways which might fix the bug if you can't update Spyder. The first is to run
 
 ```python
 plt.ion()
@@ -123,7 +135,6 @@ If it doesn't work, try
 import matplotlib as mpl
 mpl.rcParams["backend"] = "agg"
 ```
-**Step 3.**
 
 If *that* doesn't work, then you should adjust your Spyder settings.
 

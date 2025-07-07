@@ -18,13 +18,18 @@ As we set up, there's a few things to do, if you haven't already
 
 ## Software
 
-We are going to use [Spyder](https://www.spyder-ide.org/) for writing and running Python. This is a friendly interactive development environment (IDE) aimed at researchers. **However, you are more than welcome to use your own!**
+We are going to use Spyder for writing and running Python. This is a friendly interactive development environment (IDE) aimed at researchers. **However, you are more than welcome to use your own!**
 
-Please set up Python and your IDE in advance. If you don't have Python or an IDE, we recommend [installing the Anaconda distribution](https://www.anaconda.com/download/success), which comes with Spyder and Python.
+We recommend [installing the Anaconda distribution](https://www.anaconda.com/download/success), which comes with Spyder and Python. You're welcome to use your own IDE if you'd prefer.
 
 Once you have Anaconda installed, **launch Spyder**, either by searching for "Spyder" on your computer or opening the Anaconda Navigator.
 
-We'll also be using the rendering and publishing tool Quarto from day 2, so please [download and install Quarto](https://quarto.org/docs/download/).
+We'll also be using the rendering and publishing tool Quarto from day 2. You're welcome to try set this up, the easiest way is 
+
+1. Open an "Anaconda prompt" from the navigator
+2. Run `conda install conda-forge::quarto`
+
+You can also install it directly from the [Quarto website](https://quarto.org/docs/download/).
 
 ### Google Colab
 

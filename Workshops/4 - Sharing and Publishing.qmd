@@ -15,12 +15,16 @@ In this workshop we cover using GitHub for sharing your source code, Git for ver
 
 ### Installing Quarto
 
-Follow the [instructions to install Quarto](https://quarto.org/docs/get-started/) on your computer. Quarto is a command line tool available for all major operating systems.
+The simplest way to install Quarto is with Anaconda.
 
-<!-- ::: {.callout-note}
+1. Open an "Anaconda prompt" from the navigator
+2. Run `conda install conda-forge::quarto`
+
+Alternatively, follow the [instructions to install Quarto](https://quarto.org/docs/get-started/) on your computer. Quarto is a command line tool available for all major operating systems.
+
+::: {.callout-note}
 We can write Quarto files in Spyder, but there is (at the time of writing) no integration of it into the Spyder interface. Other IDEs make it easier to interact with Quarto functions and write Quarto files, like R Studio.
-::: -->
-
+::: 
 
 Once Quarto is installed, restart Spyder and try running `!quarto version` in Spyder's IPython console. If it returns a version number, Quarto was installed successfully and you will be able to run Quarto commands straight from Spyder (using the `!` at the beginning).
 
