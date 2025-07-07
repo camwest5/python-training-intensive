@@ -307,10 +307,25 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p><a href="https://quarto.org">Quarto</a> is a publishing system that allows creating documents, presentations, websites and dashboards that contain prose, code and code outputs. This means that such outputs can detail exactly what happened to the data, and outputs can be re-generated very quickly if, for example, the underlying dataset was updated, or if the analysis needs to change.</p>
 <section id="installing-quarto" class="level3">
 <h3 class="anchored" data-anchor-id="installing-quarto">Installing Quarto</h3>
-<p>Follow the <a href="https://quarto.org/docs/get-started/">instructions to install Quarto</a> on your computer. Quarto is a command line tool available for all major operating systems.</p>
-<!-- ::: {.callout-note}
-We can write Quarto files in Spyder, but there is (at the time of writing) no integration of it into the Spyder interface. Other IDEs make it easier to interact with Quarto functions and write Quarto files, like R Studio.
-::: -->
+<p>The simplest way to install Quarto is with Anaconda.</p>
+<ol type="1">
+<li>Open an “Anaconda prompt” from the navigator</li>
+<li>Run <code>conda install conda-forge::quarto</code></li>
+</ol>
+<p>Alternatively, follow the <a href="https://quarto.org/docs/get-started/">instructions to install Quarto</a> on your computer. Quarto is a command line tool available for all major operating systems.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>We can write Quarto files in Spyder, but there is (at the time of writing) no integration of it into the Spyder interface. Other IDEs make it easier to interact with Quarto functions and write Quarto files, like R Studio.</p>
+</div>
+</div>
 <p>Once Quarto is installed, restart Spyder and try running <code>!quarto version</code> in Spyder’s IPython console. If it returns a version number, Quarto was installed successfully and you will be able to run Quarto commands straight from Spyder (using the <code>!</code> at the beginning).</p>
 <p>If the IPython console can’t find Quarto, try to run <code>quarto version</code> (without the <code>!</code>) in a command line interface outside Spyder (bash, macOS’s Terminal, PowerShell…). You will have to use the tool that finds Quarto to run Quarto commands later.</p>
 </section>
@@ -357,7 +372,7 @@ Warning
 <span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a><span class="ss">    1. </span>with</span>
 <span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a><span class="ss">    2. </span>levels</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="callout callout-style-simple callout-note no-icon callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
@@ -366,7 +381,7 @@ Markdown example
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>This contains <strong>bold</strong> and <em>italicised</em> text. You can also <del>strikethrough</del>, create</p>
 <section id="subheading" class="level2">
@@ -411,7 +426,7 @@ Tip
 <h4 class="anchored" data-anchor-id="troubleshooting">Troubleshooting</h4>
 <p>You may encounter a few issues which can be fixed:</p>
 <div class="callout callout-style-default callout-warning callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -420,7 +435,7 @@ Tip
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-4" class="callout-4-contents callout-collapse collapse">
+<div id="callout-5" class="callout-5-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>Either you’ve misspelt the filename, you’ve put he file in a folder, or the working directory is wrong. Once you’ve checked the spelling,</p>
 <p><strong>If <code>document.qmd</code> is in a folder</strong></p>
@@ -434,7 +449,7 @@ Tip
 </div>
 </div>
 <div class="callout callout-style-default callout-warning callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -443,7 +458,7 @@ Tip
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-5" class="callout-5-contents callout-collapse collapse">
+<div id="callout-6" class="callout-6-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>You’re trying to import a module that Python can’t find. This is a Python problem, not a Quarto problem. Check the erroneous line, which will start with</p>
 <div class="sourceCode" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> some_module</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -458,7 +473,7 @@ Tip
 </div>
 </div>
 <div class="callout callout-style-default callout-warning callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -467,7 +482,7 @@ Tip
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-6" class="callout-6-contents callout-collapse collapse">
+<div id="callout-7" class="callout-7-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>You’ve probably forgotten the exclamation mark: make sure to use it if you’re in Spyder</p>
 <div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="ex">!quarto</span> render document.qmd</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -475,7 +490,7 @@ Tip
 </div>
 </div>
 <div class="callout callout-style-default callout-warning callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -484,7 +499,7 @@ Tip
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-7" class="callout-7-contents callout-collapse collapse">
+<div id="callout-8" class="callout-8-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>Try running</p>
 <div class="sourceCode" id="cb10"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="ex">!quarto</span> help</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -496,7 +511,7 @@ Tip
 </div>
 </div>
 <div class="callout callout-style-default callout-warning callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-9-contents" aria-controls="callout-9" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -505,25 +520,9 @@ Tip
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-8" class="callout-8-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p>Something’s wrong with your Quarto installation. Check that you’ve installed it correctly and ask for help from a trainer.</p>
-</div>
-</div>
-</div>
-<div class="callout callout-style-default callout-warning callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-9-contents" aria-controls="callout-9" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Missing Python kernel
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
 <div id="callout-9" class="callout-9-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>You might have to install jupyter. See options for different package managers in the <a href="https://quarto.org/docs/computations/python.html#installation">Quarto documentation about Python</a>. If you’re running into this issue and using Anaconda, please ask for assistance.</p>
+<p>Something’s wrong with your Quarto installation. Check that you’ve installed it correctly and ask for help from a trainer.</p>
 </div>
 </div>
 </div>
@@ -533,11 +532,27 @@ Missing Python kernel
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Nothing is happening
+Missing Python kernel
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
 <div id="callout-10" class="callout-10-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>You might have to install jupyter. See options for different package managers in the <a href="https://quarto.org/docs/computations/python.html#installation">Quarto documentation about Python</a>. If you’re running into this issue and using Anaconda, please ask for assistance.</p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-11-contents" aria-controls="callout-11" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Nothing is happening
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-11" class="callout-11-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>Sometimes Quarto is a bit slow, particularly if you’ve got a lot to render. If you’ve waited for over one minute, and there’s a red square in the console’s top right, then ask a trainer for help. To troubleshoot, you can try the following steps:</p>
 <ol type="1">
@@ -548,7 +563,7 @@ Nothing is happening
 </div>
 </div>
 <div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-11-contents" aria-controls="callout-11" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-12-contents" aria-controls="callout-12" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -557,7 +572,7 @@ Not using Spyder
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-11" class="callout-11-contents callout-collapse collapse">
+<div id="callout-12" class="callout-12-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>If you’re using a different IDE, you might not be able to use <code>!quarto ...</code>.</p>
 <p><strong>If you’re using Jupyter notebooks</strong></p>
@@ -602,7 +617,7 @@ Tip
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"This code will be executed"</span>)</span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Placing this chunk into our file and then rendering again with <code>!quarto render document.qmd</code>, you should see the code block <em>and</em> its output in the document, like this</p>
-<div id="dc305235" class="cell" data-execution_count="1">
+<div id="6ddcda36" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"This code will be executed"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>This code will be executed</code></pre>
