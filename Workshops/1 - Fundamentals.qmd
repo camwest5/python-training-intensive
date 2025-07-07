@@ -391,7 +391,59 @@ plt.plot(example_array)
 
 This shows a plot in the Plots tab of Spyder.
 
-> In a Python shell, you might have to use the `plt.show()` command to show the plot.
+::: {.callout-warning collapse="true"}
+# Plots not appearing
+
+If your plots aren't appearing, then it might be due to a known bug. The latest versions of Spyder and matplotlib solve the problem, but we can apply a fix locally for now.
+
+**Step 1.**
+Check that it's not a different issue. If you see *any* error message, **then this bug is not the problem** - you should solve the error first.
+
+Assuming there is no error message, this bug is featuring if
+
+- The plot is not appearing, and
+- The console has this output:
+
+```bash
+<seaborn.axisgrid.FacetGrid at 0x1e80c2e94f0>
+```
+
+To apply a quick fix (and ensure that the plots are otherwise ok), try running
+
+```python
+plt.show()
+```
+
+This won't fix the problem, but it will let you manually see the plots.
+
+**Step 2.**
+
+There are three ways which might fix the bug. The first is to run
+
+```python
+plt.ion()
+```
+
+Try running the plot again. If it works, great!
+
+If it doesn't work, try
+
+```python
+import matplotlib as mpl
+mpl.rcParams["backend"] = "agg"
+```
+**Step 3.**
+
+If *that* doesn't work, then you should adjust your Spyder settings.
+
+1. Go to Tools > Preferences > IPython Console > Graphics
+2. Under "Graphics Backend" change the setting to "Automatic"
+
+Try running your plots again. 
+
+**Step 4.**
+If they *still* aren't working, then ask a trainer for assistance.
+:::
 
 The default look is a line plot that joins all the points, but we can style a plot with only a few characters:
 
