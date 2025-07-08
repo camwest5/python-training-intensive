@@ -176,6 +176,16 @@ You've probably forgotten the exclamation mark: make sure to use it if you're in
 :::
 
 :::{.callout-warning collapse="true"}
+# `error: incomplete escape \U at position 28
+
+You've probably forgotten the exclamation mark: make sure to use it if you're in Spyder
+
+```bash
+!quarto render document.qmd
+```
+:::
+
+:::{.callout-warning collapse="true"}
 # `SyntaxError: invalid syntax`
 
 Try running 
