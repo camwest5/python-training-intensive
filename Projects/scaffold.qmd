@@ -23,11 +23,11 @@ We have nine datasets for you to choose from. **We recommend saving your data in
 | [Queensland fuel prices](../data_sources/qld_fuel.csv) | Fuel prices by the pump in Queensland | Data from the Queensland Government's [Open Data Portal](https://www.data.qld.gov.au/dataset/fuel-price-reporting-2024)
 | [Aeroplane bird strikes](../data_sources/birds_strikes.csv) | Aeroplane bird strike incidents fron the 90s| Data from a [Tidy Tuesday post](https://github.com/rfordatascience/tidytuesday/tree/2500765853ea5235409d936cf9bbbf7d5f8b6881/data/2019/2019-07-23) sourced from an [FAA database](https://wildlife.faa.gov/home)
 
-Remember, to load the data into Python we need to import the `pandas` module and use the `read.csv()` function.
+Remember, to load the data into Python we need to import the `pandas` module and use the `read_csv()` function.
 
 ```python
 import pandas as pd
-df = read.csv("path_to_data")
+df = pd.read_csv("path_to_data")
 ```
 
 ### Step 1: Understand the data
