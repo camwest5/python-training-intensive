@@ -24,7 +24,7 @@ website:
         href: https://uqlibrary.github.io/technology-training
   sidebar: 
     - title: "Workshops"
-      collapse-level: 1
+      collapse-level: 2
       contents:
         - setup.md
         - auto: "Workshops"
