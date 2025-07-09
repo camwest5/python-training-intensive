@@ -2,7 +2,7 @@
 title: Tips
 ---
 
-Here's a few general tips. In addition, we strongly recommend using [popular cheatsheets](https://rstudio.github.io/cheatsheets/), which give a quick and easy reference for common packages and functions, and [from Data to Viz](https://www.data-to-viz.com/), which guides you through choosing a visualisation.
+Here's a few general tips. In addition, we strongly recommend using [the pandas cheatsheets](https://pandas.pydata.org/Pandas_Cheat_Sheet.pdf), which give a quick and easy reference for common packages and functions, and [from Data to Viz](https://www.data-to-viz.com/), which guides you through choosing a visualisation.
 
 ## Hotkeys
 | Code | Hotkey | Description |
