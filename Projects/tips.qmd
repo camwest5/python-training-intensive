@@ -97,6 +97,7 @@ This is particularly useful for the **World population** dataset.
 ## Visualisation
 You can make simple visualisations with `seaborn`'s `relplot()`, `catplot()` and `displot()` functions
 
+
 ```python
 import seaborn as sns
 
