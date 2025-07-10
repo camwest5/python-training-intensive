@@ -9,6 +9,25 @@ In this workshop we cover the building blocks for developing more complex code, 
 * Loops
 * Custom functions and modules
 
+## Looking under the hood: what makes `ints` *ints*?
+
+Python is a high level programming language. Its features are often inspired by C and C++, and is itself built in C/C++.
+
+One of the major innovations of C++, and object-oriented programming in general, are **classes**. We won't go over how to write your own - it's beyond the scope of this workshop - but they're worth a conceptual understanding.
+
+Essentially, all Python variables follow a specific template, known as its *class* or *type*. It's safe to use these interchangebly here. The class is a general template for the variable and it defines what *methods* (functions) and *attributes* (variables) live *inside the variable*.
+
+Inside the variable? Where? Well, a variables contain more than just their value. We use the `.` operator to access anything besides the value that lives in the variable. For example, all strings have a function called `.upper()` that makes them uppercase:
+
+```{python}
+random_string = "Hello, this is a sentence."
+print(random_string.upper())
+```
+
+Let me emphasise that **all strings have `.upper()`**. That makes `upper()` a **method** of strings. 
+
+In other words, a class is like an empty form that needs filling. The form **string** has a field called `upper()` that is filled with the function as defined above.
+
 ## Directing traffic with conditionals
 In the first half of this session we'll look at two types of control flows: **conditionals** and **loops**.
 
@@ -213,24 +232,7 @@ for i in range(0,1000):
 ```
  will print *every number* between $0$ and $1000$. This can be useful if you need to loop through multiple objects by indexing.
 
-## Looking under the hood: what makes `ints` *ints*?
 
-Python is a high level programming language. Its features are often inspired by C and C++, and is itself built in C/C++.
-
-One of the major innovations of C++, and object-oriented programming in general, are **classes**. We won't go over how to write your own - it's beyond the scope of this workshop - but they're worth a conceptual understanding.
-
-Essentially, all Python variables follow a specific template, known as its *class* or *type*. It's safe to use these interchangebly here. The class is a general template for the variable and it defines what *methods* (functions) and *attributes* (variables) live *inside the variable*.
-
-Inside the variable? Where? Well, a variables contain more than just their value. We use the `.` operator to access anything besides the value that lives in the variable. For example, all strings have a function called `.upper()` that makes them uppercase:
-
-```{python}
-random_string = "Hello, this is a sentence."
-print(random_string.upper())
-```
-
-Let me emphasise that **all strings have `.upper()`**. That makes `upper()` a **method** of strings. 
-
-In other words, a class is like an empty form that needs filling. The form **string** has a field called `upper()` that is filled with the function as defined above.
 
 ## Building your own machines
 
