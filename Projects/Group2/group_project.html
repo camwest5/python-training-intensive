@@ -206,7 +206,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="average-fuel-prices-by-fuel-types" class="level2">
 <h2 class="anchored" data-anchor-id="average-fuel-prices-by-fuel-types">Average Fuel Prices by Fuel Types</h2>
-<div id="8a4f10e3" class="cell" data-execution_count="1">
+<div id="b24c4beb" class="cell" data-execution_count="1">
 <details class="code-fold">
 <summary>Show code</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Set up code</span></span>
@@ -238,7 +238,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="fuel-price-by-suburbs" class="level2">
 <h2 class="anchored" data-anchor-id="fuel-price-by-suburbs">Fuel Price by Suburbs</h2>
-<div id="59bbcd4c" class="cell" data-execution_count="2">
+<div id="993dde9e" class="cell" data-execution_count="2">
 <details class="code-fold">
 <summary>Show code</summary>
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>df[<span class="st">"TransactionDateutc"</span>] <span class="op">=</span> pd.to_datetime(df[<span class="st">"TransactionDateutc"</span>])</span>
@@ -281,7 +281,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="price-by-time" class="level2">
 <h2 class="anchored" data-anchor-id="price-by-time">Price by Time</h2>
-<div id="bd90fd5c" class="cell" data-execution_count="3">
+<div id="78de983a" class="cell" data-execution_count="3">
 <details class="code-fold">
 <summary>Show code</summary>
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>df.describe()</span>
@@ -309,14 +309,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a>gb <span class="op">=</span> df.groupby(<span class="st">"date_only"</span>)</span>
 <span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a>avg_price_by_date <span class="op">=</span> gb[<span class="st">"Price"</span>].agg(<span class="st">"mean"</span>).reset_index()</span>
-<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a><span class="co"># avg_price_by_date.to_csv("data/avg_price_by_date.csv")  # export subset</span></span>
+<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a>avg_price_by_date.to_csv(<span class="st">"data/avg_price_by_date.csv"</span>)  <span class="co"># export subset</span></span>
 <span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a>df[<span class="st">"TransactionDateutc"</span>].dtypes</span>
 <span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-30"><a href="#cb3-30" aria-hidden="true" tabindex="-1"></a>df[<span class="st">"year_month"</span>] <span class="op">=</span> df[<span class="st">"TransactionDateutc"</span>].dt.to_period(<span class="st">"M"</span>)</span>
 <span id="cb3-31"><a href="#cb3-31" aria-hidden="true" tabindex="-1"></a>gb_year_month <span class="op">=</span> df.groupby(<span class="st">"year_month"</span>)</span>
 <span id="cb3-32"><a href="#cb3-32" aria-hidden="true" tabindex="-1"></a>avg_price_by_year_month <span class="op">=</span> gb_year_month[<span class="st">"Price"</span>].agg(<span class="st">"mean"</span>).reset_index()</span>
-<span id="cb3-33"><a href="#cb3-33" aria-hidden="true" tabindex="-1"></a><span class="co"># avg_price_by_year_month.to_csv("data/avg_price_by_year_month.csv")</span></span>
+<span id="cb3-33"><a href="#cb3-33" aria-hidden="true" tabindex="-1"></a>avg_price_by_year_month.to_csv(<span class="st">"data/avg_price_by_year_month.csv"</span>)</span>
 <span id="cb3-34"><a href="#cb3-34" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
 <span id="cb3-35"><a href="#cb3-35" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> scipy.stats <span class="im">as</span> stats</span>
 <span id="cb3-36"><a href="#cb3-36" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
@@ -905,14 +905,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb4-114"><a href="#cb4-114" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-115"><a href="#cb4-115" aria-hidden="true" tabindex="-1"></a>gb <span class="op">=</span> df.groupby(<span class="st">"date_only"</span>)</span>
 <span id="cb4-116"><a href="#cb4-116" aria-hidden="true" tabindex="-1"></a>avg_price_by_date <span class="op">=</span> gb[<span class="st">"Price"</span>].agg(<span class="st">"mean"</span>).reset_index()</span>
-<span id="cb4-117"><a href="#cb4-117" aria-hidden="true" tabindex="-1"></a><span class="co"># avg_price_by_date.to_csv("data/avg_price_by_date.csv")  # export subset</span></span>
+<span id="cb4-117"><a href="#cb4-117" aria-hidden="true" tabindex="-1"></a>avg_price_by_date.to_csv(<span class="st">"data/avg_price_by_date.csv"</span>)  <span class="co"># export subset</span></span>
 <span id="cb4-118"><a href="#cb4-118" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-119"><a href="#cb4-119" aria-hidden="true" tabindex="-1"></a>df[<span class="st">"TransactionDateutc"</span>].dtypes</span>
 <span id="cb4-120"><a href="#cb4-120" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-121"><a href="#cb4-121" aria-hidden="true" tabindex="-1"></a>df[<span class="st">"year_month"</span>] <span class="op">=</span> df[<span class="st">"TransactionDateutc"</span>].dt.to_period(<span class="st">"M"</span>)</span>
 <span id="cb4-122"><a href="#cb4-122" aria-hidden="true" tabindex="-1"></a>gb_year_month <span class="op">=</span> df.groupby(<span class="st">"year_month"</span>)</span>
 <span id="cb4-123"><a href="#cb4-123" aria-hidden="true" tabindex="-1"></a>avg_price_by_year_month <span class="op">=</span> gb_year_month[<span class="st">"Price"</span>].agg(<span class="st">"mean"</span>).reset_index()</span>
-<span id="cb4-124"><a href="#cb4-124" aria-hidden="true" tabindex="-1"></a><span class="co"># avg_price_by_year_month.to_csv("data/avg_price_by_year_month.csv")</span></span>
+<span id="cb4-124"><a href="#cb4-124" aria-hidden="true" tabindex="-1"></a>avg_price_by_year_month.to_csv(<span class="st">"data/avg_price_by_year_month.csv"</span>)</span>
 <span id="cb4-125"><a href="#cb4-125" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
 <span id="cb4-126"><a href="#cb4-126" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> scipy.stats <span class="im">as</span> stats</span>
 <span id="cb4-127"><a href="#cb4-127" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>

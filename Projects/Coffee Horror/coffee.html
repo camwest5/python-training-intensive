@@ -6,8 +6,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Kim, Janine, Sera &amp; Akansha">
+<meta name="dcterms.date" content="2025-07-10">
 
-<title>Project Gallery – Python Training Intensive</title>
+<title>Analysis of Coffee Preference – Python Training Intensive</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,28 +22,61 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<script src="site_libs/quarto-listing/list.min.js"></script>
-<script src="site_libs/quarto-listing/quarto-listing.js"></script>
-<script src="site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-9d2ddc9151984b7bc78f2ba907a99b8e.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-9d2ddc9151984b7bc78f2ba907a99b8e.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -69,76 +104,18 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-<script>
 
-  window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-listing .list');
-    if (!listingTargetEl) {
-      // No listing discovered, do not attach.
-      return; 
-    }
-
-    const options = {
-      valueNames: ['listing-title','listing-author','listing-date','listing-image','listing-description',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
-      
-      searchColumns: ["listing-title","listing-author","listing-date","listing-image","listing-description"],
-    };
-
-    window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-listing'] = new List('listing-listing', options);
-
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  });
-
-  window.addEventListener('hashchange',() => {
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  })
-  </script>
-
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
-
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
 
 </head>
 
-<body class="nav-sidebar floating nav-fixed quarto-light">
+<body class="nav-fixed quarto-light">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="./index.html">
+    <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">Python Training Intensive</span>
     </a>
   </div>
@@ -149,11 +126,11 @@ window.Quarto = {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="./Workshops/index.html"> 
+    <a class="nav-link" href="../../Workshops/index.html"> 
 <span class="menu-text">Workshops</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="./project_gallery.html" aria-current="page"> 
+    <a class="nav-link" href="../../project_gallery.html"> 
 <span class="menu-text">Project Gallery</span></a>
   </li>  
   <li class="nav-item">
@@ -166,67 +143,49 @@ window.Quarto = {
 </div>
       </div> <!-- /container-fluid -->
     </nav>
-  <nav class="quarto-secondary-nav">
-    <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
-        <i class="bi bi-layout-text-sidebar-reverse"></i>
-      </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./project_gallery.html">Winter 2025</a></li></ol></nav>
-        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
-        </a>
-    </div>
-  </nav>
 </header>
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
-    <div class="sidebar-menu-container"> 
-    <ul class="list-unstyled mt-1">
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./project_gallery.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">Winter 2025</span></a>
-  </div>
-</li>
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
- <span class="menu-text">Past projects</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./Past_projects/project_gallery.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Summer 2025</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-    </ul>
-    </div>
-</nav>
-<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#comparing-personal-preferences-and-bitterness-for-coffeec" id="toc-comparing-personal-preferences-and-bitterness-for-coffeec" class="nav-link active" data-scroll-target="#comparing-personal-preferences-and-bitterness-for-coffeec">Comparing personal preferences and bitterness for <strong>CoffeeC</strong></a></li>
+  <li><a href="#distribution-of-age" id="toc-distribution-of-age" class="nav-link" data-scroll-target="#distribution-of-age"><strong>Distribution of Age</strong></a></li>
+  <li><a href="#distribution-of-favourite-coffee" id="toc-distribution-of-favourite-coffee" class="nav-link" data-scroll-target="#distribution-of-favourite-coffee"><strong>Distribution of Favourite coffee</strong></a></li>
+  <li><a href="#favourite-coffee-based-on-gender" id="toc-favourite-coffee-based-on-gender" class="nav-link" data-scroll-target="#favourite-coffee-based-on-gender"><strong>Favourite coffee based on gender</strong></a></li>
+  <li><a href="#preferred-coffee-style" id="toc-preferred-coffee-style" class="nav-link" data-scroll-target="#preferred-coffee-style"><strong>Preferred Coffee Style</strong></a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Project Gallery</h1>
+<h1 class="title">Analysis of Coffee Preference</h1>
 </div>
 
 
 
 <div class="quarto-title-meta">
 
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Kim, Janine, Sera &amp; Akansha </p>
+          </div>
+  </div>
     
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">July 10, 2025</p>
+    </div>
+  </div>
   
     
   </div>
@@ -236,270 +195,103 @@ window.Quarto = {
 </header>
 
 
-
-
-
-
-<div class="quarto-listing quarto-listing-container-grid" id="listing-listing">
-<div class="list grid quarto-listing-cols-3">
-<div class="g-col-1" data-index="0" data-listing-date-sort="1752105600000" data-listing-file-modified-sort="1752128095210" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="170">
-<a href="./Projects/Coffee Horror/coffee.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top"><img src="Projects/Coffee Horror/coffee_files/figure-html/cell-2-output-1.png" style="height: 150px;"  class="thumbnail-image card-img"/></p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-Analysis of Coffee Preference
-</h5>
-<div class="card-text listing-description delink">
-
-
+<section id="comparing-personal-preferences-and-bitterness-for-coffeec" class="level2">
+<h2 class="anchored" data-anchor-id="comparing-personal-preferences-and-bitterness-for-coffeec">Comparing personal preferences and bitterness for <strong>CoffeeC</strong></h2>
 <div id="d54ffa89" class="cell" data-execution_count="1">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb1-2">df <span class="op">=</span> pd.read_csv(<span class="st">"../../data_sources/coffee_survey.csv"</span>)</span>
-<span id="cb1-3"><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb1-4"><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
-<span id="cb1-5">sns.catplot (data <span class="op">=</span> df, </span>
-<span id="cb1-6">             x <span class="op">=</span>…<span class="st"></span></span><span id="cb1-7"><span class="op"></span><span class="st"></span></span><span id="cb1-8"><span class="op"></span><span class="st"></span></span></code></pre></div><div class="cell-output cell-output-display"><div><figure class="figure"><p></p></figure></div></div></div>
-</div>
-<div class="card-attribution card-text-small justify">
-<div class="listing-author">
-Kim, Janine, Sera &amp; Akansha
-</div>
-<div class="listing-date">
-Jul 10, 2025
-</div>
-</div>
-</div>
-</div></a>
-</div>
-<div class="g-col-1" data-index="1" data-listing-date-sort="1752019200000" data-listing-file-modified-sort="1752128095209" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="181">
-<a href="./Projects/Another coffee survey/Pawatsada.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img loading="lazy" src="./Projects/Another coffee survey/tb.png" class="thumbnail-image card-img" style="height: 150px;">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-Coffee Survey
-</h5>
-<div class="card-text listing-description delink">
-<strong>1.1 Import modules and dataset</strong>
-</div>
-<div class="card-attribution card-text-small justify">
-<div class="listing-author">
-Pawatsada Sanlom
-</div>
-<div class="listing-date">
-Jul 9, 2025
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_csv(<span class="st">"../../data_sources/coffee_survey.csv"</span>)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>sns.catplot (data <span class="op">=</span> df, </span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>             x <span class="op">=</span> <span class="st">"coffee_c_personal_preference"</span>,</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>             y <span class="op">=</span> <span class="st">"coffee_c_bitterness"</span>,</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>             kind <span class="op">=</span> <span class="st">"box"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="coffee_files/figure-html/cell-2-output-1.png" width="487" height="470" class="figure-img"></p>
+</figure>
 </div>
 </div>
 </div>
-</div></a>
-</div>
-<div class="g-col-1" data-index="2" data-listing-date-sort="1752105600000" data-listing-file-modified-sort="1752128095210" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="551">
-<a href="./Projects/Coffee Preferences/ProjectCoffee.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img loading="lazy" src="./Projects/Coffee Preferences/tb.png" class="thumbnail-image card-img" style="height: 150px;">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-Coffee preferences
-</h5>
-<div class="card-text listing-description delink">
-We are investigating the relationship between coffee preferences and age, specifically preferred coffee style, amount consumed, coffee expertise and overall favourite coffee…
-</div>
-<div class="card-attribution card-text-small justify">
-<div class="listing-author">
-Hannah, Orlando and Grace
-</div>
-<div class="listing-date">
-Jul 10, 2025
+</section>
+<section id="distribution-of-age" class="level2">
+<h2 class="anchored" data-anchor-id="distribution-of-age"><strong>Distribution of Age</strong></h2>
+<div id="056474de" class="cell" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>sns.displot(data <span class="op">=</span> df, y <span class="op">=</span> <span class="st">"age"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="coffee_files/figure-html/cell-3-output-1.png" width="470" height="470" class="figure-img"></p>
+</figure>
 </div>
 </div>
 </div>
-</div></a>
-</div>
-<div class="g-col-1" data-index="3" data-listing-date-sort="1752105600000" data-listing-file-modified-sort="1752128095210" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="425">
-<a href="./Projects/Prince/gapminder2025.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img loading="lazy" src="./Projects/Prince/tb.png" class="thumbnail-image card-img" style="height: 150px;">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-GDP per Cap in different continents
-</h5>
-<div class="card-text listing-description delink">
-We will first load the essential <strong>packages</strong> and <strong>dataset</strong>
-</div>
-<div class="card-attribution card-text-small justify">
-<div class="listing-author">
-Prince
-</div>
-<div class="listing-date">
-Jul 10, 2025
+</section>
+<section id="distribution-of-favourite-coffee" class="level2">
+<h2 class="anchored" data-anchor-id="distribution-of-favourite-coffee"><strong>Distribution of Favourite coffee</strong></h2>
+<div id="810e7a91" class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>sns.displot(data <span class="op">=</span> df,</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>            y <span class="op">=</span> <span class="st">"favourite"</span>,</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>            binwidth <span class="op">=</span> <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="coffee_files/figure-html/cell-4-output-1.png" width="471" height="470" class="figure-img"></p>
+</figure>
 </div>
 </div>
 </div>
-</div></a>
+</section>
+<section id="favourite-coffee-based-on-gender" class="level2">
+<h2 class="anchored" data-anchor-id="favourite-coffee-based-on-gender"><strong>Favourite coffee based on gender</strong></h2>
+<div id="d707b8de" class="cell" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>sns.displot(data <span class="op">=</span> df, x <span class="op">=</span> <span class="st">"gender"</span>, y <span class="op">=</span> <span class="st">"favourite"</span>)</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>plt.xticks(rotation<span class="op">=</span><span class="dv">45</span>, ha<span class="op">=</span><span class="st">'right'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="4">
+<pre><code>([0, 1, 2, 3, 4],
+ [Text(0, 0, 'Other (please specify)'),
+  Text(1, 0, 'Female'),
+  Text(2, 0, 'Male'),
+  Text(3, 0, 'Non-binary'),
+  Text(4, 0, 'Prefer not to say')])</code></pre>
 </div>
-<div class="g-col-1" data-index="4" data-listing-date-sort="1750636800000" data-listing-file-modified-sort="1752128095213" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="565">
-<a href="./Projects/example_project/example_project.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img loading="lazy" src="./Projects/example_project/tb.png" class="thumbnail-image card-img" style="height: 150px;">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-Goalkeepers and their heights
-</h5>
-<div class="card-text listing-description delink">
-We’ll begin just by taking a glimpse at the dataset:
-</div>
-<div class="card-attribution card-text-small justify">
-<div class="listing-author">
-Cameron West and Stéphane Guillou
-</div>
-<div class="listing-date">
-Jun 23, 2025
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="coffee_files/figure-html/cell-5-output-2.png" width="468" height="571" class="figure-img"></p>
+</figure>
 </div>
 </div>
 </div>
-</div></a>
-</div>
-<div class="g-col-1" data-index="5" data-listing-date-sort="1752105600000" data-listing-file-modified-sort="1752128095210" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="154">
-<a href="./Projects/Australia and Cambodia Populations/project_report.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img loading="lazy" src="./Projects/Australia and Cambodia Populations/tb.png" class="thumbnail-image card-img" style="height: 150px;">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-Life expectancy comparison between Australian and Cambodian populations between 1950 and 2023
-</h5>
-<div class="card-text listing-description delink">
-We wanted to look at life expectancy and population over tie between Australia and Cambodia to compare differences bettwen diferent regions We used the popultion csvand…
-</div>
-<div class="card-attribution card-text-small justify">
-<div class="listing-author">
-Rob Cincotta and Diana Sanabria
-</div>
-<div class="listing-date">
-Jul 10, 2025
-</div>
-</div>
-</div>
-</div></a>
-</div>
-<div class="g-col-1" data-index="6" data-listing-date-sort="1752105600000" data-listing-file-modified-sort="1752128095210" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="671">
-<a href="./Projects/Coffee Survey/MyReport.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top"><img src="Projects/Coffee Survey/MyReport_files/figure-html/cell-4-output-1.png" style="height: 150px;"  class="thumbnail-image card-img"/></p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-My Python Report
-</h5>
-<div class="card-text listing-description delink">
-<strong>Favourite types</strong>
-</div>
-<div class="card-attribution card-text-small justify">
-<div class="listing-author">
-Yuli Astriani &amp; Elisabeth Natalia Palan Bolen
-</div>
-<div class="listing-date">
-Jul 10, 2025
+</section>
+<section id="preferred-coffee-style" class="level2">
+<h2 class="anchored" data-anchor-id="preferred-coffee-style"><strong>Preferred Coffee Style</strong></h2>
+<div id="cbb8b77b" class="cell" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>names <span class="op">=</span> [<span class="st">'Pourover'</span>, <span class="st">'Latte'</span>,<span class="st">'Drip coffee'</span>, <span class="st">'Cappuccino'</span>, <span class="st">'Espresso'</span>,<span class="st">'Cortado'</span>,<span class="st">'Americano'</span>, <span class="st">'Iced coffee'</span>, <span class="st">'Mocha'</span>,<span class="st">'Cold brew'</span>,<span class="st">'Other'</span>, <span class="st">'Blended drinks'</span>]</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>size <span class="op">=</span> [<span class="dv">1026</span>, <span class="dv">654</span>, <span class="dv">415</span>, <span class="dv">330</span>, <span class="dv">309</span>, <span class="dv">295</span>, <span class="dv">238</span>, <span class="dv">147</span>, <span class="dv">116</span>, <span class="dv">108</span>, <span class="dv">105</span>, <span class="dv">45</span>]</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a circle at the center of the plot</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>my_circle <span class="op">=</span> plt.Circle( (<span class="dv">0</span>,<span class="dv">0</span>), <span class="fl">0.7</span>, color<span class="op">=</span><span class="st">'white'</span>)</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Give color names</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>plt.pie(size, labels<span class="op">=</span>names, colors<span class="op">=</span>[<span class="st">'red'</span>,<span class="st">'green'</span>,<span class="st">'blue'</span>,<span class="st">'skyblue'</span>])</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>p <span class="op">=</span> plt.gcf()</span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>p.gca().add_artist(my_circle)</span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Show the graph</span></span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="coffee_files/figure-html/cell-6-output-1.png" width="517" height="389" class="figure-img"></p>
+</figure>
 </div>
 </div>
 </div>
-</div></a>
-</div>
-<div class="g-col-1" data-index="7" data-listing-date-sort="1752105600000" data-listing-file-modified-sort="1752128095210" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="193">
-<a href="./Projects/Mst Noorunnahar/project_nahar.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<div class="listing-item-img-placeholder card-img-top" style="height: 150px;">&nbsp;</div>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-My Python project
-</h5>
-<div class="card-text listing-description delink">
-Dengue fever is transmitted through the wound of an Aedes mosquito that harbors the dengue virus. Transmission occurs when the mosquito acquires the virus from an individual…
-</div>
-<div class="card-attribution card-text-small justify">
-<div class="listing-author">
-Nahar
-</div>
-<div class="listing-date">
-Jul 10, 2025
-</div>
-</div>
-</div>
-</div></a>
-</div>
-<div class="g-col-1" data-index="8" data-listing-date-sort="1752105600000" data-listing-file-modified-sort="1752128095210" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="221">
-<a href="./Projects/Group2/group_project.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img loading="lazy" src="./Projects/Group2/tb.png" class="thumbnail-image card-img" style="height: 150px;">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-Queensland Fuel Price
-</h5>
-<div class="card-text listing-description delink">
-This Report will focus on Fuel price by Fuel types, Suburbs and change by months
-</div>
-<div class="card-attribution card-text-small justify">
-<div class="listing-author">
-Nana, Jia Vei Yar, Yawen
-</div>
-<div class="listing-date">
-Jul 10, 2025
-</div>
-</div>
-</div>
-</div></a>
-</div>
-<div class="g-col-1" data-index="9" data-listing-date-sort="1752105600000" data-listing-file-modified-sort="1752128095213" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="267">
-<a href="./Projects/Sisay/report.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top"><img src="Projects/Sisay/report_files/figure-html/cell-2-output-1.png" alt="A scatterplot of the relationsship life expectancy and GDP per capital" style="height: 150px;"  class="thumbnail-image card-img"/></p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-my python report
-</h5>
-<div class="card-text listing-description delink">
-Markdown is a <strong>markup language</strong> * we can create test, heading, and graphs for relationship between variables
-</div>
-<div class="card-attribution card-text-small justify">
-<div class="listing-author">
-Sisay
-</div>
-<div class="listing-date">
-Jul 10, 2025
-</div>
-</div>
-</div>
-</div></a>
-</div>
-<div class="g-col-1" data-index="10" data-listing-file-modified-sort="1752128095210">
-<a href="./Projects/Group2/project.py" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
 
-<div class="card-body post-contents">
-<div class="card-text listing-description delink">
-</div>
-<div class="card-attribution card-text-small start">
-<div class="listing-author">
 
-</div>
-</div>
-</div>
-</div></a>
-</div>
-</div>
-<div class="listing-no-matching d-none">No matching items</div>
-</div></main> <!-- /main -->
+</section>
+
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";
