@@ -23,6 +23,22 @@ We'll use three new modules:
  - `scipy.stats`
  - `statsmodels`
 
+## Setting up
+
+To begin, create a new file for this session.
+
+:::{.callout-warning}
+# Be careful with the file name
+
+We've encountered issues when calling this file *statistics.py*, so please choose a **different name**. Examples include,
+
+- `stats.py`
+- `stats_workshop.py`
+- `statistics_workshop.py`
+
+Specifically, when you render Quarto files with seaborn plots, it gets confused and uses *your file* to compute statistics instead of its dependency.
+:::
+
 We'll be working from our "Players2024" dataset again. To bring it in and clean it up,
 
 ```{python}
