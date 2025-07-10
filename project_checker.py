@@ -8,7 +8,6 @@ import pandas as pd
 root = os.getcwd()
 
 for path, dirs, files in os.walk("Projects"):
-    os.chdir(root)
 
 
     if path == "Projects":
@@ -18,7 +17,7 @@ for path, dirs, files in os.walk("Projects"):
         if filename[-4:] != ".qmd":
             continue
 
-        with open(path + "/" + filename) as project:
+        with open(path + "\\" + filename) as project:
             source = project.read()
 
         print()
@@ -69,6 +68,7 @@ for path, dirs, files in os.walk("Projects"):
                 print(f"Encountered '{e}'")
             else:
                 print(f"\033[32mREQS OK\033[0m\t ({import_command})")
+    os.chdir(root)
 
 
 

@@ -30,7 +30,7 @@ This Report will focus on Fuel price by Fuel types, Suburbs and change by months
 ```{python}
 # Set up code
 import pandas as pd
-df=pd.read_csv("data/qld_fuel.csv")
+df=pd.read_csv("../../data_sources/qld_fuel.csv")
 import seaborn as sns
 fp=df["Price"]
 ft=df["Fuel_Type"]
@@ -111,14 +111,14 @@ df["date_only"] = df["TransactionDateutc"].dt.date
 
 gb = df.groupby("date_only")
 avg_price_by_date = gb["Price"].agg("mean").reset_index()
-avg_price_by_date.to_csv("data/avg_price_by_date.csv")  # export subset
+# avg_price_by_date.to_csv("data/avg_price_by_date.csv")  # export subset
 
 df["TransactionDateutc"].dtypes
 
 df["year_month"] = df["TransactionDateutc"].dt.to_period("M")
 gb_year_month = df.groupby("year_month")
 avg_price_by_year_month = gb_year_month["Price"].agg("mean").reset_index()
-avg_price_by_year_month.to_csv("data/avg_price_by_year_month.csv")
+# avg_price_by_year_month.to_csv("data/avg_price_by_year_month.csv")
 import seaborn as sns
 import scipy.stats as stats
 import matplotlib.pyplot as plt

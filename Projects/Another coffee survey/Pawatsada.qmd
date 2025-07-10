@@ -21,7 +21,7 @@ import pandas as pd
 import plotly.express as px
 import seaborn as sns
 
-df = pd.read_csv('data/coffee_survey.csv')
+df = pd.read_csv('../../data_sources/coffee_survey.csv')
 ```
 **1.2 Data Exploration**
 ```{python}

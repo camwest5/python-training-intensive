@@ -31,7 +31,7 @@ import seaborn as sns
 
 
 
-df_raw = pd.read_csv("Project/population.csv")
+df_raw = pd.read_csv("../../data_sources/population.csv")
 
 df = df_raw.copy()
 
@@ -48,7 +48,7 @@ sns.lineplot(data=World, x="Year", y="Jan.Population")
 
  
 
-df_raw = pd.read_csv("Project/population.csv")
+df_raw = pd.read_csv("../../data_sources/population.csv")
 
 plt.show()
 
