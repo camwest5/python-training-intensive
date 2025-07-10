@@ -1,12 +1,14 @@
 project:
   type: website
   render: 
-    - setup.md
+    - "setup.md"
     - "Workshops/*"
     - "Projects/*"
     - "Past_projects/*"
-    - project_gallery.qmd
+    - "project_gallery.qmd"
     - "!Past_projects/converter.py"
+    - "!Projects/*.py"
+    - "!Past_projects/*.py"
 
 website:
   title: "Python Training Intensive"

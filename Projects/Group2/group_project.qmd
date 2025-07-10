@@ -111,14 +111,14 @@ df["date_only"] = df["TransactionDateutc"].dt.date
 
 gb = df.groupby("date_only")
 avg_price_by_date = gb["Price"].agg("mean").reset_index()
-# avg_price_by_date.to_csv("data/avg_price_by_date.csv")  # export subset
+avg_price_by_date.to_csv("data/avg_price_by_date.csv")  # export subset
 
 df["TransactionDateutc"].dtypes
 
 df["year_month"] = df["TransactionDateutc"].dt.to_period("M")
 gb_year_month = df.groupby("year_month")
 avg_price_by_year_month = gb_year_month["Price"].agg("mean").reset_index()
-# avg_price_by_year_month.to_csv("data/avg_price_by_year_month.csv")
+avg_price_by_year_month.to_csv("data/avg_price_by_year_month.csv")
 import seaborn as sns
 import scipy.stats as stats
 import matplotlib.pyplot as plt
