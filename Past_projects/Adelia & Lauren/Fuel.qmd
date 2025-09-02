@@ -64,6 +64,7 @@ fuel1 = filtered_fuel[(filtered_fuel["Price"] < 4000) &
 
 ```{python}
 #|echo: false
+#| eval: false
 #| fig-cap: "Fuel price fluctuates monthly"
 px.scatter(data_frame = fuel1,
            x = "Date",
@@ -113,6 +114,7 @@ itables.show(avgprice_sorted)
 
 ```{python}
 #| echo: false
+#| eval: false
 #| fig-cap: "Unleade 91 price across different postcodes in 2023"
 fuel1["date"] = pd.to_datetime(fuel1["Date"])
 unleaded = fuel1[fuel1['Fuel_Type']== "Unleaded"]
@@ -137,6 +139,7 @@ unleaded_fig.update_layout(
 ```
 
 ```{python}
+#| eval: false
 #| echo: false
 #| fig-cap: "DO NOT FUEL ON THE 10TH"
 pricebydate = unleaded.groupby('Date')['Price'].mean()

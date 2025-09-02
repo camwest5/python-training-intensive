@@ -113,6 +113,7 @@ fuel_geo.plot()
 ```
 
 ```{python}
+#| eval: false
 import plotly.express as px
 figure = px.scatter(data_frame = df, x = "Fuel_Type", y = "unit_price", color = "Site_State",
            facet_col = "Site_State", hover_name = "Site_Brand",

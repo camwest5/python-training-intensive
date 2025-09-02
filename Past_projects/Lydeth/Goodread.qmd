@@ -25,6 +25,7 @@ df["publication_date"] = pd.to_datetime(df['publication_date'])
 
 
 ```{python}
+#| eval: false
 df['rating_range'] = pd.cut(df['average_rating'],[0,0.99,1,1.99,2,2.99,3,3.9,4,5])
 px.scatter(data_frame= df, x='publication_date', 
            y='average_rating', 
@@ -38,6 +39,7 @@ px.scatter(data_frame= df, x='publication_date',
 
 
 ## Row {.fill}
+#| eval: false
 
 ```{python}
 #| title: 'Average rating base on year'
@@ -57,6 +59,7 @@ df_new
 #| content: valuebox
 #| title: 'Number of books that got 5 stars'
 #| icon: book 
+#| eval: false
 #| color: primary 
 22
 ```

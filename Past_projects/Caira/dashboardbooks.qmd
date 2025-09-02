@@ -47,6 +47,7 @@ book["rating_range"] =  pd.cut(book["average_rating"], [-1,0.00,0.99, 1,1.99, 2,
 
 
 ```{python}
+#| eval: false
 
 
 #| title: "How the Publication Year of Books has an Influence on its GoodReads Ratings."
@@ -95,6 +96,7 @@ book.head(4)
 "January 2007"
 
 ```
+#| eval: false
 
 
 ## Row {.flow}

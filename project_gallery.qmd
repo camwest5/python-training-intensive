@@ -1,6 +1,7 @@
 ---
 title: Project Gallery
 listing:
-    contents: "Projects/*/*.{py,qmd,md,Rmd,R}"
+    contents: "Projects/*/*.{qmd,md,Rmd,R}"
+    fields: [title, author, date, image]
     type: grid
 ---

@@ -1,9 +1,9 @@
 ---
 title: GDP per Cap in different continents
 author: Prince
-date: today
+date: 9-Jul-25
 warning: false
-image: tb.png 
+#######image: tb.png 
 format:
   html:
     code-fold: true

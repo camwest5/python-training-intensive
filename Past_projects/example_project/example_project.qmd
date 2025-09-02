@@ -43,6 +43,7 @@ plt.show()
 ```
 
 ```{python}
+#| eval: false
 #| title: Age vs Height
 import plotly.express as px
 #px.scatter(data_frame = df, x = "Age", y = "height_cm")

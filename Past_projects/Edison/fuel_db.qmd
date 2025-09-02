@@ -28,6 +28,7 @@ sns.displot(data = df,
 ```
 
 ```{python}
+#| eval: false
 #| title: "Comparison Price comsuption per State"
 import plotly.express as px
 px.scatter(data_frame = df, x = "Fuel_Type", y = "unit_price", color = "Site_State",
@@ -44,6 +45,7 @@ sns.catplot(data = df,
             x = "Site_State", 
             y = "Site_Brand", 
             kind = "bar")
+#| eval: false
 
 ```
 

@@ -5,7 +5,7 @@ author: Rob Cincotta and Diana Sanabria
 date: July 10, 2025
 # The following are optional but recommended
 warning: false
-image: tb.png 
+#######image: tb.png 
 format:
   html:
     code-fold: true

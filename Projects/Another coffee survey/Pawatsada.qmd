@@ -4,7 +4,7 @@ author: Pawatsada Sanlom
 date: July 9, 2025
 # Objective: Considering age, where to drink, favourite, and style of drinking coffee to help starting new business
 warning: false
-image: tb.png 
+#######image: tb.png 
 format: 
   html:
     code-fold: true
