@@ -36,7 +36,7 @@ website:
 
     - title: "Project Gallery"
       contents:
-        - text: "Winter 2025"
+        - text: "Summer 2026"
           href: project_gallery.qmd
         - section: Past projects
           contents:
