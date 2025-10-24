@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.7.34">
+<meta name="generator" content="quarto-1.8.25">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -34,14 +34,15 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-listing/quarto-listing.js"></script>
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-c8ad9e5dbd60b7b70b38521ab19b7da4.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-008ab2ea245a0b832ebad88484efdb71.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-d58b9a2750f78c4ba5585652ef45bd1c.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -113,7 +114,7 @@ const typesetMath = (el) => {
     var macros = [];
     for (var i = 0; i < mathElements.length; i++) {
       var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
         window.katex.render(texText.data, mathElements[i], {
           displayMode: mathElements[i].classList.contains('display'),
           throwOnError: false,
@@ -138,6 +139,8 @@ window.Quarto = {
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
+    <a href="./index.html" class="navbar-brand navbar-brand-logo">
+    </a>
     <a class="navbar-brand" href="./index.html">
     <span class="navbar-title">Python Training Intensive</span>
     </a>
@@ -181,6 +184,10 @@ window.Quarto = {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
+      <a href="./index.html" class="sidebar-logo-link">
+      </a>
+      </div>
     <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
@@ -200,7 +207,13 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./Past_projects/project_gallery.html" class="sidebar-item-text sidebar-link">
+  <a href="./Past_projects/25Winter/project_gallery.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Winter 2025</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Past_projects/25Summer/project_gallery.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Summer 2025</span></a>
   </div>
 </li>
@@ -242,83 +255,7 @@ window.Quarto = {
 
 <div class="quarto-listing quarto-listing-container-grid" id="listing-listing">
 <div class="list grid quarto-listing-cols-3">
-<div class="g-col-1" data-index="0" data-listing-date-sort="1752019200000" data-listing-file-modified-sort="1756794363792" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="170">
-<a href="./Projects/Coffee Horror/coffee.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top"><img src="Projects/Coffee Horror/coffee_files/figure-html/cell-2-output-1.png" style="height: 150px;"  class="thumbnail-image card-img"/></p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-Analysis of Coffee Preference
-</h5>
-<div class="card-attribution card-text-small justify">
-<div class="listing-author">
-Kim, Janine, Sera &amp; Akansha
-</div>
-<div class="listing-date">
-Jul 9, 2025
-</div>
-</div>
-</div>
-</div></a>
-</div>
-<div class="g-col-1" data-index="1" data-listing-date-sort="1752019200000" data-listing-file-modified-sort="1756794363792" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="181">
-<a href="./Projects/Another coffee survey/Pawatsada.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top"><img src="Projects/Another coffee survey/Pawatsada_files/figure-html/cell-4-output-1.png" style="height: 150px;"  class="thumbnail-image card-img"/></p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-Coffee Survey
-</h5>
-<div class="card-attribution card-text-small justify">
-<div class="listing-author">
-Pawatsada Sanlom
-</div>
-<div class="listing-date">
-Jul 9, 2025
-</div>
-</div>
-</div>
-</div></a>
-</div>
-<div class="g-col-1" data-index="2" data-listing-date-sort="1752019200000" data-listing-file-modified-sort="1756794363792" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="551">
-<a href="./Projects/Coffee Preferences/ProjectCoffee.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top"><img src="Projects/Coffee Preferences/ProjectCoffee_files/figure-html/cell-3-output-1.png" style="height: 150px;"  class="thumbnail-image card-img"/></p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-Coffee preferences
-</h5>
-<div class="card-attribution card-text-small justify">
-<div class="listing-author">
-Hannah, Orlando and Grace
-</div>
-<div class="listing-date">
-Jul 9, 2025
-</div>
-</div>
-</div>
-</div></a>
-</div>
-<div class="g-col-1" data-index="3" data-listing-date-sort="1752019200000" data-listing-file-modified-sort="1756794363793" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="425">
-<a href="./Projects/Prince/gapminder2025.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top"><img src="Projects/Prince/gapminder2025_files/figure-html/cell-5-output-1.png" style="height: 150px;"  class="thumbnail-image card-img"/></p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-GDP per Cap in different continents
-</h5>
-<div class="card-attribution card-text-small justify">
-<div class="listing-author">
-Prince
-</div>
-<div class="listing-date">
-Jul 9, 2025
-</div>
-</div>
-</div>
-</div></a>
-</div>
-<div class="g-col-1" data-index="4" data-listing-date-sort="1750636800000" data-listing-file-modified-sort="1756794363795" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="565">
+<div class="g-col-1" data-index="0" data-listing-date-sort="1750636800000" data-listing-file-modified-sort="1761272887053" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="565">
 <a href="./Projects/example_project/example_project.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top"><img src="Projects/example_project/example_project_files/figure-html/cell-4-output-1.png" style="height: 150px;"  class="thumbnail-image card-img"/></p>
@@ -332,103 +269,6 @@ Cameron West and Stéphane Guillou
 </div>
 <div class="listing-date">
 Jun 23, 2025
-</div>
-</div>
-</div>
-</div></a>
-</div>
-<div class="g-col-1" data-index="5" data-listing-date-sort="1752105600000" data-listing-file-modified-sort="1756794363792" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="154">
-<a href="./Projects/Australia and Cambodia Populations/project_report.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top"><img src="Projects/Australia and Cambodia Populations/project_report_files/figure-html/cell-2-output-1.png" style="height: 150px;"  class="thumbnail-image card-img"/></p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-Life expectancy comparison between Australian and Cambodian populations between 1950 and 2023
-</h5>
-<div class="card-attribution card-text-small justify">
-<div class="listing-author">
-Rob Cincotta and Diana Sanabria
-</div>
-<div class="listing-date">
-Jul 10, 2025
-</div>
-</div>
-</div>
-</div></a>
-</div>
-<div class="g-col-1" data-index="6" data-listing-date-sort="1752019200000" data-listing-file-modified-sort="1756794363793" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="671">
-<a href="./Projects/Coffee Survey/MyReport.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top"><img src="Projects/Coffee Survey/MyReport_files/figure-html/cell-4-output-1.png" style="height: 150px;"  class="thumbnail-image card-img"/></p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-My Python Report
-</h5>
-<div class="card-attribution card-text-small justify">
-<div class="listing-author">
-Yuli Astriani &amp; Elisabeth Natalia Palan Bolen
-</div>
-<div class="listing-date">
-Jul 9, 2025
-</div>
-</div>
-</div>
-</div></a>
-</div>
-<div class="g-col-1" data-index="7" data-listing-date-sort="1752105600000" data-listing-file-modified-sort="1756794363793" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="193">
-<a href="./Projects/Mst Noorunnahar/project_nahar.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<div class="listing-item-img-placeholder card-img-top" style="height: 150px;">&nbsp;</div>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-My Python project
-</h5>
-<div class="card-attribution card-text-small justify">
-<div class="listing-author">
-Nahar
-</div>
-<div class="listing-date">
-Jul 10, 2025
-</div>
-</div>
-</div>
-</div></a>
-</div>
-<div class="g-col-1" data-index="8" data-listing-date-sort="1752019200000" data-listing-file-modified-sort="1756794363793" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="221">
-<a href="./Projects/Group2/group_project.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img loading="lazy" src="./Projects/Group2/tb.png" class="thumbnail-image card-img" style="height: 150px;">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-Queensland Fuel Price
-</h5>
-<div class="card-attribution card-text-small justify">
-<div class="listing-author">
-Nana, Jia Vei Yar, Yawen
-</div>
-<div class="listing-date">
-Jul 9, 2025
-</div>
-</div>
-</div>
-</div></a>
-</div>
-<div class="g-col-1" data-index="9" data-listing-date-sort="1752019200000" data-listing-file-modified-sort="1756794363795" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="267">
-<a href="./Projects/Sisay/report.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top"><img src="Projects/Sisay/report_files/figure-html/cell-2-output-1.png" alt="A scatterplot of the relationsship life expectancy and GDP per capital" style="height: 150px;"  class="thumbnail-image card-img"/></p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-my python report
-</h5>
-<div class="card-attribution card-text-small justify">
-<div class="listing-author">
-Sisay
-</div>
-<div class="listing-date">
-Jul 9, 2025
 </div>
 </div>
 </div>
@@ -488,13 +328,14 @@ Jul 9, 2025
       e.clearSelection();
     }
     const getTextToCopy = function(trigger) {
-        const codeEl = trigger.previousElementSibling.cloneNode(true);
-        for (const childEl of codeEl.children) {
-          if (isCodeAnnotation(childEl)) {
-            childEl.remove();
-          }
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
         }
-        return codeEl.innerText;
+      }
+      return codeEl.innerText;
     }
     const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
       text: getTextToCopy

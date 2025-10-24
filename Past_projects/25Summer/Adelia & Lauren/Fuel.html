@@ -1,0 +1,1004 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.25">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Adelia &amp; Lauren">
+<meta name="dcterms.date" content="2025-01-16">
+
+<title>Queensland Fuel Price in 2023 – Python Training Intensive</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script><script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../../">
+<script src="../../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="../../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-dark-707d8167ce6003fca903bfe2be84ab7f.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../../site_libs/bootstrap/bootstrap-414915f500218987966797a841926390.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../../site_libs/bootstrap/bootstrap-dark-414915f500218987966797a841926390.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="light">
+<link href="../../../site_libs/bootstrap/bootstrap-414915f500218987966797a841926390.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<script src="../../../site_libs/quarto-dashboard/quarto-dashboard.js"></script>
+<script src="../../../site_libs/quarto-dashboard/stickythead.js"></script>
+
+
+
+<script src="../../../site_libs/quarto-dashboard/web-components.js" type="module"></script>
+<script src="../../../site_libs/quarto-dashboard/components.js"></script>
+
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
+
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
+
+
+</head>
+
+<body class="quarto-dashboard nav-fixed dashboard-fill fullcontent quarto-light">
+
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="../../../index.html" class="navbar-brand navbar-brand-logo">
+    </a>
+    <a class="navbar-brand" href="../../../index.html">
+    <span class="navbar-title">Python Training Intensive</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../../Workshops/index.html"> 
+<span class="menu-text">Workshops</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../../project_gallery.html"> 
+<span class="menu-text">Project Gallery</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="https://uqlibrary.github.io/technology-training"> 
+<span class="menu-text">UQ Library Technology Training</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+<header id="quarto-dashboard-header">
+<nav class="navbar navbar-expand-md slim" data-bs-theme="dark">
+  <div class="navbar-container container-fluid">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#dashboard-collapse" aria-controls="dashboard-collapse" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>    
+
+
+    <div class="navbar-brand-container">
+
+
+      <div class="navbar-title">
+        <div class="navbar-title-text"><a href="#">Queensland Fuel Price in 2023</a></div>
+        
+        <div class="navbar-author">Adelia &amp; Lauren</div>
+      </div>
+    </div>
+<div id="dashboard-collapse" class="navbar-collapse collapse"><ul class="navbar-nav navbar-nav-scroll me-auto" role="tablist"><li class="nav-item" role="presentation"><a id="tab-qld-fuel-price-2023-at-a-glimpse" class="nav-link active" data-bs-toggle="tab" role="tab" data-bs-target="#qld-fuel-price-2023-at-a-glimpse" data-scrolling="false" href="#qld-fuel-price-2023-at-a-glimpse" aria-controls="qld-fuel-price-2023-at-a-glimpse" aria-selected="true"><span class="nav-link-text">Qld fuel price 2023 at a glimpse</span></a></li><li class="nav-item" role="presentation"><a id="tab-where-to-find-cheap-fuels" class="nav-link" data-bs-toggle="tab" role="tab" data-bs-target="#where-to-find-cheap-fuels" data-scrolling="false" href="#where-to-find-cheap-fuels" aria-controls="where-to-find-cheap-fuels" aria-selected="false"><span class="nav-link-text">where to find cheap fuels?</span></a></li><li class="nav-item" role="presentation"><a id="tab-when-to-fuel" class="nav-link" data-bs-toggle="tab" role="tab" data-bs-target="#when-to-fuel" data-scrolling="false" href="#when-to-fuel" aria-controls="when-to-fuel" aria-selected="false"><span class="nav-link-text">When to fuel?</span></a></li></ul></div></div>
+</nav>
+</header></header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-layout-custom page-navbar quarto-dashboard-content bslib-gap-spacing html-fill-container bslib-page-fill quarto-dashboard-pages">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+<!-- main -->
+
+<div class="bslib-grid-item html-fill-item tab-content bslib-grid" data-layout="fill" style="display: grid; grid-template-rows: minmax(3em, 1fr); grid-auto-columns: minmax(0, 1fr);">
+<div id="qld-fuel-price-2023-at-a-glimpse" class="dashboard-page tab-pane show active html-fill-item html-fill-container" data-orientation="rows" aria-labelledby="tab-qld-fuel-price-2023-at-a-glimpse">
+<div class="html-fill-item html-fill-container bslib-grid" style="display: grid; grid-template-rows: minmax(3em, 1fr); grid-auto-columns: minmax(0, 1fr);">
+<div class="html-fill-item html-fill-container bslib-grid" style="display: grid; grid-template-columns: minmax(3em, 1fr) minmax(3em, 1fr) minmax(3em, 1fr);
+grid-auto-rows: minmax(0, 1fr);">
+<div class="card cell html-fill-item html-fill-container bslib-card" data-title="Overview of fuel price over 2023" data-bslib-card-init="" data-require-bs-caller="card()" data-full-screen="false">
+<div class="card-header"><div class="card-title"><span style="display: inline">
+Overview of fuel price over 2023
+</span></div></div>
+<div class="card-body html-fill-item html-fill-container">
+<div class="cell-output cell-output-display html-fill-item html-fill-container">
+<img src="Fuel_files/figure-html/cell-3-output-1.png" class="quarto-dashboard-img-contain">
+</div>
+</div>
+<bslib-tooltip placement="auto" bsoptions="[]" data-require-bs-version="5" data-require-bs-caller="tooltip()">
+    <template>Expand</template>
+    <span class="bslib-full-screen-enter badge rounded-pill">
+        <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24" style="height:1em;width:1em;" aria-hidden="true" role="img"><path d="M20 5C20 4.4 19.6 4 19 4H13C12.4 4 12 3.6 12 3C12 2.4 12.4 2 13 2H21C21.6 2 22 2.4 22 3V11C22 11.6 21.6 12 21 12C20.4 12 20 11.6 20 11V5ZM4 19C4 19.6 4.4 20 5 20H11C11.6 20 12 20.4 12 21C12 21.6 11.6 22 11 22H3C2.4 22 2 21.6 2 21V13C2 12.4 2.4 12 3 12C3.6 12 4 12.4 4 13V19Z"></path></svg>
+    </span>
+</bslib-tooltip><script data-bslib-card-init="">bslib.Card.initializeAllCards();</script></div><div class="card cell html-fill-item html-fill-container bslib-card" data-title="Abnormal high prices (>4000)" data-bslib-card-init="" data-require-bs-caller="card()" data-full-screen="false">
+<div class="card-header"><div class="card-title"><span style="display: inline">
+Abnormal high prices (&gt;4000)
+</span></div></div>
+<div class="card-body html-fill-item html-fill-container">
+<div class="cell-output cell-output-display html-fill-item html-fill-container">
+<table id="itables_805ceacc_1f47_4b64_819e_941b0143e0bf" class="display nowrap compact" data-quarto-disable-processing="true" style="table-layout:auto;width:auto;margin:auto;caption-side:bottom">
+<thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Site_Brand</th>
+      <th>Site_Suburb</th>
+      <th>Site_Post_Code</th>
+      <th>Price</th>
+    </tr>
+  </thead><tbody><tr>
+<td style="vertical-align:middle; text-align:left">
+<a href="https://mwouts.github.io/itables/"><svg class="main-svg" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" width="64" viewbox="0 0 500 400" style="font-family: 'Droid Sans', sans-serif;">
+    <g style="fill:#d9d7fc">
+        <path d="M100,400H500V357H100Z"></path>
+        <path d="M100,300H400V257H100Z"></path>
+        <path d="M0,200H400V157H0Z"></path>
+        <path d="M100,100H500V57H100Z"></path>
+        <path d="M100,350H500V307H100Z"></path>
+        <path d="M100,250H400V207H100Z"></path>
+        <path d="M0,150H400V107H0Z"></path>
+        <path d="M100,50H500V7H100Z"></path>
+    </g>
+    <g style="fill:#1a1366;stroke:#1a1366;">
+   <rect x="100" y="7" width="400" height="43">
+    <animate attributename="width" values="0;400;0" dur="5s" repeatcount="indefinite"></animate>
+      <animate attributename="x" values="100;100;500" dur="5s" repeatcount="indefinite"></animate>
+  </rect>
+        <rect x="0" y="107" width="400" height="43">
+    <animate attributename="width" values="0;400;0" dur="3.5s" repeatcount="indefinite"></animate>
+    <animate attributename="x" values="0;0;400" dur="3.5s" repeatcount="indefinite"></animate>
+  </rect>
+        <rect x="100" y="207" width="300" height="43">
+    <animate attributename="width" values="0;300;0" dur="3s" repeatcount="indefinite"></animate>
+    <animate attributename="x" values="100;100;400" dur="3s" repeatcount="indefinite"></animate>
+  </rect>
+        <rect x="100" y="307" width="400" height="43">
+    <animate attributename="width" values="0;400;0" dur="4s" repeatcount="indefinite"></animate>
+      <animate attributename="x" values="100;100;500" dur="4s" repeatcount="indefinite"></animate>
+  </rect>
+        <g style="fill:transparent;stroke-width:8; stroke-linejoin:round" rx="5">
+            <g transform="translate(45 50) rotate(-45)">
+                <circle r="33" cx="0" cy="0"></circle>
+                <rect x="-8" y="32" width="16" height="30"></rect>
+            </g>
+
+            <g transform="translate(450 152)">
+                <polyline points="-15,-20 -35,-20 -35,40 25,40 25,20"></polyline>
+                <rect x="-15" y="-40" width="60" height="60"></rect>
+            </g>
+
+            <g transform="translate(50 352)">
+                <polygon points="-35,-5 0,-40 35,-5"></polygon>
+                <polygon points="-35,10 0,45 35,10"></polygon>
+            </g>
+
+            <g transform="translate(75 250)">
+                <polyline points="-30,30 -60,0 -30,-30"></polyline>
+                <polyline points="0,30 -30,0 0,-30"></polyline>
+            </g>
+
+            <g transform="translate(425 250) rotate(180)">
+                <polyline points="-30,30 -60,0 -30,-30"></polyline>
+                <polyline points="0,30 -30,0 0,-30"></polyline>
+            </g>
+        </g>
+    </g>
+</svg>
+</a>
+Loading ITables v2.2.4 from the internet...
+(need <a href="https://mwouts.github.io/itables/troubleshooting.html">help</a>?)</td>
+</tr></tbody>
+</table>
+<link href="https://www.unpkg.com/dt_for_itables@2.0.13/dt_bundle.css" rel="stylesheet">
+<script type="module">
+    import {DataTable, jQuery as $} from 'https://www.unpkg.com/dt_for_itables@2.0.13/dt_bundle.js';
+
+    document.querySelectorAll("#itables_805ceacc_1f47_4b64_819e_941b0143e0bf:not(.dataTable)").forEach(table => {
+        if (!(table instanceof HTMLTableElement))
+            return;
+
+        // Define the table data
+        const data = [[34756, "Pacific Petroleum", "Bowen", 4805, 8888], [87944, "Pacific Petroleum", "Bowen", 4805, 8888], [149368, "Pacific Petroleum", "Bowen", 4805, 8888], [193245, "Pacific Petroleum", "Bowen", 4805, 8888], [216290, "Caltex", "Chandler", 4155, 4939], [217258, "Puma Energy", "Eagleby", 4207, 4823], [292118, "Liberty", "Karawatha", 4117, 6599], [367675, "Pacific Petroleum", "Bowen", 4805, 8888], [369701, "United", "Torquay", 4655, 5059], [426099, "Pacific Petroleum", "Bowen", 4805, 8888], [480893, "Pacific Petroleum", "Bowen", 4805, 8888], [540308, "Pacific Petroleum", "Bowen", 4805, 8888], [597130, "Pacific Petroleum", "Bowen", 4805, 8888]];
+
+        // Define the dt_args
+        let dt_args = {"autoWidth": false, "buttons": [], "dom": "fiBrtlp", "info": true, "keys": true, "language": {"info": "Showing _TOTAL_ entries"}, "lengthChange": false, "order": [], "ordering": true, "paging": false, "responsive": true, "searching": true, "warn_on_selected_rows_not_rendered": true};
+        dt_args["data"] = data;
+
+        
+        new DataTable(table, dt_args);
+    });
+</script>
+</div>
+</div>
+<bslib-tooltip placement="auto" bsoptions="[]" data-require-bs-version="5" data-require-bs-caller="tooltip()">
+    <template>Expand</template>
+    <span class="bslib-full-screen-enter badge rounded-pill">
+        <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24" style="height:1em;width:1em;" aria-hidden="true" role="img"><path d="M20 5C20 4.4 19.6 4 19 4H13C12.4 4 12 3.6 12 3C12 2.4 12.4 2 13 2H21C21.6 2 22 2.4 22 3V11C22 11.6 21.6 12 21 12C20.4 12 20 11.6 20 11V5ZM4 19C4 19.6 4.4 20 5 20H11C11.6 20 12 20.4 12 21C12 21.6 11.6 22 11 22H3C2.4 22 2 21.6 2 21V13C2 12.4 2.4 12 3 12C3.6 12 4 12.4 4 13V19Z"></path></svg>
+    </span>
+</bslib-tooltip><script data-bslib-card-init="">bslib.Card.initializeAllCards();</script></div><div class="card cell html-fill-item html-fill-container bslib-card" data-title="Abnormal low prices (<1000)" data-bslib-card-init="" data-require-bs-caller="card()" data-full-screen="false">
+<div class="card-header"><div class="card-title"><span style="display: inline">
+Abnormal low prices (&lt;1000)
+</span></div></div>
+<div class="card-body html-fill-item html-fill-container">
+<div class="cell-output cell-output-display html-fill-item html-fill-container">
+<table id="itables_51d4f693_8f5f_4696_abc8_764e2fd9ef61" class="display nowrap compact" data-quarto-disable-processing="true" style="table-layout:auto;width:auto;margin:auto;caption-side:bottom">
+<thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Site_Brand</th>
+      <th>Site_Suburb</th>
+      <th>Site_Post_Code</th>
+      <th>Price</th>
+    </tr>
+  </thead><tbody><tr>
+<td style="vertical-align:middle; text-align:left">
+<a href="https://mwouts.github.io/itables/"><svg class="main-svg" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" width="64" viewbox="0 0 500 400" style="font-family: 'Droid Sans', sans-serif;">
+    <g style="fill:#d9d7fc">
+        <path d="M100,400H500V357H100Z"></path>
+        <path d="M100,300H400V257H100Z"></path>
+        <path d="M0,200H400V157H0Z"></path>
+        <path d="M100,100H500V57H100Z"></path>
+        <path d="M100,350H500V307H100Z"></path>
+        <path d="M100,250H400V207H100Z"></path>
+        <path d="M0,150H400V107H0Z"></path>
+        <path d="M100,50H500V7H100Z"></path>
+    </g>
+    <g style="fill:#1a1366;stroke:#1a1366;">
+   <rect x="100" y="7" width="400" height="43">
+    <animate attributename="width" values="0;400;0" dur="5s" repeatcount="indefinite"></animate>
+      <animate attributename="x" values="100;100;500" dur="5s" repeatcount="indefinite"></animate>
+  </rect>
+        <rect x="0" y="107" width="400" height="43">
+    <animate attributename="width" values="0;400;0" dur="3.5s" repeatcount="indefinite"></animate>
+    <animate attributename="x" values="0;0;400" dur="3.5s" repeatcount="indefinite"></animate>
+  </rect>
+        <rect x="100" y="207" width="300" height="43">
+    <animate attributename="width" values="0;300;0" dur="3s" repeatcount="indefinite"></animate>
+    <animate attributename="x" values="100;100;400" dur="3s" repeatcount="indefinite"></animate>
+  </rect>
+        <rect x="100" y="307" width="400" height="43">
+    <animate attributename="width" values="0;400;0" dur="4s" repeatcount="indefinite"></animate>
+      <animate attributename="x" values="100;100;500" dur="4s" repeatcount="indefinite"></animate>
+  </rect>
+        <g style="fill:transparent;stroke-width:8; stroke-linejoin:round" rx="5">
+            <g transform="translate(45 50) rotate(-45)">
+                <circle r="33" cx="0" cy="0"></circle>
+                <rect x="-8" y="32" width="16" height="30"></rect>
+            </g>
+
+            <g transform="translate(450 152)">
+                <polyline points="-15,-20 -35,-20 -35,40 25,40 25,20"></polyline>
+                <rect x="-15" y="-40" width="60" height="60"></rect>
+            </g>
+
+            <g transform="translate(50 352)">
+                <polygon points="-35,-5 0,-40 35,-5"></polygon>
+                <polygon points="-35,10 0,45 35,10"></polygon>
+            </g>
+
+            <g transform="translate(75 250)">
+                <polyline points="-30,30 -60,0 -30,-30"></polyline>
+                <polyline points="0,30 -30,0 0,-30"></polyline>
+            </g>
+
+            <g transform="translate(425 250) rotate(180)">
+                <polyline points="-30,30 -60,0 -30,-30"></polyline>
+                <polyline points="0,30 -30,0 0,-30"></polyline>
+            </g>
+        </g>
+    </g>
+</svg>
+</a>
+Loading ITables v2.2.4 from the internet...
+(need <a href="https://mwouts.github.io/itables/troubleshooting.html">help</a>?)</td>
+</tr></tbody>
+</table>
+<link href="https://www.unpkg.com/dt_for_itables@2.0.13/dt_bundle.css" rel="stylesheet">
+<script type="module">
+    import {DataTable, jQuery as $} from 'https://www.unpkg.com/dt_for_itables@2.0.13/dt_bundle.js';
+
+    document.querySelectorAll("#itables_51d4f693_8f5f_4696_abc8_764e2fd9ef61:not(.dataTable)").forEach(table => {
+        if (!(table instanceof HTMLTableElement))
+            return;
+
+        // Define the table data
+        const data = [[8137, "Metro Fuel", "Thornlands", 4164, 182], [8160, "Metro Fuel", "Thornlands", 4164, 184], [9249, "Caltex", "Eight Mile Plains", 4113, 2], [29542, "BP", "Toogoolawah", 4313, 201], [29543, "BP", "Toogoolawah", 4313, 191], [31812, "Mobil", "Bundaberg Central", 4670, 16], [35409, "Coles Express", "Kirwan", 4817, 799], [38269, "Liberty", "Cairns", 4870, 999], [38279, "Liberty", "Cairns", 4870, 999], [38284, "Liberty", "Cairns", 4870, 999], [42645, "Freedom Fuels", "Harristown", 4350, 232], [42700, "Freedom Fuels", "Harristown", 4350, 209], [48088, "Pacific Petroleum", "Helidon Spa", 4344, 177], [72274, "Metro Fuel", "Hillcrest", 4118, 167], [82268, "BP", "Toogoolawah", 4313, 201], [82269, "BP", "Toogoolawah", 4313, 183], [82270, "BP", "Toogoolawah", 4313, 181], [82271, "BP", "Toogoolawah", 4313, 184], [82272, "BP", "Toogoolawah", 4313, 187], [82273, "BP", "Toogoolawah", 4313, 190], [90319, "United", "Yuleba", 4427, 175], [93354, "Costco", "North Lakes", 4509, 166], [93360, "Costco", "North Lakes", 4509, 188], [96538, "Caltex", "Caboolture", 4510, 200], [100988, "Freedom Fuels", "Kallangur", 4503, 190], [101319, "Costco", "Bundamba", 4304, 166], [101325, "Costco", "Bundamba", 4304, 188], [106869, "Caltex", "Upper Coomera", 4209, 200], [106883, "Costco", "Coomera", 4209, 180], [115056, "Caltex", "Everton Park", 4053, 189], [119761, "BP", "Redland Bay", 4165, 179], [127115, "Metro Fuel", "Eagleby", 4207, 179], [129180, "BP", "Pacific Paradise", 4564, 199], [143455, "Metro Fuel", "Warwick", 4370, 167], [144373, "BP", "Toogoolawah", 4313, 201], [144374, "BP", "Toogoolawah", 4313, 188], [144375, "BP", "Toogoolawah", 4313, 183], [150318, "United", "Warwick", 4370, 172], [150325, "United", "Warwick", 4370, 174], [167964, "BP", "Normanton", 4830, 252], [167965, "BP", "Normanton", 4830, 207], [173384, "BP", "Wynnum West", 4178, 209], [173779, "Metro Fuel", "Thornlands", 4164, 1], [173792, "Metro Fuel", "Thornlands", 4164, 1], [173799, "Metro Fuel", "Thornlands", 4164, 1], [173806, "Metro Fuel", "Thornlands", 4164, 1], [189031, "EG Ampol", "Manunda", 4870, 188], [189047, "EG Ampol", "Manunda", 4870, 206], [189059, "EG Ampol", "Manunda", 4870, 190], [189217, "BP", "Toogoolawah", 4313, 201], [189218, "BP", "Toogoolawah", 4313, 199], [189219, "BP", "Toogoolawah", 4313, 193], [194130, "United", "Warwick", 4370, 174], [194131, "United", "Warwick", 4370, 175], [194132, "United", "Warwick", 4370, 188], [194133, "United", "Warwick", 4370, 178], [194134, "United", "Warwick", 4370, 185], [194135, "United", "Warwick", 4370, 180], [194136, "United", "Warwick", 4370, 179], [194137, "United", "Warwick", 4370, 209], [194138, "United", "Warwick", 4370, 179], [194139, "United", "Warwick", 4370, 178], [194140, "United", "Warwick", 4370, 185], [194141, "United", "Warwick", 4370, 179], [194142, "United", "Warwick", 4370, 178], [194151, "United", "Warwick", 4370, 174], [194152, "United", "Warwick", 4370, 175], [194153, "United", "Warwick", 4370, 189], [194154, "United", "Warwick", 4370, 179], [194155, "United", "Warwick", 4370, 187], [194156, "United", "Warwick", 4370, 180], [194157, "United", "Warwick", 4370, 179], [194158, "United", "Warwick", 4370, 185], [194159, "United", "Warwick", 4370, 179], [197013, "Unknown", "Springsure", 4722, 10], [197014, "Unknown", "Springsure", 4722, 1], [197016, "Unknown", "Springsure", 4722, 10], [197017, "Unknown", "Springsure", 4722, 1], [203538, "Independent", "Main Beach", 4217, 211], [203539, "Independent", "Main Beach", 4217, 215], [205324, "Metro Fuel", "Childers", 4660, 999], [205332, "Metro Fuel", "Childers", 4660, 999], [205336, "Metro Fuel", "Childers", 4660, 999], [205555, "BP", "Normanton", 4830, 239], [205556, "BP", "Normanton", 4830, 212], [231868, "BP", "Toogoolawah", 4313, 201], [231869, "BP", "Toogoolawah", 4313, 191], [247612, "Independent", "Main Beach", 4217, 210], [247613, "Independent", "Main Beach", 4217, 214], [247614, "Independent", "Main Beach", 4217, 211], [249740, "BP", "Normanton", 4830, 239], [249741, "BP", "Normanton", 4830, 212], [253251, "BP", "Wynnum West", 4178, 1], [258261, "Puma Energy", "Nambour", 4560, 127], [274813, "Freedom Fuels", "Darra", 4076, 219], [275215, "Independent", "Main Beach", 4217, 212], [275216, "Independent", "Main Beach", 4217, 209], [275217, "Independent", "Main Beach", 4217, 212], [276768, "BP", "Normanton", 4830, 239], [276769, "BP", "Normanton", 4830, 218], [278196, "Coles Express", "Surfers Paradise", 4217, 169], [278240, "Coles Express", "Surfers Paradise", 4217, 171], [278243, "Coles Express", "Surfers Paradise", 4217, 173], [280082, "BP", "Indooroopilly", 4068, 2], [288080, "Caltex", "Chandler", 4155, 181], [294846, "EG Ampol", "Mitchelton", 4053, 9], [296822, "Ampol", "Hughenden", 4821, 202], [296823, "Ampol", "Hughenden", 4821, 191], [304268, "Metro Fuel", "Miami", 4220, 1], [304273, "Metro Fuel", "Miami", 4220, 1], [305454, "BP", "Springsure", 4722, 199], [309944, "Pacific Petroleum", "Blacksoil", 4306, 999], [321448, "Liberty", "Bauhinia", 4718, 197], [321450, "Liberty", "Bauhinia", 4718, 177], [324187, "Liberty", "Bokarina", 4575, 199], [324576, "Independent", "Main Beach", 4217, 210], [324577, "Independent", "Main Beach", 4217, 205], [324578, "Independent", "Main Beach", 4217, 204], [324579, "Independent", "Main Beach", 4217, 210], [325224, "Mobil", "Pialba", 4655, 157], [326584, "Mobil", "Berserker", 4701, 839], [329175, "Independent", "Ashmore", 4214, 166], [333072, "Independent", "Kallangur", 4503, 195], [334163, "BP", "Geebung", 4034, 208], [334641, "Coles Express", "Arana Hills", 4054, 168], [343230, "Liberty", "Purga", 4305, 7], [347845, "Caltex", "Currumbin", 4223, 249], [350849, "Puma Energy", "Greenbank", 4124, 169], [360489, "Puma Energy", "D'Aguilar ", 4514, 157], [361380, "BP", "Toogoolawah", 4313, 201], [361381, "BP", "Toogoolawah", 4313, 180], [368824, "Shell", "Aratula", 4309, 199], [369111, "United", "Warwick", 4370, 176], [369112, "United", "Warwick", 4370, 175], [369113, "United", "Warwick", 4370, 173], [369114, "United", "Warwick", 4370, 170], [369115, "United", "Warwick", 4370, 178], [369117, "United", "Warwick", 4370, 190], [369118, "United", "Warwick", 4370, 193], [369119, "United", "Warwick", 4370, 196], [369120, "United", "Warwick", 4370, 199], [369121, "United", "Warwick", 4370, 178], [369122, "United", "Warwick", 4370, 177], [369123, "United", "Warwick", 4370, 176], [369124, "United", "Warwick", 4370, 175], [369125, "United", "Warwick", 4370, 173], [369126, "United", "Warwick", 4370, 180], [369906, "United", "Yuleba", 4427, 189], [370262, "Independent", "Toowoomba", 4350, 171], [381756, "Freedom Fuels", "Kearneys Spring", 4350, 199], [383585, "Freedom Fuels", "Darra", 4076, 186], [384096, "Liberty", "Hyde Park", 4812, 159], [384576, "Independent", "Main Beach", 4217, 215], [387873, "BP", "Normanton", 4830, 267], [387874, "BP", "Normanton", 4830, 203], [388891, "Metro Fuel", "Nerang", 4211, 4], [394840, "Mobil", "Hendra", 4011, 236], [395440, "Independent", "Paddington", 4064, 239], [401467, "BP", "Sandgate", 4017, 251], [401475, "BP", "Sandgate", 4017, 229], [417369, "Metro Fuel", "Miami", 4220, 1], [417371, "Metro Fuel", "Miami", 4220, 1], [417372, "Metro Fuel", "Miami", 4220, 1], [418546, "BP", "Toogoolawah", 4313, 201], [418547, "BP", "Toogoolawah", 4313, 190], [418548, "BP", "Toogoolawah", 4313, 201], [418549, "BP", "Toogoolawah", 4313, 203], [418550, "BP", "Toogoolawah", 4313, 208], [418551, "BP", "Toogoolawah", 4313, 209], [418840, "BP", "Wondai", 4606, 195], [418975, "Independent", "Arcadia", 4819, 248], [418976, "Independent", "Arcadia", 4819, 260], [418977, "Independent", "Arcadia", 4819, 265], [418978, "Independent", "Arcadia", 4819, 231], [418979, "Independent", "Arcadia", 4819, 238], [418980, "Independent", "Arcadia", 4819, 242], [420134, "Independent", "Jandowae", 4410, 999], [424697, "Caltex", "Loganlea", 4131, 191], [434373, "Ampol", "Dysart", 4745, 226], [434450, "Ampol", "Seaforth", 4741, 224], [441615, "BP", "Craiglie", 4877, 79], [475899, "BP", "Toogoolawah", 4313, 201], [475900, "BP", "Toogoolawah", 4313, 202], [475901, "BP", "Toogoolawah", 4313, 197], [491876, "Independent", "Woodgate Beach", 4660, 215], [496190, "Mobil", "Aitkenvale", 4814, 201], [497740, "Ampol", "Glenella", 4740, 185], [497756, "Ampol", "Glenella", 4740, 209], [497766, "Ampol", "Glenella", 4740, 187], [498898, "Coles Express", "Nerang", 4211, 229], [513355, "Caltex", "Rochedale South", 4123, 188], [513367, "Caltex", "Rochedale South", 4123, 222], [513378, "Caltex", "Rochedale South", 4123, 190], [521613, "Caltex", "Currumbin", 4223, 2], [530952, "Metro Fuel", "Marsden", 4132, 217], [534935, "BP", "Toogoolawah", 4313, 201], [534936, "BP", "Toogoolawah", 4313, 214], [534937, "BP", "Toogoolawah", 4313, 204], [534938, "BP", "Toogoolawah", 4313, 203], [539942, "Freedom Fuels", "Loganholme", 4129, 189], [542149, "Independent", "Toowoomba", 4350, 186], [548838, "Freedom Fuels", "Harristown", 4350, 196], [548949, "Freedom Fuels", "Harristown", 4350, 206], [548965, "Freedom Fuels", "Harristown", 4350, 221], [548973, "Freedom Fuels", "Harristown", 4350, 220], [549030, "Freedom Fuels", "Harristown", 4350, 198], [556664, "Freedom Fuels", "Darra", 4076, 269], [569470, "Metro Fuel", "Thornlands", 4164, 195], [578105, "Caltex", "Currimundi", 4551, 201], [583104, "United", "Kumbia", 4610, 193], [590048, "Metro Fuel", "Warwick", 4370, 1], [591159, "BP", "Toogoolawah", 4313, 201], [591160, "BP", "Toogoolawah", 4313, 208], [591161, "BP", "Toogoolawah", 4313, 209], [591162, "BP", "Toogoolawah", 4313, 214], [598886, "Independent", "Rockhampton North", 4701, 219], [600189, "Pacific Petroleum", "Drayton", 4350, 196], [600208, "Pacific Petroleum", "Drayton", 4350, 208], [600215, "Pacific Petroleum", "Drayton", 4350, 198], [604591, "Ampol", "Oxenford", 4210, 197], [604616, "Ampol", "Oxenford", 4210, 216], [604631, "Ampol", "Oxenford", 4210, 224], [604647, "Ampol", "Oxenford", 4210, 199]];
+
+        // Define the dt_args
+        let dt_args = {"autoWidth": false, "buttons": [], "dom": "fiBrtlp", "info": true, "keys": true, "language": {"info": "Showing _TOTAL_ entries"}, "lengthChange": false, "order": [], "ordering": true, "paging": false, "responsive": true, "searching": true, "warn_on_selected_rows_not_rendered": true};
+        dt_args["data"] = data;
+
+        
+        new DataTable(table, dt_args);
+    });
+</script>
+</div>
+</div>
+<bslib-tooltip placement="auto" bsoptions="[]" data-require-bs-version="5" data-require-bs-caller="tooltip()">
+    <template>Expand</template>
+    <span class="bslib-full-screen-enter badge rounded-pill">
+        <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24" style="height:1em;width:1em;" aria-hidden="true" role="img"><path d="M20 5C20 4.4 19.6 4 19 4H13C12.4 4 12 3.6 12 3C12 2.4 12.4 2 13 2H21C21.6 2 22 2.4 22 3V11C22 11.6 21.6 12 21 12C20.4 12 20 11.6 20 11V5ZM4 19C4 19.6 4.4 20 5 20H11C11.6 20 12 20.4 12 21C12 21.6 11.6 22 11 22H3C2.4 22 2 21.6 2 21V13C2 12.4 2.4 12 3 12C3.6 12 4 12.4 4 13V19Z"></path></svg>
+    </span>
+</bslib-tooltip><script data-bslib-card-init="">bslib.Card.initializeAllCards();</script></div>
+</div>
+</div>
+</div>
+<div id="where-to-find-cheap-fuels" class="dashboard-page tab-pane grid-skip html-fill-item html-fill-container" data-orientation="rows" aria-labelledby="tab-where-to-find-cheap-fuels">
+<div class="html-fill-item html-fill-container bslib-grid" style="display: grid; grid-template-rows: minmax(3em, 1fr) minmax(3em, 1fr); grid-auto-columns: minmax(0, 1fr);">
+<div class="card cell html-fill-item html-fill-container bslib-card" data-title="10 cheapest suburbs for e10 (average)" data-bslib-card-init="" data-require-bs-caller="card()" data-full-screen="false">
+<div class="card-header"><div class="card-title"><span style="display: inline">
+10 cheapest suburbs for e10 (average)
+</span></div></div>
+<div class="card-body html-fill-item html-fill-container">
+<div class="cell-output cell-output-display html-fill-item html-fill-container" data-execution_count="6">
+<div class="html-fill-item html-fill-container">
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">Price_AUD</th>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">Site_Suburb</th>
+<th data-quarto-table-cell-role="th"></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">Zillmere</th>
+<td>1.67</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">Bundaberg Central</th>
+<td>1.72</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">Warwick</th>
+<td>1.72</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">Guthalungra</th>
+<td>1.72</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">Fairfield</th>
+<td>1.73</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">Kuraby</th>
+<td>1.73</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">BUSHLAND BEACH</th>
+<td>1.73</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">Hyde Park</th>
+<td>1.74</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">Sandgate</th>
+<td>1.74</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">Bundaberg East</th>
+<td>1.74</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<bslib-tooltip placement="auto" bsoptions="[]" data-require-bs-version="5" data-require-bs-caller="tooltip()">
+    <template>Expand</template>
+    <span class="bslib-full-screen-enter badge rounded-pill">
+        <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24" style="height:1em;width:1em;" aria-hidden="true" role="img"><path d="M20 5C20 4.4 19.6 4 19 4H13C12.4 4 12 3.6 12 3C12 2.4 12.4 2 13 2H21C21.6 2 22 2.4 22 3V11C22 11.6 21.6 12 21 12C20.4 12 20 11.6 20 11V5ZM4 19C4 19.6 4.4 20 5 20H11C11.6 20 12 20.4 12 21C12 21.6 11.6 22 11 22H3C2.4 22 2 21.6 2 21V13C2 12.4 2.4 12 3 12C3.6 12 4 12.4 4 13V19Z"></path></svg>
+    </span>
+</bslib-tooltip><script data-bslib-card-init="">bslib.Card.initializeAllCards();</script></div>
+<div class="html-fill-item html-fill-container bslib-grid" style="display: grid; grid-template-columns: minmax(3em, 1fr);
+grid-auto-rows: minmax(0, 1fr);">
+<div class="card cell html-fill-item html-fill-container bslib-card" data-title="Cheapest fuels by brands" data-bslib-card-init="" data-require-bs-caller="card()" data-full-screen="false">
+<div class="card-header"><div class="card-title"><span style="display: inline">
+Cheapest fuels by brands
+</span></div></div>
+<div class="card-body html-fill-item html-fill-container">
+<div class="cell-output cell-output-display html-fill-item html-fill-container">
+<table id="itables_0a49c60c_9e5b_42e0_816d_87b56c9edd40" class="display nowrap compact" data-quarto-disable-processing="true" style="table-layout:auto;width:auto;margin:auto;caption-side:bottom">
+<thead>
+    <tr style="text-align: right;">
+      <th>Fuel Type</th>
+      <th>PULP 95/96 RON</th>
+      <th>PULP 98 RON</th>
+      <th>Unleaded</th>
+      <th>e10</th>
+    </tr>
+    <tr>
+      <th>Site Brand</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead><tbody><tr>
+<td style="vertical-align:middle; text-align:left">
+<a href="https://mwouts.github.io/itables/"><svg class="main-svg" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" width="64" viewbox="0 0 500 400" style="font-family: 'Droid Sans', sans-serif;">
+    <g style="fill:#d9d7fc">
+        <path d="M100,400H500V357H100Z"></path>
+        <path d="M100,300H400V257H100Z"></path>
+        <path d="M0,200H400V157H0Z"></path>
+        <path d="M100,100H500V57H100Z"></path>
+        <path d="M100,350H500V307H100Z"></path>
+        <path d="M100,250H400V207H100Z"></path>
+        <path d="M0,150H400V107H0Z"></path>
+        <path d="M100,50H500V7H100Z"></path>
+    </g>
+    <g style="fill:#1a1366;stroke:#1a1366;">
+   <rect x="100" y="7" width="400" height="43">
+    <animate attributename="width" values="0;400;0" dur="5s" repeatcount="indefinite"></animate>
+      <animate attributename="x" values="100;100;500" dur="5s" repeatcount="indefinite"></animate>
+  </rect>
+        <rect x="0" y="107" width="400" height="43">
+    <animate attributename="width" values="0;400;0" dur="3.5s" repeatcount="indefinite"></animate>
+    <animate attributename="x" values="0;0;400" dur="3.5s" repeatcount="indefinite"></animate>
+  </rect>
+        <rect x="100" y="207" width="300" height="43">
+    <animate attributename="width" values="0;300;0" dur="3s" repeatcount="indefinite"></animate>
+    <animate attributename="x" values="100;100;400" dur="3s" repeatcount="indefinite"></animate>
+  </rect>
+        <rect x="100" y="307" width="400" height="43">
+    <animate attributename="width" values="0;400;0" dur="4s" repeatcount="indefinite"></animate>
+      <animate attributename="x" values="100;100;500" dur="4s" repeatcount="indefinite"></animate>
+  </rect>
+        <g style="fill:transparent;stroke-width:8; stroke-linejoin:round" rx="5">
+            <g transform="translate(45 50) rotate(-45)">
+                <circle r="33" cx="0" cy="0"></circle>
+                <rect x="-8" y="32" width="16" height="30"></rect>
+            </g>
+
+            <g transform="translate(450 152)">
+                <polyline points="-15,-20 -35,-20 -35,40 25,40 25,20"></polyline>
+                <rect x="-15" y="-40" width="60" height="60"></rect>
+            </g>
+
+            <g transform="translate(50 352)">
+                <polygon points="-35,-5 0,-40 35,-5"></polygon>
+                <polygon points="-35,10 0,45 35,10"></polygon>
+            </g>
+
+            <g transform="translate(75 250)">
+                <polyline points="-30,30 -60,0 -30,-30"></polyline>
+                <polyline points="0,30 -30,0 0,-30"></polyline>
+            </g>
+
+            <g transform="translate(425 250) rotate(180)">
+                <polyline points="-30,30 -60,0 -30,-30"></polyline>
+                <polyline points="0,30 -30,0 0,-30"></polyline>
+            </g>
+        </g>
+    </g>
+</svg>
+</a>
+Loading ITables v2.2.4 from the internet...
+(need <a href="https://mwouts.github.io/itables/troubleshooting.html">help</a>?)</td>
+</tr></tbody>
+</table>
+<link href="https://www.unpkg.com/dt_for_itables@2.0.13/dt_bundle.css" rel="stylesheet">
+<script type="module">
+    import {DataTable, jQuery as $} from 'https://www.unpkg.com/dt_for_itables@2.0.13/dt_bundle.js';
+
+    document.querySelectorAll("#itables_0a49c60c_9e5b_42e0_816d_87b56c9edd40:not(.dataTable)").forEach(table => {
+        if (!(table instanceof HTMLTableElement))
+            return;
+
+        // Define the table data
+        const data = [["Costco", NaN, 1925.090909, NaN, 1726.210526], ["Metro Fuel", 1966.109772, 2035.777778, 1834.851346, 1791.050092], ["Independent", 2004.690803, 2054.305745, 1887.192657, 1811.327308], ["Mobil", 1997.489889, 2084.408236, 1855.62256, 1818.784338], ["Liberty", 1953.399083, 2051.223978, 1848.646003, 1819.53914], ["Pearl Energy", 2009.253968, 2084.982143, 1869.174564, 1836.537515], ["United", 1995.680962, 2080.980762, 1883.314832, 1842.594941], ["Pacific Petroleum", 1952.940054, 2052.297248, 1861.719212, 1844.003953], ["Puma Energy", 1992.550069, 2107.483804, 1884.442242, 1866.789202], ["Shell", 2050.142157, 2124.372973, 1960.971635, 1881.557713], ["BP", 2070.424297, 2147.334996, 1917.394556, 1905.66606], ["EG Ampol", 2068.417951, 2152.353104, 1931.111157, 1912.975266], ["Coles Express", 2091.596379, 2163.089179, 1931.369894, 1913.296208], ["Unknown", 2070.25, 2117.309524, 1930.714286, 1914.8], ["Ampol", 2091.199432, 2168.399031, 1930.732532, 1922.293544], ["Astron", 2138.862069, 2165.055556, 1939.009709, 1923.488095], ["Pacific Fuel Solutio", 2056.027027, 2168.145631, 1973.656442, 1925.170213], ["7 Eleven", 2066.908172, 2145.986501, 1946.063866, 1926.201281], ["Caltex", 2078.98153, 2176.112342, 1946.664695, 1930.859149], ["Freedom Fuels", 2112.488989, 2192.22742, 1951.594398, 1931.619388], ["Choice", 1986.595506, NaN, 1863.64, NaN], ["Enhance", NaN, 2233.020408, 1961.901235, NaN], ["IOR Petroleum", 2252.846154, NaN, 1947.784314, NaN], ["Lowes", 2088.0, 2210.555556, 2070.0, NaN], ["Matilda", NaN, 2124.566265, 1935.145833, NaN]];
+
+        // Define the dt_args
+        let dt_args = {"autoWidth": false, "buttons": [], "dom": "fiBrtlp", "info": true, "keys": true, "language": {"info": "Showing _TOTAL_ entries"}, "lengthChange": false, "order": [], "ordering": true, "paging": false, "responsive": true, "searching": true, "warn_on_selected_rows_not_rendered": true};
+        dt_args["data"] = data;
+
+        
+        new DataTable(table, dt_args);
+    });
+</script>
+</div>
+</div>
+<bslib-tooltip placement="auto" bsoptions="[]" data-require-bs-version="5" data-require-bs-caller="tooltip()">
+    <template>Expand</template>
+    <span class="bslib-full-screen-enter badge rounded-pill">
+        <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24" style="height:1em;width:1em;" aria-hidden="true" role="img"><path d="M20 5C20 4.4 19.6 4 19 4H13C12.4 4 12 3.6 12 3C12 2.4 12.4 2 13 2H21C21.6 2 22 2.4 22 3V11C22 11.6 21.6 12 21 12C20.4 12 20 11.6 20 11V5ZM4 19C4 19.6 4.4 20 5 20H11C11.6 20 12 20.4 12 21C12 21.6 11.6 22 11 22H3C2.4 22 2 21.6 2 21V13C2 12.4 2.4 12 3 12C3.6 12 4 12.4 4 13V19Z"></path></svg>
+    </span>
+</bslib-tooltip><script data-bslib-card-init="">bslib.Card.initializeAllCards();</script></div>
+</div>
+</div>
+</div>
+<div id="when-to-fuel" class="dashboard-page tab-pane grid-skip html-fill-item html-fill-container" data-orientation="rows" aria-labelledby="tab-when-to-fuel">
+<div class="html-fill-item html-fill-container bslib-grid" style="display: grid; grid-template-rows: ; grid-auto-columns: minmax(0, 1fr);">
+
+
+<div id="3ade8a4a-fb1d-4a6c-8409-ac45482d5fc9" class="hidden html-fill-item html-fill-container">
+
+</div>
+</div>
+</div>
+</div>
+
+
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/camwest5\.github\.io\/python-training-intensive\/");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+<script type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (_event) {
+  if (window.bslib.Card) {
+    window.bslib.Card.initializeAllCards();
+  }
+}); 
+</script>
+  
+
+
+
+</body></html>

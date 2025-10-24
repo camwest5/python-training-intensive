@@ -2,32 +2,38 @@
   {
     "listing": "/project_gallery.html",
     "items": [
-      "/Projects/Coffee Horror/coffee.html",
-      "/Projects/Another coffee survey/Pawatsada.html",
-      "/Projects/Coffee Preferences/ProjectCoffee.html",
-      "/Projects/Prince/gapminder2025.html",
-      "/Projects/example_project/example_project.html",
-      "/Projects/Australia and Cambodia Populations/project_report.html",
-      "/Projects/Coffee Survey/MyReport.html",
-      "/Projects/Mst Noorunnahar/project_nahar.html",
-      "/Projects/Group2/group_project.html",
-      "/Projects/Sisay/report.html"
+      "/Projects/example_project/example_project.html"
     ]
   },
   {
-    "listing": "/Past_projects/project_gallery.html",
+    "listing": "/Past_projects/25Winter/project_gallery.html",
     "items": [
-      "/Past_projects/Koyo & Liz/Plane.html",
-      "/Past_projects/Najiha/dashboardbooks.html",
-      "/Past_projects/Koyo & Liz/project.html",
-      "/Past_projects/Edison/fuel_db.html",
-      "/Past_projects/Edison/fuel_project.html",
-      "/Past_projects/example_project/example_project.html",
-      "/Past_projects/Caira/dashboardbooks.html",
-      "/Past_projects/Emma/Goodread.html",
-      "/Past_projects/Python-project-Nish/dashboard.html",
-      "/Past_projects/Adelia & Lauren/Fuel.html",
-      "/Past_projects/Lydeth/Goodread.html"
+      "/Past_projects/25Winter/Coffee Horror/coffee.html",
+      "/Past_projects/25Winter/Another coffee survey/Pawatsada.html",
+      "/Past_projects/25Winter/Coffee Preferences/ProjectCoffee.html",
+      "/Past_projects/25Winter/Prince/gapminder2025.html",
+      "/Past_projects/25Winter/example_project/example_project.html",
+      "/Past_projects/25Winter/Australia and Cambodia Populations/project_report.html",
+      "/Past_projects/25Winter/Coffee Survey/MyReport.html",
+      "/Past_projects/25Winter/Mst Noorunnahar/project_nahar.html",
+      "/Past_projects/25Winter/Group2/group_project.html",
+      "/Past_projects/25Winter/Sisay/report.html"
+    ]
+  },
+  {
+    "listing": "/Past_projects/25Summer/project_gallery.html",
+    "items": [
+      "/Past_projects/25Summer/Koyo & Liz/Plane.html",
+      "/Past_projects/25Summer/Najiha/dashboardbooks.html",
+      "/Past_projects/25Summer/Koyo & Liz/project.html",
+      "/Past_projects/25Summer/Edison/fuel_db.html",
+      "/Past_projects/25Summer/Edison/fuel_project.html",
+      "/Past_projects/25Summer/example_project/example_project.html",
+      "/Past_projects/25Summer/Caira/dashboardbooks.html",
+      "/Past_projects/25Summer/Emma/Goodread.html",
+      "/Past_projects/25Summer/Python-project-Nish/dashboard.html",
+      "/Past_projects/25Summer/Adelia & Lauren/Fuel.html",
+      "/Past_projects/25Summer/Lydeth/Goodread.html"
     ]
   }
 ]
