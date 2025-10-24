@@ -40,8 +40,11 @@ website:
           href: project_gallery.qmd
         - section: Past projects
           contents:
+            - text: Winter 2025
+              href: Past_projects/25Winter/project_gallery.qmd
             - text: Summer 2025
-              href: Past_projects/project_gallery.qmd
+              href: Past_projects/25Summer/project_gallery.qmd
+            
     
 format:
   html:
