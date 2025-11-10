@@ -6,6 +6,12 @@ format:
       - text: <meta name="google-site-verification" content="lH7jPI_Tg64yiGhs_IV-_zClImxRtEK7aGXhAEl68g0" />
 ---
 
+:::{.callout-tip}
+Registrations available for our next intensive!
+
+**[Book for 3rd-5th Feb 2026](https://studenthub.uq.edu.au/students/events/detail/5909456)**
+:::
+
 ## Overview
 Welcome to our three-day Python training intensive! This runs twice a year, the next intensive will be in late January / early February.
 

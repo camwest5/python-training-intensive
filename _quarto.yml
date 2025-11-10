@@ -24,6 +24,8 @@ website:
         #     text: "Past projects"
       - text: "UQ Library Technology Training"
         href: https://uqlibrary.github.io/technology-training
+      - text: "**Book for Feb 2026**"
+        href: https://studenthub.uq.edu.au/students/events/detail/5909456
   sidebar: 
     - title: "Workshops"
       collapse-level: 2
