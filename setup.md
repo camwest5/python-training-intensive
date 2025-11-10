@@ -13,7 +13,7 @@ Registrations available for our next intensive!
 :::
 
 ## Overview
-Welcome to our three-day Python training intensive! This runs twice a year, the next intensive will be in late January / early February.
+Welcome to our three-day Python training intensive! This runs twice a year and the next intensive will be in early February.
 
 By the end of the three days, you'll have learnt the Python skills to manipulate, visualise and present data. We'll spend roughly half the time learning content, and half the time working on a project in groups.
 
