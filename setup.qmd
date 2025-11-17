@@ -7,7 +7,7 @@ format:
 ---
 
 
-{{< include ../_banner/_banner.qmd >}}
+{{< include _banner/_banner.qmd >}}
 
 
 

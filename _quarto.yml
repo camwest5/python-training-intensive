@@ -1,7 +1,7 @@
 project:
   type: website
   render: 
-    - "setup.md"
+    - "setup.qmd"
     - "Workshops/*"
     - "Projects/*"
     - "Past_projects/*"
@@ -30,7 +30,7 @@ website:
     - title: "Workshops"
       collapse-level: 2
       contents:
-        - setup.md
+        - setup.qmd
         - auto: "Workshops"
         - section: The Project
           contents:
