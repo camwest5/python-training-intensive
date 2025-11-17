@@ -2,6 +2,10 @@
 title: "Workshops"
 ---
 
+
+{{< include ../_banner/_banner.qmd >}}
+
+
 Over these three days we'll cover six sessions of content:
 
 | Session | Description |

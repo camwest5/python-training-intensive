@@ -2,6 +2,10 @@
 title: "Project template"
 ---
 
+
+{{< include ../_banner/_banner.qmd >}}
+
+
 The code below is a template for your project. Feel free to use it, start from scratch or begin from our [example project](example_project/example_project.qmd).
 
 ````

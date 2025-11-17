@@ -2,6 +2,10 @@
 title: The Fundamentals
 --- 
 
+{{< include ../_banner/_banner.qmd >}}
+
+
+
 In this first workshop we will cover
 
 - Variables

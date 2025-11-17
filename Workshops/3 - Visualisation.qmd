@@ -2,6 +2,10 @@
 title: Visualisation
 --- 
 
+{{< include ../_banner/_banner.qmd >}}
+
+
+
 In this third workshop we will cover
 
 - Simple visualisations with seaborn

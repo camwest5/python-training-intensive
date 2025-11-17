@@ -2,6 +2,10 @@
 title: Sharing and Publishing
 --- 
 
+{{< include ../_banner/_banner.qmd >}}
+
+
+
 In this workshop we cover using GitHub for sharing your source code, Git for version control, and Quarto for publishing outputs. Specifically, we look at:
 
 * How to create code-dependent documents, dashboards and presentation using Quarto

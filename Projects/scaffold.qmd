@@ -3,6 +3,10 @@ title: "Getting started"
 data: "../data_sources/*"
 ---
 
+
+{{< include ../_banner/_banner.qmd >}}
+
+
 You're welcome to dive in and work as you please, but if you're feeling at a loss where to begin, follow the scaffold below. Don't forget to start from our [template](template.qmd) and look at the [example report](example_project/example_project.qmd).
 
 ## Project scaffold

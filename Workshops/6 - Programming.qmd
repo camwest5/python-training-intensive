@@ -2,6 +2,10 @@
 title: Programming Essentials
 --- 
 
+{{< include ../_banner/_banner.qmd >}}
+
+
+
 In this workshop we cover the building blocks for developing more complex code, looking at
 
 * Understanding variable types and methods

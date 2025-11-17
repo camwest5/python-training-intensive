@@ -2,6 +2,10 @@
 title: Statistics
 --- 
 
+{{< include ../_banner/_banner.qmd >}}
+
+
+
 This session is aimed as an overview of how to perform some statistical modelling with Python. **It is a Python workshop, not a statistics workshop** - if you'd like to better understand the statistical models, or need help deciding what's best for you, please consult a statistics resource or contact a statistician.
 
 In this session, we'll cover

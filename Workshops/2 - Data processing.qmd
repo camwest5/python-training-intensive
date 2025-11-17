@@ -2,6 +2,10 @@
 title: Data Processing
 --- 
 
+{{< include ../_banner/_banner.qmd >}}
+
+
+
 In this second workshop we will cover
 
 - Examining / exploring data
