@@ -3,3 +3,5 @@
 /.vscode/
 /venv/
 .*
+insert_redirects.py
+redirect.html
